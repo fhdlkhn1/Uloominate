@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>My products — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="V-02 Vendor Products">
+  <dc-import name="VendorShell" active="vendorProducts" title="My products" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <div style="display:flex;flex-direction:column;gap:18px">
+
+      <sc-if value="{{ showCapNotice }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#FFF2DE;border-left:4px solid #B9913E;border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap">
+          <span aria-hidden="true" style="flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:#FFFFFF;color:#B9913E;display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:2px">!</span>
+          <span style="flex:1 1 280px;min-width:0;font-size:13.5px;line-height:1.65;color:#121212">{{ capNotice }}</span>
+          <a href="{{ subscriptionHref }}" style="flex:0 0 auto;display:inline-flex;align-items:center;height:38px;padding:0 15px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:12.5px" style-hover="background:#29483C;color:#FFFFFF">Change plan</a>
+        </div>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+          <button type="button" onClick="{{ t.onPick }}" aria-pressed="{{ t.pressed }}" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 15px;border:1px solid {{ t.border }};border-radius:9999px;background:{{ t.bg }};font-family:Poppins,sans-serif;font-size:13px;font-weight:600;color:{{ t.ink }};cursor:pointer">
+            {{ t.label }}
+            <span style="min-width:20px;height:19px;padding:0 5px;border-radius:10px;background:{{ t.pillBg }};color:{{ t.pillInk }};font-family:'DM Sans',Poppins,sans-serif;font-size:11px;line-height:19px;text-align:center">{{ t.count }}</span>
+          </button>
+        </sc-for>
+        <label style="margin-left:auto;display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;flex:0 1 280px;min-width:190px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+          <input type="search" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search my products" aria-label="Search my products" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:Poppins,sans-serif;font-size:13.5px" />
+        </label>
+      </div>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:10px">
+          <span style="height:84px;border-radius:12px;background:#EFF3F1"></span>
+          <span style="height:84px;border-radius:12px;background:#F2F6F4"></span>
+          <span style="height:84px;border-radius:12px;background:#F5F8F7"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="products-empty" style="background:#FFFFFF;border:1px dashed #DCE7E1;border-radius:16px;padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+          <span style="width:72px;height:72px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2.4"></rect><path d="M9 12h6M12 9v6"></path></svg>
+          </span>
+          <h2 style="margin:0;font-weight:600;font-size:20px;color:#29483C">{{ emptyTitle }}</h2>
+          <p style="margin:0;max-width:420px;font-size:14px;line-height:1.7;color:#595959">{{ emptyBody }}</p>
+          <a href="{{ newProductHref }}" style="margin-top:6px;display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:14px" style-hover="background:#29483C;color:#FFFFFF">Add a resource</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;overflow:hidden">
+          <sc-for list="{{ rows }}" as="p" hint-placeholder-count="5">
+            <div data-testid="product-row" style="display:flex;align-items:center;gap:16px;padding:16px 18px;border-bottom:1px solid #F3F5F4;flex-wrap:wrap">
+              <span style="flex:0 0 88px;width:88px;height:60px;border-radius:9px;overflow:hidden;background:#F3F4F6">
+                <img src="{{ p.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+              </span>
+
+              <div style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:5px">
+                <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <a href="{{ p.editHref }}" style="font-weight:600;font-size:14.5px;line-height:1.4;color:#121212" style-hover="color:#3A836B">{{ p.title }}</a>
+                  <span style="padding:3px 9px;border-radius:9999px;background:{{ p.badgeBg }};color:{{ p.badgeInk }};font-size:11px;font-weight:700">{{ p.badgeText }}</span>
+                </span>
+                <span style="font-size:12.5px;color:#595959">{{ p.meta }}</span>
+                <sc-if value="{{ p.hasDecline }}" hint-placeholder-val="{{ false }}">
+                  <span style="font-size:12px;line-height:1.6;color:#C0392B">Declined: {{ p.declineReason }}</span>
+                </sc-if>
+              </div>
+
+              <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:90px">
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:15px;color:#29483C">{{ p.price }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;color:#9AA5A0">{{ p.downloads }}</span>
+              </div>
+
+              <div style="flex:0 0 auto;display:flex;gap:7px;flex-wrap:wrap">
+                <a href="{{ p.editHref }}" aria-label="{{ p.editLabel }}" style="display:inline-flex;align-items:center;height:36px;padding:0 13px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;font-size:12.5px;font-weight:600;color:#29483C" style-hover="background:#F2FAF7;color:#29483C">Edit</a>
+                <sc-if value="{{ p.canSubmit }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ p.onSubmit }}" style="height:36px;padding:0 13px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-size:12.5px;font-weight:600;cursor:pointer" style-hover="background:#29483C">Submit</button>
+                </sc-if>
+                <button type="button" onClick="{{ p.onDuplicate }}" aria-label="{{ p.dupLabel }}" style="height:36px;padding:0 13px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-size:12.5px;font-weight:600;color:#29483C;cursor:pointer" style-hover="background:#F2FAF7">Duplicate</button>
+                <button type="button" onClick="{{ p.onDelete }}" aria-label="{{ p.delLabel }}" style="width:36px;height:36px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;color:#C0392B;display:grid;place-items:center;cursor:pointer" style-hover="background:#FDF1EF;border-color:#F3D6D2">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 13h8l1-13"></path></svg>
+                </button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ showPager }}" hint-placeholder-val="{{ false }}">
+          <nav aria-label="Pagination" style="display:flex;justify-content:center;gap:8px">
+            <button type="button" onClick="{{ onPrev }}" disabled="{{ prevDisabled }}" aria-label="Previous page" style="width:40px;height:40px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;display:grid;place-items:center;cursor:pointer;opacity:{{ prevOpacity }};color:#2B2B2B" style-hover="border-color:#3A836B">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+            </button>
+            <span style="display:inline-flex;align-items:center;padding:0 14px;font-family:'DM Sans',Poppins,sans-serif;font-size:13.5px;color:#595959">{{ pageLabel }}</span>
+            <button type="button" onClick="{{ onNext }}" disabled="{{ nextDisabled }}" aria-label="Next page" style="width:40px;height:40px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;display:grid;place-items:center;cursor:pointer;opacity:{{ nextOpacity }};color:#2B2B2B" style-hover="border-color:#3A836B">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </button>
+          </nav>
+        </sc-if>
+      </sc-if>
+    </div>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const BADGES = {
+  approved: { bg: '#EAF7F1', ink: '#3A836B', label: 'Published' },
+  pending: { bg: '#FFF2DE', ink: '#B9913E', label: 'In review' },
+  draft: { bg: '#E3F7FD', ink: '#2F7FA0', label: 'Draft' },
+  declined: { bg: '#FDF1EF', ink: '#C0392B', label: 'Declined' },
+  unpublished: { bg: '#F3F4F6', ink: '#595959', label: 'Unpublished' },
+};
+
+class Component extends DCLogic {
+  state = { loading: true, rows: [], meta: null, user: null, status: '', query: '', page: 1, counts: {}, allowance: null };
+
+  async componentDidMount() {
+    const [app, products, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/productsRepo.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.repo = products; this.db = db;
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    this.setState({ user, status: app.router.param('status', '') || '' });
+    await this.load();
+  }
+
+  async load() {
+    this.setState({ loading: true });
+    const res = await this.repo.listProducts({
+      vendorId: this.vid,
+      status: this.state.status || 'any',
+      q: this.state.query,
+      page: this.state.page, pageSize: 10,
+      sort: 'newest',
+    });
+    const all = this.db.findAll('products', { filter: { vendorId: this.vid } }).rows;
+    this.setState({
+      loading: false, rows: res.data, meta: res.meta,
+      allowance: this.repo.checkAllowance(this.vid),
+      counts: {
+        all: all.length,
+        approved: all.filter(p => p.status === 'approved').length,
+        pending: all.filter(p => p.status === 'pending').length,
+        draft: all.filter(p => p.status === 'draft').length,
+        declined: all.filter(p => p.status === 'declined').length,
+      },
+    });
+  }
+
+  set(patch) { this.setState(patch, () => this.load()); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, rows, meta, status, query, page, counts, allowance } = this.state;
+    const pages = meta ? meta.totalPages : 1;
+    const a = allowance;
+
+    return {
+      subtitle: counts.all ? counts.all + ' resources · ' + counts.approved + ' live on the storefront' : '',
+      newProductHref: url('vendorProductEdit'),
+      subscriptionHref: url('vendorSubscription'),
+      loading, query,
+
+      showCapNotice: !!(a && !a.allowed),
+      capNotice: a && a.reason === 'plan_free_no_paid_listings'
+        ? 'The Pioneer Vendor plan does not permit paid listings. You can publish unlimited free resources, or upgrade to Basic or Premium to sell.'
+        : a && a.limit
+          ? 'You have used all ' + a.limit + ' paid resource slots on your plan. Upgrade to Premium for unlimited uploads.'
+          : '',
+
+      tabs: [
+        { key: '', label: 'All', n: counts.all },
+        { key: 'approved', label: 'Published', n: counts.approved },
+        { key: 'pending', label: 'In review', n: counts.pending },
+        { key: 'draft', label: 'Drafts', n: counts.draft },
+        { key: 'declined', label: 'Declined', n: counts.declined },
+      ].map(t => {
+        const on = t.key === status;
+        return {
+          label: t.label,
+          count: String(t.n || 0),
+          pressed: on ? 'true' : 'false',
+          bg: on ? '#3A836B' : '#FFFFFF',
+          border: on ? '#3A836B' : '#E9EFEC',
+          ink: on ? '#FFFFFF' : '#29483C',
+          pillBg: on ? 'rgba(255,255,255,.22)' : '#F1F4F2',
+          pillInk: on ? '#FFFFFF' : '#595959',
+          onPick: () => this.set({ status: t.key, page: 1 }),
+        };
+      }),
+
+      isEmpty: !loading && rows.length === 0,
+      hasRows: !loading && rows.length > 0,
+      emptyTitle: query || status ? 'Nothing matches that view' : 'You have not created a resource yet',
+      emptyBody: query || status
+        ? 'Try clearing the search or choosing a different status.'
+        : 'Add your first resource, attach the file, and submit it for review.',
+
+      rows: rows.map(p => {
+        const b = BADGES[p.status] || BADGES.draft;
+        return {
+          title: p.title,
+          cover: p.cover,
+          editHref: url('vendorProductEdit', { id: p.id }),
+          badgeText: b.label, badgeBg: b.bg, badgeInk: b.ink,
+          meta: [p.categoryName, p.gradeLabel, p.resourceType].filter(Boolean).join(' · '),
+          price: p.price ? '$' + p.price.toFixed(2) : 'Free',
+          downloads: (p.downloads || 0).toLocaleString('en-US') + ' downloads',
+          hasDecline: p.status === 'declined' && !!p.declineReason,
+          declineReason: p.declineReason || '',
+          canSubmit: p.status === 'draft' || p.status === 'declined',
+          editLabel: 'Edit ' + p.title,
+          dupLabel: 'Duplicate ' + p.title,
+          delLabel: 'Delete ' + p.title,
+          onSubmit: async () => {
+            await this.repo.submitProduct(p.id);
+            await this.load();
+            this.app.toast('Submitted for review. You will be notified once a decision is made.', 'success');
+          },
+          onDuplicate: async () => {
+            await this.repo.duplicateProduct(p.id);
+            await this.load();
+            this.app.toast('Product duplicated as a new draft.', 'success');
+          },
+          onDelete: async () => {
+            const ok = await this.app.confirmDialog({
+              title: 'Delete this product?',
+              body: 'Purchasers keep their download access; the listing is removed from the storefront.',
+              confirmLabel: 'Delete product',
+            });
+            if (!ok) return;
+            await this.repo.deleteProduct(p.id);
+            await this.load();
+            this.app.toast('Product deleted.', 'success');
+          },
+        };
+      }),
+
+      showPager: !loading && pages > 1,
+      pageLabel: 'Page ' + page + ' of ' + pages,
+      prevDisabled: page <= 1, nextDisabled: page >= pages,
+      prevOpacity: page <= 1 ? 0.4 : 1, nextOpacity: page >= pages ? 0.4 : 1,
+      onPrev: () => { if (page > 1) this.set({ page: page - 1 }); },
+      onNext: () => { if (page < pages) this.set({ page: page + 1 }); },
+      onSearch: e => {
+        const v = e.target.value;
+        clearTimeout(this._t);
+        this.setState({ query: v, page: 1 });
+        this._t = setTimeout(() => this.load(), 220);
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

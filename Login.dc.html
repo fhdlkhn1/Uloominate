@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Sign in — Uloominate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500;600&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; color: #121212; background: #F2FAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #3A836B; text-decoration: none; }
+  a:hover { color: #29483C; }
+  :focus-visible { outline: 2px solid #3A836B; outline-offset: 3px; border-radius: 6px; }
+</style>
+</helmet>
+
+<div data-screen-label="A-01 Login" style="min-height:100vh;display:flex;flex-direction:column">
+  <div style="flex:1;display:grid;place-items:center;padding:40px 20px">
+    <div style="width:min(440px,100%);display:flex;flex-direction:column;gap:24px">
+
+      <a href="{{ homeHref }}" style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <img src="assets/img/logo-mark.png" alt="" width="44" height="53" style="object-fit:contain" />
+        <span style="font-family:'Montserrat Alternates',Poppins,sans-serif;font-weight:500;font-size:28px;color:#3A836B">Uloominate</span>
+      </a>
+
+      <form data-testid="login-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">
+        <h1 style="margin:0;font-weight:600;font-size:24px;color:#29483C">Sign in</h1>
+        <sc-if value="{{ hasNotice }}" hint-placeholder-val="{{ false }}">
+          <p role="status" style="margin:0;padding:10px 14px;border-radius:8px;background:#EAF7F1;font-size:13px;line-height:1.5;color:#29483C">{{ notice }}</p>
+        </sc-if>
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <p role="alert" data-testid="login-error" style="margin:0;padding:10px 14px;border-radius:8px;background:#FDF1EF;border-left:3px solid #C0392B;font-size:13px;line-height:1.5;color:#C0392B">{{ error }}</p>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label for="lg-email" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Email</label>
+          <input id="lg-email" name="email" type="email" autocomplete="email" required="required" placeholder="you@example.com" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label for="lg-pass" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Password</label>
+          <input id="lg-pass" name="password" type="password" autocomplete="current-password" required="required" placeholder="••••••••" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+        </div>
+        <button type="submit" disabled="{{ busy }}" data-testid="login-submit" style="height:52px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:16px;cursor:pointer;opacity:{{ busyOpacity }};transition:background .18s ease" style-hover="background:#29483C">{{ submitLabel }}</button>
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <a href="{{ forgotHref }}" style="font-size:13px;font-weight:500">Forgot password?</a>
+          <a href="{{ registerHref }}" style="font-size:13px;font-weight:500">Create an account</a>
+        </div>
+      </form>
+
+      <div style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#B9913E">Demo accounts</span>
+        <sc-for list="{{ demos }}" as="d" hint-placeholder-count="3">
+          <button type="button" onClick="{{ d.onFill }}" style="display:flex;justify-content:space-between;gap:10px;padding:8px 10px;border:1px solid #EDF0EE;border-radius:8px;background:#FCFDFC;font-family:Poppins,sans-serif;font-size:12px;color:#29483C;cursor:pointer;text-align:left" style-hover="background:#F2FAF7">
+            <span style="font-weight:600">{{ d.role }}</span><span style="color:#595959">{{ d.email }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <a href="{{ homeHref }}" style="text-align:center;font-size:13px;color:#595959" style-hover="color:#3A836B">← Back to Uloominate</a>
+    </div>
+  </div>
+  <dc-import name="DevToolbar" page="login" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { busy: false, error: '', ready: false };
+
+  async componentDidMount() {
+    const app = await import('./assets/js/app.js');
+    await app.boot();
+    this.app = app;
+    this.setState({ ready: true });
+  }
+
+  destination(user) {
+    const { router } = this.app;
+    const next = router.param('next');
+    if (next) return decodeURIComponent(next);
+    if (user.role === 'admin') return router.url('adminDashboard');
+    if (user.role === 'vendor') {
+      return user.vendor && user.vendor.status !== 'approved'
+        ? router.url('vendorPending') : router.url('vendorDashboard');
+    }
+    return router.url('browse');
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (r => r);
+    const reason = this.app ? this.app.router.param('reason') : null;
+    return {
+      hasNotice: reason === 'session',
+      notice: 'Sign in to continue.',
+      hasError: !!this.state.error,
+      error: this.state.error,
+      busy: this.state.busy,
+      busyOpacity: this.state.busy ? 0.72 : 1,
+      submitLabel: this.state.busy ? 'Signing in…' : 'Sign in',
+      homeHref: url('landing'),
+      forgotHref: url('forgotPassword'),
+      registerHref: url('registerCustomer'),
+      demos: [
+        { role: 'Admin', email: 'admin@uloominate.com', pass: 'admin1234' },
+        { role: 'Vendor', email: 'reyes@literacylane.com', pass: 'vendor1234' },
+        { role: 'Customer', email: 'aisha.rahman@example.com', pass: 'customer1234' },
+      ].map(d => ({ ...d, onFill: () => {
+        document.getElementById('lg-email').value = d.email;
+        document.getElementById('lg-pass').value = d.pass;
+      } })),
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const fd = new FormData(e.target);
+        const email = String(fd.get('email') || '').trim();
+        const password = String(fd.get('password') || '');
+        if (!email || !password) { this.setState({ error: 'Enter your email and password.' }); return; }
+        this.setState({ busy: true, error: '' });
+        try {
+          const res = await this.app.auth.login(email, password);
+          const cart = await import('./assets/js/repositories/cartRepo.js');
+          cart.mergeGuestCart(res.data.id);
+          window.location.href = this.destination(res.data);
+        } catch (err) {
+          this.setState({ busy: false, error: this.app.readError(err).message });
+        }
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

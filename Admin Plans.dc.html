@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Plans &amp; commission — Uloominate admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7F8FA;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="D-08 Admin Plans">
+  <dc-import name="AdminShell" active="adminPlans" title="Plans &amp; commission" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <div style="display:flex;flex-direction:column;gap:20px">
+
+      <div role="note" style="background:#FFFFFF;border:1px solid #E7E9EE;border-left:4px solid #B9913E;border-radius:14px;padding:18px 20px;display:flex;align-items:flex-start;gap:12px">
+        <span aria-hidden="true" style="flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:#FFF2DE;color:#B9913E;display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:2px">i</span>
+        <span style="font-size:13.5px;line-height:1.7;color:#121212">Editing a rate changes what future sales pay. Every historic order keeps the rate it was sold at, so past payouts and reports never move.</span>
+      </div>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+          <span style="height:400px;border-radius:16px;background:#EEF0F4"></span>
+          <span style="height:400px;border-radius:16px;background:#F1F3F6"></span>
+          <span style="height:400px;border-radius:16px;background:#F3F5F8"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+          <sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+            <article data-testid="plan-card" style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:16px">
+
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <span style="font-weight:600;font-size:16.5px;color:#29483C">{{ p.name }}</span>
+                  <span style="font-family:'DM Sans',monospace;font-size:11px;color:#9AA5A0">{{ p.code }}</span>
+                </div>
+                <span style="padding:4px 10px;border-radius:9999px;background:{{ p.badgeBg }};color:{{ p.badgeInk }};font-size:10.5px;font-weight:700;white-space:nowrap">{{ p.badgeText }}</span>
+              </div>
+
+              <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:26px;color:#116254">{{ p.priceLabel }}</span>
+                <span style="font-size:12px;color:#9AA5A0">{{ p.vendorCount }}</span>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ p.fields }}" as="f" hint-placeholder-count="4">
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <label for="{{ f.id }}" style="font-family:Roboto,Poppins,sans-serif;font-size:11.5px;color:#49454F">{{ f.label }}</label>
+                    <div style="display:flex;align-items:center;border:1px solid #E7E9EE;border-radius:8px;overflow:hidden;background:{{ f.bg }}">
+                      <sc-if value="{{ f.hasPrefix }}" hint-placeholder-val="{{ false }}">
+                        <span style="padding:0 9px;height:44px;display:flex;align-items:center;background:#F4F6F9;font-family:'DM Sans',monospace;font-size:12.5px;color:#595959">{{ f.prefix }}</span>
+                      </sc-if>
+                      <input id="{{ f.id }}" type="text" inputmode="decimal" value="{{ f.value }}" onInput="{{ f.onInput }}" disabled="{{ f.disabled }}" placeholder="{{ f.placeholder }}" style="flex:1;min-width:0;height:44px;border:none;padding:0 11px;font-family:'DM Sans',monospace;font-size:13.5px;background:transparent;outline:none" />
+                      <sc-if value="{{ f.hasSuffix }}" hint-placeholder-val="{{ false }}">
+                        <span style="padding:0 11px;height:44px;display:flex;align-items:center;background:#F4F6F9;font-size:12px;color:#595959;white-space:nowrap">{{ f.suffix }}</span>
+                      </sc-if>
+                    </div>
+                    <span style="font-size:11px;line-height:1.5;color:#9AA5A0">{{ f.help }}</span>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="background:#F2FAF7;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px">
+                <span style="font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#B9913E">On a $10.00 sale</span>
+                <sc-for list="{{ p.example }}" as="e" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                    <span style="font-size:12.5px;color:#595959">{{ e.label }}</span>
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:{{ e.weight }};font-size:13px;color:{{ e.ink }}">{{ e.value }}</span>
+                  </div>
+                </sc-for>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:9px;margin-top:auto">
+                <button type="button" onClick="{{ p.onSave }}" disabled="{{ p.clean }}" data-testid="save-plan" style="height:44px;border:none;border-radius:8px;background:{{ p.saveBg }};color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:13.5px;cursor:{{ p.saveCursor }}" style-hover="filter:brightness(.94)">{{ p.saveLabel }}</button>
+                <sc-if value="{{ p.dirty }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ p.onReset }}" style="height:38px;border:none;background:transparent;font-family:Poppins,sans-serif;font-size:12.5px;font-weight:500;color:#595959;cursor:pointer" style-hover="color:#C0392B">Discard changes</button>
+                </sc-if>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Founding promotion</h2>
+          <div style="display:flex;gap:18px;flex-wrap:wrap">
+            <sc-for list="{{ promoRows }}" as="r" hint-placeholder-count="3">
+              <div style="flex:1 1 200px;min-width:0;padding:16px;border-radius:12px;background:#FBFCFD;border:1px solid #F1F3F6;display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:11.5px;color:#9AA5A0">{{ r.label }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:16px;color:#29483C">{{ r.value }}</span>
+                <span style="font-size:11.5px;line-height:1.5;color:#9AA5A0">{{ r.note }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:0;font-size:12.5px;line-height:1.7;color:#595959">Vendors receive 30 days notice before the first charge. Changing these dates in the live platform will be a settings edit, not a code change.</p>
+        </section>
+      </sc-if>
+    </div>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, user: null, plans: [], drafts: {}, counts: {} };
+
+  async componentDidMount() {
+    const [app, rules, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, rules, db });
+    const user = app.auth.requireRole('admin');
+    if (!user) return;
+
+    // Plans are seeded as records so an administrator can edit them (FR-12.2).
+    const rows = db.findAll('plans', { sort: [{ field: 'order', dir: 'asc' }] }).rows;
+    const vendors = db.findAll('vendors').rows;
+    const drafts = {};
+    rows.forEach(p => {
+      drafts[p.code] = {
+        annualFee: p.annualFee === null ? '' : String(p.annualFee),
+        payoutRate: p.payoutRate === null ? '' : String(Math.round(p.payoutRate * 100)),
+        transactionFee: p.transactionFee === null ? '' : p.transactionFee.toFixed(2),
+        transactionFeePct: p.transactionFeePct ? String((p.transactionFeePct * 100).toFixed(1)) : '',
+        paidUploadLimit: p.paidUploadLimit === null ? '' : String(p.paidUploadLimit),
+      };
+    });
+    const counts = {};
+    rows.forEach(p => { counts[p.code] = vendors.filter(v => v.planCode === p.code).length; });
+    this.setState({ loading: false, user, plans: rows, drafts, counts });
+  }
+
+  money(n) { return '$' + Number(n || 0).toFixed(2); }
+
+  draftFor(code) { return this.state.drafts[code] || {}; }
+
+  isDirty(p) {
+    const d = this.draftFor(p.code);
+    const same = (a, b) => String(a) === String(b);
+    return !(
+      same(d.annualFee, p.annualFee === null ? '' : p.annualFee)
+      && same(d.payoutRate, p.payoutRate === null ? '' : Math.round(p.payoutRate * 100))
+      && same(d.transactionFee, p.transactionFee === null ? '' : p.transactionFee.toFixed(2))
+      && same(d.transactionFeePct, p.transactionFeePct ? (p.transactionFeePct * 100).toFixed(1) : '')
+      && same(d.paidUploadLimit, p.paidUploadLimit === null ? '' : p.paidUploadLimit)
+    );
+  }
+
+  renderVals() {
+    const { loading, plans, counts } = this.state;
+
+    const field = (p, key, label, opts) => {
+      const d = this.draftFor(p.code);
+      return Object.assign({
+        id: 'plan-' + p.code + '-' + key,
+        label,
+        value: d[key] === undefined ? '' : d[key],
+        disabled: false,
+        bg: '#FFFFFF',
+        hasPrefix: false, prefix: '',
+        hasSuffix: false, suffix: '',
+        placeholder: '',
+        help: '',
+        onInput: e => {
+          const v = e.target.value;
+          this.setState(s => ({
+            drafts: Object.assign({}, s.drafts, {
+              [p.code]: Object.assign({}, s.drafts[p.code], { [key]: v }),
+            }),
+          }));
+        },
+      }, opts || {});
+    };
+
+    return {
+      loading,
+      ready: !loading && plans.length > 0,
+      subtitle: plans.length ? plans.length + ' plans configured' : '',
+
+      plans: plans.map(p => {
+        const d = this.draftFor(p.code);
+        const dirty = this.isDirty(p);
+        const rate = d.payoutRate === '' ? null : Number(d.payoutRate) / 100;
+        const flat = d.transactionFee === '' ? 0 : Number(d.transactionFee);
+        const pct = d.transactionFeePct === '' ? 0 : Number(d.transactionFeePct) / 100;
+        const gross = 10;
+        const share = rate === null ? 0 : gross * rate;
+        const fee = gross * pct + flat;
+        const vendorGets = Math.max(0, share - fee);
+
+        return {
+          name: p.name,
+          code: p.code,
+          priceLabel: p.annualFee === null ? 'By agreement' : p.annualFee === 0 ? 'FREE' : '$' + p.annualFee + '/yr',
+          vendorCount: (counts[p.code] || 0) + (counts[p.code] === 1 ? ' vendor' : ' vendors'),
+          badgeText: p.selfService ? 'SELF-SERVICE' : 'BY AGREEMENT',
+          badgeBg: p.selfService ? '#EAF7F1' : '#FFF2DE',
+          badgeInk: p.selfService ? '#3A836B' : '#B9913E',
+
+          fields: [
+            field(p, 'annualFee', 'Annual fee', {
+              hasPrefix: true, prefix: '$',
+              disabled: !p.selfService,
+              bg: p.selfService ? '#FFFFFF' : '#F5F7F9',
+              placeholder: p.selfService ? '0' : 'By agreement',
+              help: p.selfService ? 'What the vendor pays each year.' : 'Set per contract, not here.',
+            }),
+            field(p, 'payoutRate', 'Vendor payout share', {
+              hasSuffix: true, suffix: '% to vendor',
+              placeholder: '—',
+              help: rate === null ? 'Free plans pay nothing out.' : 'Platform keeps ' + Math.round((1 - rate) * 100) + '%.',
+            }),
+            field(p, 'transactionFee', 'Flat transaction fee', {
+              hasPrefix: true, prefix: '$',
+              placeholder: '0.00',
+              help: 'Deducted from the vendor payout on each sale.',
+            }),
+            field(p, 'transactionFeePct', 'Percentage transaction fee', {
+              hasSuffix: true, suffix: '%',
+              placeholder: '0',
+              help: 'Leave blank for a flat fee only.',
+            }),
+            field(p, 'paidUploadLimit', 'Paid upload limit', {
+              hasSuffix: true, suffix: 'resources',
+              placeholder: 'Unlimited',
+              help: p.allowsPaidListings ? 'Blank means unlimited.' : 'This plan cannot list paid resources.',
+            }),
+          ],
+
+          example: [
+            { label: 'Buyer pays', value: this.money(gross), weight: 500, ink: '#29483C' },
+            { label: 'Vendor share', value: this.money(share), weight: 500, ink: '#595959' },
+            { label: 'Transaction fee', value: '−' + this.money(fee), weight: 500, ink: '#595959' },
+            { label: 'Vendor receives', value: this.money(vendorGets), weight: 700, ink: '#3A836B' },
+            { label: 'Platform keeps', value: this.money(gross - vendorGets), weight: 700, ink: '#B9913E' },
+          ],
+
+          dirty,
+          clean: !dirty,
+          saveBg: dirty ? '#3A836B' : '#C9D4CF',
+          saveCursor: dirty ? 'pointer' : 'default',
+          saveLabel: dirty ? 'Save changes' : 'No changes',
+
+          onReset: () => {
+            this.setState(s => ({
+              drafts: Object.assign({}, s.drafts, {
+                [p.code]: {
+                  annualFee: p.annualFee === null ? '' : String(p.annualFee),
+                  payoutRate: p.payoutRate === null ? '' : String(Math.round(p.payoutRate * 100)),
+                  transactionFee: p.transactionFee === null ? '' : p.transactionFee.toFixed(2),
+                  transactionFeePct: p.transactionFeePct ? String((p.transactionFeePct * 100).toFixed(1)) : '',
+                  paidUploadLimit: p.paidUploadLimit === null ? '' : String(p.paidUploadLimit),
+                },
+              }),
+            }));
+          },
+
+          onSave: async () => {
+            if (!dirty) return;
+            const ok = await this.app.confirmDialog({
+              title: 'Save changes to ' + p.name + '?',
+              body: 'Future sales use the new rates immediately. Historic orders keep the rate they were sold at, so past payouts and reports do not change.',
+              confirmLabel: 'Save plan',
+              tone: 'primary',
+            });
+            if (!ok) return;
+            this.db.update('plans', p.id, {
+              annualFee: d.annualFee === '' ? null : Number(d.annualFee),
+              payoutRate: d.payoutRate === '' ? null : Number(d.payoutRate) / 100,
+              transactionFee: d.transactionFee === '' ? null : Number(d.transactionFee),
+              transactionFeePct: d.transactionFeePct === '' ? null : Number(d.transactionFeePct) / 100,
+              paidUploadLimit: d.paidUploadLimit === '' ? null : Number(d.paidUploadLimit),
+            });
+            const rows = this.db.findAll('plans', { sort: [{ field: 'order', dir: 'asc' }] }).rows;
+            this.setState({ plans: rows });
+            this.app.toast(p.name + ' updated.', 'success');
+          },
+        };
+      }),
+
+      promoRows: this.rules ? [
+        {
+          label: 'Free until',
+          value: new Date(this.rules.PROMO.freeUntil).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }),
+          note: 'No plan fee charged before this date',
+        },
+        {
+          label: 'Billing begins',
+          value: new Date(this.rules.PROMO.billingStarts).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }),
+          note: 'First charge for every paid plan',
+        },
+        {
+          label: 'Advance notice',
+          value: this.rules.PROMO.noticeDays + ' days',
+          note: 'Before the first charge is taken',
+        },
+      ] : [],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

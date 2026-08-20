@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Vendor dashboard — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="V-01 Vendor Dashboard">
+  <dc-import name="VendorShell" active="vendorDashboard" title="Dashboard" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+          <span style="height:118px;border-radius:14px;background:#EFF3F1"></span>
+          <span style="height:118px;border-radius:14px;background:#F1F5F3"></span>
+          <span style="height:118px;border-radius:14px;background:#F3F6F5"></span>
+          <span style="height:118px;border-radius:14px;background:#F5F8F7"></span>
+        </div>
+        <span style="height:300px;border-radius:16px;background:#EFF3F1"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:22px">
+
+        <sc-if value="{{ showPendingBanner }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="background:#FFF2DE;border-left:4px solid #B9913E;border-radius:12px;padding:18px 20px;display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+            <span aria-hidden="true" style="flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:#FFFFFF;color:#B9913E;display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:1px">!</span>
+            <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <span style="font-weight:600;font-size:14.5px;color:#29483C">{{ pendingTitle }}</span>
+              <span style="font-size:13.5px;line-height:1.6;color:#121212">{{ pendingBody }}</span>
+            </div>
+            <a href="{{ pendingHref }}" style="flex:0 0 auto;display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:13px" style-hover="background:#29483C;color:#FFFFFF">{{ pendingCta }}</a>
+          </div>
+        </sc-if>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div data-testid="stat-card" style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span aria-hidden="true" style="flex:0 0 34px;width:34px;height:34px;border-radius:10px;background:{{ s.tint }};color:{{ s.ink }};display:grid;place-items:center;font-size:15px;font-weight:700">{{ s.mark }}</span>
+                <span style="font-size:13px;color:#595959">{{ s.label }}</span>
+              </div>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:clamp(22px,2vw,28px);line-height:1.1;color:#29483C">{{ s.value }}</span>
+              <span style="font-size:12px;line-height:1.5;color:#9AA5A0">{{ s.note }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+          <section style="flex:999 1 460px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:20px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Sales over time</h2>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ chartCaption }}</span>
+            </div>
+
+            <sc-if value="{{ hasChart }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:flex-end;gap:clamp(6px,1.4vw,18px);height:210px;padding-top:8px">
+                <sc-for list="{{ chart }}" as="c" hint-placeholder-count="6">
+                  <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%">
+                    <span style="flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center">
+                      <span title="{{ c.tip }}" style="width:min(100%,44px);height:{{ c.pct }}%;min-height:4px;border-radius:8px 8px 0 0;background:{{ c.fill }};transition:height .5s cubic-bezier(.2,.7,.3,1)"></span>
+                    </span>
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;font-weight:600;color:#29483C;white-space:nowrap">{{ c.value }}</span>
+                    <span style="font-size:11px;color:#9AA5A0;white-space:nowrap">{{ c.label }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ noChart }}" hint-placeholder-val="{{ true }}">
+              <div style="border:1px dashed #DCE7E1;border-radius:12px;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+                <span style="width:60px;height:60px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>
+                </span>
+                <span style="font-weight:600;font-size:16px;color:#29483C">No sales yet</span>
+                <span style="max-width:340px;font-size:13.5px;line-height:1.65;color:#595959">Once your first resource sells, your monthly revenue appears here.</span>
+              </div>
+            </sc-if>
+          </section>
+
+          <section style="flex:1 1 320px;max-width:400px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Your balance</h2>
+            <div style="background:#F2FAF7;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:12.5px;color:#595959">Available to withdraw</span>
+              <span data-testid="withdrawable" style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:30px;line-height:1.1;color:#3A836B">{{ withdrawable }}</span>
+              <span style="font-size:12px;color:#9AA5A0">{{ minWithdrawalNote }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ balanceRows }}" as="b" hint-placeholder-count="3">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid #F1F4F2">
+                  <span style="font-size:13px;color:#595959">{{ b.label }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:600;font-size:13.5px;color:#29483C">{{ b.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <a href="{{ paymentsHref }}" style="display:inline-flex;align-items:center;justify-content:center;height:46px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:14px" style-hover="background:#29483C;color:#FFFFFF">Request a withdrawal</a>
+          </section>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+          <section style="flex:1 1 380px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Top resources</h2>
+              <a href="{{ productsHref }}" style="font-size:13px;font-weight:600">All products →</a>
+            </div>
+            <sc-if value="{{ hasTop }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ topProducts }}" as="t" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;gap:12px">
+                    <span aria-hidden="true" style="flex:0 0 26px;width:26px;height:26px;border-radius:8px;background:#F2FAF7;color:#3A836B;display:grid;place-items:center;font-family:'DM Sans',Poppins,sans-serif;font-size:12px;font-weight:700">{{ t.rank }}</span>
+                    <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                      <a href="{{ t.href }}" style="font-weight:500;font-size:13.5px;line-height:1.45;color:#121212;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:#3A836B">{{ t.title }}</a>
+                      <span style="font-size:11.5px;color:#9AA5A0">{{ t.units }}</span>
+                    </span>
+                    <span style="flex:0 0 auto;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:13.5px;color:#29483C">{{ t.revenue }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noTop }}" hint-placeholder-val="{{ true }}">
+              <p style="margin:0;padding:24px 0;font-size:13.5px;line-height:1.7;color:#595959;text-align:center">No sales recorded yet. Your best-performing resources will be listed here.</p>
+            </sc-if>
+          </section>
+
+          <section style="flex:1 1 380px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Catalogue status</h2>
+              <a href="{{ productsHref }}" style="font-size:13px;font-weight:600">Manage →</a>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ statusRows }}" as="s" hint-placeholder-count="4">
+                <a href="{{ s.href }}" style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:{{ s.bg }}" style-hover="filter:brightness(.97);color:inherit">
+                  <span aria-hidden="true" style="flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:{{ s.dot }}"></span>
+                  <span style="flex:1;min-width:0;font-size:13.5px;font-weight:500;color:#29483C">{{ s.label }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:15px;color:{{ s.dot }}">{{ s.count }}</span>
+                </a>
+              </sc-for>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:4px">
+              <a href="{{ newProductHref }}" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;height:44px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:13.5px" style-hover="background:#29483C;color:#FFFFFF">Add a resource</a>
+              <a href="{{ messagesHref }}" style="flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;height:44px;border-radius:8px;border:1px solid #DCE7E1;background:#FFFFFF;color:#29483C;font-weight:600;font-size:13.5px" style-hover="background:#F2FAF7;color:#29483C">{{ messagesLabel }}</a>
+            </div>
+          </section>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Recent orders</h2>
+            <a href="{{ ordersHref }}" style="font-size:13px;font-weight:600">All orders →</a>
+          </div>
+
+          <sc-if value="{{ hasOrders }}" hint-placeholder-val="{{ false }}">
+            <div style="overflow-x:auto">
+              <table style="width:100%;min-width:520px;border-collapse:collapse;font-size:13.5px">
+                <thead>
+                  <tr>
+                    <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Order</th>
+                    <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Date</th>
+                    <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Resources</th>
+                    <th scope="col" style="text-align:right;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Your earnings</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <sc-for list="{{ orders }}" as="o" hint-placeholder-count="5">
+                    <tr>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F4"><a href="{{ o.href }}" style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;color:#3A836B">{{ o.reference }}</a></td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F4;color:#595959">{{ o.date }}</td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F4;color:#121212">{{ o.items }}</td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;color:#29483C">{{ o.earnings }}</td>
+                    </tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ noOrders }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;padding:24px 0;font-size:13.5px;line-height:1.7;color:#595959;text-align:center">No orders yet. When someone buys one of your resources it appears here within seconds.</p>
+          </sc-if>
+        </section>
+      </div>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, user: null, stats: null, orders: [], sub: null };
+
+  async componentDidMount() {
+    const [app, vendors, orders, finance, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/repositories/ordersRepo.js'),
+      import('./assets/js/repositories/financeRepo.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.db = db;
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    const vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    this.vid = vid;
+    const [st, od, sub] = await Promise.all([
+      vendors.vendorStats(vid),
+      orders.listOrders({ vendorId: vid, status: 'completed', pageSize: 5 }),
+      finance.getSubscription(vid).catch(() => ({ data: null })),
+    ]);
+    this.setState({ loading: false, user, stats: st.data, orders: od.data, sub: sub.data });
+  }
+
+  money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, user, stats, orders, sub } = this.state;
+    const s = stats;
+    const v = user && user.vendor;
+    const approved = !v || v.status === 'approved';
+    const setupDone = v ? v.setupComplete !== false : true;
+
+    const max = s && s.byMonth.length ? Math.max.apply(null, s.byMonth.map(m => m.gross)) : 0;
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    return {
+      loading,
+      ready: !loading && !!s,
+      subtitle: v ? 'Everything below is calculated from your real orders.' : '',
+
+      showPendingBanner: !loading && (!approved || !setupDone),
+      pendingTitle: !approved ? 'Your store is not live yet' : 'Finish setting up your store',
+      pendingBody: !approved
+        ? 'An administrator is reviewing your registration. Publishing unlocks once your store is approved.'
+        : 'Add your logo, biography and payout details so buyers see a finished storefront and you can be paid.',
+      pendingCta: !approved ? 'See status' : 'Complete setup',
+      pendingHref: !approved ? url('vendorPending') : url('storeSetup'),
+
+      stats: s ? [
+        { label: 'Gross sales', value: this.money(s.grossSales), note: s.unitsSold + ' resources sold', mark: '$', tint: '#EAF7F1', ink: '#3A836B' },
+        { label: 'Your earnings', value: this.money(s.earnings), note: 'After commission and fees', mark: '↑', tint: '#F2FAF7', ink: '#116254' },
+        { label: 'Orders received', value: String(s.ordersReceived), note: s.customerCount + ' distinct buyers', mark: '#', tint: '#FFF2DE', ink: '#B9913E' },
+        { label: 'Published', value: String(s.productCount), note: s.pendingCount + ' awaiting review', mark: '▤', tint: '#E3F7FD', ink: '#2F7FA0' },
+      ] : [],
+
+      chartCaption: s && s.byMonth.length ? 'Gross revenue by month' : '',
+      hasChart: !!(s && s.byMonth.length),
+      noChart: !!(s && !s.byMonth.length),
+      chart: s ? s.byMonth.map(m => {
+        const d = new Date(m.month + '-01');
+        return {
+          label: monthNames[d.getMonth()],
+          value: '$' + Math.round(m.gross),
+          pct: max ? Math.round(m.gross / max * 100) : 0,
+          fill: '#3A836B',
+          tip: monthNames[d.getMonth()] + ': ' + this.money(m.gross) + ' gross, ' + this.money(m.earnings) + ' to you',
+        };
+      }) : [],
+
+      withdrawable: s ? this.money(s.withdrawable) : '$0.00',
+      minWithdrawalNote: s && s.withdrawable >= 25 ? 'Above the $25.00 minimum' : 'The minimum withdrawal is $25.00',
+      balanceRows: s ? [
+        { label: 'Lifetime earnings', value: this.money(s.earnings) },
+        { label: 'Already paid out', value: this.money(s.paidOut) },
+        { label: 'Platform commission', value: this.money(s.commission) },
+        { label: 'Transaction fees', value: this.money(s.transactionFees) },
+      ] : [],
+
+      hasTop: !!(s && s.topProducts.length),
+      noTop: !!(s && !s.topProducts.length),
+      topProducts: s ? s.topProducts.map((t, i) => ({
+        rank: String(i + 1),
+        title: t.title,
+        href: url('product', { id: t.productId }),
+        units: t.units + (t.units === 1 ? ' sale' : ' sales'),
+        revenue: this.money(t.revenue),
+      })) : [],
+
+      statusRows: s ? [
+        { label: 'Published', count: String(s.productCount), dot: '#3A836B', bg: '#F2FAF7', href: url('vendorProducts', { status: 'approved' }) },
+        { label: 'Awaiting review', count: String(s.pendingCount), dot: '#B9913E', bg: '#FFF9EF', href: url('vendorProducts', { status: 'pending' }) },
+        { label: 'Drafts', count: String(s.draftCount), dot: '#2F7FA0', bg: '#F3FBFE', href: url('vendorProducts', { status: 'draft' }) },
+        { label: 'Declined', count: String(s.declinedCount), dot: '#C0392B', bg: '#FDF6F5', href: url('vendorProducts', { status: 'declined' }) },
+      ] : [],
+
+      hasOrders: !loading && orders.length > 0,
+      noOrders: !loading && orders.length === 0,
+      orders: orders.map(o => ({
+        reference: o.reference,
+        href: url('vendorOrders', { id: o.id }),
+        date: new Date(o.placedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+        items: (o.vendorItems || []).length + ' of ' + o.itemCount,
+        earnings: this.money(o.vendorEarnings),
+      })),
+
+      productsHref: url('vendorProducts'),
+      newProductHref: url('vendorProductEdit'),
+      ordersHref: url('vendorOrders'),
+      paymentsHref: url('vendorPayments'),
+      messagesHref: url('vendorMessages'),
+      messagesLabel: this.db && this.vid
+        ? (() => {
+            const n = this.db.findAll('messages', { filter: { vendorId: this.vid, status: 'open' } }).total;
+            return n ? 'Answer ' + n + (n === 1 ? ' message' : ' messages') : 'Messages';
+          })()
+        : 'Messages',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

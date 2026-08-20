@@ -1,0 +1,350 @@
+{
+ "landing-page": [
+  {
+   "node": "Subtract",
+   "w": 773.33,
+   "h": 580.01,
+   "path": "landing page > Wrapper > Subtract",
+   "hash": "021a4fc53f78bb1b5033477c83ec1d1ba6ed58df",
+   "file": "assets/img/021a4fc53f78bb1b5033477c83ec1d1ba6ed58df.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "Subtract",
+   "w": 773.33,
+   "h": 580.01,
+   "path": "landing page > Wrapper > Subtract > Subtract",
+   "hash": "021a4fc53f78bb1b5033477c83ec1d1ba6ed58df",
+   "file": "assets/img/021a4fc53f78bb1b5033477c83ec1d1ba6ed58df.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "ChatGPT Image Jul 28, 2026, 09_40_45 AM 1",
+   "w": 773.33,
+   "h": 580.01,
+   "path": "landing page > Wrapper > Subtract > Subtract > ChatGPT Image Jul 28, 2026, 09_40_45 AM 1",
+   "hash": "021a4fc53f78bb1b5033477c83ec1d1ba6ed58df",
+   "file": "assets/img/021a4fc53f78bb1b5033477c83ec1d1ba6ed58df.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "logo 1",
+   "w": 38,
+   "h": 46.28,
+   "path": "landing page > Frame 43452 > Group 93 > Group 66 > logo 1",
+   "hash": "987fd8acbede1774474d9d69c15e882233e67def",
+   "file": "assets/img/987fd8acbede1774474d9d69c15e882233e67def.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "image 18",
+   "w": 156.89,
+   "h": 65.19,
+   "path": "landing page > Group 39642 > Group 39639 > image 18",
+   "hash": "20a5333a1c60bf67b9b649b1a360156b05fdb1e5",
+   "file": "assets/img/20a5333a1c60bf67b9b649b1a360156b05fdb1e5.png",
+   "fit": "STRETCH"
+  },
+  {
+   "node": "image 21",
+   "w": 132.3,
+   "h": 132.3,
+   "path": "landing page > Group 39642 > Group 39639 > Group 39624 > Group 39640 > image 21",
+   "hash": "571c6bbf42cf3a061071a011074dc19ebbca192d",
+   "file": "assets/img/571c6bbf42cf3a061071a011074dc19ebbca192d.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "image 15",
+   "w": 132.3,
+   "h": 132.3,
+   "path": "landing page > Group 39642 > Group 39639 > image 15",
+   "hash": "031baa70ebaa764a6abafffeca37c14a1ce34d71",
+   "file": "assets/img/031baa70ebaa764a6abafffeca37c14a1ce34d71.png",
+   "fit": "STRETCH"
+  },
+  {
+   "node": "image 19",
+   "w": 132.3,
+   "h": 132.3,
+   "path": "landing page > Group 39642 > Group 39639 > image 19",
+   "hash": "2ce076bf7348289772436478ee7ad1e151ea3aed",
+   "file": "assets/img/2ce076bf7348289772436478ee7ad1e151ea3aed.png",
+   "fit": "STRETCH"
+  },
+  {
+   "node": "image 16",
+   "w": 131.88,
+   "h": 131.88,
+   "path": "landing page > Group 39642 > Group 39639 > image 16",
+   "hash": "7c2993a51799e8e4f25768e93db97665aacaaa71",
+   "file": "assets/img/7c2993a51799e8e4f25768e93db97665aacaaa71.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "image 22",
+   "w": 243.34,
+   "h": 72.37,
+   "path": "landing page > Group 39642 > Group 39639 > image 22",
+   "hash": "078959078a87b260b75089d3596e8da4fb850e45",
+   "file": "assets/img/078959078a87b260b75089d3596e8da4fb850e45.png",
+   "fit": "STRETCH"
+  }
+ ],
+ "product-page": [
+  {
+   "node": "logo 1",
+   "w": 38,
+   "h": 46.28,
+   "path": "product page > Group 39646 > Group 93 > Group 66 > logo 1",
+   "hash": "987fd8acbede1774474d9d69c15e882233e67def",
+   "file": "assets/img/987fd8acbede1774474d9d69c15e882233e67def.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Product preview)",
+   "w": 832,
+   "h": 624,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Image (Product preview)",
+   "hash": "dfcb9f4e5374a5f60a72724a36447676479e585d",
+   "file": "assets/img/dfcb9f4e5374a5f60a72724a36447676479e585d.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image",
+   "w": 76,
+   "h": 52,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Button - View image 1 > Image",
+   "hash": "dfcb9f4e5374a5f60a72724a36447676479e585d",
+   "file": "assets/img/dfcb9f4e5374a5f60a72724a36447676479e585d.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image",
+   "w": 76,
+   "h": 52,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Button - View image 2 > Image",
+   "hash": "212f9845f9e0768831fbb45bf874c7b6ec8bf1a5",
+   "file": "assets/img/212f9845f9e0768831fbb45bf874c7b6ec8bf1a5.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image",
+   "w": 76,
+   "h": 52,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Button - View image 3 > Image",
+   "hash": "0f0bdace631f51bdc0eef3dab72cb76d3ef82736",
+   "file": "assets/img/0f0bdace631f51bdc0eef3dab72cb76d3ef82736.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image",
+   "w": 76,
+   "h": 52,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Button - View image 4 > Image",
+   "hash": "1b34e5ec4e15e9eec73612b9fe310e9abc8f8732",
+   "file": "assets/img/1b34e5ec4e15e9eec73612b9fe310e9abc8f8732.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image",
+   "w": 76,
+   "h": 52,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Button - View image 5 > Image",
+   "hash": "d3523040c74a0c156429f8f5f5fdc4790df9b9ec",
+   "file": "assets/img/d3523040c74a0c156429f8f5f5fdc4790df9b9ec.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Ms. Patterson)",
+   "w": 40,
+   "h": 40,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Container > Container > Image (Ms. Patterson)",
+   "hash": "302abc85946f17932aa58d91fb251a41e1cc2fdf",
+   "file": "assets/img/302abc85946f17932aa58d91fb251a41e1cc2fdf.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Mr. Dominguez)",
+   "w": 40,
+   "h": 40,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Container > Container > Image (Mr. Dominguez)",
+   "hash": "fb9aa135cd6b54be271ed4c69e5ee468fdb4f348",
+   "file": "assets/img/fb9aa135cd6b54be271ed4c69e5ee468fdb4f348.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Mrs. Chen)",
+   "w": 40,
+   "h": 40,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Container > Container > Image (Mrs. Chen)",
+   "hash": "2a78c28ce845cf6a8e9644aca77f786969c4ac00",
+   "file": "assets/img/2a78c28ce845cf6a8e9644aca77f786969c4ac00.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Seller Mrs. Reyes)",
+   "w": 40,
+   "h": 40,
+   "path": "product page > App > Container:margin > Container > Container > Container > Container > Container > Image (Seller Mrs. Reyes)",
+   "hash": "fb9aa135cd6b54be271ed4c69e5ee468fdb4f348",
+   "file": "assets/img/fb9aa135cd6b54be271ed4c69e5ee468fdb4f348.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Reading Comprehension Bundle — Grades 3-5)",
+   "w": 291,
+   "h": 218.25,
+   "path": "product page > App > Container > Container:margin > Container > Container:margin > Container > Container > Container > Image (Reading Comprehension Bundle — Grades 3-5)",
+   "hash": "0c268dec7598e25d7d2eb1fa193b2ab62b0195ae",
+   "file": "assets/img/0c268dec7598e25d7d2eb1fa193b2ab62b0195ae.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Phonics Fluency Passages — First Grade)",
+   "w": 291,
+   "h": 218.25,
+   "path": "product page > App > Container > Container:margin > Container > Container:margin > Container > Container > Container > Image (Phonics Fluency Passages — First Grade)",
+   "hash": "3672ca29a4efaf1bcd965d1d93074e7b46725f08",
+   "file": "assets/img/3672ca29a4efaf1bcd965d1d93074e7b46725f08.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Math Word Problems Task Cards — 3rd Grade)",
+   "w": 291,
+   "h": 218.25,
+   "path": "product page > App > Container > Container:margin > Container > Container:margin > Container > Container > Container > Image (Math Word Problems Task Cards — 3rd Grade)",
+   "hash": "6869a81608e206f2bd3a5e2a0def5c016ca7c31b",
+   "file": "assets/img/6869a81608e206f2bd3a5e2a0def5c016ca7c31b.jpg",
+   "fit": "FILL"
+  },
+  {
+   "node": "Image (Writing Workshop Mini-Lessons — Full Year)",
+   "w": 291,
+   "h": 218.25,
+   "path": "product page > App > Container > Container:margin > Container > Container:margin > Container > Container > Container > Image (Writing Workshop Mini-Lessons — Full Year)",
+   "hash": "1a3d7dfd9c54a705e8a7f777d867c4109de26ed1",
+   "file": "assets/img/1a3d7dfd9c54a705e8a7f777d867c4109de26ed1.jpg",
+   "fit": "FILL"
+  }
+ ],
+ "browse_filter-page": [
+  {
+   "node": "logo 1",
+   "w": 38,
+   "h": 46.28,
+   "path": "browse_filter page > Frame 43454 > Group 93 > Group 66 > logo 1",
+   "hash": "987fd8acbede1774474d9d69c15e882233e67def",
+   "file": "assets/img/987fd8acbede1774474d9d69c15e882233e67def.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-1 > product-card > card-top > image-container > thumbnail",
+   "hash": "91c69f3f1c321ebc9f0798f9d09d36b0cc5770d7",
+   "file": "assets/img/91c69f3f1c321ebc9f0798f9d09d36b0cc5770d7.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-1 > product-card > card-top > image-container > thumbnail",
+   "hash": "2709f6102032811f3d88344411977c8c39836e82",
+   "file": "assets/img/2709f6102032811f3d88344411977c8c39836e82.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 341,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-1 > product-card > card-top > image-container > thumbnail",
+   "hash": "df9184cb321fa33385fe8e5520eb473a1fa57d88",
+   "file": "assets/img/df9184cb321fa33385fe8e5520eb473a1fa57d88.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-2 > product-card > card-top > image-container > thumbnail",
+   "hash": "c28ae80ee71432c4f7edb24163606ba9c216d399",
+   "file": "assets/img/c28ae80ee71432c4f7edb24163606ba9c216d399.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 340,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-2 > product-card > card-top > image-container > thumbnail",
+   "hash": "b406e60fd89d58571d49899556e88b75fde958f8",
+   "file": "assets/img/b406e60fd89d58571d49899556e88b75fde958f8.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-2 > product-card > card-top > image-container > thumbnail",
+   "hash": "5a3a57919480b53192d2d8131eb60c663abd139c",
+   "file": "assets/img/5a3a57919480b53192d2d8131eb60c663abd139c.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-1 > product-card > card-top > image-container > thumbnail",
+   "hash": "91c69f3f1c321ebc9f0798f9d09d36b0cc5770d7",
+   "file": "assets/img/91c69f3f1c321ebc9f0798f9d09d36b0cc5770d7.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-1 > product-card > card-top > image-container > thumbnail",
+   "hash": "2709f6102032811f3d88344411977c8c39836e82",
+   "file": "assets/img/2709f6102032811f3d88344411977c8c39836e82.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 341,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-1 > product-card > card-top > image-container > thumbnail",
+   "hash": "df9184cb321fa33385fe8e5520eb473a1fa57d88",
+   "file": "assets/img/df9184cb321fa33385fe8e5520eb473a1fa57d88.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-2 > product-card > card-top > image-container > thumbnail",
+   "hash": "c28ae80ee71432c4f7edb24163606ba9c216d399",
+   "file": "assets/img/c28ae80ee71432c4f7edb24163606ba9c216d399.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 340,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-2 > product-card > card-top > image-container > thumbnail",
+   "hash": "b406e60fd89d58571d49899556e88b75fde958f8",
+   "file": "assets/img/b406e60fd89d58571d49899556e88b75fde958f8.png",
+   "fit": "FILL"
+  },
+  {
+   "node": "thumbnail",
+   "w": 338,
+   "h": 220,
+   "path": "browse_filter page > page-content > product-grid > grid-row-2 > product-card > card-top > image-container > thumbnail",
+   "hash": "5a3a57919480b53192d2d8131eb60c663abd139c",
+   "file": "assets/img/5a3a57919480b53192d2d8131eb60c663abd139c.png",
+   "fit": "FILL"
+  }
+ ]
+}

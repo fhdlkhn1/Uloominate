@@ -1,0 +1,16 @@
+# Delivery archives — 40 MB+ and nothing on the site loads them.
+*.zip
+
+# Working screenshots and raw Figma exports. Kept locally, not part of the site.
+uploads/
+
+# OS and editor noise
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+._*
+.vscode/
+.idea/
+*.swp
+node_modules/

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Your cart — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="P-06 Cart" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;max-width:1728px;margin:0 auto;width:100%;padding:32px clamp(20px,8vw,144px) 72px;display:flex;flex-direction:column;gap:24px">
+
+    <nav aria-label="Breadcrumb" style="display:flex;gap:8px;align-items:center">
+      <a href="{{ browseHref }}" style="font-size:12px;line-height:18px;color:#595959" style-hover="color:#3A836B">All resources</a>
+      <span aria-hidden="true" style="font-size:12px;color:#595959">›</span>
+      <span aria-current="page" style="font-weight:600;font-size:12px;line-height:18px;color:#29483C">Cart</span>
+    </nav>
+
+    <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+      <h1 style="margin:0;font-weight:600;font-size:clamp(26px,2.6vw,36px);line-height:1.2;color:#29483C">Your cart</h1>
+      <span data-testid="cart-summary-line" style="font-size:15px;color:#595959">{{ summaryLine }}</span>
+    </div>
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:14px">
+        <span style="height:108px;border-radius:14px;background:#F4F6F5"></span>
+        <span style="height:108px;border-radius:14px;background:#F7F9F8"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div data-testid="cart-empty" style="border:1px dashed #DCE7E1;background:#FCFDFC;border-radius:16px;padding:72px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+        <span style="width:80px;height:80px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M2 3h2.2l2.3 12.1a2 2 0 0 0 2 1.6h8.3a2 2 0 0 0 2-1.55L21 8H5.5"></path></svg>
+        </span>
+        <h2 style="margin:0;font-weight:600;font-size:22px;color:#29483C">Your cart is empty</h2>
+        <p style="margin:0;max-width:440px;font-size:15px;line-height:1.7;color:#595959">Browse the catalogue and add resources you would like to download.</p>
+        <a href="{{ browseHref }}" style="margin-top:6px;display:inline-flex;align-items:center;height:50px;padding:0 26px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:15px" style-hover="background:#29483C;color:#FFFFFF">Browse resources</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap">
+
+        <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px">
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2">
+            <section aria-label="{{ g.vendorName }}" style="border:1px solid #EDF0EE;border-radius:16px;overflow:hidden">
+              <div style="display:flex;align-items:center;gap:10px;padding:14px 18px;background:#F2FAF7;border-bottom:1px solid #E3EDE8">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.4 9.2a2 2 0 0 1-2 1.8H6.4a2 2 0 0 1-2-1.8Z"></path><path d="M8 9V6.5A3.5 3.5 0 0 1 11.5 3h1A3.5 3.5 0 0 1 16 6.5V9"></path></svg>
+                <a href="{{ g.vendorHref }}" style="font-weight:600;font-size:14px;color:#29483C" style-hover="color:#3A836B">{{ g.vendorName }}</a>
+                <span style="margin-left:auto;font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ g.countLabel }}</span>
+              </div>
+
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="2">
+                <div data-testid="cart-line" style="display:flex;align-items:flex-start;gap:16px;padding:18px;border-bottom:1px solid #F3F5F4;flex-wrap:wrap">
+                  <a href="{{ it.href }}" tabindex="-1" aria-hidden="true" style="flex:0 0 110px;width:110px;height:74px;border-radius:10px;overflow:hidden;background:#F3F4F6">
+                    <img src="{{ it.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+                  </a>
+                  <div style="flex:1 1 220px;min-width:0;display:flex;flex-direction:column;gap:6px">
+                    <a href="{{ it.href }}" style="font-weight:600;font-size:15px;line-height:1.45;color:#121212" style-hover="color:#3A836B">{{ it.title }}</a>
+                    <span style="font-size:13px;color:#595959">{{ it.meta }}</span>
+                    <sc-if value="{{ it.unavailable }}" hint-placeholder-val="{{ false }}">
+                      <span role="alert" style="font-size:12px;font-weight:600;color:#C0392B">No longer available — remove to continue</span>
+                    </sc-if>
+                  </div>
+                  <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:10px">
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:16px;color:#29483C">{{ it.price }}</span>
+                    <button type="button" onClick="{{ it.onRemove }}" data-testid="cart-remove" aria-label="{{ it.removeLabel }}" style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1px solid #EDF0EE;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-size:12px;font-weight:600;color:#C0392B;cursor:pointer" style-hover="background:#FDF1EF;border-color:#F3D6D2">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 13h8l1-13"></path></svg>
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </sc-for>
+            </section>
+          </sc-for>
+
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <a href="{{ browseHref }}" style="display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-weight:600;font-size:14px;color:#29483C" style-hover="background:#F2FAF7;color:#29483C">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+              Keep browsing
+            </a>
+            <button type="button" onClick="{{ onClear }}" style="height:46px;padding:0 18px;border:none;background:transparent;font-family:Poppins,sans-serif;font-size:14px;font-weight:500;color:#595959;cursor:pointer" style-hover="color:#C0392B">Empty the cart</button>
+          </div>
+        </div>
+
+        <aside style="flex:1 1 320px;max-width:380px;min-width:0;display:flex;flex-direction:column;gap:16px;position:sticky;top:24px">
+          <div style="border:1px solid #EDF0EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 16px 34px -26px rgba(41,72,60,.36)">
+            <h2 style="margin:0;font-weight:600;font-size:18px;color:#29483C">Order summary</h2>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ totals }}" as="t" hint-placeholder-count="2">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                  <span style="font-size:14px;color:#595959">{{ t.label }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:500;font-size:14px;color:#121212">{{ t.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="height:1px;background:#EDF0EE"></div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="font-weight:600;font-size:16px;color:#29483C">Total</span>
+              <span data-testid="cart-total" style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:26px;color:#29483C">{{ total }}</span>
+            </div>
+            <button type="button" onClick="{{ onCheckout }}" disabled="{{ checkoutBlocked }}" data-testid="cart-checkout" style="height:54px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:16px;cursor:{{ checkoutCursor }};opacity:{{ checkoutOpacity }}" style-hover="background:#29483C">{{ checkoutLabel }}</button>
+            <div style="display:flex;align-items:flex-start;gap:8px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 14px;margin-top:2px"><path d="M12 3 4 6v6c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V6Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+              <span style="font-size:12px;line-height:1.6;color:#595959">Digital delivery. Your files are available the moment payment completes, and you can re-download them any time.</span>
+            </div>
+          </div>
+
+          <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFF2DE;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px">
+              <span style="font-weight:600;font-size:14px;color:#29483C">Sign in to check out</span>
+              <span style="font-size:13px;line-height:1.6;color:#121212">Your cart is saved. Sign in and it comes with you.</span>
+              <a href="{{ loginHref }}" style="margin-top:4px;display:inline-flex;align-items:center;justify-content:center;height:44px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:14px" style-hover="background:#29483C;color:#FFFFFF">Sign in</a>
+            </div>
+          </sc-if>
+        </aside>
+      </div>
+    </sc-if>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="cart" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, cart: null, user: null };
+
+  async componentDidMount() {
+    const [app, cart] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/cartRepo.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.cartRepo = cart;
+    const user = app.auth.currentUser();
+    this.owner = cart.cartOwner(user);
+    // A guest cart follows the buyer into their account on sign-in.
+    if (user) cart.mergeGuestCart(user.id);
+    const res = await cart.getCart(this.owner);
+    this.setState({ loading: false, cart: res.data, user });
+  }
+
+  money(n) { return n === 0 ? 'Free' : '$' + Number(n).toFixed(2); }
+
+  async refresh() {
+    const res = await this.cartRepo.getCart(this.owner);
+    this.setState({ cart: res.data });
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, cart, user } = this.state;
+    const items = cart ? cart.items : [];
+    const blocked = items.some(i => !i.available);
+
+    const byVendor = {};
+    items.forEach(i => {
+      byVendor[i.vendorId] = byVendor[i.vendorId] || { vendorId: i.vendorId, vendorName: i.vendorName, items: [] };
+      byVendor[i.vendorId].items.push(i);
+    });
+
+    return {
+      browseHref: url('browse'),
+      loginHref: url('login', { next: 'Cart.dc.html' }),
+      loading,
+      isEmpty: !loading && items.length === 0,
+      hasItems: !loading && items.length > 0,
+      isGuest: !loading && !user && items.length > 0,
+      summaryLine: loading ? 'Loading…'
+        : items.length === 0 ? ''
+        : items.length + (items.length === 1 ? ' resource' : ' resources')
+          + ' from ' + cart.vendorCount + (cart.vendorCount === 1 ? ' vendor' : ' vendors'),
+
+      groups: Object.values(byVendor).map(g => ({
+        vendorName: g.vendorName,
+        vendorHref: url('browse', { q: g.vendorName }),
+        countLabel: g.items.length + (g.items.length === 1 ? ' item' : ' items'),
+        items: g.items.map(i => ({
+          title: i.title,
+          href: url('product', { id: i.productId }),
+          cover: i.cover,
+          meta: [i.fileType, i.pageCount ? i.pageCount + ' pages' : null].filter(Boolean).join(' · '),
+          price: this.money(i.price),
+          unavailable: !i.available,
+          removeLabel: 'Remove ' + i.title + ' from your cart',
+          onRemove: async () => {
+            await this.cartRepo.removeFromCart(this.owner, i.id);
+            await this.refresh();
+            this.app.toast('Removed from cart.', 'success');
+          },
+        })),
+      })),
+
+      totals: [
+        { label: 'Subtotal', value: '$' + (cart ? cart.subtotal : 0).toFixed(2) },
+        { label: 'Digital delivery', value: 'Included' },
+      ],
+      total: '$' + (cart ? cart.total : 0).toFixed(2),
+      checkoutBlocked: blocked,
+      checkoutCursor: blocked ? 'not-allowed' : 'pointer',
+      checkoutOpacity: blocked ? 0.6 : 1,
+      checkoutLabel: blocked ? 'Remove unavailable items' : 'Proceed to checkout',
+
+      onCheckout: () => {
+        if (blocked) return;
+        if (!(this.user || this.state.user)) { this.app.router.go('login', { next: 'Checkout.dc.html', reason: 'session' }); return; }
+        this.app.router.go('checkout');
+      },
+      onClear: async () => {
+        const ok = await this.app.confirmDialog({
+          title: 'Empty your cart?',
+          body: 'Every resource in the cart will be removed. Nothing you have already purchased is affected.',
+          confirmLabel: 'Empty cart',
+        });
+        if (!ok) return;
+        await this.cartRepo.clearCart(this.owner);
+        await this.refresh();
+        this.app.toast('Cart emptied.', 'info');
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Customers — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="V-07 Vendor Customers">
+  <dc-import name="VendorShell" active="vendorCustomers" title="Customers" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <div style="display:flex;flex-direction:column;gap:18px">
+
+      <label style="align-self:flex-end;display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;flex:0 1 300px;min-width:190px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+        <input type="search" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Name or email" aria-label="Search customers" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:Poppins,sans-serif;font-size:13.5px" />
+      </label>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:10px">
+          <span style="height:70px;border-radius:12px;background:#EFF3F1"></span>
+          <span style="height:70px;border-radius:12px;background:#F2F6F4"></span>
+          <span style="height:70px;border-radius:12px;background:#F5F8F7"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="customers-empty" style="background:#FFFFFF;border:1px dashed #DCE7E1;border-radius:16px;padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <span style="width:70px;height:70px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.4"></circle><path d="M2.5 20v-1.6A4.9 4.9 0 0 1 7.4 13.5h3.2a4.9 4.9 0 0 1 4.9 4.9V20"></path><path d="M17 8.6a3 3 0 0 1 0 5.8"></path></svg>
+          </span>
+          <h2 style="margin:0;font-weight:600;font-size:19px;color:#29483C">{{ emptyTitle }}</h2>
+          <p style="margin:0;max-width:420px;font-size:13.5px;line-height:1.7;color:#595959">{{ emptyBody }}</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;overflow:hidden">
+          <div style="overflow-x:auto">
+            <table style="width:100%;min-width:640px;border-collapse:collapse;font-size:13.5px">
+              <thead>
+                <tr>
+                  <th scope="col" style="text-align:left;padding:12px 16px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Customer</th>
+                  <th scope="col" style="text-align:left;padding:12px 16px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Role</th>
+                  <th scope="col" style="text-align:right;padding:12px 16px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Orders</th>
+                  <th scope="col" style="text-align:right;padding:12px 16px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Resources</th>
+                  <th scope="col" style="text-align:right;padding:12px 16px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Spent with you</th>
+                  <th scope="col" style="text-align:left;padding:12px 16px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Last order</th>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ rows }}" as="c" hint-placeholder-count="6">
+                  <tr data-testid="customer-row">
+                    <td style="padding:14px 16px;border-bottom:1px solid #F3F5F4">
+                      <span style="display:flex;align-items:center;gap:12px">
+                        <span style="flex:0 0 36px;width:36px;height:36px;border-radius:50%;overflow:hidden;background:#3A836B;color:#FFFFFF;display:grid;place-items:center;font-size:12.5px;font-weight:600">
+                          <sc-if value="{{ c.hasAvatar }}" hint-placeholder-val="{{ false }}">
+                            <img src="{{ c.avatar }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+                          </sc-if>
+                          <sc-if value="{{ c.noAvatar }}" hint-placeholder-val="{{ true }}">
+                            <span>{{ c.initials }}</span>
+                          </sc-if>
+                        </span>
+                        <span style="min-width:0;display:flex;flex-direction:column;gap:2px">
+                          <span style="font-weight:600;color:#29483C;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</span>
+                          <span style="font-size:11.5px;color:#9AA5A0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.email }}</span>
+                        </span>
+                      </span>
+                    </td>
+                    <td style="padding:14px 16px;border-bottom:1px solid #F3F5F4;color:#595959">{{ c.role }}</td>
+                    <td style="padding:14px 16px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;font-weight:600;color:#29483C">{{ c.orders }}</td>
+                    <td style="padding:14px 16px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;color:#595959">{{ c.units }}</td>
+                    <td style="padding:14px 16px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;color:#29483C">{{ c.spent }}</td>
+                    <td style="padding:14px 16px;border-bottom:1px solid #F3F5F4;color:#595959">{{ c.last }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p style="margin:0;font-size:12.5px;line-height:1.65;color:#595959">Only purchases of your own resources are counted. Buyers' payment details are never visible to vendors.</p>
+      </sc-if>
+    </div>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, rows: [], all: [], user: null, query: '' };
+
+  async componentDidMount() {
+    const [app, orders, db, rules] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/ordersRepo.js'),
+      import('./assets/js/db.js'),
+      import('./assets/js/business-rules.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, orders, db, rules });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.user = user;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    this.plan = rules.planByCode(user.vendor ? user.vendor.planCode : 'basic');
+    this.setState({ user });
+    await this.load();
+  }
+
+  async load() {
+    const res = await this.orders.listOrders({ vendorId: this.vid, status: 'completed', pageSize: 500 });
+    const byCustomer = {};
+    for (const o of res.data) {
+      const mine = (o.vendorItems || []);
+      if (!mine.length) continue;
+      const c = byCustomer[o.customerId] = byCustomer[o.customerId] || {
+        id: o.customerId, name: o.customerName, email: o.customerEmail,
+        orders: 0, units: 0, spent: 0, last: o.placedAt,
+      };
+      c.orders++;
+      c.units += mine.length;
+      c.spent += mine.reduce((s, i) => s + i.price, 0);
+      if (o.placedAt > c.last) c.last = o.placedAt;
+    }
+    const all = Object.values(byCustomer).sort((a, b) => b.spent - a.spent);
+    this.setState({ loading: false, all }, () => this.filter());
+  }
+
+  filter() {
+    const q = this.state.query.trim().toLowerCase();
+    const rows = q
+      ? this.state.all.filter(c => (c.name + ' ' + c.email).toLowerCase().includes(q))
+      : this.state.all;
+    this.setState({ rows });
+  }
+
+  renderVals() {
+    const { loading, rows, all, query } = this.state;
+
+    return {
+      subtitle: all.length ? all.length + (all.length === 1 ? ' buyer' : ' buyers') + ' have purchased your resources' : '',
+      loading, query,
+      isEmpty: !loading && rows.length === 0,
+      hasRows: !loading && rows.length > 0,
+      emptyTitle: query ? 'No customers match that search' : 'No customers yet',
+      emptyBody: query
+        ? 'Try a shorter search, or clear it to see everyone.'
+        : 'Once someone buys one of your resources they appear here with what they have spent with you.',
+
+      rows: rows.map(c => {
+        const u = this.db.findById('users', c.id);
+        return {
+          name: c.name,
+          email: c.email,
+          role: u && u.roleLabel ? u.roleLabel : 'Educator',
+          avatar: u ? u.avatar : null,
+          hasAvatar: !!(u && u.avatar),
+          noAvatar: !(u && u.avatar),
+          initials: (c.name || '?').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(),
+          orders: String(c.orders),
+          units: String(c.units),
+          spent: '$' + c.spent.toFixed(2),
+          last: new Date(c.last).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+        };
+      }),
+
+      onSearch: e => {
+        const v = e.target.value;
+        clearTimeout(this._t);
+        this.setState({ query: v });
+        this._t = setTimeout(() => this.filter(), 200);
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

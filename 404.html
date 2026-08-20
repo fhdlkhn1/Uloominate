@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Page not found — Uloominate prototype</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; height: 100%; }
+  body {
+    font-family: Poppins, system-ui, sans-serif; color: #121212; background: #F2FAF7;
+    -webkit-font-smoothing: antialiased; display: grid; place-items: center; padding: 40px 24px;
+  }
+  a { color: #3A836B; text-decoration: none; }
+  .card {
+    width: min(560px, 100%); background: #FFFFFF; border: 1px solid #E6EFEA; border-radius: 16px;
+    padding: 40px 36px; text-align: center;
+    box-shadow: 0 1px 2px rgba(18,18,18,.04), 0 24px 48px -32px rgba(41,72,60,.4);
+  }
+  .brand { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-bottom: 22px; }
+  .brand span { font-family: 'Montserrat Alternates', Poppins, sans-serif; font-weight: 500; font-size: 26px; color: #3A836B; }
+  h1 { margin: 0 0 10px; font-weight: 600; font-size: 26px; color: #29483C; }
+  p { margin: 0 0 24px; font-size: 15px; line-height: 1.75; color: #595959; }
+  code { font-family: ui-monospace, monospace; font-size: 13px; background: #F2FAF7; border-radius: 5px; padding: 2px 7px; color: #29483C; word-break: break-all; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .btn {
+    display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border-radius: 8px;
+    background: #3A836B; color: #FFFFFF; font: 600 15px Poppins, sans-serif; text-decoration: none;
+  }
+  .btn:hover { background: #29483C; }
+  .btn.ghost { background: #FFFFFF; border: 1px solid #DCE7E1; color: #29483C; }
+  .btn.ghost:hover { background: #F2FAF7; border-color: #3A836B; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand">
+    <img id="mark" src="assets/img/logo-mark.png" alt="" width="40" height="49" style="object-fit:contain" />
+    <span>Uloominate</span>
+  </div>
+  <h1>That page isn’t in the prototype</h1>
+  <p>Nothing is broken — the address <code id="path"></code> just doesn’t match any of the 51 screens.</p>
+  <div class="row">
+    <a class="btn" id="start" href="./">Back to the start</a>
+    <a class="btn ghost" id="sitemap" href="Sitemap.dc.html">See all screens</a>
+  </div>
+</div>
+
+<script>
+// GitHub Pages serves this file for any unknown address, so the browser's idea
+// of "relative" is the address that failed, not this file's folder. Work the
+// prototype's root out from the URL and point the links at it directly.
+(function () {
+  var seg = location.pathname.split('/').filter(Boolean);
+  var base = './';
+  if (/\.github\.io$/i.test(location.hostname)) {
+    // user.github.io/<repo>/... on a project site; user.github.io/... on a user site.
+    base = seg.length > 1 ? '/' + seg[0] + '/' : '/';
+  } else if (seg.length > 1) {
+    base = new Array(seg.length).join('../') || './';
+  }
+  document.getElementById('start').href = base;
+  document.getElementById('sitemap').href = base + 'Sitemap.dc.html';
+  document.getElementById('mark').src = base + 'assets/img/logo-mark.png';
+
+  var p = document.getElementById('path');
+  p.textContent = decodeURIComponent(location.pathname.split('/').pop() || location.pathname);
+})();
+</script>
+</body>
+</html>

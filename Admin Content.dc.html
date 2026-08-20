@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Content &amp; settings — Uloominate admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7F8FA;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="D-10 Admin Content">
+  <dc-import name="AdminShell" active="adminContent" title="Content &amp; settings" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:18px">
+        <span style="height:140px;border-radius:16px;background:#EEF0F4"></span>
+        <span style="height:320px;border-radius:16px;background:#F1F3F6"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Storefront gating</h2>
+            <p style="margin:0;font-size:13px;line-height:1.65;color:#595959">This is the launch switch. No redevelopment is needed to move between the two states.</p>
+          </div>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <sc-for list="{{ launchOptions }}" as="o" hint-placeholder-count="2">
+              <button type="button" onClick="{{ o.onPick }}" aria-pressed="{{ o.pressed }}" style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:18px;border:1.8px solid {{ o.border }};border-radius:14px;background:{{ o.bg }};cursor:pointer;text-align:left;font-family:Poppins,sans-serif">
+                <span style="display:flex;align-items:center;gap:9px">
+                  <span aria-hidden="true" style="width:16px;height:16px;border-radius:50%;border:1.8px solid {{ o.dotBorder }};background:{{ o.dotBg }};box-shadow:{{ o.dotInner }}"></span>
+                  <span style="font-weight:600;font-size:14.5px;color:#29483C">{{ o.label }}</span>
+                  <sc-if value="{{ o.isCurrent }}" hint-placeholder-val="{{ false }}">
+                    <span style="padding:3px 8px;border-radius:9999px;background:#EAF7F1;color:#3A836B;font-size:10px;font-weight:700">LIVE</span>
+                  </sc-if>
+                </span>
+                <span style="font-size:12.5px;line-height:1.65;color:#595959">{{ o.blurb }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Static pages</h2>
+            <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ pageCount }}</span>
+          </div>
+
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ pageTabs }}" as="t" hint-placeholder-count="4">
+              <button type="button" onClick="{{ t.onPick }}" aria-pressed="{{ t.pressed }}" style="height:38px;padding:0 15px;border:1px solid {{ t.border }};border-radius:9999px;background:{{ t.bg }};font-family:Poppins,sans-serif;font-size:13px;font-weight:600;color:{{ t.ink }};cursor:pointer">{{ t.label }}</button>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ hasEditor }}" hint-placeholder-val="{{ false }}">
+            <form onSubmit="{{ onSavePage }}" novalidate="novalidate" style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <label for="ac-title" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Page title</label>
+                <input id="ac-title" name="title" type="text" value="{{ vTitle }}" onInput="{{ onInput }}" style="height:50px;border:1px solid #E7E9EE;border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              </div>
+              <div style="display:flex;flex-direction:column;gap:4px">
+                <label for="ac-body" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Body — a blank line starts a new paragraph</label>
+                <textarea id="ac-body" name="body" rows="12" value="{{ vBody }}" onInput="{{ onInput }}" style="border:1px solid #E7E9EE;border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:14.5px;line-height:1.75;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <button type="submit" disabled="{{ busy }}" data-testid="save-page" style="height:48px;padding:0 22px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14.5px;cursor:pointer;opacity:{{ submitOpacity }};display:inline-flex;align-items:center;gap:10px" style-hover="background:#29483C">
+                  <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                    <span aria-hidden="true" style="width:16px;height:16px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+                  </sc-if>
+                  {{ submitLabel }}
+                </button>
+                <a href="{{ previewHref }}" style="font-size:13px;font-weight:600">View this page →</a>
+                <span style="margin-left:auto;font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#9AA5A0">Last updated {{ updatedAt }}</span>
+              </div>
+              <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
+                <span role="status" style="font-size:13px;font-weight:600;color:#3A836B">Saved</span>
+              </sc-if>
+            </form>
+          </sc-if>
+        </section>
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Storefront categories</h2>
+            <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ categoryCount }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px">
+            <sc-for list="{{ categories }}" as="c" hint-placeholder-count="9">
+              <div style="border:1px solid #F1F3F6;border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:8px;background:{{ c.tint }}">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                  <a href="{{ c.href }}" style="font-weight:600;font-size:14px;color:#29483C" style-hover="color:#3A836B">{{ c.name }}</a>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:13px;color:#3A836B">{{ c.count }}</span>
+                </div>
+                <span style="font-size:11.5px;line-height:1.6;color:#595959">{{ c.subjects }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:0;font-size:12.5px;line-height:1.7;color:#595959">Categories and their subjects are defined in the platform configuration. Adding one will be a settings edit in the live build.</p>
+        </section>
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Mailing list</h2>
+            <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ subscriberCount }}</span>
+          </div>
+          <div style="overflow-x:auto;max-height:340px;overflow-y:auto">
+            <table style="width:100%;min-width:460px;border-collapse:collapse;font-size:13.5px">
+              <thead>
+                <tr>
+                  <th scope="col" style="text-align:left;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4;position:sticky;top:0">Email</th>
+                  <th scope="col" style="text-align:left;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4;position:sticky;top:0">Name</th>
+                  <th scope="col" style="text-align:left;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4;position:sticky;top:0">Confirmed</th>
+                  <th scope="col" style="text-align:left;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4;position:sticky;top:0">Joined</th>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ subscribers }}" as="s" hint-placeholder-count="8">
+                  <tr>
+                    <td style="padding:11px 12px;border-bottom:1px solid #F3F5F7;font-family:'DM Sans',monospace;font-size:12.5px;color:#121212;word-break:break-all">{{ s.email }}</td>
+                    <td style="padding:11px 12px;border-bottom:1px solid #F3F5F7;color:#595959">{{ s.name }}</td>
+                    <td style="padding:11px 12px;border-bottom:1px solid #F3F5F7">
+                      <span style="padding:3px 9px;border-radius:9999px;background:{{ s.badgeBg }};color:{{ s.badgeInk }};font-size:11px;font-weight:700">{{ s.badgeText }}</span>
+                    </td>
+                    <td style="padding:11px 12px;border-bottom:1px solid #F3F5F7;font-family:'DM Sans',Poppins,sans-serif;font-size:12.5px;color:#9AA5A0">{{ s.joined }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    loading: true, user: null, pages: [], slug: 'about', subscribers: [],
+    launchMode: 'pre-launch', busy: false, saved: false,
+    values: { title: '', body: '' },
+  };
+
+  async componentDidMount() {
+    const [app, platform, rules, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, platform, rules, db });
+    const user = app.auth.requireRole('admin');
+    if (!user) return;
+    const [pages, subs] = await Promise.all([
+      platform.listPages(),
+      platform.listSubscribers({ pageSize: 200 }),
+    ]);
+    const first = pages.data.find(p => p.slug === 'about') || pages.data[0];
+    this.setState({
+      loading: false, user,
+      pages: pages.data,
+      subscribers: subs.data,
+      slug: first ? first.slug : '',
+      launchMode: platform.settingSync('launchMode', 'pre-launch'),
+      values: first ? { title: first.title, body: first.body } : { title: '', body: '' },
+    });
+  }
+
+  current() { return this.state.pages.find(p => p.slug === this.state.slug); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, pages, slug, subscribers, launchMode, busy, saved, values } = this.state;
+    const cur = this.current();
+    const isPre = launchMode === 'pre-launch';
+    const routeFor = { about: 'about', privacy: 'privacy', terms: 'terms', contact: 'contact' };
+
+    return {
+      loading,
+      ready: !loading,
+      subtitle: pages.length ? pages.length + ' static pages · ' + subscribers.length + ' mailing-list subscribers' : '',
+
+      launchOptions: [
+        { key: 'pre-launch', label: 'Pre-launch', blurb: 'Visitors see the gated landing page. Storefront routes redirect guests there.' },
+        { key: 'post-launch', label: 'Post-launch', blurb: 'The full storefront is open and the post-launch homepage is live.' },
+      ].map(o => {
+        const on = launchMode === o.key;
+        return {
+          label: o.label,
+          blurb: o.blurb,
+          isCurrent: on,
+          pressed: on ? 'true' : 'false',
+          bg: on ? '#F2FAF7' : '#FFFFFF',
+          border: on ? '#3A836B' : '#E7E9EE',
+          dotBg: on ? '#3A836B' : '#FFFFFF',
+          dotBorder: on ? '#3A836B' : '#CAC4D0',
+          dotInner: on ? 'inset 0 0 0 3px #FFFFFF' : 'none',
+          onPick: async () => {
+            if (on) return;
+            const ok = await this.app.confirmDialog({
+              title: o.key === 'post-launch' ? 'Open the storefront?' : 'Return to pre-launch?',
+              body: o.key === 'post-launch'
+                ? 'Every visitor will be able to browse and buy immediately. You can switch back at any time.'
+                : 'The storefront will be gated again and guests sent to the landing page.',
+              confirmLabel: o.key === 'post-launch' ? 'Go live' : 'Gate the storefront',
+              tone: 'primary',
+            });
+            if (!ok) return;
+            await this.platform.setSetting('launchMode', o.key);
+            this.setState({ launchMode: o.key });
+            this.app.toast(o.key === 'post-launch' ? 'Storefront is now open.' : 'Storefront gated.', 'success');
+          },
+        };
+      }),
+
+      pageCount: pages.length ? pages.length + ' pages' : '',
+      pageTabs: pages.map(p => {
+        const on = p.slug === slug;
+        return {
+          label: p.title,
+          pressed: on ? 'true' : 'false',
+          bg: on ? '#3A836B' : '#FFFFFF',
+          border: on ? '#3A836B' : '#E7E9EE',
+          ink: on ? '#FFFFFF' : '#29483C',
+          onPick: () => this.setState({
+            slug: p.slug,
+            values: { title: p.title, body: p.body },
+            saved: false,
+          }),
+        };
+      }),
+
+      hasEditor: !!cur,
+      vTitle: values.title,
+      vBody: values.body,
+      updatedAt: cur ? new Date(cur.updatedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—',
+      previewHref: cur && routeFor[cur.slug] ? url(routeFor[cur.slug]) : url('landing'),
+      busy, saved,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Saving…' : 'Save page',
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          saved: false,
+        }));
+      },
+      onSavePage: async e => {
+        e.preventDefault();
+        if (this.state.busy || !cur) return;
+        this.setState({ busy: true });
+        try {
+          await this.platform.updatePage(cur.id, this.state.values);
+          const pages2 = await this.platform.listPages();
+          this.setState({ busy: false, saved: true, pages: pages2.data });
+          this.app.toast(this.state.values.title + ' saved.', 'success');
+        } catch (err) {
+          this.setState({ busy: false });
+          this.app.toast(this.app.readError(err).message, 'error');
+        }
+      },
+
+      categoryCount: this.rules ? this.rules.CATEGORIES.length + ' live categories' : '',
+      categories: (this.rules ? this.rules.CATEGORIES : []).map(c => {
+        const n = this.db.findAll('products', { filter: { categoryId: c.id, status: 'approved' } }).total;
+        return {
+          name: c.name,
+          tint: c.tint,
+          href: url('browse', { category: c.slug }),
+          count: String(n),
+          subjects: c.subjects.slice(0, 4).join(' · ') + (c.subjects.length > 4 ? ' …' : ''),
+        };
+      }),
+
+      subscriberCount: subscribers.length
+        ? subscribers.length + ' subscribers · ' + subscribers.filter(s => s.confirmed).length + ' confirmed'
+        : '',
+      subscribers: subscribers.map(s => ({
+        email: s.email,
+        name: s.name || '—',
+        badgeText: s.confirmed ? 'Confirmed' : 'Pending',
+        badgeBg: s.confirmed ? '#EAF7F1' : '#FFF2DE',
+        badgeInk: s.confirmed ? '#3A836B' : '#B9913E',
+        joined: new Date(s.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Uloominate — platform prototype</title>
+<meta name="description" content="Click-through prototype of the Uloominate marketplace: 51 screens across the storefront, vendor dashboard and administration." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="assets/img/logo-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat+Alternates:wght@500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Poppins, system-ui, sans-serif;
+    color: #121212;
+    background: #F2FAF7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: #3A836B; text-decoration: none; }
+  a:hover { color: #29483C; }
+  :focus-visible { outline: 2px solid #3A836B; outline-offset: 3px; border-radius: 6px; }
+  code { font-family: 'DM Sans', ui-monospace, monospace; font-size: .92em; }
+
+  .wrap { max-width: 860px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .brand { display: flex; align-items: center; gap: 11px; margin-bottom: 34px; }
+  .brand img { object-fit: contain; }
+  .brand span {
+    font-family: 'Montserrat Alternates', Poppins, sans-serif;
+    font-weight: 500; font-size: 28px; color: #3A836B; line-height: 1;
+  }
+
+  .card {
+    background: #FFFFFF;
+    border: 1px solid #E6EFEA;
+    border-radius: 16px;
+    padding: 34px;
+    box-shadow: 0 1px 2px rgba(18,18,18,.04), 0 24px 48px -32px rgba(41,72,60,.4);
+  }
+  .card + .card { margin-top: 20px; }
+
+  h1 { margin: 0 0 10px; font-weight: 600; font-size: clamp(28px, 4vw, 38px); line-height: 1.15; color: #29483C; }
+  h2 { margin: 0 0 14px; font-weight: 600; font-size: 18px; color: #29483C; }
+  .lede { margin: 0 0 26px; font-size: 16px; line-height: 1.75; color: #595959; }
+  p { margin: 0 0 14px; font-size: 15px; line-height: 1.75; color: #444; }
+  p:last-child { margin-bottom: 0; }
+
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    height: 54px; padding: 0 26px; border: none; border-radius: 8px;
+    background: #3A836B; color: #FFFFFF;
+    font: 600 15.5px Poppins, sans-serif; cursor: pointer; text-decoration: none;
+    transition: background .15s ease;
+  }
+  .btn:hover { background: #29483C; color: #FFFFFF; }
+  .btn.ghost { background: #FFFFFF; border: 1px solid #DCE7E1; color: #29483C; }
+  .btn.ghost:hover { background: #F2FAF7; border-color: #3A836B; color: #29483C; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+  th, td { text-align: left; padding: 11px 12px; font-size: 14px; border-bottom: 1px solid #EEF4F1; }
+  th { font-weight: 600; font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: #5C7A6E; }
+  tr:last-child td { border-bottom: none; }
+  td code { background: #F2FAF7; border-radius: 5px; padding: 2px 7px; color: #29483C; }
+  .scroller { overflow-x: auto; margin: 0 -8px; padding: 0 8px; }
+
+  .tip {
+    background: #FFF2DE; border-left: 4px solid #B9913E; border-radius: 10px;
+    padding: 15px 18px; margin-top: 22px;
+  }
+  .tip p { font-size: 14px; color: #121212; }
+  kbd {
+    font-family: 'DM Sans', ui-monospace, monospace; font-size: 12.5px;
+    background: #FFFFFF; border: 1px solid #E6D6B6; border-bottom-width: 2px;
+    border-radius: 5px; padding: 1px 6px;
+  }
+
+  .grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); margin-top: 4px; }
+  .grid a {
+    display: block; padding: 13px 15px; border: 1px solid #E6EFEA; border-radius: 10px;
+    background: #FFFFFF; font-size: 14.5px; font-weight: 500; color: #29483C;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .grid a:hover { border-color: #3A836B; background: #F7FCFA; }
+  .grid a small { display: block; margin-top: 3px; font-size: 12.5px; font-weight: 400; color: #7A8F86; }
+
+  .foot { margin-top: 26px; font-size: 13px; line-height: 1.75; color: #7A8F86; text-align: center; }
+  .foot a { font-weight: 500; }
+
+  #disk { display: none; background: #FDF1EF; border-left: 4px solid #C0392B; border-radius: 10px; padding: 16px 18px; margin-bottom: 22px; }
+  #disk p { font-size: 14.5px; color: #121212; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <img src="assets/img/logo-mark.png" alt="" width="36" height="44" />
+    <span>Uloominate</span>
+  </div>
+
+  <div class="card">
+    <div id="disk">
+      <p><strong>You opened this from disk, not from the web.</strong> The linked
+      screens each load their data with an ES module, which browsers block over
+      <code>file://</code>. Use <a href="standalone.html">standalone.html</a> — it
+      is the whole prototype in one self-contained file and runs without a
+      server — or view the hosted copy.</p>
+    </div>
+
+    <h1>Platform prototype</h1>
+    <p class="lede">
+      An Islamic digital-resources marketplace. Vendors publish downloadable
+      teaching material, an administrator approves it against a content
+      standard, and educators buy and re-download it without limit. Fifty-one
+      screens, wired to real data that persists in your browser.
+    </p>
+
+    <div class="row">
+      <a class="btn" href="Landing.dc.html">Open the prototype</a>
+      <a class="btn ghost" href="Sitemap.dc.html">Browse all 51 screens</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Sign in as</h2>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th>Role</th><th>Email</th><th>Password</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Administrator</td><td><code>admin@uloominate.com</code></td><td><code>admin1234</code></td></tr>
+          <tr><td>Vendor — Premium, approved</td><td><code>reyes@literacylane.com</code></td><td><code>vendor1234</code></td></tr>
+          <tr><td>Vendor — Pioneer, free tier</td><td><code>yusra@kindergartenhub.org</code></td><td><code>vendor1234</code></td></tr>
+          <tr><td>Vendor — pending approval</td><td><code>contact@muslimlegacyseries.com</code></td><td><code>vendor1234</code></td></tr>
+          <tr><td>Customer</td><td><code>aisha.rahman@example.com</code></td><td><code>customer1234</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tip">
+      <p>
+        Faster: the dev toolbar in the bottom-right of every screen (or
+        <kbd>Ctrl</kbd> <kbd>.</kbd> / <kbd>⌘</kbd> <kbd>.</kbd>) switches role
+        without a password, jumps to any page, and resets the demo data.
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Jump straight to a section</h2>
+    <div class="grid">
+      <a href="Landing.dc.html">Landing<small>Pre-launch marketing page</small></a>
+      <a href="Home.dc.html">Homepage<small>Storefront after launch</small></a>
+      <a href="Browse.dc.html">Browse<small>Filters, sorting, paging</small></a>
+      <a href="Product Detail.dc.html">Product detail<small>Gallery, reviews, Q&amp;A</small></a>
+      <a href="Vendor Dashboard.dc.html">Vendor dashboard<small>Sales, products, payouts</small></a>
+      <a href="Admin Dashboard.dc.html">Administration<small>Approval queues, reports</small></a>
+    </div>
+  </div>
+
+  <p class="foot">
+    Prototype data lives in your own browser, so anything you change is yours
+    alone — reset it any time from the dev toolbar.<br />
+    <a href="Sitemap.dc.html">Full screen index</a> ·
+    <a href="standalone.html">Offline single-file build</a>
+  </p>
+
+</div>
+
+<script>
+  if (location.protocol === 'file:') {
+    document.getElementById('disk').style.display = 'block';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Resource editor — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="V-03 Vendor Product Editor">
+  <dc-import name="VendorShell" active="vendorProductEdit" title="{{ pageTitle }}" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ blocked }}" hint-placeholder-val="{{ false }}">
+      <div role="alert" style="background:#FFFFFF;border:1px solid #F3D6D2;border-left:4px solid #C0392B;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:14px;max-width:720px">
+        <h2 style="margin:0;font-weight:600;font-size:19px;color:#29483C">{{ blockedTitle }}</h2>
+        <p style="margin:0;font-size:14px;line-height:1.75;color:#595959">{{ blockedBody }}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;padding-top:4px">
+          <a href="{{ blockedHref }}" style="display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:14px" style-hover="background:#29483C;color:#FFFFFF">{{ blockedCta }}</a>
+          <a href="{{ productsHref }}" style="display:inline-flex;align-items:center;height:46px;padding:0 20px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-weight:600;font-size:14px;color:#29483C" style-hover="background:#F2FAF7;color:#29483C">Back to my products</a>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ editable }}" hint-placeholder-val="{{ true }}">
+      <form data-testid="product-form" onSubmit="{{ onSubmitForReview }}" novalidate="novalidate" style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+        <div style="flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:18px">
+
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" data-testid="product-error" style="margin:0;padding:14px 16px;border-radius:10px;background:#FDF1EF;border-left:4px solid #C0392B;font-size:13.5px;line-height:1.6;color:#C0392B">{{ formError }}</p>
+          </sc-if>
+
+          <sc-if value="{{ showDeclineNote }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="background:#FDF6F5;border-left:4px solid #C0392B;border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:6px">
+              <span style="font-weight:600;font-size:13.5px;color:#C0392B">This resource was declined</span>
+              <span style="font-size:13.5px;line-height:1.65;color:#121212">{{ declineReason }}</span>
+              <sc-if value="{{ hasDeclineDetail }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:13px;line-height:1.65;color:#595959">{{ declineNote }}</span>
+              </sc-if>
+              <span style="font-size:12.5px;color:#595959;padding-top:2px">Address the reason and submit again to return it to the queue.</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ showReapprovalNote }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="background:#FFF9EF;border-left:4px solid #B9913E;border-radius:10px;padding:14px 18px;font-size:13.5px;line-height:1.65;color:#121212">This resource is published. Saving an edit returns it to the review queue before the change goes live.</div>
+          </sc-if>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">The basics</h2>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="pe-title" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ titleLabelColor }}">Title</label>
+              <input id="pe-title" name="title" type="text" value="{{ vTitle }}" onInput="{{ onInput }}" aria-invalid="{{ titleInvalid }}" aria-describedby="pe-title-help" placeholder="Main Idea &amp; Details — Nonfiction Passages, Grades 3–5" style="height:52px;border:1px solid {{ titleBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <span id="pe-title-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ titleHelpColor }}">{{ titleHelp }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="pe-description" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ descriptionLabelColor }}">Description</label>
+              <textarea id="pe-description" name="description" rows="6" value="{{ vDescription }}" onInput="{{ onInput }}" aria-invalid="{{ descriptionInvalid }}" aria-describedby="pe-desc-help" placeholder="What is this resource, who is it for, and how does it work in a lesson?" style="border:1px solid {{ descriptionBorder }};border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:15px;line-height:1.7;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+              <span id="pe-desc-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ descriptionHelpColor }}">{{ descriptionHelp }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="pe-included" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ includedLabelColor }}">What is included — one item per line</label>
+              <textarea id="pe-included" name="included" rows="5" value="{{ vIncluded }}" onInput="{{ onInput }}" aria-invalid="{{ includedInvalid }}" placeholder="Three differentiated versions&#10;Answer keys for every passage&#10;Graphic organizer" style="border:1px solid {{ includedBorder }};border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:14.5px;line-height:1.7;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+              <sc-if value="{{ includedError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ includedError }}</span></sc-if>
+            </div>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Classification</h2>
+
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-categoryId" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ categoryIdLabelColor }}">Category</label>
+                <select id="pe-categoryId" name="categoryId" value="{{ vCategoryId }}" onChange="{{ onCategory }}" aria-invalid="{{ categoryIdInvalid }}" style="height:52px;border:1px solid {{ categoryIdBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <option value="">Choose a category…</option>
+                  <sc-for list="{{ categories }}" as="c" hint-placeholder-count="9">
+                    <option value="{{ c.id }}">{{ c.name }}</option>
+                  </sc-for>
+                </select>
+                <sc-if value="{{ categoryIdError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ categoryIdError }}</span></sc-if>
+              </div>
+              <div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-subject" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ subjectLabelColor }}">Subject</label>
+                <select id="pe-subject" name="subject" value="{{ vSubject }}" onChange="{{ onInput }}" aria-invalid="{{ subjectInvalid }}" disabled="{{ noCategory }}" style="height:52px;border:1px solid {{ subjectBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:{{ subjectBg }};outline:none;cursor:{{ subjectCursor }}" style-focus="border-color:#3A836B">
+                  <option value="">{{ subjectPlaceholder }}</option>
+                  <sc-for list="{{ subjects }}" as="s" hint-placeholder-count="5">
+                    <option value="{{ s.value }}">{{ s.value }}</option>
+                  </sc-for>
+                </select>
+                <sc-if value="{{ subjectError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ subjectError }}</span></sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 160px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-gradeFrom" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ gradeFromLabelColor }}">Grade from</label>
+                <select id="pe-gradeFrom" name="gradeFrom" value="{{ vGradeFrom }}" onChange="{{ onInput }}" aria-invalid="{{ gradeFromInvalid }}" style="height:52px;border:1px solid {{ gradeFromBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <option value="">Choose…</option>
+                  <sc-for list="{{ grades }}" as="g" hint-placeholder-count="6">
+                    <option value="{{ g.value }}">{{ g.value }}</option>
+                  </sc-for>
+                </select>
+              </div>
+              <div style="flex:1 1 160px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-gradeTo" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ gradeToLabelColor }}">Grade to</label>
+                <select id="pe-gradeTo" name="gradeTo" value="{{ vGradeTo }}" onChange="{{ onInput }}" aria-invalid="{{ gradeToInvalid }}" style="height:52px;border:1px solid {{ gradeToBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <option value="">Choose…</option>
+                  <sc-for list="{{ grades }}" as="g" hint-placeholder-count="6">
+                    <option value="{{ g.value }}">{{ g.value }}</option>
+                  </sc-for>
+                </select>
+                <sc-if value="{{ gradeToError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ gradeToError }}</span></sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-resourceType" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ resourceTypeLabelColor }}">Resource type</label>
+                <select id="pe-resourceType" name="resourceType" value="{{ vResourceType }}" onChange="{{ onInput }}" aria-invalid="{{ resourceTypeInvalid }}" style="height:52px;border:1px solid {{ resourceTypeBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <option value="">Choose…</option>
+                  <sc-for list="{{ resourceTypes }}" as="t" hint-placeholder-count="6">
+                    <option value="{{ t.value }}">{{ t.value }}</option>
+                  </sc-for>
+                </select>
+                <sc-if value="{{ resourceTypeError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ resourceTypeError }}</span></sc-if>
+              </div>
+              <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-theme" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Theme</label>
+                <select id="pe-theme" name="theme" value="{{ vTheme }}" onChange="{{ onInput }}" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <sc-for list="{{ themes }}" as="t" hint-placeholder-count="4">
+                    <option value="{{ t.value }}">{{ t.value }}</option>
+                  </sc-for>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">The file</h2>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ fileLabelColor }}">Resource file</span>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px;border:1.6px dashed {{ fileBorder }};border-radius:12px;background:#FCFDFC">
+                <span aria-hidden="true" style="flex:0 0 42px;width:42px;height:42px;border-radius:10px;background:#F2FAF7;color:#3A836B;display:grid;place-items:center">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"></path><path d="M14 3v5h5"></path></svg>
+                </span>
+                <span style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:2px">
+                  <span style="font-weight:600;font-size:13.5px;color:#29483C;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ fileName }}</span>
+                  <span style="font-size:12px;color:#595959">{{ fileHint }}</span>
+                </span>
+                <label style="flex:0 0 auto;display:inline-flex;align-items:center;height:42px;padding:0 18px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">
+                  {{ fileCta }}
+                  <input type="file" onChange="{{ onFile }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+                </label>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-fileType" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ fileTypeLabelColor }}">File format</label>
+                <select id="pe-fileType" name="fileType" value="{{ vFileType }}" onChange="{{ onInput }}" aria-invalid="{{ fileTypeInvalid }}" style="height:52px;border:1px solid {{ fileTypeBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <option value="">Choose…</option>
+                  <sc-for list="{{ fileTypes }}" as="f" hint-placeholder-count="4">
+                    <option value="{{ f.value }}">{{ f.value }}</option>
+                  </sc-for>
+                </select>
+                <sc-if value="{{ fileTypeError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ fileTypeError }}</span></sc-if>
+              </div>
+              <div style="flex:1 1 140px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="pe-pageCount" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ pageCountLabelColor }}">Pages</label>
+                <input id="pe-pageCount" name="pageCount" type="number" min="1" value="{{ vPageCount }}" onInput="{{ onInput }}" aria-invalid="{{ pageCountInvalid }}" style="height:52px;border:1px solid {{ pageCountBorder }};border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                <sc-if value="{{ pageCountError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ pageCountError }}</span></sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Preview images — up to five, the first is the cover</span>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="3">
+                  <span style="position:relative;flex:0 0 108px;width:108px;height:74px;border-radius:9px;overflow:hidden;background:#F3F4F6;border:2px solid {{ g.border }}">
+                    <img src="{{ g.src }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover" />
+                    <button type="button" onClick="{{ g.onRemove }}" aria-label="{{ g.removeLabel }}" style="position:absolute;top:4px;right:4px;width:22px;height:22px;border:none;border-radius:50%;background:rgba(18,18,18,.62);color:#FFFFFF;display:grid;place-items:center;cursor:pointer">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"></path></svg>
+                    </button>
+                    <sc-if value="{{ g.isCover }}" hint-placeholder-val="{{ false }}">
+                      <span style="position:absolute;bottom:0;left:0;right:0;padding:2px;background:#3A836B;color:#FFFFFF;font-size:9.5px;font-weight:700;text-align:center;letter-spacing:.05em">COVER</span>
+                    </sc-if>
+                  </span>
+                </sc-for>
+                <sc-if value="{{ canAddImage }}" hint-placeholder-val="{{ true }}">
+                  <label style="flex:0 0 108px;width:108px;height:74px;border:1.6px dashed #DCE7E1;border-radius:9px;background:#FCFDFC;display:grid;place-items:center;cursor:pointer;color:#3A836B" style-hover="background:#F2FAF7">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                    <input type="file" accept="image/*" onChange="{{ onImage }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+                  </label>
+                </sc-if>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside style="flex:1 1 300px;max-width:360px;min-width:0;display:flex;flex-direction:column;gap:18px">
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Pricing</h2>
+
+            <sc-if value="{{ freeOnly }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:14px;border-radius:10px;background:#FFF2DE;font-size:13px;line-height:1.65;color:#121212">Your plan permits free resources only. Upgrade to Basic or Premium to set a price.</p>
+            </sc-if>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="pe-price" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ priceLabelColor }}">Price (USD)</label>
+              <input id="pe-price" name="price" type="text" inputmode="decimal" value="{{ vPrice }}" onInput="{{ onInput }}" aria-invalid="{{ priceInvalid }}" aria-describedby="pe-price-help" disabled="{{ freeOnly }}" placeholder="0.00" style="height:52px;border:1px solid {{ priceBorder }};border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;background:{{ priceBg }};outline:none" style-focus="border-color:#3A836B" />
+              <span id="pe-price-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ priceHelpColor }}">{{ priceHelp }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="pe-originalPrice" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Was (optional, shows a discount badge)</label>
+              <input id="pe-originalPrice" name="originalPrice" type="text" inputmode="decimal" value="{{ vOriginalPrice }}" onInput="{{ onInput }}" disabled="{{ freeOnly }}" placeholder="—" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;background:{{ priceBg }};outline:none" style-focus="border-color:#3A836B" />
+            </div>
+
+            <sc-if value="{{ showSplit }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#F2FAF7;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:9px">
+                <span style="font-weight:600;font-size:13px;color:#29483C">On each sale</span>
+                <sc-for list="{{ split }}" as="s" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                    <span style="font-size:12.5px;color:#595959">{{ s.label }}</span>
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:{{ s.weight }};font-size:13.5px;color:{{ s.ink }}">{{ s.value }}</span>
+                  </div>
+                </sc-for>
+                <span style="font-size:11.5px;line-height:1.55;color:#9AA5A0;padding-top:2px">{{ splitNote }}</span>
+              </div>
+            </sc-if>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Status</h2>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span aria-hidden="true" style="width:9px;height:9px;border-radius:50%;background:{{ statusDot }}"></span>
+              <span style="font-weight:600;font-size:14px;color:#29483C">{{ statusLabel }}</span>
+            </div>
+            <p style="margin:0;font-size:12.5px;line-height:1.7;color:#595959">{{ statusBlurb }}</p>
+
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+              <button type="submit" disabled="{{ busy }}" data-testid="submit-for-review" style="height:50px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+                <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="width:17px;height:17px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+                </sc-if>
+                {{ submitLabel }}
+              </button>
+              <button type="button" onClick="{{ onSaveDraft }}" disabled="{{ busy }}" data-testid="save-draft" style="height:48px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14.5px;color:#29483C;cursor:pointer" style-hover="background:#F2FAF7">{{ draftLabel }}</button>
+              <a href="{{ productsHref }}" style="text-align:center;font-size:13px;color:#595959;padding-top:2px" style-hover="color:#3A836B">Cancel and go back</a>
+            </div>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px">
+            <h2 style="margin:0;font-weight:600;font-size:14.5px;color:#29483C">Before you submit</h2>
+            <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="4">
+              <div style="display:flex;align-items:flex-start;gap:10px">
+                <span aria-hidden="true" style="flex:0 0 17px;width:17px;height:17px;margin-top:2px;border-radius:50%;background:{{ c.bg }};color:{{ c.ink }};display:grid;place-items:center;font-size:10px;font-weight:700">{{ c.mark }}</span>
+                <span style="font-size:12.5px;line-height:1.6;color:{{ c.textInk }}">{{ c.text }}</span>
+              </div>
+            </sc-for>
+          </section>
+        </aside>
+      </form>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    loading: true, user: null, product: null, busy: false, errors: {}, formError: '',
+    plan: null, allowance: null, blockedReason: null,
+    values: {
+      title: '', description: '', included: '', categoryId: '', subject: '',
+      gradeFrom: '', gradeTo: '', resourceType: '', theme: 'Everyday',
+      price: '', originalPrice: '', fileType: '', pageCount: '',
+      cover: '', gallery: [], fileName: '', fileSizeMb: null,
+    },
+  };
+
+  async componentDidMount() {
+    const [app, products, media, rules, validation, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/productsRepo.js'),
+      import('./assets/js/repositories/mediaRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/validation.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, repo: products, media, rules, validation, db });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    const v = user.vendor;
+    this.vid = user.vendorId || (v && v.id) || 'v-1';
+
+    if (v && v.status !== 'approved') {
+      this.setState({ loading: false, user, blockedReason: 'not_approved' });
+      return;
+    }
+
+    const plan = this.rules.planByCode(v ? v.planCode : 'basic');
+    const allowance = products.checkAllowance(this.vid);
+    const id = app.router.param('id');
+
+    if (id) {
+      try {
+        const res = await products.getProduct(id);
+        const p = res.data;
+        this.setState({
+          loading: false, user, product: p, plan, allowance,
+          values: {
+            title: p.title || '', description: p.description || '',
+            included: (p.included || []).join('\n'),
+            categoryId: p.categoryId || '', subject: p.subject || '',
+            gradeFrom: p.gradeFrom || '', gradeTo: p.gradeTo || '',
+            resourceType: p.resourceType || '', theme: p.theme || 'Everyday',
+            price: p.price ? String(p.price) : '0',
+            originalPrice: p.originalPrice ? String(p.originalPrice) : '',
+            fileType: p.fileType || '', pageCount: p.pageCount ? String(p.pageCount) : '',
+            cover: p.cover || '', gallery: (p.gallery || []).slice(),
+            fileName: p.fileName || '', fileSizeMb: p.fileSizeMb || null,
+          },
+        });
+        return;
+      } catch (err) {
+        this.setState({ loading: false, user, plan, allowance, formError: 'That resource could not be found.' });
+        return;
+      }
+    }
+
+    // New resource — block up front if the plan has no room for a paid one.
+    this.setState({
+      loading: false, user, plan, allowance,
+      blockedReason: !allowance.allowed && !plan.allowsPaidListings ? null : null,
+      values: Object.assign({}, this.state.values, { price: plan.allowsPaidListings ? '' : '0' }),
+    });
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  payload() {
+    const v = this.state.values;
+    return {
+      title: v.title.trim(),
+      description: v.description.trim(),
+      included: v.included.split('\n').map(s => s.trim()).filter(Boolean),
+      categoryId: v.categoryId, subject: v.subject,
+      gradeFrom: v.gradeFrom, gradeTo: v.gradeTo,
+      resourceType: v.resourceType, theme: v.theme,
+      price: v.price === '' ? 0 : Number(v.price),
+      originalPrice: v.originalPrice === '' ? null : Number(v.originalPrice),
+      fileType: v.fileType,
+      pageCount: v.pageCount === '' ? null : Number(v.pageCount),
+      cover: v.cover || (v.gallery[0] || 'assets/img/cover-1.jpg'),
+      gallery: v.gallery.slice(),
+      fileName: v.fileName || null,
+      fileSizeMb: v.fileSizeMb,
+      tags: [],
+    };
+  }
+
+  async persist(mode) {
+    const { valid, errors } = this.validation.validate(this.state.values, this.validation.schemas.product);
+    if (mode === 'submit' && !valid) {
+      this.setState({ errors });
+      const el = document.getElementById('pe-' + Object.keys(errors)[0]);
+      if (el) el.focus();
+      return;
+    }
+    this.setState({ busy: true, formError: '' });
+    try {
+      const body = this.payload();
+      let saved;
+      if (this.state.product) {
+        const res = await this.repo.updateProduct(this.state.product.id, body);
+        saved = res.data;
+      } else {
+        const res = await this.repo.createProduct(this.vid, body);
+        saved = res.data;
+      }
+      if (mode === 'submit' && saved.status !== 'pending') {
+        await this.repo.submitProduct(saved.id);
+      }
+      this.app.toast(
+        mode === 'submit'
+          ? 'Submitted for review. You will be notified once a decision is made.'
+          : 'Draft saved.',
+        'success'
+      );
+      this.app.router.go('vendorProducts');
+    } catch (err) {
+      const { message, fields } = this.app.readError(err);
+      this.setState({ busy: false, formError: message, errors: fields || {} });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, product, busy, errors, formError, values, plan, allowance, blockedReason } = this.state;
+    const cat = this.rules && values.categoryId ? this.rules.categoryById(values.categoryId) : null;
+    const freeOnly = !!(plan && !plan.allowsPaidListings);
+    const price = values.price === '' ? 0 : Number(values.price) || 0;
+    const split = plan && price > 0 ? this.rules.settleLine({ price, planCode: plan.code }) : null;
+    const status = product ? product.status : 'draft';
+    const titleLen = values.title.length;
+    const descLen = values.description.length;
+
+    const check = (ok, text) => ({
+      mark: ok ? '✓' : '·',
+      bg: ok ? '#EAF7F1' : '#F3F4F6',
+      ink: ok ? '#3A836B' : '#9AA5A0',
+      textInk: ok ? '#121212' : '#9AA5A0',
+      text,
+    });
+
+    return Object.assign({
+      loading,
+      blocked: !!blockedReason,
+      editable: !loading && !blockedReason,
+      pageTitle: product ? 'Edit resource' : 'New resource',
+      subtitle: product ? product.title : 'Every submission is reviewed before it goes live.',
+      productsHref: url('vendorProducts'),
+
+      blockedTitle: 'Publishing is not available yet',
+      blockedBody: 'Your store is still with an administrator for review. Once it is approved you can create and submit resources.',
+      blockedCta: 'See my approval status',
+      blockedHref: url('vendorPending'),
+
+      hasError: !!formError,
+      formError,
+
+      showDeclineNote: status === 'declined',
+      declineReason: product ? (product.declineReason || '') : '',
+      hasDeclineDetail: !!(product && product.declineNote),
+      declineNote: product ? (product.declineNote || '') : '',
+      showReapprovalNote: status === 'approved',
+
+      categories: this.rules ? this.rules.CATEGORIES.map(c => ({ id: c.id, name: c.name })) : [],
+      subjects: cat ? cat.subjects.map(value => ({ value })) : [],
+      noCategory: !values.categoryId,
+      subjectBg: values.categoryId ? '#FFFFFF' : '#F5F7F6',
+      subjectCursor: values.categoryId ? 'pointer' : 'not-allowed',
+      subjectPlaceholder: values.categoryId ? 'Choose a subject…' : 'Pick a category first',
+      grades: this.rules ? this.rules.GRADES.map(value => ({ value })) : [],
+      resourceTypes: this.rules ? this.rules.RESOURCE_TYPES.map(value => ({ value })) : [],
+      themes: this.rules ? this.rules.THEMES.map(value => ({ value })) : [],
+      fileTypes: this.rules ? this.rules.FILE_TYPES.map(value => ({ value })) : [],
+
+      titleHelp: errors.title || titleLen + ' / 120 characters — at least 10.',
+      titleHelpColor: errors.title ? '#C0392B' : '#49454F',
+      descriptionHelp: errors.description || descLen + ' characters — at least 80.',
+      descriptionHelpColor: errors.description ? '#C0392B' : '#49454F',
+
+      fileName: values.fileName || 'No file attached',
+      fileHint: values.fileSizeMb ? values.fileSizeMb + ' MB · buyers download this file' : 'PDF, ZIP or PowerPoint, up to 25 MB',
+      fileCta: values.fileName ? 'Replace' : 'Attach file',
+      fileBorder: errors.file ? '#C0392B' : '#DCE7E1',
+      fileLabelColor: errors.file ? '#C0392B' : '#49454F',
+
+      gallery: values.gallery.map((src, i) => ({
+        src, isCover: i === 0,
+        border: i === 0 ? '#3A836B' : 'transparent',
+        removeLabel: 'Remove preview image ' + (i + 1),
+        onRemove: () => this.setState(s => {
+          const g = s.values.gallery.slice();
+          g.splice(i, 1);
+          return { values: Object.assign({}, s.values, { gallery: g, cover: g[0] || '' }) };
+        }),
+      })),
+      canAddImage: values.gallery.length < 5,
+
+      freeOnly,
+      priceBg: freeOnly ? '#F5F7F6' : '#FFFFFF',
+      priceHelp: errors.price
+        || (freeOnly ? 'Fixed at free on your plan.'
+          : allowance && allowance.limit ? 'Paid slots used: ' + allowance.used + ' of ' + allowance.limit
+          : 'Leave at 0 to publish this resource free.'),
+      priceHelpColor: errors.price ? '#C0392B' : '#49454F',
+
+      showSplit: !!split,
+      split: split ? [
+        { label: 'Buyer pays', value: '$' + split.gross.toFixed(2), weight: 500, ink: '#29483C' },
+        { label: 'Platform commission', value: '−$' + split.commission.toFixed(2), weight: 500, ink: '#595959' },
+        { label: 'Transaction fee', value: '−$' + split.transactionFee.toFixed(2), weight: 500, ink: '#595959' },
+        { label: 'You receive', value: '$' + split.vendorEarnings.toFixed(2), weight: 700, ink: '#3A836B' },
+      ] : [],
+      splitNote: plan ? plan.name + ' — ' + Math.round((plan.payoutRate || 0) * 100) + '% payout, fee deducted from your share.' : '',
+
+      statusDot: ({ approved: '#3A836B', pending: '#B9913E', draft: '#2F7FA0', declined: '#C0392B', unpublished: '#595959' })[status] || '#2F7FA0',
+      statusLabel: ({ approved: 'Published', pending: 'In review', draft: 'Draft', declined: 'Declined', unpublished: 'Unpublished' })[status] || 'Draft',
+      statusBlurb: status === 'approved'
+        ? 'Live on the storefront. An edit returns it to the review queue.'
+        : status === 'pending'
+          ? 'An administrator is reviewing this submission.'
+          : status === 'declined'
+            ? 'Address the reason above, then submit again.'
+            : 'Not visible to anyone yet. Save a draft as often as you like.',
+
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Saving…' : status === 'approved' ? 'Save and resubmit' : 'Submit for review',
+      draftLabel: 'Save draft',
+
+      checklist: [
+        check(titleLen >= 10, 'A clear title of at least 10 characters'),
+        check(descLen >= 80, 'A description of at least 80 characters'),
+        check(!!values.categoryId && !!values.subject, 'Category and subject chosen'),
+        check(!!values.gradeFrom && !!values.gradeTo, 'Grade range set'),
+        check(!!values.fileName, 'The resource file attached'),
+        check(values.gallery.length > 0, 'At least one preview image'),
+      ],
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+          formError: '',
+        }));
+      },
+      onCategory: e => {
+        const value = e.target.value;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { categoryId: value, subject: '' }),
+          errors: Object.assign({}, s.errors, { categoryId: null, subject: null }),
+        }));
+      },
+      onFile: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const mb = Math.round((file.size / (1024 * 1024)) * 100) / 100;
+        if (mb > 25) {
+          this.setState(s => ({ errors: Object.assign({}, s.errors, { file: 'That file is ' + mb + ' MB. The limit is 25 MB.' }) }));
+          return;
+        }
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { fileName: file.name, fileSizeMb: mb }),
+          errors: Object.assign({}, s.errors, { file: null }),
+        }));
+        this.app.toast('File attached: ' + file.name, 'success');
+      },
+      onImage: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const dataUrl = await this.db.fileToDataUrl(file);
+        this.setState(s => {
+          const g = s.values.gallery.concat([dataUrl]).slice(0, 5);
+          return { values: Object.assign({}, s.values, { gallery: g, cover: g[0] }) };
+        });
+      },
+      onSaveDraft: () => this.persist('draft'),
+      onSubmitForReview: e => { e.preventDefault(); this.persist('submit'); },
+    }, this.field('title'), this.field('description'), this.field('included'),
+       this.field('categoryId'), this.field('subject'), this.field('gradeFrom'),
+       this.field('gradeTo'), this.field('resourceType'), this.field('theme'),
+       this.field('price'), this.field('originalPrice'), this.field('fileType'),
+       this.field('pageCount'));
+  }
+}
+
+</script>
+</body>
+</html>

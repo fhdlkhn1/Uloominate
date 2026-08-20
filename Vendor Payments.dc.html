@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Payments — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="V-05 Vendor Payments">
+  <dc-import name="VendorShell" active="vendorPayments" title="Payments" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+          <span style="height:110px;border-radius:14px;background:#EFF3F1"></span>
+          <span style="height:110px;border-radius:14px;background:#F2F6F4"></span>
+          <span style="height:110px;border-radius:14px;background:#F5F8F7"></span>
+        </div>
+        <span style="height:260px;border-radius:16px;background:#EFF3F1"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px">
+              <span style="font-size:12.5px;color:#595959">{{ s.label }}</span>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:clamp(21px,1.9vw,26px);line-height:1.1;color:{{ s.ink }}">{{ s.value }}</span>
+              <span style="font-size:11.5px;line-height:1.5;color:#9AA5A0">{{ s.note }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+          <form data-testid="withdrawal-form" onSubmit="{{ onWithdraw }}" novalidate="novalidate" style="flex:1 1 320px;max-width:400px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Request a withdrawal</h2>
+
+            <sc-if value="{{ noPayoutMethod }}" hint-placeholder-val="{{ false }}">
+              <div role="status" style="background:#FFF2DE;border-left:4px solid #B9913E;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+                <span style="font-size:13px;line-height:1.65;color:#121212">Add a payout method before requesting money.</span>
+                <a href="{{ setupHref }}" style="font-size:13px;font-weight:600">Add payout details →</a>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ canWithdraw }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div style="background:#F2FAF7;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:4px">
+                  <span style="font-size:12px;color:#595959">Available now</span>
+                  <span data-testid="available" style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:26px;color:#3A836B">{{ available }}</span>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label for="vp-amount" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ amountLabelColor }}">Amount to withdraw</label>
+                  <input id="vp-amount" name="amount" type="text" inputmode="decimal" value="{{ vAmount }}" onInput="{{ onInput }}" aria-invalid="{{ amountInvalid }}" aria-describedby="vp-amount-help" placeholder="0.00" style="height:52px;border:1px solid {{ amountBorder }};border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                  <span id="vp-amount-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ amountHelpColor }}">{{ amountHelp }}</span>
+                </div>
+
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label for="vp-method" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Pay to</label>
+                  <select id="vp-method" name="method" value="{{ vMethod }}" onChange="{{ onInput }}" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                    <sc-for list="{{ methods }}" as="m" hint-placeholder-count="2">
+                      <option value="{{ m.value }}">{{ m.label }}</option>
+                    </sc-for>
+                  </select>
+                </div>
+
+                <button type="submit" disabled="{{ busy }}" data-testid="withdraw-submit" style="height:50px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+                  <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                    <span aria-hidden="true" style="width:17px;height:17px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+                  </sc-if>
+                  {{ submitLabel }}
+                </button>
+                <p style="margin:0;font-size:12px;line-height:1.65;color:#595959">{{ cycleNote }}</p>
+              </div>
+            </sc-if>
+          </form>
+
+          <section style="flex:999 1 460px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Payout history</h2>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ historyCount }}</span>
+            </div>
+
+            <sc-if value="{{ hasPayouts }}" hint-placeholder-val="{{ false }}">
+              <div style="overflow-x:auto">
+                <table style="width:100%;min-width:480px;border-collapse:collapse;font-size:13.5px">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Period</th>
+                      <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Method</th>
+                      <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Status</th>
+                      <th scope="col" style="text-align:right;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <sc-for list="{{ payouts }}" as="p" hint-placeholder-count="5">
+                      <tr>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4">
+                          <span style="display:flex;flex-direction:column;gap:2px">
+                            <span style="font-weight:600;color:#29483C">{{ p.period }}</span>
+                            <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;color:#9AA5A0">{{ p.dates }}</span>
+                          </span>
+                        </td>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4;color:#595959">{{ p.method }}</td>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4">
+                          <span style="display:inline-flex;align-items:center;gap:7px;padding:4px 10px;border-radius:9999px;background:{{ p.badgeBg }};color:{{ p.badgeInk }};font-size:11.5px;font-weight:700">
+                            <span aria-hidden="true" style="width:6px;height:6px;border-radius:50%;background:{{ p.badgeInk }}"></span>
+                            {{ p.statusLabel }}
+                          </span>
+                        </td>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;color:#29483C">{{ p.amount }}</td>
+                      </tr>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ noPayouts }}" hint-placeholder-val="{{ true }}">
+              <div style="border:1px dashed #DCE7E1;border-radius:12px;padding:44px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+                <span style="font-weight:600;font-size:15px;color:#29483C">No payouts yet</span>
+                <span style="max-width:340px;font-size:13px;line-height:1.65;color:#595959">Once your balance clears the $25.00 minimum you can request a withdrawal, and it will be listed here.</span>
+              </div>
+            </sc-if>
+          </section>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">How your earnings are calculated</h2>
+          <div style="display:flex;gap:20px;flex-wrap:wrap">
+            <sc-for list="{{ terms }}" as="t" hint-placeholder-count="4">
+              <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:5px;padding:16px;border-radius:12px;background:#FCFDFC;border:1px solid #F1F4F2">
+                <span style="font-size:12px;color:#595959">{{ t.label }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:18px;color:#29483C">{{ t.value }}</span>
+                <span style="font-size:11.5px;line-height:1.55;color:#9AA5A0">{{ t.note }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p style="margin:0;font-size:12.5px;line-height:1.7;color:#595959">The per-transaction fee is deducted from your payout share, not added to the buyer's total. {{ planNote }}</p>
+        </section>
+      </div>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const BADGES = {
+  paid: { bg: '#EAF7F1', ink: '#3A836B', label: 'Paid' },
+  processing: { bg: '#E3F7FD', ink: '#2F7FA0', label: 'Processing' },
+  pending: { bg: '#FFF2DE', ink: '#B9913E', label: 'Pending' },
+};
+
+class Component extends DCLogic {
+  state = {
+    loading: true, user: null, stats: null, payouts: [], plan: null,
+    busy: false, errors: {}, values: { amount: '', method: '' },
+  };
+
+  async componentDidMount() {
+    const [app, vendors, finance, rules, validation] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/repositories/financeRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/validation.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, vendors, finance, rules, validation });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.user = user;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    this.setState({ user });
+    await this.load();
+  }
+
+  async load() {
+    const [st, po] = await Promise.all([
+      this.vendors.vendorStats(this.vid),
+      this.finance.listPayouts({ vendorId: this.vid, pageSize: 24 }),
+    ]);
+    const v = (this.user || this.state.user).vendor;
+    this.setState({
+      loading: false, stats: st.data, payouts: po.data,
+      plan: this.rules.planByCode(v ? v.planCode : 'basic'),
+      values: { amount: '', method: (v && v.payoutMethod) || 'PayPal' },
+    });
+  }
+
+  money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, stats: s, payouts, plan, busy, errors, values, user } = this.state;
+    const v = user && user.vendor;
+    const hasMethod = !!(v && v.payoutMethod);
+    const avail = s ? s.withdrawable : 0;
+
+    return {
+      loading,
+      ready: !loading && !!s,
+      subtitle: s ? 'Lifetime earnings ' + this.money(s.earnings) + ' from ' + s.unitsSold + ' sales' : '',
+      setupHref: url('storeSetup'),
+
+      stats: s ? [
+        { label: 'Available to withdraw', value: this.money(s.withdrawable), note: avail >= 25 ? 'Above the $25.00 minimum' : 'Minimum is $25.00', ink: '#3A836B' },
+        { label: 'Lifetime earnings', value: this.money(s.earnings), note: 'After commission and fees', ink: '#29483C' },
+        { label: 'Already paid out', value: this.money(s.paidOut), note: payouts.filter(p => p.status === 'paid').length + ' completed payouts', ink: '#29483C' },
+        { label: 'Gross sales', value: this.money(s.grossSales), note: 'What buyers paid in total', ink: '#29483C' },
+      ] : [],
+
+      noPayoutMethod: !hasMethod,
+      canWithdraw: hasMethod,
+      available: this.money(avail),
+      methods: (this.rules ? this.rules.PAYOUT_METHODS : []).map(m => ({
+        value: m,
+        label: m + (v && v.payoutAccount && v.payoutMethod === m ? ' — ' + v.payoutAccount : ''),
+      })),
+      vAmount: values.amount,
+      vMethod: values.method,
+      amountBorder: errors.amount ? '#C0392B' : '#CAC4D0',
+      amountLabelColor: errors.amount ? '#C0392B' : '#49454F',
+      amountInvalid: errors.amount ? 'true' : 'false',
+      amountHelp: errors.amount || 'Minimum $25.00 · available ' + this.money(avail),
+      amountHelpColor: errors.amount ? '#C0392B' : '#49454F',
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Requesting…' : 'Request withdrawal',
+      cycleNote: this.rules ? this.rules.PAYOUT_CYCLE + '.' : '',
+
+      historyCount: payouts.length ? payouts.length + (payouts.length === 1 ? ' payout' : ' payouts') : '',
+      hasPayouts: payouts.length > 0,
+      noPayouts: payouts.length === 0,
+      payouts: payouts.map(p => {
+        const b = BADGES[p.status] || BADGES.pending;
+        return {
+          period: p.period,
+          method: p.method + (p.account ? ' · ' + p.account : ''),
+          statusLabel: b.label, badgeBg: b.bg, badgeInk: b.ink,
+          amount: this.money(p.amount),
+          dates: p.paidAt
+            ? 'Paid ' + new Date(p.paidAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+            : 'Requested ' + new Date(p.requestedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+        };
+      }),
+
+      terms: plan ? [
+        { label: 'Your plan', value: plan.name, note: plan.priceLabel },
+        { label: 'Your payout share', value: plan.payoutRate === null ? '—' : Math.round(plan.payoutRate * 100) + '%', note: 'Of every sale' },
+        { label: 'Per transaction', value: plan.transactionFee === null ? '—' : (plan.transactionFeePct ? (plan.transactionFeePct * 100).toFixed(1) + '% + ' : '') + '$' + plan.transactionFee.toFixed(2), note: 'Deducted from your share' },
+        { label: 'Payout cycle', value: 'Monthly', note: 'Issued on the 5th' },
+      ] : [],
+      planNote: plan && plan.code !== 'premium' ? 'Premium vendors keep 80% with a $0.25 fee.' : '',
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s2 => ({
+          values: Object.assign({}, s2.values, { [name]: value }),
+          errors: Object.assign({}, s2.errors, { [name]: null }),
+        }));
+      },
+      onWithdraw: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const { valid, errors: errs } = this.validation.validate(this.state.values, this.validation.schemas.withdrawal);
+        if (!valid) {
+          this.setState({ errors: errs });
+          const el = document.getElementById('vp-amount');
+          if (el) el.focus();
+          return;
+        }
+        this.setState({ busy: true });
+        try {
+          await this.finance.requestWithdrawal(this.vid, this.state.values);
+          this.setState({ busy: false, values: { amount: '', method: this.state.values.method } });
+          await this.load();
+          this.app.toast('Withdrawal requested. Payouts are issued on the monthly cycle.', 'success');
+        } catch (err) {
+          const { message, fields } = this.app.readError(err);
+          this.setState({ busy: false, errors: fields && Object.keys(fields).length ? fields : { amount: message } });
+        }
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

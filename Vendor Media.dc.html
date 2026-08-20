@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Media library — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="V-10 Vendor Media">
+  <dc-import name="VendorShell" active="vendorMedia" title="Media library" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <div style="display:flex;flex-direction:column;gap:18px">
+
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <label style="display:inline-flex;align-items:center;gap:9px;height:44px;padding:0 20px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#29483C">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"></path><path d="M4 20h16"></path></svg>
+          {{ uploadLabel }}
+          <input type="file" accept="image/*" multiple="multiple" onChange="{{ onUpload }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+        </label>
+        <span style="font-size:13px;color:#595959">Images up to 25 MB. Used for covers and preview pages.</span>
+        <label style="margin-left:auto;display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;flex:0 1 260px;min-width:180px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+          <input type="search" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Search filenames" aria-label="Search media" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:Poppins,sans-serif;font-size:13.5px" />
+        </label>
+      </div>
+
+      <sc-if value="{{ uploading }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#F2FAF7;border-left:4px solid #3A836B;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px">
+          <span aria-hidden="true" style="width:18px;height:18px;border:2.4px solid rgba(58,131,107,.28);border-top-color:#3A836B;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+          <span style="font-size:13.5px;color:#29483C">{{ uploadingLabel }}</span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:14px">
+          <span style="height:176px;border-radius:12px;background:#EFF3F1"></span>
+          <span style="height:176px;border-radius:12px;background:#F2F6F4"></span>
+          <span style="height:176px;border-radius:12px;background:#F5F8F7"></span>
+          <span style="height:176px;border-radius:12px;background:#F7FAF9"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="media-empty" style="background:#FFFFFF;border:1px dashed #DCE7E1;border-radius:16px;padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <span style="width:72px;height:72px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.4"></rect><circle cx="8.6" cy="9.4" r="1.6"></circle><path d="m4 17 4.6-4.4 3.2 3 3-2.6L20 17"></path></svg>
+          </span>
+          <h2 style="margin:0;font-weight:600;font-size:19px;color:#29483C">{{ emptyTitle }}</h2>
+          <p style="margin:0;max-width:420px;font-size:13.5px;line-height:1.7;color:#595959">{{ emptyBody }}</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:14px">
+          <sc-for list="{{ rows }}" as="m" hint-placeholder-count="6">
+            <figure data-testid="media-tile" style="margin:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+              <span style="position:relative;display:block;width:100%;aspect-ratio:4 / 3;background:#F3F4F6;overflow:hidden">
+                <sc-if value="{{ m.hasSrc }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ m.src }}" alt="{{ m.name }}" style="display:block;width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+                <sc-if value="{{ m.noSrc }}" hint-placeholder-val="{{ true }}">
+                  <span style="position:absolute;inset:0;display:grid;place-items:center;color:#9AA5A0;font-size:12px">Loading…</span>
+                </sc-if>
+                <button type="button" onClick="{{ m.onDelete }}" aria-label="{{ m.deleteLabel }}" style="position:absolute;top:8px;right:8px;width:30px;height:30px;border:none;border-radius:50%;background:rgba(255,255,255,.94);color:#C0392B;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 6px rgba(18,18,18,.16)" style-hover="background:#FDF1EF">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 13h8l1-13"></path></svg>
+                </button>
+              </span>
+              <figcaption style="padding:11px 12px;display:flex;flex-direction:column;gap:3px;min-width:0">
+                <span style="font-weight:500;font-size:12.5px;color:#29483C;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ m.name }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11px;color:#9AA5A0">{{ m.meta }}</span>
+              </figcaption>
+            </figure>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, rows: [], urls: {}, user: null, query: '', uploading: 0 };
+
+  async componentDidMount() {
+    const [app, media] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/mediaRepo.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, media });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.user = user;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    this.setState({ user });
+    await this.load();
+  }
+
+  async load() {
+    const res = await this.media.listMedia(this.vid, { q: this.state.query, pageSize: 48 });
+    this.setState({ loading: false, rows: res.data });
+    // Blobs live in IndexedDB, so each tile's src is resolved after the list.
+    for (const row of res.data) {
+      if (this.state.urls[row.blobKey]) continue;
+      const src = await this.media.getMediaUrl(row.blobKey);
+      if (src) this.setState(s => ({ urls: Object.assign({}, s.urls, { [row.blobKey]: src }) }));
+    }
+  }
+
+  renderVals() {
+    const { loading, rows, urls, query, uploading } = this.state;
+    const totalMb = rows.reduce((a, r) => a + (r.sizeMb || 0), 0);
+
+    return {
+      subtitle: rows.length ? rows.length + (rows.length === 1 ? ' file' : ' files') + ' · ' + totalMb.toFixed(1) + ' MB' : '',
+      loading, query,
+      uploadLabel: rows.length ? 'Upload more' : 'Upload images',
+      uploading: uploading > 0,
+      uploadingLabel: 'Uploading ' + uploading + (uploading === 1 ? ' file…' : ' files…'),
+      isEmpty: !loading && rows.length === 0,
+      hasRows: !loading && rows.length > 0,
+      emptyTitle: query ? 'No files match that search' : 'Your library is empty',
+      emptyBody: query
+        ? 'Try a shorter search, or clear it to see everything.'
+        : 'Upload cover art and preview pages once, then reuse them across any of your resources.',
+
+      rows: rows.map(m => {
+        const src = urls[m.blobKey];
+        return {
+          name: m.name,
+          src,
+          hasSrc: !!src,
+          noSrc: !src,
+          meta: [m.sizeMb + ' MB', new Date(m.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })].join(' · '),
+          deleteLabel: 'Delete ' + m.name,
+          onDelete: async () => {
+            const ok = await this.app.confirmDialog({
+              title: 'Delete this file?',
+              body: m.name + ' will be removed from your library. Resources already using it keep the image.',
+              confirmLabel: 'Delete file',
+            });
+            if (!ok) return;
+            await this.media.deleteMedia(m.id);
+            await this.load();
+            this.app.toast('File deleted.', 'success');
+          },
+        };
+      }),
+
+      onSearch: e => {
+        const v = e.target.value;
+        clearTimeout(this._t);
+        this.setState({ query: v });
+        this._t = setTimeout(() => this.load(), 220);
+      },
+      onUpload: async e => {
+        const files = Array.from(e.target.files || []);
+        if (!files.length) return;
+        this.setState({ uploading: files.length });
+        let ok = 0;
+        for (const f of files) {
+          try { await this.media.uploadMedia(this.vid, f, 'image'); ok++; }
+          catch (err) { this.app.toast(this.app.readError(err).message, 'error'); }
+          this.setState(s => ({ uploading: Math.max(0, s.uploading - 1) }));
+        }
+        await this.load();
+        if (ok) this.app.toast(ok + (ok === 1 ? ' file uploaded.' : ' files uploaded.'), 'success');
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

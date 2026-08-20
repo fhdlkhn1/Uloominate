@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Browse resources — Uloominate</title>
+<meta name="ext-resource-dependency" content="assets/img/cover-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-4.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-5.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-6.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-7.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-8.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-9.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-10.png" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-4.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-5.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-1.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-2.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-3.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-4.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-5.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-6.png" />
+<meta name="ext-resource-dependency" content="assets/img/logo-mark.png" />
+<meta name="ext-resource-dependency" content="assets/img/hero-illustration.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500;600&amp;family=Playfair+Display:wght@400;500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; color: #121212; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+  a { color: #3A836B; text-decoration: none; }
+  a:hover { color: #29483C; }
+  :focus-visible { outline: 2px solid #3A836B; outline-offset: 3px; border-radius: 6px; }
+  @keyframes ulm-shimmer { 0% { background-position: -420px 0; } 100% { background-position: 420px 0; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .001ms !important; } }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#3A836B"/><circle cx="100" cy="86" r="30" fill="none" stroke="#FEDC97" stroke-width="7"/><path d="M100 86v46" stroke="#FEDC97" stroke-width="7" stroke-linecap="round"/><text x="100" y="166" text-anchor="middle" fill="#FEDC97" font-family="Georgia,serif" font-size="30">U</text></svg></template>
+<div data-screen-label="P-03 Browse and filter" style="width:100%;overflow-x:hidden;background:#FFFFFF;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="SiteHeader" active="{{ activeCategory }}" searchQuery="{{ query }}" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;width:100%;max-width:1729px;margin:0 auto;padding:24px clamp(20px,8vw,144px) 0">
+
+    <nav aria-label="Breadcrumb" data-testid="breadcrumbs" style="display:flex;align-items:center;gap:8px;min-height:18px">
+      <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="3">
+        <a href="{{ c.href }}" aria-current="{{ c.current }}" style="font-weight:{{ c.weight }};font-size:12px;line-height:18px;color:{{ c.color }}" style-hover="color:#3A836B">{{ c.label }}</a>
+      </sc-for>
+    </nav>
+
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:22px">
+      <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+        <h1 data-testid="page-title" style="margin:0;font-weight:600;font-size:32px;line-height:48px;color:#29483C">{{ pageTitle }}</h1>
+        <p data-testid="results-count" style="margin:0;font-weight:400;font-size:14px;line-height:21px;color:#121212">{{ resultsLine }}</p>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:36px;flex-wrap:wrap;margin-top:20px;padding-bottom:64px">
+
+      <aside data-testid="filter-panel" aria-label="Filters" style="flex:1 1 300px;max-width:340px;background:#FFFFFF;border:1px solid #EDF0EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;line-height:24px;color:#121212">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 5h18M6 12h12M10 19h4"></path></svg>
+            Filters
+          </span>
+          <button type="button" onClick="{{ onClearAll }}" data-testid="clear-all" style="border:none;background:transparent;padding:0;font-family:Poppins,sans-serif;font-weight:600;font-size:13px;line-height:20px;color:#3A836B;cursor:pointer" style-hover="color:#29483C">Clear All</button>
+        </div>
+
+        <div style="height:1px;background:#EDF0EE"></div>
+
+        <section style="display:flex;flex-direction:column;gap:12px">
+          <button type="button" onClick="{{ toggleCategories }}" aria-expanded="{{ catsOpen }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:none;background:transparent;padding:0;cursor:pointer;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;color:#121212">
+            Product Categories
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ catsChevron }}deg);transition:transform .2s ease" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+
+          <sc-if value="{{ catsOpen }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <sc-for list="{{ categoryRows }}" as="cat" hint-placeholder-count="6">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:21px">
+                    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;min-width:0">
+                      <input type="checkbox" checked="{{ cat.checked }}" onChange="{{ cat.onToggle }}" style="appearance:none;-webkit-appearance:none;flex:0 0 auto;width:16px;height:16px;border:1.6px solid {{ cat.boxBorder }};border-radius:4px;background:{{ cat.boxBg }};cursor:pointer;display:grid;place-items:center;transition:background .16s ease,border-color .16s ease" />
+                      <span style="font-weight:500;font-size:14px;line-height:21px;color:#121212;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ cat.name }}</span>
+                    </label>
+                    <button type="button" onClick="{{ cat.onExpand }}" aria-expanded="{{ cat.expanded }}" aria-label="{{ cat.expandLabel }}" style="flex:0 0 auto;border:none;background:transparent;padding:2px;cursor:pointer;color:#595959;line-height:0">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ cat.chevron }}deg);transition:transform .2s ease" aria-hidden="true"><path d="m9 6 6 6-6 6"></path></svg>
+                    </button>
+                  </div>
+                  <sc-if value="{{ cat.expanded }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:6px;padding-left:12px">
+                      <sc-for list="{{ cat.subjects }}" as="s" hint-placeholder-count="4">
+                        <label style="display:flex;align-items:center;gap:10px;min-height:20px;cursor:pointer">
+                          <input type="checkbox" checked="{{ s.checked }}" onChange="{{ s.onToggle }}" style="appearance:none;-webkit-appearance:none;flex:0 0 auto;width:16px;height:16px;border:1.6px solid {{ s.boxBorder }};border-radius:4px;background:{{ s.boxBg }};cursor:pointer;transition:background .16s ease,border-color .16s ease" />
+                          <span style="font-weight:400;font-size:13px;line-height:20px;color:#595959">{{ s.name }}</span>
+                        </label>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+
+        <div style="height:1px;background:#EDF0EE"></div>
+
+        <section style="display:flex;flex-direction:column;gap:12px">
+          <button type="button" onClick="{{ togglePrice }}" aria-expanded="{{ priceOpen }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:none;background:transparent;padding:0;cursor:pointer;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;color:#121212">
+            Filter by price
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ priceChevron }}deg);transition:transform .2s ease" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ priceOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer">
+                <input type="checkbox" checked="{{ freeChecked }}" onChange="{{ onToggleFree }}" style="appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1.6px solid {{ freeBorder }};border-radius:4px;background:{{ freeBg }};cursor:pointer" />
+                <span style="font-weight:400;font-size:13px;line-height:20px;color:#595959">Free resources only</span>
+              </label>
+              <div style="display:flex;align-items:center;gap:8px">
+                <input type="number" min="0" step="1" value="{{ priceMin }}" onChange="{{ onPriceMin }}" aria-label="Minimum price" placeholder="Min" style="width:100%;min-width:0;height:38px;border:1px solid #DCE7E1;border-radius:8px;padding:0 10px;font-family:Poppins,sans-serif;font-size:13px;color:#121212;outline:none" style-focus="border-color:#3A836B" />
+                <span style="color:#595959;font-size:13px">to</span>
+                <input type="number" min="0" step="1" value="{{ priceMax }}" onChange="{{ onPriceMax }}" aria-label="Maximum price" placeholder="Max" style="width:100%;min-width:0;height:38px;border:1px solid #DCE7E1;border-radius:8px;padding:0 10px;font-family:Poppins,sans-serif;font-size:13px;color:#121212;outline:none" style-focus="border-color:#3A836B" />
+              </div>
+            </div>
+          </sc-if>
+        </section>
+
+        <div style="height:1px;background:#EDF0EE"></div>
+
+        <section style="display:flex;flex-direction:column;gap:12px">
+          <button type="button" onClick="{{ toggleGrade }}" aria-expanded="{{ gradeOpen }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:none;background:transparent;padding:0;cursor:pointer;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;color:#121212">
+            Grade Level
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ gradeChevron }}deg);transition:transform .2s ease" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ gradeOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ gradeChips }}" as="g" hint-placeholder-count="6">
+                <button type="button" onClick="{{ g.onToggle }}" aria-pressed="{{ g.pressed }}" style="padding:6px 12px;border:1px solid {{ g.border }};border-radius:9999px;background:{{ g.bg }};color:{{ g.ink }};font-family:Poppins,sans-serif;font-size:12px;font-weight:500;line-height:16px;cursor:pointer;transition:background .16s ease,border-color .16s ease">{{ g.name }}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+
+        <div style="height:1px;background:#EDF0EE"></div>
+
+        <section style="display:flex;flex-direction:column;gap:12px">
+          <button type="button" onClick="{{ toggleType }}" aria-expanded="{{ typeOpen }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:none;background:transparent;padding:0;cursor:pointer;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;color:#121212">
+            Resource Type
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ typeChevron }}deg);transition:transform .2s ease" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ typeOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <sc-for list="{{ typeRows }}" as="tp" hint-placeholder-count="5">
+                <label style="display:flex;align-items:center;gap:10px;min-height:20px;cursor:pointer">
+                  <input type="checkbox" checked="{{ tp.checked }}" onChange="{{ tp.onToggle }}" style="appearance:none;-webkit-appearance:none;flex:0 0 auto;width:16px;height:16px;border:1.6px solid {{ tp.boxBorder }};border-radius:4px;background:{{ tp.boxBg }};cursor:pointer" />
+                  <span style="font-weight:400;font-size:13px;line-height:20px;color:#595959;flex:1">{{ tp.name }}</span>
+                  <span style="font-size:12px;color:#9AA5A0">{{ tp.count }}</span>
+                </label>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+
+        <div style="height:1px;background:#EDF0EE"></div>
+
+        <section style="display:flex;flex-direction:column;gap:12px">
+          <button type="button" onClick="{{ toggleTheme }}" aria-expanded="{{ themeOpen }}" style="display:flex;align-items:center;justify-content:space-between;gap:8px;border:none;background:transparent;padding:0;cursor:pointer;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;color:#121212">
+            Theme
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#121212" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate({{ themeChevron }}deg);transition:transform .2s ease" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <sc-if value="{{ themeOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ themeChips }}" as="th" hint-placeholder-count="4">
+                <button type="button" onClick="{{ th.onToggle }}" aria-pressed="{{ th.pressed }}" style="padding:6px 12px;border:1px solid {{ th.border }};border-radius:9999px;background:{{ th.bg }};color:{{ th.ink }};font-family:Poppins,sans-serif;font-size:12px;font-weight:500;line-height:16px;cursor:pointer">{{ th.name }}</button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </section>
+
+        <div style="height:1px;background:#EDF0EE"></div>
+
+        <button type="button" onClick="{{ onApply }}" data-testid="apply-filters" style="height:44px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;cursor:pointer;transition:background .18s ease" style-hover="background:#29483C">Apply Filters</button>
+      </aside>
+
+      <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div data-testid="applied-tags" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ appliedChips }}" as="chip" hint-placeholder-count="4">
+              <button type="button" onClick="{{ chip.onRemove }}" style="display:inline-flex;align-items:center;gap:8px;height:41px;padding:10px 16px;border:1px solid {{ chip.border }};border-radius:8px;background:{{ chip.bg }};color:#121212;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;cursor:pointer;transition:background .16s ease" style-hover="background:#FBEFD3">
+                {{ chip.label }}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="{{ chip.icon }}"></path></svg>
+              </button>
+            </sc-for>
+          </div>
+
+          <label style="display:inline-flex;align-items:center;gap:8px;height:41px;padding:0 16px;border:1px solid #EDF0EE;border-radius:8px;background:#FFFFFF;cursor:pointer">
+            <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:600;font-size:14px;line-height:21px;color:#121212">Sort By:</span>
+            <select value="{{ sort }}" onChange="{{ onSort }}" aria-label="Sort results" style="border:none;background:transparent;font-family:'DM Sans',Poppins,sans-serif;font-weight:600;font-size:14px;color:#121212;cursor:pointer;outline:none">
+              <option value="relevance">Top Rated</option>
+              <option value="newest">Newest</option>
+              <option value="price_asc">Price: low to high</option>
+              <option value="price_desc">Price: high to low</option>
+              <option value="downloads">Most downloaded</option>
+              <option value="title">Title A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+          <div data-testid="grid-skeleton" aria-hidden="true" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px">
+            <sc-for list="{{ skeletons }}" as="s" hint-placeholder-count="6">
+              <div style="border:1px solid #EDF0EE;border-radius:12px;overflow:hidden;min-height:390px">
+                <div style="width:100%;aspect-ratio:338 / 220;background:#EFF2F0"></div>
+                <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
+                  <div style="height:14px;width:92%;border-radius:6px;background:#F0F2F1"></div>
+                  <div style="height:14px;width:70%;border-radius:6px;background:#F0F2F1"></div>
+                  <div style="height:12px;width:48%;border-radius:6px;background:#F5F6F5"></div>
+                  <div style="height:16px;width:30%;border-radius:6px;background:#F0F2F1;margin-top:8px"></div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <div role="alert" style="border:1px solid #F3D6D2;background:#FDF6F5;border-radius:16px;padding:40px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5M12 16.2v.2"></path></svg>
+            <h2 style="margin:0;font-size:20px;font-weight:600;color:#29483C">Something went wrong</h2>
+            <p style="margin:0;font-size:14px;color:#595959;max-width:420px">The catalogue could not be loaded. Try again in a moment.</p>
+            <button type="button" onClick="{{ onRetry }}" style="margin-top:6px;height:42px;padding:0 22px;border:none;border-radius:8px;background:#3A836B;color:#fff;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;cursor:pointer">Try again</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+          <div data-testid="empty-state" style="border:1px dashed #DCE7E1;background:#FCFDFC;border-radius:16px;padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+            <span style="width:76px;height:76px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+            </span>
+            <h2 style="margin:0;font-size:22px;font-weight:600;color:#29483C">No resources match these filters</h2>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#595959;max-width:460px">Try removing a filter, widening the grade range, or searching for something broader.</p>
+            <button type="button" onClick="{{ onClearAll }}" style="margin-top:6px;height:44px;padding:0 24px;border:none;border-radius:8px;background:#3A836B;color:#fff;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;cursor:pointer">Clear all filters</button>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ false }}">
+          <div data-testid="product-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px">
+            <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+              <article data-testid="product-card" style="position:relative;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #EDF0EE;border-radius:12px;background:#FFFFFF;overflow:hidden;min-height:390px;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease,border-color .22s ease" style-hover="transform:translateY(-4px);box-shadow:0 1px 2px rgba(18,18,18,.04),0 18px 36px -20px rgba(41,72,60,.42);border-color:#DCE7E1">
+                <div>
+                  <div style="position:relative;width:100%;aspect-ratio:338 / 220;background:#F3F4F6;overflow:hidden">
+                    <a href="{{ p.href }}" tabindex="-1" aria-hidden="true" style="display:block;width:100%;height:100%">
+                      <img src="{{ p.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+                    </a>
+                    <button type="button" onClick="{{ p.onWishlist }}" aria-pressed="{{ p.wishPressed }}" aria-label="{{ p.wishLabel }}" data-testid="wishlist-toggle" style="position:absolute;top:12px;right:12px;width:36px;height:36px;border:none;border-radius:18px;background:#FFFFFF;color:{{ p.heartColor }};display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 8px rgba(18,18,18,.14);transition:transform .18s ease,color .18s ease" style-hover="transform:scale(1.08);color:#C0392B">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="{{ p.heartFill }}" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3 4.3 12.9a4.6 4.6 0 0 1 0-6.6 4.9 4.9 0 0 1 6.8 0l.9.9.9-.9a4.9 4.9 0 0 1 6.8 0 4.6 4.6 0 0 1 0 6.6Z"></path></svg>
+                    </button>
+                    <sc-if value="{{ p.hasBadge }}" hint-placeholder-val="{{ false }}">
+                      <span style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:9999px;background:{{ p.badgeBg }};color:{{ p.badgeInk }};font-size:12px;font-weight:600;line-height:16px">{{ p.badgeText }}</span>
+                    </sc-if>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px;padding:16px">
+                    <a href="{{ p.href }}" data-testid="product-card-title" style="font-weight:600;font-size:16px;line-height:1.5;color:#121212;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:48px;transition:color .16s ease" style-hover="color:#3A836B">{{ p.title }}</a>
+                    <a href="{{ p.vendorHref }}" style="font-weight:400;font-size:14px;line-height:21px;color:#121212;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:#3A836B">{{ p.vendorName }}</a>
+                    <div style="display:flex;align-items:center;gap:4px">
+                      <span aria-hidden="true" style="display:flex;gap:2px;line-height:0">
+                        <sc-for list="{{ p.stars }}" as="s" hint-placeholder-count="5">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="{{ s.fill }}" stroke="#FFC107" stroke-width="1.5" stroke-linejoin="round"><path d="m12 3.2 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.7l6.1-.9Z"></path></svg>
+                        </sc-for>
+                      </span>
+                      <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:12px;line-height:16px;color:#666666">{{ p.ratingLabel }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;padding:0 16px 16px">
+                  <span data-testid="product-card-price" style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:16px;line-height:21px;color:#2B2B2B">{{ p.priceLabel }}</span>
+                  <sc-if value="{{ p.hasOriginal }}" hint-placeholder-val="{{ false }}">
+                    <s style="font-family:'DM Sans',Poppins,sans-serif;font-weight:400;font-size:13px;line-height:17px;color:#666666">{{ p.originalLabel }}</s>
+                  </sc-if>
+                  <button type="button" onClick="{{ p.onAdd }}" data-testid="quick-add" aria-label="{{ p.addLabel }}" style="margin-left:auto;display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;color:#3A836B;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .16s ease,border-color .16s ease" style-hover="background:#F2FAF7;border-color:#3A836B">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                    {{ p.addText }}
+                  </button>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showPagination }}" hint-placeholder-val="{{ false }}">
+          <nav aria-label="Pagination" data-testid="pagination" style="display:flex;justify-content:center;padding-top:24px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <button type="button" onClick="{{ onPrev }}" disabled="{{ prevDisabled }}" aria-label="Previous page" style="width:40px;height:40px;border:1px solid #EDF0EE;border-radius:8px;background:#FFFFFF;color:#2B2B2B;display:grid;place-items:center;cursor:pointer;opacity:{{ prevOpacity }};transition:border-color .16s ease" style-hover="border-color:#3A836B">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg>
+              </button>
+              <sc-for list="{{ pageButtons }}" as="pg" hint-placeholder-count="6">
+                <button type="button" onClick="{{ pg.onClick }}" disabled="{{ pg.disabled }}" aria-current="{{ pg.current }}" aria-label="{{ pg.label }}" style="min-width:40px;height:40px;padding:0 8px;border:1px solid {{ pg.border }};border-radius:8px;background:{{ pg.bg }};color:{{ pg.ink }};font-family:'DM Sans',Poppins,sans-serif;font-weight:{{ pg.weight }};font-size:14px;cursor:{{ pg.cursor }};transition:border-color .16s ease,background .16s ease" style-hover="border-color:#3A836B">{{ pg.text }}</button>
+              </sc-for>
+              <button type="button" onClick="{{ onNext }}" disabled="{{ nextDisabled }}" aria-label="Next page" style="width:40px;height:40px;border:1px solid #EDF0EE;border-radius:8px;background:#FFFFFF;color:#2B2B2B;display:grid;place-items:center;cursor:pointer;opacity:{{ nextOpacity }};transition:border-color .16s ease" style-hover="border-color:#3A836B">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+              </button>
+            </div>
+          </nav>
+        </sc-if>
+      </div>
+    </div>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="browse" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pageSize&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:12,&quot;min&quot;:6,&quot;max&quot;:36,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = {
+    loading: true, error: false, products: [], meta: { page: 1, totalPages: 1, total: 0 },
+    facets: null, categories: [], grades: [], types: [], themes: [],
+    filters: { categories: [], subjects: [], grades: [], types: [], themes: [], priceMin: '', priceMax: '', freeOnly: false, sort: 'relevance', q: '', page: 1 },
+    open: { cats: true, price: false, grade: false, type: false, theme: false },
+    expanded: {},
+  };
+
+  async componentDidMount() {
+    try { await this.start(); } catch (e) { window.__ulmErr = String(e && e.stack || e); console.error('Browse init failed', e); this.setState({ loading: false, error: true }); }
+  }
+
+  async start() {
+    const [app, products, rules, users, cart] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/productsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/repositories/usersRepo.js'),
+      import('./assets/js/repositories/cartRepo.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.repo = products; this.rules = rules;
+    this.usersRepo = users; this.cartRepo = cart;
+
+    const p = app.router.params();
+    const list = v => (v ? String(v).split(',').filter(Boolean) : []);
+    const catSlug = p.category || '';
+    const cat = catSlug ? rules.categoryBySlug(catSlug) : null;
+
+    const filters = {
+      categories: cat ? [cat.id] : list(p.categories),
+      subjects: list(p.subjects),
+      grades: list(p.grades),
+      types: list(p.types),
+      themes: list(p.themes),
+      priceMin: p.priceMin || '', priceMax: p.priceMax || '',
+      freeOnly: p.free === '1',
+      sort: p.sort || 'relevance',
+      q: p.q || '',
+      page: Number(p.page) || 1,
+    };
+
+    this.setState({
+      filters,
+      categories: rules.CATEGORIES,
+      grades: rules.GRADES,
+      types: rules.RESOURCE_TYPES,
+      themes: rules.THEMES,
+      expanded: cat ? { [cat.id]: true } : {},
+    });
+
+    await this.load();
+    const fc = await products.facets();
+    this.setState({ facets: fc.data });
+  }
+
+  async load(override) {
+    this.setState({ loading: true, error: false });
+    const f = override || this.state.filters;
+    const token = (this._token = (this._token || 0) + 1);
+    try {
+      const res = await this.repo.listProducts({
+        page: f.page, pageSize: 12, q: f.q, sort: f.sort,
+        categoryIds: f.categories, subjects: f.subjects, grades: f.grades,
+        resourceTypes: f.types, themes: f.themes,
+        priceMin: f.priceMin, priceMax: f.priceMax, freeOnly: f.freeOnly,
+      });
+      if (token !== this._token) return;
+      this.setState({ loading: false, products: res.data.map(p => this.decorate(p)), meta: res.meta });
+    } catch (err) {
+      console.error(err);
+      if (token !== this._token) return;
+      this.setState({ loading: false, error: true, products: [] });
+    }
+  }
+
+  set(patch, reload = true) {
+    const filters = Object.assign({}, this.state.filters, patch);
+    if (!('page' in patch)) filters.page = 1;
+    this.setState({ filters });
+    this.syncUrl(filters);
+    if (reload) this.load(filters);
+  }
+
+  syncUrl(f) {
+    if (!this.app) return;
+    this.app.router.syncQuery({
+      q: f.q, categories: f.categories, subjects: f.subjects, grades: f.grades,
+      types: f.types, themes: f.themes, priceMin: f.priceMin, priceMax: f.priceMax,
+      free: f.freeOnly ? '1' : '', sort: f.sort === 'relevance' ? '' : f.sort,
+      page: f.page > 1 ? f.page : '',
+    });
+  }
+
+  toggleIn(key, value) {
+    const cur = this.state.filters[key];
+    this.set({ [key]: cur.includes(value) ? cur.filter(v => v !== value) : cur.concat([value]) });
+  }
+
+  box(on) {
+    return { boxBg: on ? '#3A836B' : '#FFFFFF', boxBorder: on ? '#3A836B' : '#C9D4CF' };
+  }
+
+  chip(on) {
+    return on
+      ? { bg: '#FEDC97', border: '#FEDC97', ink: '#121212', pressed: 'true' }
+      : { bg: '#FFFFFF', border: '#DCE7E1', ink: '#595959', pressed: 'false' };
+  }
+
+  decorate(p) {
+    const url = this.app.router.url;
+    const user = this.app.auth.currentUser();
+    const saved = user ? this.usersRepo.isWishlisted(user.id, p.id) : false;
+    const rounded = Math.round(p.ratingAvg || 0);
+    const free = !p.price;
+    return {
+      id: p.id,
+      title: p.title,
+      cover: p.cover,
+      vendorName: p.vendorName,
+      href: url('product', { id: p.id }),
+      vendorHref: p.vendorSlug ? url('vendorStore', { store: p.vendorSlug }) : url('browse'),
+      stars: [1, 2, 3, 4, 5].map(i => ({ fill: i <= rounded ? '#FFC107' : 'none' })),
+      ratingLabel: p.ratingCount ? '(' + Number(p.ratingCount).toLocaleString('en-US') + ')' : '(new)',
+      priceLabel: free ? 'Free' : '$' + Number(p.price).toFixed(2),
+      hasOriginal: !!p.originalPrice && !free,
+      originalLabel: p.originalPrice ? '$' + Number(p.originalPrice).toFixed(2) : '',
+      hasBadge: !!p.discountPct || free,
+      badgeText: p.discountPct ? p.discountPct + '% off' : 'Free',
+      badgeBg: p.discountPct ? '#FEDC97' : '#3A836B',
+      badgeInk: p.discountPct ? '#121212' : '#FFFFFF',
+      heartColor: saved ? '#C0392B' : '#29483C',
+      heartFill: saved ? '#C0392B' : 'none',
+      wishPressed: saved ? 'true' : 'false',
+      wishLabel: (saved ? 'Remove from wishlist: ' : 'Save to wishlist: ') + p.title,
+      addText: free ? 'Get' : 'Add',
+      addLabel: (free ? 'Get ' : 'Add to cart: ') + p.title,
+      onWishlist: async () => {
+        const u = this.app.auth.currentUser();
+        if (!u) { this.app.toast('Sign in to save resources to your wishlist.', 'info'); return; }
+        const res = await this.usersRepo.toggleWishlist(u.id, p.id);
+        this.app.toast(res.data.saved ? 'Saved to your wishlist.' : 'Removed from your wishlist.', 'success');
+        this.setState(s => ({
+          products: s.products.map(row => row.id !== p.id ? row : Object.assign({}, row, {
+            heartColor: res.data.saved ? '#C0392B' : '#29483C',
+            heartFill: res.data.saved ? '#C0392B' : 'none',
+            wishPressed: res.data.saved ? 'true' : 'false',
+          })),
+        }));
+      },
+      onAdd: async () => {
+        try {
+          const u = this.app.auth.currentUser();
+          await this.cartRepo.addToCart(this.cartRepo.cartOwner(u), p.id, { isCustomer: !!u });
+          this.app.toast('Added to cart.', 'success');
+        } catch (err) {
+          this.app.toast(this.app.readError(err).message, 'error');
+        }
+      },
+    };
+  }
+
+  renderVals() {
+    const { loading, error, products, meta, filters, open, expanded, categories, grades, types, themes, facets } = this.state;
+    const url = this.app ? this.app.router.url : (() => '#');
+    const catById = id => categories.find(c => c.id === id);
+    const activeCat = filters.categories.length === 1 ? catById(filters.categories[0]) : null;
+
+    const chips = [];
+    filters.categories.forEach(id => {
+      const c = catById(id);
+      if (c) chips.push({ label: c.name, bg: '#FEDC97', border: '#FEDC97', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.toggleIn('categories', id) });
+    });
+    filters.subjects.forEach(s => chips.push({ label: s, bg: '#FEDC97', border: '#FEDC97', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.toggleIn('subjects', s) }));
+    filters.grades.forEach(g => chips.push({ label: g, bg: '#FEDC97', border: '#FEDC97', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.toggleIn('grades', g) }));
+    filters.types.forEach(t => chips.push({ label: t, bg: '#FFFFFF', border: '#DCE7E1', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.toggleIn('types', t) }));
+    filters.themes.forEach(t => chips.push({ label: t, bg: '#FFFFFF', border: '#DCE7E1', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.toggleIn('themes', t) }));
+    if (filters.freeOnly) chips.push({ label: 'Free only', bg: '#FFFFFF', border: '#DCE7E1', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.set({ freeOnly: false }) });
+    if (filters.q) chips.push({ label: '“' + filters.q + '”', bg: '#FFFFFF', border: '#DCE7E1', icon: 'M5 5l14 14M19 5 5 19', onRemove: () => this.set({ q: '' }) });
+
+    const total = meta.total;
+    const totalPages = meta.totalPages || 1;
+    const pageNums = [];
+    if (totalPages <= 7) { for (let i = 1; i <= totalPages; i++) pageNums.push(i); }
+    else {
+      pageNums.push(1, 2, 3, 4);
+      if (filters.page > 5 && filters.page < totalPages - 1) pageNums.push('…', filters.page);
+      pageNums.push('…', totalPages);
+    }
+
+    const crumbs = [
+      { label: 'All resources', href: url('browse'), color: '#595959', weight: 400, current: undefined },
+    ];
+    if (activeCat) crumbs.push({ label: activeCat.name, href: url('browse', { category: activeCat.slug }), color: '#29483C', weight: 600, current: 'page' });
+    else if (filters.q) crumbs.push({ label: 'Search: ' + filters.q, href: '#', color: '#29483C', weight: 600, current: 'page' });
+
+    return {
+      activeCategory: activeCat ? activeCat.slug : '',
+      query: filters.q,
+      crumbs,
+      pageTitle: activeCat ? activeCat.name + ' Resources' : filters.q ? 'Results for “' + filters.q + '”' : 'All Resources',
+      resultsLine: loading ? 'Loading resources…'
+        : 'Showing ' + total.toLocaleString('en-US') + ' educational worksheet' + (total === 1 ? '' : 's') + ', game' + (total === 1 ? '' : 's') + ', and activit' + (total === 1 ? 'y' : 'ies'),
+      loading,
+      hasError: !loading && error,
+      isEmpty: !loading && !error && products.length === 0,
+      hasResults: !loading && !error && products.length > 0,
+      products,
+      skeletons: [1, 2, 3, 4, 5, 6],
+      appliedChips: chips,
+      sort: filters.sort,
+      onSort: e => this.set({ sort: e.target.value }),
+      onRetry: () => this.load(),
+
+      catsOpen: open.cats, catsChevron: open.cats ? 0 : -90,
+      priceOpen: open.price, priceChevron: open.price ? 0 : -90,
+      gradeOpen: open.grade, gradeChevron: open.grade ? 0 : -90,
+      typeOpen: open.type, typeChevron: open.type ? 0 : -90,
+      themeOpen: open.theme, themeChevron: open.theme ? 0 : -90,
+      toggleCategories: () => this.setState(s => ({ open: Object.assign({}, s.open, { cats: !s.open.cats }) })),
+      togglePrice: () => this.setState(s => ({ open: Object.assign({}, s.open, { price: !s.open.price }) })),
+      toggleGrade: () => this.setState(s => ({ open: Object.assign({}, s.open, { grade: !s.open.grade }) })),
+      toggleType: () => this.setState(s => ({ open: Object.assign({}, s.open, { type: !s.open.type }) })),
+      toggleTheme: () => this.setState(s => ({ open: Object.assign({}, s.open, { theme: !s.open.theme }) })),
+
+      categoryRows: categories.map(c => {
+        const on = filters.categories.includes(c.id);
+        const isOpen = !!expanded[c.id];
+        return Object.assign({
+          name: c.name,
+          checked: on,
+          expanded: isOpen,
+          chevron: isOpen ? 90 : 0,
+          expandLabel: (isOpen ? 'Collapse ' : 'Expand ') + c.name,
+          onToggle: () => this.toggleIn('categories', c.id),
+          onExpand: () => this.setState(s => ({ expanded: Object.assign({}, s.expanded, { [c.id]: !s.expanded[c.id] }) })),
+          subjects: c.subjects.map(s => Object.assign({
+            name: s, checked: filters.subjects.includes(s),
+            onToggle: () => this.toggleIn('subjects', s),
+          }, this.box(filters.subjects.includes(s)))),
+        }, this.box(on));
+      }),
+
+      gradeChips: grades.map(g => Object.assign({ name: g, onToggle: () => this.toggleIn('grades', g) }, this.chip(filters.grades.includes(g)))),
+      themeChips: themes.map(t => Object.assign({ name: t, onToggle: () => this.toggleIn('themes', t) }, this.chip(filters.themes.includes(t)))),
+      typeRows: types.map(t => Object.assign({
+        name: t, checked: filters.types.includes(t),
+        count: facets && facets.resourceTypes[t] ? facets.resourceTypes[t] : 0,
+        onToggle: () => this.toggleIn('types', t),
+      }, this.box(filters.types.includes(t)))),
+
+      freeChecked: filters.freeOnly,
+      freeBg: filters.freeOnly ? '#3A836B' : '#FFFFFF',
+      freeBorder: filters.freeOnly ? '#3A836B' : '#C9D4CF',
+      onToggleFree: () => this.set({ freeOnly: !filters.freeOnly }),
+      priceMin: filters.priceMin,
+      priceMax: filters.priceMax,
+      onPriceMin: e => this.set({ priceMin: e.target.value }),
+      onPriceMax: e => this.set({ priceMax: e.target.value }),
+      onClearAll: () => this.set({ categories: [], subjects: [], grades: [], types: [], themes: [], priceMin: '', priceMax: '', freeOnly: false, q: '' }),
+      onApply: () => { this.load(); this.app.toast('Filters applied.', 'success'); },
+
+      showPagination: !loading && !error && totalPages > 1,
+      pageButtons: pageNums.map((n, i) => {
+        if (n === '…') return { text: '…', label: 'More pages', disabled: true, cursor: 'default', bg: '#FFFFFF', border: 'transparent', ink: '#2B2B2B', weight: 500, current: undefined, onClick: () => {} };
+        const active = n === filters.page;
+        return {
+          text: String(n), label: 'Page ' + n, disabled: false, cursor: 'pointer',
+          bg: active ? '#3A836B' : '#FFFFFF', border: active ? '#3A836B' : '#EDF0EE',
+          ink: active ? '#FFFFFF' : '#2B2B2B', weight: active ? 700 : 500,
+          current: active ? 'page' : undefined,
+          onClick: () => { this.set({ page: n }); window.scrollTo({ top: 220, behavior: 'smooth' }); },
+        };
+      }),
+      prevDisabled: filters.page <= 1,
+      nextDisabled: filters.page >= totalPages,
+      prevOpacity: filters.page <= 1 ? 0.4 : 1,
+      nextOpacity: filters.page >= totalPages ? 0.4 : 1,
+      onPrev: () => { if (filters.page > 1) { this.set({ page: filters.page - 1 }); window.scrollTo({ top: 220, behavior: 'smooth' }); } },
+      onNext: () => { if (filters.page < totalPages) { this.set({ page: filters.page + 1 }); window.scrollTo({ top: 220, behavior: 'smooth' }); } },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

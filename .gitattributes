@@ -1,0 +1,11 @@
+# Keep line endings deterministic. The launchers are the reason this matters:
+# start-mac-linux.command needs LF or macOS rejects its shebang, and
+# start-windows.bat needs CRLF or older cmd.exe mis-reads it.
+* text=auto eol=lf
+*.bat text eol=crlf
+*.command text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary

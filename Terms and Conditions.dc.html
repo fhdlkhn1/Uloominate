@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Terms &amp; Conditions — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="P-12 Terms and Conditions" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+  <main style="flex:1;max-width:1728px;margin:0 auto;width:100%;padding:56px clamp(20px,12.5vw,216px) 72px;display:flex;flex-direction:column;gap:24px">
+    <nav aria-label="Breadcrumb" style="display:flex;gap:8px;align-items:center">
+      <a href="{{ homeHref }}" style="font-size:12px;line-height:18px;color:#595959" style-hover="color:#3A836B">Home</a>
+      <span aria-hidden="true" style="font-size:12px;color:#595959">›</span>
+      <span aria-current="page" style="font-weight:600;font-size:12px;line-height:18px;color:#29483C">Terms &amp; Conditions</span>
+    </nav>
+    <h1 style="margin:0;font-weight:600;font-size:clamp(30px,3vw,44px);line-height:1.15;color:#29483C">{{ title }}</h1>
+    <p style="margin:0;font-size:14px;color:#595959">Last updated {{ updated }}</p>
+    <div style="max-width:860px;display:flex;flex-direction:column;gap:20px;padding-top:8px">
+      <sc-for list="{{ paragraphs }}" as="p" hint-placeholder-count="3">
+        <p style="margin:0;font-size:clamp(15px,1.15vw,18px);line-height:1.8;color:#121212;text-wrap:pretty">{{ p.text }}</p>
+      </sc-for>
+    </div>
+
+    <h2 style="margin:20px 0 0;font-weight:600;font-size:clamp(20px,1.8vw,26px);color:#29483C">Commission and fees by plan</h2>
+    <div style="overflow-x:auto;max-width:900px">
+      <table style="border-collapse:collapse;width:100%;min-width:560px;font-size:14px">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:left;padding:12px 14px;background:#F2FAF7;color:#29483C;font-weight:600;border-bottom:1px solid #DCEAE3">Plan</th>
+            <th scope="col" style="text-align:left;padding:12px 14px;background:#F2FAF7;color:#29483C;font-weight:600;border-bottom:1px solid #DCEAE3">Annual fee</th>
+            <th scope="col" style="text-align:left;padding:12px 14px;background:#F2FAF7;color:#29483C;font-weight:600;border-bottom:1px solid #DCEAE3">Vendor payout</th>
+            <th scope="col" style="text-align:left;padding:12px 14px;background:#F2FAF7;color:#29483C;font-weight:600;border-bottom:1px solid #DCEAE3">Per transaction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ planRows }}" as="row" hint-placeholder-count="4">
+            <tr>
+              <td style="padding:12px 14px;border-bottom:1px solid #EDF0EE;color:#121212;font-weight:500">{{ row.name }}</td>
+              <td style="padding:12px 14px;border-bottom:1px solid #EDF0EE;color:#595959">{{ row.fee }}</td>
+              <td style="padding:12px 14px;border-bottom:1px solid #EDF0EE;color:#595959">{{ row.payout }}</td>
+              <td style="padding:12px 14px;border-bottom:1px solid #EDF0EE;color:#595959">{{ row.txn }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin:0;max-width:860px;font-size:14px;line-height:1.7;color:#595959">The per-transaction fee is deducted from the vendor payout. Under the founding promotion no plan fee is charged until 1 January 2027; billing begins 2 January 2027.</p>
+  </main>
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="terms" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { page: null, plans: [], r: null };
+  async componentDidMount() {
+    const [app, platform, rules, router] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/router.js'),
+    ]);
+    await app.boot();
+    const page = await platform.getPage('terms');
+    this.setState({ page: page.data, plans: rules.PLANS, r: router });
+  }
+  renderVals() {
+    const p = this.state.page;
+    const u = this.state.r ? this.state.r.url : (x => x);
+    return {
+      title: p ? p.title : 'Terms & Conditions',
+      updated: p ? new Date(p.updatedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) : '—',
+      paragraphs: p ? p.body.split('\n\n').map(text => ({ text })) : [],
+      homeHref: u('landing'),
+      planRows: this.state.plans.map(pl => ({
+        name: pl.name,
+        fee: pl.annualFee === null ? 'By agreement' : pl.annualFee === 0 ? 'Free' : '$' + pl.annualFee + '/year',
+        payout: pl.payoutRate === null ? '—' : pl.payoutRateRange
+          ? Math.round(pl.payoutRateRange[0] * 100) + '–' + Math.round(pl.payoutRateRange[1] * 100) + '%'
+          : Math.round(pl.payoutRate * 100) + '%',
+        txn: pl.transactionFee === null ? '—'
+          : (pl.transactionFeePct ? (pl.transactionFeePct * 100).toFixed(1) + '% + ' : '')
+            + '$' + pl.transactionFee.toFixed(2),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

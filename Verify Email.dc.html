@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Confirm your email — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F2FAF7;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="A-06 Verify Email" style="min-height:100vh;display:flex;flex-direction:column">
+  <div style="flex:1;display:grid;place-items:center;padding:40px 20px">
+    <div style="width:min(480px,100%);display:flex;flex-direction:column;gap:24px">
+
+      <a href="{{ homeHref }}" style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <img src="assets/img/logo-mark.png" alt="" width="44" height="53" style="object-fit:contain" />
+        <span style="font-family:'Montserrat Alternates',Poppins,sans-serif;font-weight:500;font-size:28px;color:#3A836B">Uloominate</span>
+      </a>
+
+      <sc-if value="{{ pending }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">
+          <span style="width:72px;height:72px;border-radius:50%;background:#EAF7F1;display:grid;place-items:center">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4"></rect><path d="m3.6 6.4 8.4 6 8.4-6"></path></svg>
+          </span>
+          <h1 style="margin:0;font-weight:600;font-size:24px;color:#29483C">Confirm your email</h1>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#595959">We sent a confirmation link to <strong style="color:#29483C">{{ email }}</strong>. Click it to finish setting up your account.</p>
+          <div style="width:100%;background:#FFF2DE;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B9913E">Prototype shortcut</span>
+            <p style="margin:0;font-size:12px;line-height:1.6;color:#121212">No email is actually sent in this prototype. Confirm now to continue.</p>
+            <button type="button" onClick="{{ onConfirm }}" data-testid="verify-confirm" style="height:44px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;cursor:pointer" style-hover="background:#29483C">Confirm my email</button>
+          </div>
+          <button type="button" onClick="{{ onResend }}" style="border:none;background:transparent;padding:0;font-family:Poppins,sans-serif;font-size:13px;font-weight:500;color:#3A836B;cursor:pointer" style-hover="color:#29483C">Resend the confirmation email</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ confirmed }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="verify-done" style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:36px 32px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">
+          <span style="width:72px;height:72px;border-radius:50%;background:#EAF7F1;display:grid;place-items:center">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.6 4.5L19 7.5"></path></svg>
+          </span>
+          <h1 style="margin:0;font-weight:600;font-size:24px;color:#29483C">Email confirmed</h1>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#595959">{{ doneBody }}</p>
+          <a href="{{ nextHref }}" style="display:inline-flex;align-items:center;justify-content:center;width:100%;height:52px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:16px" style-hover="background:#29483C;color:#FFFFFF">{{ nextLabel }}</a>
+        </div>
+      </sc-if>
+
+      <a href="{{ homeHref }}" style="text-align:center;font-size:13px;color:#595959" style-hover="color:#3A836B">← Back to Uloominate</a>
+    </div>
+  </div>
+  <dc-import name="DevToolbar" page="verifyEmail" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { confirmed: false, email: '', role: 'guest' };
+
+  async componentDidMount() {
+    const app = await import('./assets/js/app.js');
+    await app.boot();
+    this.app = app;
+    const user = app.auth.currentUser();
+    this.setState({
+      email: app.router.param('email', '') || (user ? user.email : 'your email address'),
+      role: user ? user.role : 'guest',
+    });
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { confirmed, email, role } = this.state;
+    const nextParam = this.app ? this.app.router.param('next', '') : '';
+    const isVendor = role === 'vendor';
+    return {
+      homeHref: url('landing'),
+      email,
+      pending: !confirmed,
+      confirmed,
+      doneBody: isVendor
+        ? 'Your email is confirmed. Your store is with an administrator for review.'
+        : 'Your account is ready. Browse the catalogue and download your first resource.',
+      nextHref: isVendor ? url('vendorPending') : url(nextParam || 'browse'),
+      nextLabel: isVendor ? 'See my approval status' : 'Start browsing resources',
+      onConfirm: () => {
+        this.setState({ confirmed: true });
+        this.app.toast('Email confirmed.', 'success');
+      },
+      onResend: () => this.app.toast('Confirmation email resent to ' + email + '.', 'info'),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

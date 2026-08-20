@@ -1,0 +1,4 @@
+# Client prototype, not a public site. Share the link directly; keep it out of
+# search results.
+User-agent: *
+Disallow: /

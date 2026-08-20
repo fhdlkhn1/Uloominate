@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Vendors — Uloominate admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7F8FA;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="D-04 Admin Vendors">
+  <dc-import name="AdminShell" active="adminVendors" title="Vendors" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <div style="display:flex;flex-direction:column;gap:18px">
+
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <button type="button" onClick="{{ t.onPick }}" aria-pressed="{{ t.pressed }}" style="display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 15px;border:1px solid {{ t.border }};border-radius:9999px;background:{{ t.bg }};font-family:Poppins,sans-serif;font-size:13px;font-weight:600;color:{{ t.ink }};cursor:pointer">
+            {{ t.label }}
+            <span style="min-width:20px;height:19px;padding:0 5px;border-radius:10px;background:{{ t.pillBg }};color:{{ t.pillInk }};font-family:'DM Sans',Poppins,sans-serif;font-size:11px;line-height:19px;text-align:center">{{ t.count }}</span>
+          </button>
+        </sc-for>
+        <label style="margin-left:auto;display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border:1px solid #E7E9EE;border-radius:8px;background:#FFFFFF;flex:0 1 280px;min-width:190px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+          <input type="search" value="{{ query }}" onInput="{{ onSearch }}" placeholder="Store, owner or email" aria-label="Search vendors" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:Poppins,sans-serif;font-size:13.5px" />
+        </label>
+      </div>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:10px">
+          <span style="height:86px;border-radius:12px;background:#EEF0F4"></span>
+          <span style="height:86px;border-radius:12px;background:#F1F3F6"></span>
+          <span style="height:86px;border-radius:12px;background:#F3F5F8"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="vendors-empty" style="background:#FFFFFF;border:1px dashed #DCE7E1;border-radius:16px;padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <h2 style="margin:0;font-weight:600;font-size:19px;color:#29483C">{{ emptyTitle }}</h2>
+          <p style="margin:0;max-width:420px;font-size:13.5px;line-height:1.7;color:#595959">{{ emptyBody }}</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ rows }}" as="v" hint-placeholder-count="5">
+            <article data-testid="vendor-row" style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:14px;padding:18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <span style="flex:0 0 48px;width:48px;height:48px;border-radius:50%;overflow:hidden;background:#3A836B;color:#FFFFFF;display:grid;place-items:center;font-size:15px;font-weight:600">
+                <sc-if value="{{ v.hasLogo }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ v.logo }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+                <sc-if value="{{ v.noLogo }}" hint-placeholder-val="{{ true }}">
+                  <span>{{ v.initials }}</span>
+                </sc-if>
+              </span>
+
+              <div style="flex:1 1 240px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <span style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+                  <a href="{{ v.storeHref }}" style="font-weight:600;font-size:14.5px;color:#29483C" style-hover="color:#3A836B">{{ v.storeName }}</a>
+                  <span style="padding:3px 9px;border-radius:9999px;background:{{ v.badgeBg }};color:{{ v.badgeInk }};font-size:11px;font-weight:700">{{ v.statusLabel }}</span>
+                </span>
+                <span style="font-size:12.5px;color:#595959;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ v.owner }} · {{ v.email }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;color:#9AA5A0">{{ v.meta }}</span>
+              </div>
+
+              <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:3px;min-width:110px">
+                <span style="font-size:11.5px;color:#9AA5A0">Plan</span>
+                <select value="{{ v.planCode }}" onChange="{{ v.onPlan }}" aria-label="{{ v.planLabel }}" style="height:36px;border:1px solid #E7E9EE;border-radius:8px;padding:0 8px;font-family:Poppins,sans-serif;font-size:12.5px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                  <sc-for list="{{ planOptions }}" as="p" hint-placeholder-count="4">
+                    <option value="{{ p.code }}">{{ p.name }}</option>
+                  </sc-for>
+                </select>
+              </div>
+
+              <div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:96px">
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:14.5px;color:#29483C">{{ v.gross }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11px;color:#9AA5A0">{{ v.grossNote }}</span>
+              </div>
+
+              <div style="flex:0 0 auto;display:flex;gap:7px;flex-wrap:wrap">
+                <sc-if value="{{ v.canSuspend }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ v.onSuspend }}" data-testid="suspend" style="height:36px;padding:0 13px;border:1px solid #F3D6D2;border-radius:8px;background:#FFFFFF;color:#C0392B;font-family:Poppins,sans-serif;font-size:12.5px;font-weight:600;cursor:pointer" style-hover="background:#FDF1EF">Suspend</button>
+                </sc-if>
+                <sc-if value="{{ v.canReinstate }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ v.onReinstate }}" data-testid="reinstate" style="height:36px;padding:0 13px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-size:12.5px;font-weight:600;cursor:pointer" style-hover="background:#29483C">Reinstate</button>
+                </sc-if>
+                <sc-if value="{{ v.isPending }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ queueHref }}" style="display:inline-flex;align-items:center;height:36px;padding:0 13px;border-radius:8px;background:#FEDC97;color:#29483C;font-size:12.5px;font-weight:600" style-hover="filter:brightness(1.04);color:#29483C">Review</a>
+                </sc-if>
+                <a href="{{ v.catalogueHref }}" style="display:inline-flex;align-items:center;height:36px;padding:0 13px;border:1px solid #E7E9EE;border-radius:8px;background:#FFFFFF;font-size:12.5px;font-weight:600;color:#29483C" style-hover="background:#F2FAF7;color:#29483C">Catalogue</a>
+              </div>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const BADGES = {
+  approved: { bg: '#EAF7F1', ink: '#3A836B', label: 'Active' },
+  pending: { bg: '#FFF2DE', ink: '#B9913E', label: 'Awaiting review' },
+  declined: { bg: '#F3F4F6', ink: '#595959', label: 'Declined' },
+  suspended: { bg: '#FDF1EF', ink: '#C0392B', label: 'Suspended' },
+};
+
+class Component extends DCLogic {
+  state = { loading: true, rows: [], counts: {}, user: null, status: '', query: '', stats: {} };
+
+  async componentDidMount() {
+    const [app, vendors, rules, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, vendors, rules, db });
+    const user = app.auth.requireRole('admin');
+    if (!user) return;
+    this.user = user;
+    this.setState({ user });
+    await this.load();
+  }
+
+  async load() {
+    const res = await this.vendors.listVendors({
+      status: this.state.status || undefined,
+      q: this.state.query,
+      pageSize: 60,
+    });
+    const all = this.db.findAll('vendors').rows;
+    const stats = {};
+    for (const v of res.data) {
+      const st = await this.vendors.vendorStats(v.id).catch(() => ({ data: null }));
+      stats[v.id] = st.data;
+    }
+    this.setState({
+      loading: false, rows: res.data, stats,
+      counts: {
+        all: all.length,
+        approved: all.filter(v => v.status === 'approved').length,
+        pending: all.filter(v => v.status === 'pending').length,
+        suspended: all.filter(v => v.status === 'suspended').length,
+      },
+    });
+  }
+
+  money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, rows, counts, status, query, stats } = this.state;
+
+    return {
+      subtitle: counts.all ? counts.all + ' vendor accounts · ' + counts.approved + ' active' : '',
+      queueHref: url('adminVendorQueue'),
+      loading, query,
+      isEmpty: !loading && rows.length === 0,
+      hasRows: !loading && rows.length > 0,
+      emptyTitle: query || status ? 'Nothing matches that view' : 'No vendors yet',
+      emptyBody: query || status
+        ? 'Try clearing the search or choosing a different status.'
+        : 'Vendor accounts appear here once someone registers a store.',
+
+      planOptions: (this.rules ? this.rules.PLANS : []).map(p => ({ code: p.code, name: p.name })),
+
+      tabs: [
+        { key: '', label: 'All', n: counts.all },
+        { key: 'approved', label: 'Active', n: counts.approved },
+        { key: 'pending', label: 'Awaiting review', n: counts.pending },
+        { key: 'suspended', label: 'Suspended', n: counts.suspended },
+      ].map(t => {
+        const on = t.key === status;
+        return {
+          label: t.label,
+          count: String(t.n || 0),
+          pressed: on ? 'true' : 'false',
+          bg: on ? '#3A836B' : '#FFFFFF',
+          border: on ? '#3A836B' : '#E7E9EE',
+          ink: on ? '#FFFFFF' : '#29483C',
+          pillBg: on ? 'rgba(255,255,255,.22)' : '#F1F3F6',
+          pillInk: on ? '#FFFFFF' : '#595959',
+          onPick: () => this.setState({ status: t.key }, () => this.load()),
+        };
+      }),
+
+      rows: rows.map(v => {
+        const b = BADGES[v.status] || BADGES.pending;
+        const st = stats[v.id];
+        return {
+          storeName: v.storeName,
+          storeHref: url('vendorStore', { store: v.slug }),
+          catalogueHref: url('adminCatalogue', { vendor: v.id }),
+          owner: v.owner,
+          email: v.email,
+          logo: v.logo,
+          hasLogo: !!v.logo,
+          noLogo: !v.logo,
+          initials: (v.storeName || '?').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(),
+          statusLabel: b.label, badgeBg: b.bg, badgeInk: b.ink,
+          planCode: v.planCode,
+          planLabel: 'Plan for ' + v.storeName,
+          meta: [
+            v.productCount + (v.productCount === 1 ? ' resource' : ' resources'),
+            v.followers + ' followers',
+            'joined ' + new Date(v.joinedAt).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' }),
+          ].join(' · '),
+          gross: st ? this.money(st.grossSales) : '—',
+          grossNote: st ? st.unitsSold + ' sold' : '',
+          canSuspend: v.status === 'approved',
+          canReinstate: v.status === 'suspended',
+          isPending: v.status === 'pending',
+
+          onPlan: async e => {
+            const code = e.target.value;
+            const plan = this.rules.planByCode(code);
+            const ok = await this.app.confirmDialog({
+              title: 'Move ' + v.storeName + ' to ' + plan.name + '?',
+              body: 'Their commission rate, transaction fee and upload limit change immediately. Historic orders keep the rate they were sold at.',
+              confirmLabel: 'Change plan',
+              tone: 'primary',
+            });
+            if (!ok) { await this.load(); return; }
+            await this.vendors.updateVendor(v.id, { planCode: code });
+            const sub = this.db.findAll('subscriptions', { filter: { vendorId: v.id } }).rows[0];
+            if (sub) this.db.update('subscriptions', sub.id, { planCode: code, nextBillingAmount: plan.annualFee });
+            await this.load();
+            this.app.toast(v.storeName + ' moved to ' + plan.name + '.', 'success');
+          },
+          onSuspend: async () => {
+            const ok = await this.app.confirmDialog({
+              title: 'Suspend ' + v.storeName + '?',
+              body: 'Their store and every listing are hidden from the storefront until reinstated. Existing purchasers keep their downloads.',
+              confirmLabel: 'Suspend store',
+            });
+            if (!ok) return;
+            await this.vendors.suspendVendor(v.id, 'Suspended by administrator');
+            await this.load();
+            this.app.toast('Vendor suspended. Their listings are hidden from the storefront.', 'info');
+          },
+          onReinstate: async () => {
+            await this.vendors.reinstateVendor(v.id);
+            await this.load();
+            this.app.toast(v.storeName + ' reinstated.', 'success');
+          },
+        };
+      }),
+
+      onSearch: e => {
+        const val = e.target.value;
+        clearTimeout(this._t);
+        this.setState({ query: val });
+        this._t = setTimeout(() => this.load(), 240);
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Checkout — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="P-07 Checkout" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;max-width:1728px;margin:0 auto;width:100%;padding:32px clamp(20px,8vw,144px) 72px;display:flex;flex-direction:column;gap:24px">
+
+    <h1 style="margin:0;font-weight:600;font-size:clamp(26px,2.6vw,36px);line-height:1.2;color:#29483C">Checkout</h1>
+    <p style="margin:0;max-width:640px;font-size:15px;line-height:1.7;color:#595959">Everything here is a digital download. There is no shipping step and nothing will be posted to you.</p>
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;gap:32px;flex-wrap:wrap">
+        <span style="flex:999 1 480px;height:420px;border-radius:16px;background:#F4F6F5"></span>
+        <span style="flex:1 1 320px;max-width:380px;height:300px;border-radius:16px;background:#F7F9F8"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed #DCE7E1;background:#FCFDFC;border-radius:16px;padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+        <h2 style="margin:0;font-weight:600;font-size:22px;color:#29483C">There is nothing to check out</h2>
+        <p style="margin:0;max-width:420px;font-size:15px;line-height:1.7;color:#595959">Your cart is empty. Add a resource and come back.</p>
+        <a href="{{ browseHref }}" style="margin-top:6px;display:inline-flex;align-items:center;height:50px;padding:0 26px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:15px" style-hover="background:#29483C;color:#FFFFFF">Browse resources</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <form data-testid="checkout-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="display:flex;align-items:flex-start;gap:32px;flex-wrap:wrap">
+
+        <div style="flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:20px">
+
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" data-testid="checkout-error" style="margin:0;padding:14px 16px;border-radius:10px;background:#FDF1EF;border-left:4px solid #C0392B;font-size:14px;line-height:1.6;color:#C0392B">{{ formError }}</p>
+          </sc-if>
+
+          <section style="border:1px solid #EDF0EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Where your files go</h2>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="co-email" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ emailLabelColor }}">Delivery email</label>
+              <input id="co-email" name="email" type="email" autocomplete="email" value="{{ vEmail }}" onInput="{{ onInput }}" aria-invalid="{{ emailInvalid }}" style="height:52px;border:1px solid {{ emailBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ emailError }}</span></sc-if>
+            </div>
+            <p style="margin:0;font-size:13px;line-height:1.6;color:#595959">Your downloads also stay in your account permanently, so you never need this email to get them back.</p>
+          </section>
+
+          <section style="border:1px solid #EDF0EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+              <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Payment</h2>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#595959">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2.2"></rect><path d="M8 10.5V7.6A4 4 0 0 1 16 7.6v2.9"></path></svg>
+                Simulated — no real charge
+              </span>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <sc-for list="{{ methods }}" as="m" hint-placeholder-count="2">
+                <label style="flex:1 1 160px;display:flex;align-items:center;gap:10px;padding:14px;border:1.6px solid {{ m.border }};border-radius:12px;background:{{ m.bg }};cursor:pointer">
+                  <input type="radio" name="paymentMethod" value="{{ m.value }}" checked="{{ m.checked }}" onChange="{{ m.onPick }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;border:1.8px solid {{ m.dotBorder }};border-radius:50%;background:{{ m.dotBg }};box-shadow:{{ m.dotInner }};cursor:pointer" />
+                  <span style="font-weight:600;font-size:14px;color:#29483C">{{ m.label }}</span>
+                </label>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ isCard }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label for="co-cardName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ cardNameLabelColor }}">Name on card</label>
+                  <input id="co-cardName" name="cardName" type="text" autocomplete="cc-name" value="{{ vCardName }}" onInput="{{ onInput }}" aria-invalid="{{ cardNameInvalid }}" style="height:52px;border:1px solid {{ cardNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                  <sc-if value="{{ cardNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ cardNameError }}</span></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px">
+                  <label for="co-cardNumber" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ cardNumberLabelColor }}">Card number</label>
+                  <input id="co-cardNumber" name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" value="{{ vCardNumber }}" onInput="{{ onInput }}" aria-invalid="{{ cardNumberInvalid }}" placeholder="4242 4242 4242 4242" style="height:52px;border:1px solid {{ cardNumberBorder }};border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                  <sc-if value="{{ cardNumberError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ cardNumberError }}</span></sc-if>
+                </div>
+                <div style="display:flex;gap:14px;flex-wrap:wrap">
+                  <div style="flex:1 1 140px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                    <label for="co-cardExpiry" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ cardExpiryLabelColor }}">Expiry</label>
+                    <input id="co-cardExpiry" name="cardExpiry" type="text" autocomplete="cc-exp" value="{{ vCardExpiry }}" onInput="{{ onInput }}" aria-invalid="{{ cardExpiryInvalid }}" placeholder="09/29" style="height:52px;border:1px solid {{ cardExpiryBorder }};border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                    <sc-if value="{{ cardExpiryError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ cardExpiryError }}</span></sc-if>
+                  </div>
+                  <div style="flex:1 1 140px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                    <label for="co-cardCvc" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ cardCvcLabelColor }}">Security code</label>
+                    <input id="co-cardCvc" name="cardCvc" type="text" inputmode="numeric" autocomplete="cc-csc" value="{{ vCardCvc }}" onInput="{{ onInput }}" aria-invalid="{{ cardCvcInvalid }}" placeholder="123" style="height:52px;border:1px solid {{ cardCvcBorder }};border-radius:8px;padding:0 14px;font-family:'DM Sans',monospace;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                    <sc-if value="{{ cardCvcError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ cardCvcError }}</span></sc-if>
+                  </div>
+                </div>
+                <button type="button" onClick="{{ onFillCard }}" style="align-self:flex-start;height:38px;padding:0 16px;border:1px solid #DCE7E1;border-radius:8px;background:#FCFDFC;font-family:Poppins,sans-serif;font-size:12px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">Fill test card</button>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ isPaypal }}" hint-placeholder-val="{{ false }}">
+              <p style="margin:0;padding:16px;border-radius:10px;background:#F2FAF7;font-size:14px;line-height:1.7;color:#29483C">You will be handed to PayPal to approve the payment, then returned here. In this prototype the handoff is simulated.</p>
+            </sc-if>
+          </section>
+
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+            <input type="checkbox" name="simulateFailure" checked="{{ vSimulateFailure }}" onChange="{{ onCheck }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;margin-top:2px;border:1.6px solid {{ failBorder }};border-radius:4px;background:{{ failBg }};cursor:pointer" />
+            <span style="font-size:13px;line-height:1.6;color:#595959">Simulate a declined payment, to see the failure state.</span>
+          </label>
+        </div>
+
+        <aside style="flex:1 1 320px;max-width:380px;min-width:0;display:flex;flex-direction:column;gap:16px">
+          <div style="border:1px solid #EDF0EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 16px 34px -26px rgba(41,72,60,.36)">
+            <h2 style="margin:0;font-weight:600;font-size:18px;color:#29483C">{{ itemsHeading }}</h2>
+
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ items }}" as="it" hint-placeholder-count="2">
+                <div style="display:flex;align-items:flex-start;gap:12px">
+                  <span style="flex:0 0 56px;width:56px;height:40px;border-radius:8px;overflow:hidden;background:#F3F4F6">
+                    <img src="{{ it.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+                  </span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                    <span style="font-weight:500;font-size:13px;line-height:1.45;color:#121212;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ it.title }}</span>
+                    <span style="font-size:12px;color:#595959">{{ it.vendorName }}</span>
+                  </span>
+                  <span style="flex:0 0 auto;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:13px;color:#29483C">{{ it.price }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="height:1px;background:#EDF0EE"></div>
+
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <label for="co-coupon" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Coupon code</label>
+              <div style="display:flex;gap:8px">
+                <input id="co-coupon" name="couponCode" type="text" value="{{ vCouponCode }}" onInput="{{ onInput }}" placeholder="RAMADAN25" style="flex:1;min-width:0;height:46px;border:1px solid {{ couponBorder }};border-radius:8px;padding:0 12px;font-family:'DM Sans',monospace;font-size:13px;text-transform:uppercase;outline:none" style-focus="border-color:#3A836B" />
+                <button type="button" onClick="{{ onApplyCoupon }}" style="flex:0 0 auto;height:46px;padding:0 16px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">Apply</button>
+              </div>
+              <sc-if value="{{ couponMessage }}" hint-placeholder-val="{{ false }}">
+                <span role="status" style="font-size:12px;line-height:1.5;color:{{ couponMessageColor }}">{{ couponMessage }}</span>
+              </sc-if>
+            </div>
+
+            <div style="height:1px;background:#EDF0EE"></div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ totals }}" as="t" hint-placeholder-count="2">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                  <span style="font-size:14px;color:{{ t.color }}">{{ t.label }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:500;font-size:14px;color:{{ t.color }}">{{ t.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <span style="font-weight:600;font-size:16px;color:#29483C">Total</span>
+              <span data-testid="checkout-total" style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:26px;color:#29483C">{{ total }}</span>
+            </div>
+
+            <button type="submit" disabled="{{ busy }}" data-testid="checkout-submit" style="height:56px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:16px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+              <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                <span aria-hidden="true" style="width:18px;height:18px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+              </sc-if>
+              {{ submitLabel }}
+            </button>
+
+            <a href="{{ cartHref }}" style="text-align:center;font-size:13px;color:#595959" style-hover="color:#3A836B">← Back to cart</a>
+          </div>
+        </aside>
+      </form>
+    </sc-if>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="checkout" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    loading: true, cart: null, user: null, busy: false, errors: {}, formError: '',
+    coupon: null, couponMessage: '', couponOk: false,
+    values: {
+      email: '', paymentMethod: 'card', cardName: '', cardNumber: '',
+      cardExpiry: '', cardCvc: '', couponCode: '', simulateFailure: false,
+    },
+  };
+
+  async componentDidMount() {
+    const [app, cart, orders, validation, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/cartRepo.js'),
+      import('./assets/js/repositories/ordersRepo.js'),
+      import('./assets/js/validation.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.cartRepo = cart; this.orders = orders; this.validation = validation; this.db = db;
+    const user = app.auth.requireRole('customer', 'vendor', 'admin');
+    if (!user) return;
+    this.owner = user.id;
+    cart.mergeGuestCart(user.id);
+    const res = await cart.getCart(user.id);
+    this.setState(s => ({
+      loading: false, cart: res.data, user,
+      values: Object.assign({}, s.values, { email: user.email, cardName: user.name }),
+    }));
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  discount() {
+    const c = this.state.coupon;
+    const sub = this.state.cart ? this.state.cart.subtotal : 0;
+    if (!c || !this.state.couponOk) return 0;
+    const d = c.type === 'percent' ? sub * c.value / 100 : Math.min(sub, c.value);
+    return Math.round(d * 100) / 100;
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, cart, busy, errors, formError, values, couponMessage, couponOk } = this.state;
+    const items = cart ? cart.items : [];
+    const sub = cart ? cart.subtotal : 0;
+    const disc = this.discount();
+    const total = Math.max(0, Math.round((sub - disc) * 100) / 100);
+    const isCard = values.paymentMethod === 'card';
+
+    const totals = [{ label: 'Subtotal', value: '$' + sub.toFixed(2), color: '#595959' }];
+    if (disc > 0) totals.push({ label: 'Coupon ' + values.couponCode.toUpperCase(), value: '−$' + disc.toFixed(2), color: '#3A836B' });
+    totals.push({ label: 'Digital delivery', value: 'Included', color: '#595959' });
+
+    return Object.assign({
+      browseHref: url('browse'),
+      cartHref: url('cart'),
+      loading,
+      isEmpty: !loading && items.length === 0,
+      ready: !loading && items.length > 0,
+      itemsHeading: items.length + (items.length === 1 ? ' resource' : ' resources'),
+      items: items.map(i => ({
+        title: i.title, cover: i.cover, vendorName: i.vendorName,
+        price: i.price === 0 ? 'Free' : '$' + i.price.toFixed(2),
+      })),
+      totals,
+      total: '$' + total.toFixed(2),
+      hasError: !!formError,
+      formError,
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Completing your order…' : total === 0 ? 'Get my resources' : 'Pay $' + total.toFixed(2),
+
+      methods: [
+        { value: 'card', label: 'Card' },
+        { value: 'paypal', label: 'PayPal' },
+      ].map(m => {
+        const on = values.paymentMethod === m.value;
+        return Object.assign({}, m, {
+          checked: on,
+          bg: on ? '#F2FAF7' : '#FFFFFF',
+          border: on ? '#3A836B' : '#EDF0EE',
+          dotBg: on ? '#3A836B' : '#FFFFFF',
+          dotBorder: on ? '#3A836B' : '#CAC4D0',
+          dotInner: on ? 'inset 0 0 0 3px #FFFFFF' : 'none',
+          onPick: () => this.setState(s => ({ values: Object.assign({}, s.values, { paymentMethod: m.value }), errors: {} })),
+        });
+      }),
+      isCard,
+      isPaypal: values.paymentMethod === 'paypal',
+
+      couponMessage,
+      couponMessageColor: couponOk ? '#3A836B' : '#C0392B',
+      couponBorder: couponMessage && !couponOk ? '#C0392B' : '#DCE7E1',
+
+      failBg: values.simulateFailure ? '#C0392B' : '#FFFFFF',
+      failBorder: values.simulateFailure ? '#C0392B' : '#CAC4D0',
+      vSimulateFailure: values.simulateFailure,
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+          formError: '',
+          couponMessage: name === 'couponCode' ? '' : s.couponMessage,
+          coupon: name === 'couponCode' ? null : s.coupon,
+          couponOk: name === 'couponCode' ? false : s.couponOk,
+        }));
+      },
+      onCheck: e => {
+        const { name, checked } = e.target;
+        this.setState(s => ({ values: Object.assign({}, s.values, { [name]: checked }) }));
+      },
+      onFillCard: () => this.setState(s => ({
+        values: Object.assign({}, s.values, {
+          cardName: s.values.cardName || ((this.user || this.state.user) ? (this.user || this.state.user).name : 'Test Buyer'),
+          cardNumber: '4242 4242 4242 4242', cardExpiry: '09/29', cardCvc: '123',
+        }),
+        errors: {},
+      })),
+      onApplyCoupon: () => {
+        const code = String(values.couponCode || '').trim().toUpperCase();
+        if (!code) { this.setState({ couponMessage: 'Enter a code first.', couponOk: false }); return; }
+        const row = this.db.findAll('coupons', { filter: { code } }).rows[0];
+        if (!row) { this.setState({ coupon: null, couponOk: false, couponMessage: 'That coupon code was not recognised.' }); return; }
+        if (row.status !== 'active') { this.setState({ coupon: null, couponOk: false, couponMessage: 'That coupon is expired or fully used.' }); return; }
+        if (sub < (row.minSpend || 0)) {
+          this.setState({ coupon: null, couponOk: false, couponMessage: 'Spend at least $' + row.minSpend.toFixed(2) + ' to use this coupon.' });
+          return;
+        }
+        const label = row.type === 'percent' ? row.value + '% off' : '$' + row.value.toFixed(2) + ' off';
+        this.setState({ coupon: row, couponOk: true, couponMessage: 'Applied — ' + label + '.' });
+      },
+
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const r = this.validation.rules;
+        const schema = isCard
+          ? this.validation.schemas.checkout
+          : { email: [r.required(), r.email()] };
+        const { valid, errors: errs } = this.validation.validate(this.state.values, schema);
+        if (!valid) {
+          this.setState({ errors: errs });
+          const el = document.getElementById('co-' + Object.keys(errs)[0]);
+          if (el) el.focus();
+          return;
+        }
+        this.setState({ busy: true, formError: '' });
+        try {
+          const v = this.state.values;
+          const order = await this.orders.placeOrder({
+            customerId: (this.user || this.state.user).id,
+            items: items.map(i => ({ productId: i.productId })),
+            couponCode: this.state.couponOk ? this.state.coupon.code : null,
+            paymentMethod: isCard ? 'Card ••••' + String(v.cardNumber).replace(/\s/g, '').slice(-4) : 'PayPal',
+            simulateFailure: v.simulateFailure,
+          });
+          this.app.toast('Payment complete. Your resources are ready to download.', 'success');
+          this.app.router.go('orderConfirmation', { id: order.data.id });
+        } catch (err) {
+          const { message, fields } = this.app.readError(err);
+          this.setState({ busy: false, formError: message, errors: fields || {} });
+          window.scrollTo({ top: 120, behavior: 'smooth' });
+        }
+      },
+    }, this.field('email'), this.field('cardName'), this.field('cardNumber'),
+       this.field('cardExpiry'), this.field('cardCvc'), this.field('couponCode'));
+  }
+}
+
+</script>
+</body>
+</html>

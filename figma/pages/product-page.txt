@@ -1,0 +1,417 @@
+[FRAME] product page 1728x2798.2@0,0 fill:#ffffff | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+  [FRAME] Group 39646 1728x129@-810,-91 
+    [FRAME] Group 68 1728x129@-810,-91 
+      [FRAME] Toggle button - outline 198x48@654,-77 fill:#eaf7f1 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] Content 198x54@654,-80 fill:#fedc97 | r:100 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] State-layer 154x40@676,-73 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+            [INSTANCE] Icon 20x20@692,-63 
+            [TEXT] Label 122x20@692,-63 fill:#3a836b | "Vendor Login" Poppins SemiBold 18/20 undefined
+      [FRAME] Group 68 1728x129@-810,-91 
+        [ROUNDED_RECTANGLE] Rectangle 111 1728x129@-810,-91 fill:#3a836b
+        [INSTANCE] mdi:shopping-cart-outline 24x24@557,-60 fill:
+        [INSTANCE] Search bar 434x48@-163,-70 fill:#e6f0ee | r:28 | HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+        [FRAME] Frame 67 1214x27@-552.5,0 HORIZONTAL gap54 pad[0,0,0,0] undefined/CENTER
+          [TEXT] Islamic Studies 145x27@-552.5,0 fill:#ffffff | "Islamic Studies" Poppins Medium 18/100% undefined
+          [TEXT] Quran 59x27@-353.5,0 fill:#ffffff | "Quran" Poppins Medium 18/100% undefined
+          [TEXT] Arabic 62x27@-240.5,0 fill:#ffffff | "Arabic" Poppins Medium 18/100% undefined
+          [TEXT] Social Studies 133x27@-124.5,0 fill:#ffffff | "Social Studies" Poppins Medium 18/100% undefined
+          [TEXT] Math 48x27@62.5,0 fill:#ffffff | "Math" Poppins Medium 18/100% undefined
+          [TEXT] Science 75x27@164.5,0 fill:#ffffff | "Science" Poppins Medium 18/100% undefined
+          [TEXT] ELA 31x27@293.5,0 fill:#ffffff | "ELA" Poppins Medium 18/100% undefined
+          [TEXT] Art 28x27@378.5,0 fill:#ffffff | "Art" Poppins Medium 18/100% undefined
+          [TEXT] Health 62x27@460.5,0 fill:#ffffff | "Health" Poppins Medium 18/100% undefined
+          [TEXT] About Us 85x27@576.5,0 fill:#ffffff | "About Us" Poppins Medium 18/100% undefined
+        [FRAME] Toggle button - outline 112x48@423,-70 HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] Content 111x40@423.5,-66 fill:#fedc97 | r:8 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] State-layer 82x40@438,-66 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+              [INSTANCE] Icon 20x20@454,-56 
+              [TEXT] Label 50x20@454,-56 fill:#29483c | "Login" Poppins SemiBold 18/20 undefined
+        [INSTANCE] Toggle button - outline 102x48@310,-70 HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+    [FRAME] Group 93 228x46.28@-473,-69 
+      [TEXT] Uloominate 182x37@-427,-64 fill:#fedc97 | "Uloominate" Montserrat Alternates Medium 30/100% CENTER
+      [FRAME] Group 66 38x46.28@-473,-69 
+        [ROUNDED_RECTANGLE] logo 1 38x46.28@-473,-69 fill:IMAGE:img
+  [FRAME] App 1728x2669.2@-810,38 fill:#ffffff | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+    [FRAME] Container:margin 1728x40@-810,38 VERTICAL gap0 pad[0,0,0,0] undefined/CENTER
+      [FRAME] Navigation - Breadcrumb 1280x40@-586,38 HORIZONTAL gap6 pad[12,24,12,24] undefined/CENTER
+        [FRAME] Text 30x16@-562,50 HORIZONTAL gap6 pad[0,0,0,0] undefined/CENTER
+          [FRAME] Link 20x16@-562,50 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [TEXT] ELA 20x16@-562,50 fill:#595959 | "ELA" Poppins Regular 12/16 undefined
+          [FRAME] Text 4x16@-536,50 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [TEXT] › 4x16@-536,50 fill:#595959 | "›" Poppins Medium 12/16 undefined
+        [FRAME] Text 160x16@-526,50 HORIZONTAL gap6 pad[0,0,0,0] undefined/CENTER
+          [FRAME] Link 150x16@-526,50 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [TEXT] Reading Comprehension 150x16@-526,50 fill:#595959 | "Reading Comprehension" Poppins Regular 12/16 undefined
+          [FRAME] Text 4x16@-370,50 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [TEXT] › 4x16@-370,50 fill:#595959 | "›" Poppins Medium 12/16 undefined
+        [FRAME] Text 118x16@-360,50 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+          [TEXT] Main Idea & Details 118x16@-360,50 fill:#29483c | "Main Idea & Details" Poppins SemiBold 12/16 undefined
+    [FRAME] Container:margin 1728x1809.95@-810,78 VERTICAL gap0 pad[0,0,0,0] undefined/CENTER
+      [FRAME] Container 1280x1809.95@-586,78 VERTICAL gap0 pad[0,24,48,24] undefined/undefined
+        [FRAME] Container 1232x1761.95@-562,78 GRID gap0 pad[0,0,0,0] undefined/undefined
+          [FRAME] Container 832x1761.95@-562,78 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] Container 832x624@-562,78 fill:#f3f4f6 | r:16,16,16,16 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [FRAME] Image (Product preview) 832x624@-562,78 fill:IMAGE:img
+              [FRAME] Button - Previous image 36x36@-550,372 fill:#ffffff | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] Icon 15x15@-539.5,382.5 
+                  [VECTOR] Vector 3.75x7.5@-533.87,386.25 
+              [FRAME] Button - Next image 36x36@222,372 fill:#ffffff | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] Icon 15x15@232.5,382.5 
+                  [VECTOR] Vector 3.75x7.5@238.13,386.25 
+              [FRAME] Text 44x24@-550,90 fill:#ffffff | r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[4,10,4,10] undefined/undefined
+                [TEXT] 1 / 5 24x16@-540,94 fill:#121212 | "1 / 5" Poppins SemiBold 12/16 undefined
+            [FRAME] Container 832x72@-562,702 HORIZONTAL gap8 pad[12,0,4,0] undefined/undefined
+              [FRAME] Button - View image 1 80x56@-562,714 r:8,8,8,8 | VERTICAL gap0 pad[0,0,0,0] CENTER/undefined
+                [FRAME] Image 76x52@-560,716 fill:IMAGE:img
+              [FRAME] Button - View image 2 80x56@-474,714 r:8,8,8,8 | VERTICAL gap0 pad[0,0,0,0] CENTER/undefined
+                [FRAME] Image 76x52@-472,716 fill:IMAGE:img
+              [FRAME] Button - View image 3 80x56@-386,714 r:8,8,8,8 | VERTICAL gap0 pad[0,0,0,0] CENTER/undefined
+                [FRAME] Image 76x52@-384,716 fill:IMAGE:img
+              [FRAME] Button - View image 4 80x56@-298,714 r:8,8,8,8 | VERTICAL gap0 pad[0,0,0,0] CENTER/undefined
+                [FRAME] Image 76x52@-296,716 fill:IMAGE:img
+              [FRAME] Button - View image 5 80x56@-210,714 r:8,8,8,8 | VERTICAL gap0 pad[0,0,0,0] CENTER/undefined
+                [FRAME] Image 76x52@-208,716 fill:IMAGE:img
+            [FRAME] Tab List:margin 832x74@-562,774 VERTICAL gap0 pad[32,0,0,0] undefined/undefined
+              [FRAME] Tab List 832x42@-562,806 
+                [FRAME] Tab 113.29x42@-562,806 
+                  [TEXT] Description 82x20@-546,816 fill:#3a836b | "Description" Poppins SemiBold 14/20 CENTER
+                [FRAME] Tab 146.55x42@-448.71,806 
+                  [TEXT] What's Included 115x20@-432.71,816 fill:#595959 | "What's Included" Poppins SemiBold 14/20 CENTER
+                [FRAME] Tab 63.94x42@-302,806 
+                  [TEXT] Q&A 32x20@-286,816 fill:#595959 | "Q&A" Poppins SemiBold 14/20 CENTER
+            [FRAME] Container 832x334.75@-562,848 VERTICAL gap0 pad[24,0,0,0] undefined/undefined
+              [FRAME] Paragraph 832x46@-562,872 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                [TEXT] This Main Idea & Details resource set gives studen 832x46@-562,872 fill:#121212 | "This Main Idea & Details resource set gives students structured practi" Poppins Regular 14/22.75 undefined
+              [FRAME] Paragraph 832x62@-562,918 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [TEXT] Each passage is carefully leveled and features hig 832x46@-562,934 fill:#121212 | "Each passage is carefully leveled and features high-interest nonfictio" Poppins Regular 14/22.75 undefined
+              [FRAME] Heading 4 832x41@-562,980 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [TEXT] What teachers love about this resource: 308x25@-562,996 fill:#29483c | "What teachers love about this resource:" Poppins SemiBold 15.199999809265137/24.7 undefined
+              [FRAME] List 832x161.75@-562,1021 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [FRAME] List Item 832x22.75@-562,1037 HORIZONTAL gap8 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Text:margin 16x18@-562,1037 HORIZONTAL gap0 pad[2,0,0,0] undefined/undefined
+                    [FRAME] Text 16x16@-562,1039 fill:#3a836b | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                      [TEXT] ✓ 9x17@-558.5,1038.5 fill:#ffffff | "✓" Poppins Regular 10/16.25 undefined
+                  [TEXT] Three differentiated versions (on-level, below-lev 438x23@-538,1037 fill:#121212 | "Three differentiated versions (on-level, below-level, challenge)" Poppins Regular 14/22.75 undefined
+                [FRAME] List Item 832x30.75@-562,1059.75 HORIZONTAL gap8 pad[8,0,0,0] undefined/undefined
+                  [FRAME] Text:margin 16x18@-562,1067.75 HORIZONTAL gap0 pad[2,0,0,0] undefined/undefined
+                    [FRAME] Text 16x16@-562,1069.75 fill:#3a836b | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                      [TEXT] ✓ 9x17@-558.5,1069.25 fill:#ffffff | "✓" Poppins Regular 10/16.25 undefined
+                  [TEXT] Graphic organizer + short-answer response format 357x23@-538,1067.75 fill:#121212 | "Graphic organizer + short-answer response format" Poppins Regular 14/22.75 undefined
+                [FRAME] List Item 832x30.75@-562,1090.5 HORIZONTAL gap8 pad[8,0,0,0] undefined/undefined
+                  [FRAME] Text:margin 16x18@-562,1098.5 HORIZONTAL gap0 pad[2,0,0,0] undefined/undefined
+                    [FRAME] Text 16x16@-562,1100.5 fill:#3a836b | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                      [TEXT] ✓ 9x17@-558.5,1100 fill:#ffffff | "✓" Poppins Regular 10/16.25 undefined
+                  [TEXT] Answer keys included for every passage 281x23@-538,1098.5 fill:#121212 | "Answer keys included for every passage" Poppins Regular 14/22.75 undefined
+                [FRAME] List Item 832x30.75@-562,1121.25 HORIZONTAL gap8 pad[8,0,0,0] undefined/undefined
+                  [FRAME] Text:margin 16x18@-562,1129.25 HORIZONTAL gap0 pad[2,0,0,0] undefined/undefined
+                    [FRAME] Text 16x16@-562,1131.25 fill:#3a836b | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                      [TEXT] ✓ 9x17@-558.5,1130.75 fill:#ffffff | "✓" Poppins Regular 10/16.25 undefined
+                  [TEXT] Works in centers, whole-class, small group, or hom 396x23@-538,1129.25 fill:#121212 | "Works in centers, whole-class, small group, or homework" Poppins Regular 14/22.75 undefined
+                [FRAME] List Item 832x30.75@-562,1152 HORIZONTAL gap8 pad[8,0,0,0] undefined/undefined
+                  [FRAME] Text:margin 16x18@-562,1160 HORIZONTAL gap0 pad[2,0,0,0] undefined/undefined
+                    [FRAME] Text 16x16@-562,1162 fill:#3a836b | r:16777200,16777200,16777200,16777200 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                      [TEXT] ✓ 9x17@-558.5,1161.5 fill:#ffffff | "✓" Poppins Regular 10/16.25 undefined
+                  [TEXT] Print-and-go — no prep required 230x23@-538,1160 fill:#121212 | "Print-and-go — no prep required" Poppins Regular 14/22.75 undefined
+            [FRAME] Container 832x660@-562,1182.75 VERTICAL gap0 pad[40,0,0,0] undefined/undefined
+              [FRAME] Container 832x30@-562,1222.75 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+                [FRAME] Heading 2 186x30@-562,1222.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [TEXT] Ratings & Reviews 186x30@-562,1222.75 fill:#29483c | "Ratings & Reviews" Poppins SemiBold 20/30 undefined
+                [FRAME] Container 209x24@61,1225.75 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+                  [FRAME] Stars 81x24@61,1225.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] ★★★★★ 81x24@61,1225.75 fill:#ffc107 | "★★★★★" Poppins Regular 16/24 undefined
+                  [FRAME] Text 120x20@150,1227.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] 4.9 · 3,847 ratings 120x20@150,1227.75 fill:#595959 | "4.9 · 3,847 ratings" Poppins Regular 14/20 undefined
+              [FRAME] Container:margin 832x161@-562,1252.75 VERTICAL gap0 pad[20,0,0,0] undefined/undefined
+                [FRAME] Container 832x141@-562,1272.75 HORIZONTAL gap32 pad[0,0,28,0] undefined/undefined
+                  [FRAME] Container 115x112@-562,1272.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [FRAME] Container 115x48@-562,1272.75 VERTICAL gap0 pad[0,0,0,0] undefined/CENTER
+                      [TEXT] 4.9 76x48@-542.5,1272.75 fill:#3a836b | "4.9" Poppins Bold 48/48 CENTER
+                    [TEXT] ★★★★★ 115x33@-562,1320.75 fill:#ffc107 | "★★★★★" Poppins Regular 22/33 CENTER
+                    [FRAME] Paragraph 115x20@-562,1353.75 VERTICAL gap0 pad[4,0,0,0] undefined/CENTER
+                      [TEXT] out of 5 46x16@-527.5,1357.75 fill:#595959 | "out of 5" Poppins Regular 12/16 CENTER
+                  [FRAME] Container 685x112@-415,1272.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [FRAME] Container 685x16@-415,1272.75 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+                      [FRAME] Text 12x16@-415,1272.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 5 8x16@-411,1272.75 fill:#595959 | "5" Poppins Regular 12/16 RIGHT
+                      [FRAME] Text 12x16@-395,1272.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★ 12x16@-395,1272.75 fill:#ffc107 | "★" Poppins Regular 12/16 undefined
+                      [FRAME] Progress Bar 605x8@-375,1276.75 fill:#c9c9c9 | r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [FRAME] Container 538.45x8@-375,1276.75 fill:#3a836b | r:16777200,16777200,16777200,16777200
+                      [FRAME] Text 32x16@238,1272.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 89% 25x16@245,1272.75 fill:#595959 | "89%" Poppins Regular 12/16 RIGHT
+                    [FRAME] Container 685x24@-415,1288.75 HORIZONTAL gap8 pad[8,0,0,0] undefined/CENTER
+                      [FRAME] Text 12x16@-415,1296.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 4 8x16@-411,1296.75 fill:#595959 | "4" Poppins Regular 12/16 RIGHT
+                      [FRAME] Text 12x16@-395,1296.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★ 12x16@-395,1296.75 fill:#ffc107 | "★" Poppins Regular 12/16 undefined
+                      [FRAME] Progress Bar 605x8@-375,1300.75 fill:#c9c9c9 | r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [FRAME] Container 48.4x8@-375,1300.75 fill:#3a836b | r:16777200,16777200,16777200,16777200
+                      [FRAME] Text 32x16@238,1296.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 8% 17x16@253,1296.75 fill:#595959 | "8%" Poppins Regular 12/16 RIGHT
+                    [FRAME] Container 685x24@-415,1312.75 HORIZONTAL gap8 pad[8,0,0,0] undefined/CENTER
+                      [FRAME] Text 12x16@-415,1320.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 3 8x16@-411,1320.75 fill:#595959 | "3" Poppins Regular 12/16 RIGHT
+                      [FRAME] Text 12x16@-395,1320.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★ 12x16@-395,1320.75 fill:#ffc107 | "★" Poppins Regular 12/16 undefined
+                      [FRAME] Progress Bar 605x8@-375,1324.75 fill:#c9c9c9 | r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [FRAME] Container 12.09x8@-375,1324.75 fill:#3a836b | r:16777200,16777200,16777200,16777200
+                      [FRAME] Text 32x16@238,1320.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 2% 17x16@253,1320.75 fill:#595959 | "2%" Poppins Regular 12/16 RIGHT
+                    [FRAME] Container 685x24@-415,1336.75 HORIZONTAL gap8 pad[8,0,0,0] undefined/CENTER
+                      [FRAME] Text 12x16@-415,1344.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 2 7x16@-410,1344.75 fill:#595959 | "2" Poppins Regular 12/16 RIGHT
+                      [FRAME] Text 12x16@-395,1344.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★ 12x16@-395,1344.75 fill:#ffc107 | "★" Poppins Regular 12/16 undefined
+                      [FRAME] Progress Bar 605x8@-375,1348.75 fill:#c9c9c9 | r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [FRAME] Container 6.05x8@-375,1348.75 fill:#3a836b | r:16777200,16777200,16777200,16777200
+                      [FRAME] Text 32x16@238,1344.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 1% 13x16@257,1344.75 fill:#595959 | "1%" Poppins Regular 12/16 RIGHT
+                    [FRAME] Container 685x24@-415,1360.75 HORIZONTAL gap8 pad[8,0,0,0] undefined/CENTER
+                      [FRAME] Text 12x16@-415,1368.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 1 4x16@-407,1368.75 fill:#595959 | "1" Poppins Regular 12/16 RIGHT
+                      [FRAME] Text 12x16@-395,1368.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★ 12x16@-395,1368.75 fill:#ffc107 | "★" Poppins Regular 12/16 undefined
+                      [FRAME] Progress Bar 605x8@-375,1372.75 fill:#c9c9c9 | r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [FRAME] Container 0x8@-375,1372.75 fill:#3a836b
+                      [FRAME] Text 32x16@238,1368.75 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 0% 17x16@253,1368.75 fill:#595959 | "0%" Poppins Regular 12/16 RIGHT
+              [FRAME] Container 832x363@-562,1413.75 VERTICAL gap0 pad[28,0,0,0] undefined/undefined
+                [FRAME] Container 832x93@-562,1441.75 HORIZONTAL gap16 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Image (Ms. Patterson) 40x40@-562,1441.75 fill:#f3f4f6/IMAGE:img | r:16777200,16777200,16777200,16777200
+                  [FRAME] Container 776x93@-506,1441.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [FRAME] Container 776x21@-506,1441.75 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+                      [FRAME] Text 97x21@-506,1441.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Ms. Patterson 97x21@-506,1441.75 fill:#29483c | "Ms. Patterson" Poppins SemiBold 14/21 undefined
+                      [FRAME] Stars 67x20@-401,1442.25 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★★★★★ 67x20@-401,1442.25 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                      [FRAME] Text 99x16@-326,1444.25 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] September 2024 99x16@-326,1444.25 fill:#595959 | "September 2024" Poppins Regular 12/16 undefined
+                    [FRAME] Paragraph 776x18@-506,1462.75 VERTICAL gap0 pad[2,0,0,0] undefined/undefined
+                      [TEXT] 3rd Grade Teacher 113x16@-506,1464.75 fill:#595959 | "3rd Grade Teacher" Poppins Regular 12/16 undefined
+                    [FRAME] Paragraph 776x54@-506,1480.75 VERTICAL gap0 pad[8,0,0,0] undefined/undefined
+                      [TEXT] Absolutely love this resource! My students were so 776x46@-506,1488.75 fill:#646464 | "Absolutely love this resource! My students were so engaged during the " Poppins Regular 14/22.75 undefined
+                [FRAME] Container 832x121@-562,1534.75 HORIZONTAL gap16 pad[28,0,0,0] undefined/undefined
+                  [FRAME] Image (Mr. Dominguez) 40x40@-562,1562.75 fill:#f3f4f6/IMAGE:img | r:16777200,16777200,16777200,16777200
+                  [FRAME] Container 776x93@-506,1562.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [FRAME] Container 776x21@-506,1562.75 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+                      [FRAME] Text 107x21@-506,1562.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Mr. Dominguez 107x21@-506,1562.75 fill:#29483c | "Mr. Dominguez" Poppins SemiBold 14/21 undefined
+                      [FRAME] Stars 67x20@-391,1563.25 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★★★★★ 67x20@-391,1563.25 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                      [FRAME] Text 81x16@-316,1565.25 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] October 2024 81x16@-316,1565.25 fill:#595959 | "October 2024" Poppins Regular 12/16 undefined
+                    [FRAME] Paragraph 776x18@-506,1583.75 VERTICAL gap0 pad[2,0,0,0] undefined/undefined
+                      [TEXT] 4th Grade Teacher 113x16@-506,1585.75 fill:#595959 | "4th Grade Teacher" Poppins Regular 12/16 undefined
+                    [FRAME] Paragraph 776x54@-506,1601.75 VERTICAL gap0 pad[8,0,0,0] undefined/undefined
+                      [TEXT] This is exactly what I needed for my reading cente 776x46@-506,1609.75 fill:#646464 | "This is exactly what I needed for my reading centers. The answer key w" Poppins Regular 14/22.75 undefined
+                [FRAME] Container 832x121@-562,1655.75 HORIZONTAL gap16 pad[28,0,0,0] undefined/undefined
+                  [FRAME] Image (Mrs. Chen) 40x40@-562,1683.75 fill:#f3f4f6/IMAGE:img | r:16777200,16777200,16777200,16777200
+                  [FRAME] Container 776x93@-506,1683.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [FRAME] Container 776x21@-506,1683.75 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+                      [FRAME] Text 71x21@-506,1683.75 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Mrs. Chen 71x21@-506,1683.75 fill:#29483c | "Mrs. Chen" Poppins SemiBold 14/21 undefined
+                      [FRAME] Stars 67x20@-427,1684.25 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] ★★★★★ 67x20@-427,1684.25 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                      [FRAME] Text 95x16@-352,1686.25 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] November 2024 95x16@-352,1686.25 fill:#595959 | "November 2024" Poppins Regular 12/16 undefined
+                    [FRAME] Paragraph 776x18@-506,1704.75 VERTICAL gap0 pad[2,0,0,0] undefined/undefined
+                      [TEXT] 2nd Grade Teacher 116x16@-506,1706.75 fill:#595959 | "2nd Grade Teacher" Poppins Regular 12/16 undefined
+                    [FRAME] Paragraph 776x54@-506,1722.75 VERTICAL gap0 pad[8,0,0,0] undefined/undefined
+                      [TEXT] Great resource overall. I did have to adjust the f 776x46@-506,1730.75 fill:#646464 | "Great resource overall. I did have to adjust the font size for my stru" Poppins Regular 14/22.75 undefined
+              [FRAME] Container 832x66@-562,1776.75 
+                [FRAME] Button 195.6x38@-562,1804.75 r:10
+                  [TEXT] See all 3,847 reviews 146x20@-537,1813.75 fill:#3a836b | "See all 3,847 reviews" Poppins SemiBold 14/20 CENTER
+          [FRAME] Container 360x1761.95@310,78 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] Container 360x822@310,78 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [FRAME] Container 360x40@310,78 HORIZONTAL gap12 pad[0,0,0,0] undefined/CENTER
+                [FRAME] Image (Seller Mrs. Reyes) 40x40@310,78 fill:IMAGE:img | r:16777200,16777200,16777200,16777200
+                [FRAME] Container 190.07x40@362,78 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Container 190.07x24@362,78 
+                    [TEXT] LiteracyLane by Mrs. Reyes 191x21@362,81 fill:#3a836b | "LiteracyLane by Mrs. Reyes" Poppins SemiBold 14/21 undefined
+                  [FRAME] Paragraph 190.07x16@362,102 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] 143 followers · 98 products 157x16@362,102 fill:#595959 | "143 followers · 98 products" Poppins Regular 12/16 undefined
+              [FRAME] Heading 1 360x101@310,118 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [TEXT] Main Idea & Details — Nonfiction Passages, Grades  360x85@310,134 fill:#29483c | "Main Idea & Details — Nonfiction Passages, Grades 3–5 (Differentiated)" Poppins SemiBold 21.600000381469727/28.08 undefined
+              [FRAME] Container 360x37@310,219 HORIZONTAL gap8 pad[16,0,0,0] undefined/CENTER
+                [FRAME] Stars 67x20@310,235.5 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [TEXT] ★★★★★ 67x20@310,235.5 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                [FRAME] Text 22x21@385,235 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [TEXT] 4.9 22x21@385,235 fill:#3a836b | "4.9" Poppins SemiBold 14/21 undefined
+                [FRAME] Text 50x21@415,235 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [TEXT] (3,847) 50x21@415,235 fill:#595959 | "(3,847)" Poppins Regular 14/21 undefined
+              [FRAME] Container:margin 360x66@310,256 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [FRAME] Container 360x50@310,272 
+                  [FRAME] Text 46x22@310,272 r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[2,12,2,12] undefined/undefined
+                    [TEXT] ELA 20x16@323,275 fill:#121212 | "ELA" Poppins Medium 12/16 undefined
+                  [FRAME] Text 77x22@361.98,272 r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[2,12,2,12] undefined/undefined
+                    [TEXT] Reading 51x16@374.98,275 fill:#121212 | "Reading" Poppins Medium 12/16 undefined
+                  [FRAME] Text 88x22@444.34,272 r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[2,12,2,12] undefined/undefined
+                    [TEXT] Nonfiction 62x16@457.34,275 fill:#121212 | "Nonfiction" Poppins Medium 12/16 undefined
+                  [FRAME] Text 97x22@537.88,272 r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[2,12,2,12] undefined/undefined
+                    [TEXT] Grades 3–5 71x16@550.88,275 fill:#121212 | "Grades 3–5" Poppins Medium 12/16 undefined
+                  [FRAME] Text 109x22@310,300 r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[2,12,2,12] undefined/undefined
+                    [TEXT] CCSS Aligned 83x16@323,303 fill:#121212 | "CCSS Aligned" Poppins Medium 12/16 undefined
+                  [FRAME] Text 65x22@424.34,300 r:16777200,16777200,16777200,16777200 | VERTICAL gap0 pad[2,12,2,12] undefined/undefined
+                    [TEXT] Digital 39x16@437.34,303 fill:#121212 | "Digital" Poppins Medium 12/16 undefined
+              [FRAME] Container:margin 360x267@310,322 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [FRAME] Container 360x251@310,338 r:16,16,16,16 | VERTICAL gap0 pad[20,20,20,20] undefined/undefined
+                  [FRAME] Container:margin 318x59@331,359 VERTICAL gap0 pad[0,0,14,0] undefined/undefined
+                    [FRAME] Container 318x45@331,359 
+                      [FRAME] Container 135.54x45@331,359 
+                        [TEXT] $9.00 86x45@331,359 fill:#29483c | "$9.00" Poppins Bold 30/45 undefined
+                        [TEXT] $12.00 42x21@424.77,377 fill:#595959 | "$12.00" Poppins Regular 14/21 undefined
+                      [FRAME] Text 64x22@585.64,377 fill:#fedc97 | r:9999,9999,9999,9999 | VERTICAL gap0 pad[2,10,2,10] undefined/undefined
+                        [TEXT] 25% off 44x18@595.64,379 fill:#121212 | "25% off" Poppins SemiBold 12/18 undefined
+                  [FRAME] Container 318x114@331,418 
+                    [FRAME] Button 318x44@331,418 fill:#3a836b | r:8
+                      [TEXT] Add to Cart 82x20@449.31,430 fill:#ffffff | "Add to Cart" Poppins SemiBold 14/20 CENTER
+                    [FRAME] Button 318x42@331,476 r:10
+                      [TEXT] Add to Wishlist 105x20@438,487 fill:#121212 | "Add to Wishlist" Poppins Medium 14/20 CENTER
+                  [FRAME] Container 318x36@331,532 HORIZONTAL gap8 pad[4,0,0,0] undefined/undefined
+                    [FRAME] Icon:margin 13x15@331,536 HORIZONTAL gap0 pad[2,0,0,0] undefined/undefined
+                      [FRAME] Icon 13x13@331,538 
+                        [VECTOR] Vector 8.67x10.83@333.17,539.08 
+                    [FRAME] Text 297x32@352,536 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] Backed by our satisfaction guarantee. Contact us w 297x32@352,536 fill:#595959 | "Backed by our satisfaction guarantee. Contact us within 30 days for a " Poppins Regular 12/16 undefined
+              [FRAME] Container:margin 360x243@310,589 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [FRAME] Container 360x227@310,605 r:16,16,16,16 | VERTICAL gap0 pad[16,16,16,16] undefined/undefined
+                  [FRAME] Heading 3 326x21@327,622 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] File Details 77x21@327,622 fill:#29483c | "File Details" Poppins SemiBold 14/21 undefined
+                  [FRAME] Definition List 326x172@327,643 VERTICAL gap0 pad[12,0,0,0] undefined/undefined
+                    [FRAME] Container 326x20@327,655 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+                      [FRAME] Definition Term 58x20@327,655 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] File type 58x20@327,655 fill:#595959 | "File type" Poppins Regular 14/20 undefined
+                      [FRAME] Definition Description 139x20@514,655 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] PDF + Google Slides 139x20@514,655 fill:#121212 | "PDF + Google Slides" Poppins Medium 14/20 RIGHT
+                    [FRAME] Container 326x28@327,675 HORIZONTAL gap0 pad[8,0,0,0] SPACE_BETWEEN/undefined
+                      [FRAME] Definition Term 44x20@327,683 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Pages 44x20@327,683 fill:#595959 | "Pages" Poppins Regular 14/20 undefined
+                      [FRAME] Definition Description 67x20@586,683 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 49 pages 67x20@586,683 fill:#121212 | "49 pages" Poppins Medium 14/20 RIGHT
+                    [FRAME] Container 326x28@327,703 HORIZONTAL gap0 pad[8,0,0,0] SPACE_BETWEEN/undefined
+                      [FRAME] Definition Term 53x20@327,711 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] File size 53x20@327,711 fill:#595959 | "File size" Poppins Regular 14/20 undefined
+                      [FRAME] Definition Description 47x20@606,711 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 8.4 MB 47x20@606,711 fill:#121212 | "8.4 MB" Poppins Medium 14/20 RIGHT
+                    [FRAME] Container 326x28@327,731 HORIZONTAL gap0 pad[8,0,0,0] SPACE_BETWEEN/undefined
+                      [FRAME] Definition Term 44x20@327,739 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Grade 44x20@327,739 fill:#595959 | "Grade" Poppins Regular 14/20 undefined
+                      [FRAME] Definition Description 112x20@541,739 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] 3rd – 5th Grade 112x20@541,739 fill:#121212 | "3rd – 5th Grade" Poppins Medium 14/20 RIGHT
+                    [FRAME] Container 326x28@327,759 HORIZONTAL gap0 pad[8,0,0,0] SPACE_BETWEEN/undefined
+                      [FRAME] Definition Term 53x20@327,767 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Subject 53x20@327,767 fill:#595959 | "Subject" Poppins Regular 14/20 undefined
+                      [FRAME] Definition Description 89x20@564,767 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] Reading, ELA 89x20@564,767 fill:#121212 | "Reading, ELA" Poppins Medium 14/20 RIGHT
+                    [FRAME] Container 326x28@327,787 HORIZONTAL gap0 pad[8,0,0,0] SPACE_BETWEEN/undefined
+                      [FRAME] Definition Term 93x20@327,795 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                        [TEXT] Last updated 93x20@327,795 fill:#595959 | "Last updated" Poppins Regular 14/20 undefined
+                      [FRAME] Definition Description 112x20@541,795 VERTICAL gap0 pad[0,0,0,0] undefined/MAX
+                        [TEXT] November 2024 112x20@541,795 fill:#121212 | "November 2024" Poppins Medium 14/20 RIGHT
+              [FRAME] Container 360x32@310,832 HORIZONTAL gap8 pad[16,0,0,0] undefined/CENTER
+                [FRAME] Icon 14x14@310,849 
+                  [VECTOR] Vector 9.33x3.5@310.58,857.75 
+                  [VECTOR] Vector 4.67x4.67@312.92,850.75 
+                  [VECTOR] Vector 1.75x3.42@321.67,857.83 
+                  [VECTOR] Vector 1.75x4.52@319.33,850.83 
+                [FRAME] Text 284x16@332,848 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [TEXT] 12,841 teachers have downloaded this resource 284x16@332,848 fill:#3a836b | "12,841 teachers have downloaded this resource" Poppins Bold 12/16 undefined
+              [FRAME] Button:margin 165x36@310,864 VERTICAL gap0 pad[16,0,0,0] undefined/undefined
+                [FRAME] Button 132x20@310,880 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+                  [FRAME] Icon 15x15@310,882.5 
+                    [VECTOR] Vector 13.06x11.39@310.97,884.37 
+                  [TEXT] Save to Wishlist 109x20@333,880 fill:#595959 | "Save to Wishlist" Poppins Regular 14/20 CENTER
+    [FRAME] Container 1728x489.25@-810,1887.95 fill:#fffdf7 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+      [FRAME] Container:margin 1728x488.25@-810,1888.95 VERTICAL gap0 pad[0,0,0,0] undefined/CENTER
+        [FRAME] Container 1280x488.25@-586,1888.95 VERTICAL gap0 pad[48,24,48,24] undefined/undefined
+          [FRAME] Heading 2 1232x33@-562,1936.95 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [TEXT] You Might Also Like 209x33@-562,1936.95 fill:#29483c | "You Might Also Like" Poppins SemiBold 21.600000381469727/32.4 undefined
+          [FRAME] Container:margin 1232x359.25@-562,1969.95 VERTICAL gap0 pad[24,0,0,0] undefined/undefined
+            [FRAME] Container 1232x335.25@-562,1993.95 GRID gap0 pad[0,0,0,0] undefined/undefined
+              [FRAME] Container 293x335.25@-562,1993.95 fill:#ffffff | r:12,12,12,12 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                [FRAME] Container 291x218.25@-561,1994.95 fill:#f3f4f6 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Image (Reading Comprehension Bundle — Grades 3-5) 291x218.25@-561,1994.95 fill:IMAGE:img
+                [FRAME] Container 291x115.5@-561,2213.2 VERTICAL gap0 pad[12,12,12,12] undefined/undefined
+                  [FRAME] Paragraph 267x38.5@-549,2225.2 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] Reading Comprehension Bundle — Grades 3-5 267x39@-549,2225.2 fill:#29483c | "Reading Comprehension Bundle — Grades 3-5" Poppins Medium 14/19.25 undefined
+                  [FRAME] Container 267x26@-549,2263.7 HORIZONTAL gap4 pad[6,0,0,0] undefined/CENTER
+                    [FRAME] Stars 67x20@-549,2269.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] ★★★★★ 67x20@-549,2269.7 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                    [FRAME] Text 39x16@-478,2271.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] (2,341) 39x16@-478,2271.7 fill:#595959 | "(2,341)" Poppins Regular 12/16 undefined
+                  [FRAME] Paragraph 267x27@-549,2289.7 VERTICAL gap0 pad[6,0,0,0] undefined/undefined
+                    [TEXT] $14.00 47x21@-549,2295.7 fill:#3a836b | "$14.00" Poppins Bold 14/21 undefined
+              [FRAME] Container 293x335.25@-249,1993.95 fill:#ffffff | r:12,12,12,12 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                [FRAME] Container 291x218.25@-248,1994.95 fill:#f3f4f6 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Image (Phonics Fluency Passages — First Grade) 291x218.25@-248,1994.95 fill:IMAGE:img
+                [FRAME] Container 291x115.5@-248,2213.2 VERTICAL gap0 pad[12,12,12,12] undefined/undefined
+                  [FRAME] Paragraph 267x38.5@-236,2225.2 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] Phonics Fluency Passages — First Grade 267x39@-236,2225.2 fill:#29483c | "Phonics Fluency Passages — First Grade" Poppins Medium 14/19.25 undefined
+                  [FRAME] Container 267x26@-236,2263.7 HORIZONTAL gap4 pad[6,0,0,0] undefined/CENTER
+                    [FRAME] Stars 67x20@-236,2269.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] ★★★★★ 67x20@-236,2269.7 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                    [FRAME] Text 39x16@-165,2271.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] (1,872) 39x16@-165,2271.7 fill:#595959 | "(1,872)" Poppins Regular 12/16 undefined
+                  [FRAME] Paragraph 267x27@-236,2289.7 VERTICAL gap0 pad[6,0,0,0] undefined/undefined
+                    [TEXT] $7.50 39x21@-236,2295.7 fill:#3a836b | "$7.50" Poppins Bold 14/21 undefined
+              [FRAME] Container 293x335.25@64,1993.95 fill:#ffffff | r:12,12,12,12 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                [FRAME] Container 291x218.25@65,1994.95 fill:#f3f4f6 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Image (Math Word Problems Task Cards — 3rd Grade) 291x218.25@65,1994.95 fill:IMAGE:img
+                [FRAME] Container 291x115.5@65,2213.2 VERTICAL gap0 pad[12,12,12,12] undefined/undefined
+                  [FRAME] Paragraph 267x38.5@77,2225.2 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] Math Word Problems Task Cards — 3rd Grade 267x39@77,2225.2 fill:#29483c | "Math Word Problems Task Cards — 3rd Grade" Poppins Medium 14/19.25 undefined
+                  [FRAME] Container 267x26@77,2263.7 HORIZONTAL gap4 pad[6,0,0,0] undefined/CENTER
+                    [FRAME] Stars 67x20@77,2269.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] ★★★★★ 67x20@77,2269.7 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                    [FRAME] Text 34x16@148,2271.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] (988) 34x16@148,2271.7 fill:#595959 | "(988)" Poppins Regular 12/16 undefined
+                  [FRAME] Paragraph 267x27@77,2289.7 VERTICAL gap0 pad[6,0,0,0] undefined/undefined
+                    [TEXT] $5.00 41x21@77,2295.7 fill:#3a836b | "$5.00" Poppins Bold 14/21 undefined
+              [FRAME] Container 293x335.25@377,1993.95 fill:#ffffff | r:12,12,12,12 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                [FRAME] Container 291x218.25@378,1994.95 fill:#f3f4f6 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                  [FRAME] Image (Writing Workshop Mini-Lessons — Full Year) 291x218.25@378,1994.95 fill:IMAGE:img
+                [FRAME] Container 291x115.5@378,2213.2 VERTICAL gap0 pad[12,12,12,12] undefined/undefined
+                  [FRAME] Paragraph 267x38.5@390,2225.2 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                    [TEXT] Writing Workshop Mini-Lessons — Full Year 267x39@390,2225.2 fill:#29483c | "Writing Workshop Mini-Lessons — Full Year" Poppins Medium 14/19.25 undefined
+                  [FRAME] Container 267x26@390,2263.7 HORIZONTAL gap4 pad[6,0,0,0] undefined/CENTER
+                    [FRAME] Stars 67x20@390,2269.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] ★★★★★ 67x20@390,2269.7 fill:#ffc107 | "★★★★★" Poppins Regular 13/19.5 undefined
+                    [FRAME] Text 34x16@461,2271.7 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+                      [TEXT] (456) 34x16@461,2271.7 fill:#595959 | "(456)" Poppins Regular 12/16 undefined
+                  [FRAME] Paragraph 267x27@390,2289.7 VERTICAL gap0 pad[6,0,0,0] undefined/undefined
+                    [TEXT] $22.00 48x21@390,2295.7 fill:#3a836b | "$22.00" Poppins Bold 14/21 undefined
+    [FRAME] Footer 1728x330@-810,2377.2 fill:#ffffff | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+      [FRAME] Frame 43458 1729x330@-810,2377.2 
+        [FRAME] footer 1727x329@-809,2378.2 fill:#feffff | VERTICAL gap40 pad[64,48,40,48] undefined/undefined
+          [FRAME] footer-columns 1631x120@-761,2442.2 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+            [FRAME] Frame 39649 208.12x102@-761,2442.2 VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+              [VECTOR] Subtract (Traced) 40x49@-676.94,2442.2 fill:#3a836b
+              [FRAME] Group 95 208.12x53@-761,2491.2 
+                [TEXT] Teach More. Share More. 153.23x16@-735.84,2528.2 fill:#3a836b | "Teach More. Share More. " Playfair Display Regular 12/100% CENTER
+                [FRAME] Group 93 208.12x37@-761,2491.2 
+                  [TEXT] Uloominate 208.12x37@-761,2491.2 fill:#3a836b | "Uloominate" Montserrat Alternates Medium 30/100% CENTER
+            [FRAME] Frame 984x120@-423.44,2442.2 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+              [TEXT] About Us 63x21@-423.44,2442.2 fill:#29483c | "About Us" Poppins Regular 14/100% undefined
+              [TEXT] Privacy Policy 95x21@-423.44,2475.2 fill:#29483c | "Privacy Policy" Poppins Regular 14/100% undefined
+              [TEXT] Terms & Conditions 137x21@-423.44,2508.2 fill:#29483c | "Terms & Conditions" Poppins Regular 14/100% undefined
+              [TEXT] Contact Us 78x21@-423.44,2541.2 fill:#29483c | "Contact Us" Poppins Regular 14/100% undefined
+            [FRAME] Frame 180x65@690,2442.2 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+              [TEXT] Keep in Touch 97x17@690,2442.2 fill:#121212 | "Keep in Touch" DM Sans Bold 13/100% undefined
+              [FRAME] Frame 180x36@690,2471.2 HORIZONTAL gap12 pad[0,0,0,0] undefined/undefined
+                [FRAME] Frame 36x36@690,2471.2 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] instagram 18x18@699,2480.2 
+                    [VECTOR] Vector 15x15@700.5,2481.7 
+                [FRAME] Frame 36x36@738,2471.2 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] facebook 18x18@747,2480.2 
+                    [VECTOR] Vector 8.25x15@752.25,2481.7 
+                [FRAME] Frame 36x36@786,2471.2 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] circle-x 18x18@795,2480.2 
+                    [VECTOR] Vector 15x15@796.5,2481.7 
+                [FRAME] Frame 36x36@834,2471.2 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] twitter 18x18@843,2480.2 
+                    [VECTOR] Vector 15x12.76@844.5,2483.2 
+          [LINE] Line 1631x0@-761,2602.2 
+          [FRAME] footer-bottom 1631x25@-761,2642.2 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+            [TEXT] Copyright © 2025 Uloominate 236x25@-761,2642.2 fill:#29483c | "Copyright © 2025 Uloominate" Poppins Regular 16/1.57 undefined
+            [FRAME] Frame 186x16@684,2646.7 HORIZONTAL gap16 pad[0,0,0,0] undefined/undefined
+        [LINE] Line 7 1729x0@919,2377.2 

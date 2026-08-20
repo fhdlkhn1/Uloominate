@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>My reviews — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="C-04 Account Reviews" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;max-width:1728px;margin:0 auto;width:100%;padding:32px clamp(20px,8vw,144px) 72px;display:flex;align-items:flex-start;gap:36px;flex-wrap:wrap">
+
+    <nav aria-label="Account" style="flex:1 1 240px;max-width:260px;min-width:0;display:flex;flex-direction:column;gap:4px">
+      <span style="padding:0 12px 10px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#B9913E">My account</span>
+      <sc-for list="{{ accountNav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:10px;background:{{ n.bg }};font-weight:{{ n.weight }};font-size:14px;color:{{ n.ink }}" style-hover="background:#F2FAF7;color:#29483C">
+          {{ n.label }}
+          <sc-if value="{{ n.count }}" hint-placeholder-val="{{ false }}">
+            <span style="min-width:22px;height:20px;padding:0 6px;border-radius:10px;background:{{ n.badgeBg }};color:{{ n.badgeInk }};font-family:'DM Sans',Poppins,sans-serif;font-size:11px;font-weight:700;line-height:20px;text-align:center">{{ n.count }}</span>
+          </sc-if>
+        </a>
+      </sc-for>
+    </nav>
+
+    <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h1 style="margin:0;font-weight:600;font-size:clamp(24px,2.4vw,32px);line-height:1.2;color:#29483C">My reviews</h1>
+        <p style="margin:0;font-size:14px;color:#595959">{{ countLine }}</p>
+      </div>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:12px">
+          <span style="height:120px;border-radius:14px;background:#F4F6F5"></span>
+          <span style="height:120px;border-radius:14px;background:#F7F9F8"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasPending }}" hint-placeholder-val="{{ false }}">
+        <section style="border:1px solid #E6EFEA;background:#FFFDF7;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Awaiting your review</h2>
+            <p style="margin:0;font-size:13px;line-height:1.6;color:#595959">You have used these. A couple of lines helps the next teacher decide.</p>
+          </div>
+          <sc-for list="{{ pending }}" as="p" hint-placeholder-count="2">
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #F1EFE6">
+              <span style="flex:0 0 68px;width:68px;height:46px;border-radius:8px;overflow:hidden;background:#F3F4F6">
+                <img src="{{ p.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+              </span>
+              <a href="{{ p.href }}" style="flex:1 1 200px;min-width:0;font-weight:500;font-size:14px;line-height:1.45;color:#121212" style-hover="color:#3A836B">{{ p.title }}</a>
+              <button type="button" onClick="{{ p.onWrite }}" data-testid="write-review" style="flex:0 0 auto;height:40px;padding:0 18px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:13px;cursor:pointer" style-hover="background:#29483C">Write a review</button>
+            </div>
+          </sc-for>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ formOpen }}" hint-placeholder-val="{{ false }}">
+        <form data-testid="review-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="border:1px solid #3A836B;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px;background:#FFFFFF">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Reviewing “{{ formTitle }}”</h2>
+            <button type="button" onClick="{{ onCancel }}" aria-label="Cancel this review" style="width:30px;height:30px;border:none;border-radius:8px;background:#F3F4F6;color:#595959;display:grid;place-items:center;cursor:pointer" style-hover="background:#EDF0EE">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"></path></svg>
+            </button>
+          </div>
+
+          <fieldset style="margin:0;padding:0;border:none;display:flex;flex-direction:column;gap:8px">
+            <legend style="padding:0;font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ ratingLabelColor }}">Your rating</legend>
+            <div style="display:flex;gap:6px">
+              <sc-for list="{{ ratingButtons }}" as="s" hint-placeholder-count="5">
+                <button type="button" onClick="{{ s.onPick }}" aria-label="{{ s.label }}" aria-pressed="{{ s.pressed }}" style="width:44px;height:44px;border:1px solid {{ s.border }};border-radius:10px;background:{{ s.bg }};color:{{ s.ink }};font-size:20px;line-height:1;cursor:pointer;transition:transform .16s ease" style-hover="transform:scale(1.06)">★</button>
+              </sc-for>
+            </div>
+            <sc-if value="{{ ratingError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ ratingError }}</span></sc-if>
+          </fieldset>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <label for="ar-body" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ bodyLabelColor }}">Your review</label>
+            <textarea id="ar-body" name="body" rows="5" value="{{ vBody }}" onInput="{{ onInput }}" aria-invalid="{{ bodyInvalid }}" aria-describedby="ar-body-help" placeholder="How did it work in your classroom? What should another teacher know?" style="border:1px solid {{ bodyBorder }};border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:15px;line-height:1.65;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+            <span id="ar-body-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ bodyHelpColor }}">{{ bodyHelp }}</span>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button type="submit" disabled="{{ busy }}" data-testid="review-submit" style="height:48px;padding:0 24px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }}" style-hover="background:#29483C">{{ submitLabel }}</button>
+            <button type="button" onClick="{{ onCancel }}" style="height:48px;padding:0 20px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;color:#29483C;cursor:pointer" style-hover="background:#F2FAF7">Cancel</button>
+          </div>
+        </form>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="reviews-empty" style="border:1px dashed #DCE7E1;background:#FCFDFC;border-radius:16px;padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+          <span style="width:76px;height:76px;border-radius:50%;background:#F2FAF7;display:grid;place-items:center">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.6 2.8 5.8 6.4.9-4.6 4.5 1.1 6.4L12 18l-5.7 3.1 1.1-6.4-4.6-4.5 6.4-.9Z"></path></svg>
+          </span>
+          <h2 style="margin:0;font-weight:600;font-size:21px;color:#29483C">You have not written a review yet</h2>
+          <p style="margin:0;max-width:440px;font-size:15px;line-height:1.7;color:#595959">You can review any resource you have purchased. Your words appear on the product page with your name.</p>
+          <a href="{{ downloadsHref }}" style="margin-top:6px;display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:15px" style-hover="background:#29483C;color:#FFFFFF">See my downloads</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+            <article data-testid="my-review" style="border:1px solid #EDF0EE;border-radius:14px;padding:18px;display:flex;gap:16px;flex-wrap:wrap">
+              <a href="{{ r.href }}" tabindex="-1" aria-hidden="true" style="flex:0 0 84px;width:84px;height:56px;border-radius:8px;overflow:hidden;background:#F3F4F6">
+                <img src="{{ r.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+              </a>
+              <div style="flex:1 1 260px;min-width:0;display:flex;flex-direction:column;gap:8px">
+                <a href="{{ r.href }}" style="font-weight:600;font-size:15px;line-height:1.45;color:#121212" style-hover="color:#3A836B">{{ r.productTitle }}</a>
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <span aria-hidden="true" style="font-size:14px;color:#FFC107;letter-spacing:1px">{{ r.stars }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#595959">{{ r.date }}</span>
+                </div>
+                <p style="margin:0;font-size:14px;line-height:1.7;color:#646464">{{ r.body }}</p>
+              </div>
+              <button type="button" onClick="{{ r.onDelete }}" data-testid="delete-review" aria-label="{{ r.deleteLabel }}" style="flex:0 0 auto;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 12px;border:1px solid #EDF0EE;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-size:12px;font-weight:600;color:#C0392B;cursor:pointer" style-hover="background:#FDF1EF;border-color:#F3D6D2">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 13h8l1-13"></path></svg>
+                Delete
+              </button>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="accountReviews" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    loading: true, rows: [], meta: null, user: null, counts: {}, pending: [],
+    formFor: null, busy: false, errors: {},
+    values: { rating: 0, body: '' },
+  };
+
+  async componentDidMount() {
+    const [app, reviews, orders, db, validation] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/reviewsRepo.js'),
+      import('./assets/js/repositories/ordersRepo.js'),
+      import('./assets/js/db.js'),
+      import('./assets/js/validation.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.reviews = reviews; this.orders = orders; this.db = db; this.validation = validation;
+    const user = app.auth.requireRole('customer', 'vendor', 'admin');
+    if (!user) return;
+    this.user = user;
+    this.setState({ user });
+    await this.load();
+  }
+
+  async load() {
+    this.setState({ loading: true });
+    const u = (this.user || this.state.user);
+    const [mine, dl] = await Promise.all([
+      this.reviews.listMyReviews(u.id, { pageSize: 20 }),
+      this.orders.listDownloads(u.id, { pageSize: 500 }),
+    ]);
+    const reviewed = new Set(mine.data.map(r => r.productId));
+    this.setState({
+      loading: false, rows: mine.data, meta: mine.meta,
+      pending: dl.data.filter(d => !reviewed.has(d.productId)).slice(0, 4),
+      counts: {
+        orders: this.db.findAll('orders', { filter: { customerId: u.id } }).total,
+        downloads: dl.meta.total,
+        wishlist: this.db.findAll('wishlist', { filter: { userId: u.id } }).total,
+        following: this.db.findAll('follows', { filter: { userId: u.id } }).total,
+      },
+    });
+  }
+
+  nav() {
+    const url = this.app.router.url;
+    const c = this.state.counts;
+    return [
+      { key: 'accountOrders', label: 'Orders', count: c.orders },
+      { key: 'accountDownloads', label: 'Downloads', count: c.downloads },
+      { key: 'accountWishlist', label: 'Wishlist', count: c.wishlist },
+      { key: 'accountReviews', label: 'My reviews', count: this.state.meta ? this.state.meta.total : 0 },
+      { key: 'accountFollowing', label: 'Following', count: c.following },
+      { key: 'accountProfile', label: 'Profile', count: 0 },
+    ].map(n => {
+      const active = n.key === 'accountReviews';
+      return {
+        label: n.label, href: url(n.key),
+        current: active ? 'page' : undefined,
+        bg: active ? '#F2FAF7' : 'transparent',
+        ink: active ? '#29483C' : '#595959',
+        weight: active ? 600 : 500,
+        count: n.count ? String(n.count) : '',
+        badgeBg: active ? '#3A836B' : '#EDF0EE',
+        badgeInk: active ? '#FFFFFF' : '#595959',
+      };
+    });
+  }
+
+  stars(n) {
+    const f = Math.round(Number(n) || 0);
+    return '★'.repeat(f) + '☆'.repeat(Math.max(0, 5 - f));
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, rows, meta, pending, formFor, busy, errors, values } = this.state;
+    const total = meta ? meta.total : 0;
+    const bodyLen = (values.body || '').length;
+
+    return {
+      accountNav: this.app ? this.nav() : [],
+      downloadsHref: url('accountDownloads'),
+      loading,
+      countLine: loading ? 'Loading…' : total === 0 ? 'No reviews written yet' : total + (total === 1 ? ' review' : ' reviews') + ' written',
+      isEmpty: !loading && rows.length === 0 && !formFor,
+      hasRows: !loading && rows.length > 0,
+      hasPending: !loading && pending.length > 0 && !formFor,
+
+      pending: pending.map(p => ({
+        title: p.title, cover: p.cover,
+        href: url('product', { id: p.productId }),
+        onWrite: () => this.setState({ formFor: p, values: { rating: 0, body: '' }, errors: {} }),
+      })),
+
+      formOpen: !!formFor,
+      formTitle: formFor ? formFor.title : '',
+      ratingButtons: [1, 2, 3, 4, 5].map(n => {
+        const on = values.rating >= n;
+        return {
+          label: n + (n === 1 ? ' star' : ' stars'),
+          pressed: values.rating === n ? 'true' : 'false',
+          bg: on ? '#FFF9E8' : '#FFFFFF',
+          border: on ? '#FFC107' : '#DCE7E1',
+          ink: on ? '#FFC107' : '#D5DDD9',
+          onPick: () => this.setState(s => ({ values: Object.assign({}, s.values, { rating: n }), errors: Object.assign({}, s.errors, { rating: null }) })),
+        };
+      }),
+      ratingError: errors.rating || '',
+      ratingLabelColor: errors.rating ? '#C0392B' : '#49454F',
+      vBody: values.body,
+      bodyBorder: errors.body ? '#C0392B' : '#CAC4D0',
+      bodyLabelColor: errors.body ? '#C0392B' : '#49454F',
+      bodyInvalid: errors.body ? 'true' : 'false',
+      bodyHelp: errors.body || bodyLen + ' / 1000 characters — at least 20.',
+      bodyHelpColor: errors.body ? '#C0392B' : '#49454F',
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Publishing…' : 'Publish review',
+
+      rows: rows.map(r => ({
+        productTitle: r.productTitle, cover: r.productCover,
+        href: url('product', { id: r.productId }),
+        stars: this.stars(r.rating),
+        body: r.body,
+        date: new Date(r.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+        deleteLabel: 'Delete your review of ' + r.productTitle,
+        onDelete: async () => {
+          const ok = await this.app.confirmDialog({
+            title: 'Delete this review?',
+            body: 'It will be removed from the product page and the rating recalculated.',
+            confirmLabel: 'Delete review',
+          });
+          if (!ok) return;
+          await this.reviews.deleteReview(r.id, (this.user || this.state.user));
+          await this.load();
+          this.app.toast('Review deleted.', 'success');
+        },
+      })),
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+        }));
+      },
+      onCancel: () => this.setState({ formFor: null, errors: {}, values: { rating: 0, body: '' } }),
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const { valid, errors: errs } = this.validation.validate(this.state.values, this.validation.schemas.review);
+        if (!valid) { this.setState({ errors: errs }); return; }
+        this.setState({ busy: true });
+        try {
+          await this.reviews.createReview(this.state.formFor.productId, (this.user || this.state.user), this.state.values);
+          this.setState({ busy: false, formFor: null, values: { rating: 0, body: '' } });
+          await this.load();
+          this.app.toast('Thank you — your review has been published.', 'success');
+        } catch (err) {
+          this.setState({ busy: false });
+          this.app.toast(this.app.readError(err).message, 'error');
+        }
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

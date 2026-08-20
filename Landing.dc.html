@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Uloominate — Where Deen and Learning Come Together</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500;600&amp;family=Playfair+Display:wght@400;500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; color: #121212; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+  a { color: #3A836B; text-decoration: none; }
+  a:hover { color: #29483C; }
+  :focus-visible { outline: 2px solid #3A836B; outline-offset: 3px; border-radius: 6px; }
+  @keyframes ulm-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition-duration: .001ms !important; } }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#3A836B"/><circle cx="100" cy="86" r="30" fill="none" stroke="#FEDC97" stroke-width="7"/><path d="M100 86v46" stroke="#FEDC97" stroke-width="7" stroke-linecap="round"/><text x="100" y="166" text-anchor="middle" fill="#FEDC97" font-family="Georgia,serif" font-size="30">U</text></svg></template>
+<div data-screen-label="P-01 Pre-launch landing" style="width:100%;overflow-x:hidden;background:#FFFFFF">
+
+  <dc-import name="SiteHeader" active="" hint-size="100%,140px"></dc-import>
+
+  <section data-section="hero" style="background:#FFFDF7;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:48px 0 0 clamp(20px,4.34vw,75px);display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+      <div style="flex:999 1 480px;min-width:0;display:flex;flex-direction:column;padding-top:16px;animation:ulm-rise .5s ease both">
+        <h1 style="margin:0;font-weight:600;font-size:clamp(34px,3.4vw,50px);line-height:1.08;letter-spacing:-.5px;color:#29483C;text-wrap:balance;max-width:975px">Where Deen and Learning Come Together</h1>
+        <p style="margin:22px 0 0;max-width:813px;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.75;color:#121212;text-wrap:pretty">We’re building an Islamic marketplace where educators, homeschool creators, and teachers can share resources, grow their audience, and earn with purpose.</p>
+        <p style="margin:20px 0 0;position:relative;display:inline-block;width:max-content;max-width:100%;font-weight:700;font-size:clamp(19px,1.7vw,28px);line-height:1.75;color:#3A836B">
+          <span style="position:absolute;left:-3px;right:-14px;bottom:6px;height:27px;background:#FEDC97;border-radius:2px;z-index:0"></span>
+          <span style="position:relative;z-index:1">Free Until January 1st, 2027</span>
+        </p>
+        <div style="display:flex;gap:20px;margin-top:36px;flex-wrap:wrap">
+          <a href="{{ registerVendorHref }}" data-testid="cta-founding-vendor" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:68px;padding:14px 28px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:20px;line-height:20px;transition:transform .2s cubic-bezier(.2,.7,.3,1),box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(58,131,107,.75);color:#FFFFFF">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M19 8v6M22 11h-6"></path></svg>
+            Become a Founding Vendor
+          </a>
+          <a href="{{ plansHref }}" data-testid="cta-vendor-plans" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:68px;padding:14px 28px;border-radius:8px;background:#FFFFFF;color:#29483C;border:1px solid #E4DFCF;font-weight:600;font-size:20px;line-height:20px;transition:transform .2s cubic-bezier(.2,.7,.3,1),box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(41,72,60,.4);color:#29483C">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 10h18M9 4v16"></path></svg>
+            See Vendor Plans
+          </a>
+        </div>
+      </div>
+      <div style="flex:1 1 380px;min-width:0;margin-left:auto;max-width:773px">
+        <img src="assets/img/hero-illustration.png" alt="A Muslim educator sharing digital learning resources" style="display:block;width:100%;height:auto;aspect-ratio:773 / 580;object-fit:cover;border-radius:200px 0 0 0" />
+      </div>
+    </div>
+  </section>
+
+  <section data-section="top-vendors" aria-label="Our top vendors" style="background:#FFFDF7;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:15px clamp(20px,4.51vw,78px) 40px;display:flex;flex-direction:column;gap:18px">
+      <p style="margin:0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#B9913E">OUR TOP VENDORS</p>
+      <div style="display:flex;align-items:center;gap:64px;flex-wrap:wrap;row-gap:24px">
+        <img src="assets/img/vendor-logo-1.png" alt="Muslim Legacy Series" style="height:66px;width:auto;max-width:157px;object-fit:contain;opacity:.92;transition:opacity .2s ease" style-hover="opacity:1" />
+        <img src="assets/img/vendor-logo-3.png" alt="Sweet Preschool Creations" style="height:132px;width:auto;object-fit:contain;border-radius:8px;opacity:.92;transition:opacity .2s ease" style-hover="opacity:1" />
+        <img src="assets/img/vendor-logo-2.png" alt="The Kids Homeschool" style="height:132px;width:auto;object-fit:contain;border-radius:8px;opacity:.92;transition:opacity .2s ease" style-hover="opacity:1" />
+        <img src="assets/img/vendor-logo-4.png" alt="Playful Learning Co." style="height:132px;width:auto;object-fit:contain;border-radius:8px;opacity:.92;transition:opacity .2s ease" style-hover="opacity:1" />
+        <img src="assets/img/vendor-logo-5.png" alt="Miss Emily's Classroom" style="height:132px;width:auto;object-fit:contain;border-radius:8px;opacity:.92;transition:opacity .2s ease" style-hover="opacity:1" />
+        <img src="assets/img/vendor-logo-6.png" alt="Curriculum &amp; Crafts" style="height:72px;width:auto;max-width:243px;object-fit:contain;opacity:.92;transition:opacity .2s ease" style-hover="opacity:1" />
+      </div>
+    </div>
+  </section>
+
+  <section data-section="why-creators-join" style="background:#FFFFFF;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:65px clamp(20px,12.5vw,216px) 87px;display:flex;flex-direction:column;gap:48px">
+      <div style="max-width:1295px;display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#B9913E">WHY CREATORS JOIN</p>
+        <h2 style="margin:0;max-width:1229px;font-weight:600;font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.4px;color:#29483C;text-wrap:balance">Built for Islamic Educators Who Want to Share &amp; Earn With a Purpose</h2>
+        <p style="margin:0;max-width:1231px;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.5;color:#121212;text-wrap:pretty">Uloominate helps Muslim Educators bring Deen and Dunya together beautifully through high-quality Islamic studies, Arabic, Math, Science, and other homeschool resources.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:36px;max-width:1266px">
+        <article style="background:#F5EDFF;border-radius:20px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:30px;min-height:363px;transition:transform .24s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-4px)">
+          <span style="width:90px;height:90px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;flex:0 0 auto">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#7A5FA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="M8.6 13.5 15.4 17.5M15.4 6.5 8.6 10.5"></path></svg>
+          </span>
+          <div style="display:flex;flex-direction:column;gap:16px;align-items:center">
+            <h3 style="margin:0;font-weight:600;font-size:32px;line-height:38px;color:#29483C;text-align:center">Share</h3>
+            <p style="margin:0;max-width:242px;font-weight:400;font-size:20px;line-height:1.35;color:#121212;text-align:center;text-wrap:pretty">Share your digital Islamic &amp; educational resources worldwide</p>
+          </div>
+        </article>
+
+        <article style="background:#F2FAF7;border-radius:20px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:30px;min-height:363px;transition:transform .24s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-4px)">
+          <span style="width:90px;height:90px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;flex:0 0 auto">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"></circle><path d="M12 5.8v4.4M13.6 6.9h-2.2a1.1 1.1 0 0 0 0 2.2h1.2a1.1 1.1 0 0 1 0 2.2h-2.2"></path><path d="M4 15.5c1.6 1.4 3.6 2.2 5.6 2.4l3.4.4a2 2 0 0 1-.4 4H8"></path><path d="M20 14.5c-1.5.6-3 1.6-4.3 2.9"></path></svg>
+          </span>
+          <div style="display:flex;flex-direction:column;gap:16px;align-items:center">
+            <h3 style="margin:0;font-weight:600;font-size:32px;line-height:38px;color:#29483C;text-align:center">Earn</h3>
+            <p style="margin:0;max-width:242px;font-weight:400;font-size:20px;line-height:1.35;color:#121212;text-align:center;text-wrap:pretty">Earn income from your lessons, activities, and printables</p>
+          </div>
+        </article>
+
+        <article style="background:#FFF2DE;border-radius:20px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:30px;min-height:363px;transition:transform .24s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-4px)">
+          <span style="width:90px;height:90px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;flex:0 0 auto">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#B9913E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"></circle><circle cx="17" cy="10" r="2.5"></circle><path d="M2 20v-1.5A4.5 4.5 0 0 1 6.5 14h3A4.5 4.5 0 0 1 14 18.5V20"></path><path d="M16 20v-1a3.6 3.6 0 0 0-2-3.2"></path><path d="M22 20v-1.2a3.4 3.4 0 0 0-3.4-3.4h-.4"></path></svg>
+          </span>
+          <div style="display:flex;flex-direction:column;gap:16px;align-items:center">
+            <h3 style="margin:0;font-weight:600;font-size:32px;line-height:38px;color:#29483C;text-align:center">Connect</h3>
+            <p style="margin:0;max-width:242px;font-weight:400;font-size:20px;line-height:1.35;color:#121212;text-align:center;text-wrap:pretty">Connect with like-minded teachers, homeschoolers, and schools</p>
+          </div>
+        </article>
+
+        <article style="background:#E3F7FD;border-radius:20px;padding:40px 24px;display:flex;flex-direction:column;align-items:center;gap:30px;min-height:363px;transition:transform .24s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-4px)">
+          <span style="width:90px;height:90px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;flex:0 0 auto">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#2F7FA0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"></path><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5.9 1.2.9 1.9V16h5.4v-.3c0-.7.3-1.4.9-1.9A6 6 0 0 0 12 3Z"></path></svg>
+          </span>
+          <div style="display:flex;flex-direction:column;gap:16px;align-items:center">
+            <h3 style="margin:0;font-weight:600;font-size:32px;line-height:38px;color:#29483C;text-align:center">Inspire</h3>
+            <p style="margin:0;max-width:241px;font-weight:400;font-size:20px;line-height:1.35;color:#121212;text-align:center;text-wrap:pretty">Inspire learners though authentic, faith-based education</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="founding-promotion" style="background:#F2FAF7;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:65px clamp(20px,12.4vw,215px) 76px;display:flex;flex-direction:column;gap:74px">
+      <div style="max-width:1295px;display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#B9913E">LIMITED FOUNDING PROMOTION</p>
+        <h2 style="margin:0;max-width:1229px;font-weight:600;font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.4px;color:#29483C;text-wrap:balance">Become One of Our Founding Vendors - Get Started Free Today</h2>
+        <p style="margin:0;max-width:1231px;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.5;color:#121212;text-wrap:pretty">Create your own vendor account now, choose your plan, and use your vendor access free until January 1st, 2027.</p>
+      </div>
+
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(48px,8vw,154px);max-width:1313px">
+        <div aria-hidden="true" style="position:absolute;top:80px;left:170px;right:170px;height:1px;background:#B8D9CB;display:block"></div>
+        <article style="position:relative;border-radius:12px;padding:20px 24px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <span style="width:72px;height:72px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;align-self:center;font-weight:500;font-size:32px;line-height:1;color:#3A836B">1</span>
+          <p style="margin:12px 0 0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#B9913E">TODAY</p>
+          <h3 style="margin:0;font-weight:600;font-size:24px;line-height:38px;color:#29483C">Join &amp; Choose Plan</h3>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:1.5;color:#121212;text-wrap:pretty">Create your vendor account and pick the plan that fits how you want to publish.</p>
+        </article>
+        <article style="position:relative;border-radius:12px;padding:20px 24px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <span style="width:72px;height:72px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;align-self:center;font-weight:500;font-size:32px;line-height:1;color:#3A836B">2</span>
+          <p style="margin:12px 0 0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#B9913E">THROUGH JAN 1, 2027</p>
+          <h3 style="margin:0;font-weight:600;font-size:24px;line-height:38px;color:#29483C">Upload &amp; Sell</h3>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:1.5;color:#121212;text-wrap:pretty">No vendor plan charge during the founding offer period - build your catalogue and start earning.</p>
+        </article>
+        <article style="position:relative;border-radius:12px;padding:20px 24px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <span style="width:72px;height:72px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;align-self:center;font-weight:500;font-size:32px;line-height:1;color:#3A836B">3</span>
+          <p style="margin:12px 0 0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#B9913E">JAN 2, 2027</p>
+          <h3 style="margin:0;font-weight:600;font-size:24px;line-height:38px;color:#29483C">Billing Begins</h3>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:1.5;color:#121212;text-wrap:pretty">Your selected plan billing starts. Cancel or change plans any time before then.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="vendor-plans" style="background:#FFFFFF;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:65px clamp(20px,12.5vw,216px) 85px;display:flex;flex-direction:column;gap:48px">
+      <div style="max-width:1295px;display:flex;flex-direction:column;gap:24px">
+        <p style="margin:0;font-weight:600;font-size:18px;line-height:27px;letter-spacing:.06em;color:#C59E33">CHOOSE YOUR VENDOR PATH</p>
+        <h2 style="margin:0;font-weight:600;font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.4px;color:#29483C">Vendor Plans For Every Creator</h2>
+        <p style="margin:0;max-width:1231px;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.5;color:#121212;text-wrap:pretty">Join any plan under the founding offer and pay nothing until January 2nd, 2027</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),405px));gap:41px;justify-content:center">
+        <article data-testid="plan-card-free" style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:24px;padding:34px 20px;display:flex;flex-direction:column;align-items:center;gap:36px;min-height:660px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 18px 40px -28px rgba(41,72,60,.3);transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease" style-hover="transform:translateY(-6px);box-shadow:0 1px 2px rgba(18,18,18,.05),0 28px 56px -28px rgba(41,72,60,.42)">
+          <h3 style="margin:0;font-weight:600;font-size:36px;line-height:38px;color:#29483C;text-align:center">Pioneer Vendor</h3>
+          <p style="margin:0;font-weight:600;font-size:48px;line-height:38px;color:#3A836B;text-align:center">FREE</p>
+          <p style="margin:0;flex:1;max-width:365px;font-weight:400;font-size:clamp(17px,1.4vw,24px);line-height:2.1;color:#121212;white-space:pre-line">Best for new creators sharing free resources
+Start building your profile and following
+Unlimited free resource uploads
+Paid listings not permitted</p>
+          <a href="{{ registerFreeHref }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;width:310px;max-width:100%;height:68px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:24px;line-height:20px;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(58,131,107,.75);color:#FFFFFF">Join Free Today</a>
+        </article>
+
+        <article data-testid="plan-card-basic" style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:24px;padding:34px 20px;display:flex;flex-direction:column;align-items:center;gap:36px;min-height:660px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 18px 40px -28px rgba(41,72,60,.3);transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease" style-hover="transform:translateY(-6px);box-shadow:0 1px 2px rgba(18,18,18,.05),0 28px 56px -28px rgba(41,72,60,.42)">
+          <h3 style="margin:0;font-weight:600;font-size:36px;line-height:38px;color:#29483C;text-align:center">Basic Vendor</h3>
+          <p style="margin:0;font-weight:600;font-size:48px;line-height:38px;color:#116254;text-align:center">$29/year</p>
+          <p style="margin:0;flex:1;max-width:363px;font-weight:400;font-size:clamp(17px,1.4vw,24px);line-height:2.1;color:#121212;white-space:pre-line">Upload up to 50 paid resources
+Unlimited free resources
+Sell free and paid material
+55% vendor payout on each sale
+$0.40 per transaction</p>
+          <a href="{{ registerBasicHref }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;width:310px;max-width:100%;height:68px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:24px;line-height:20px;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(58,131,107,.75);color:#FFFFFF">Join Free Today</a>
+        </article>
+
+        <article data-testid="plan-card-premium" style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:24px;padding:34px 20px;display:flex;flex-direction:column;align-items:center;gap:36px;min-height:660px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 18px 40px -28px rgba(41,72,60,.3);transition:transform .24s cubic-bezier(.2,.7,.3,1),box-shadow .24s ease" style-hover="transform:translateY(-6px);box-shadow:0 1px 2px rgba(18,18,18,.05),0 28px 56px -28px rgba(41,72,60,.42)">
+          <h3 style="margin:0;font-weight:600;font-size:36px;line-height:38px;color:#29483C;text-align:center">Premium Vendor</h3>
+          <p style="margin:0;font-weight:600;font-size:48px;line-height:38px;color:#116254;text-align:center">$49/year</p>
+          <p style="margin:0;flex:1;max-width:365px;font-weight:400;font-size:clamp(17px,1.4vw,24px);line-height:2.1;color:#121212;white-space:pre-line">Unlimited uploads
+Featured placement opportunity
+Advanced dashboard and reports
+80% vendor payout on each sale
+$0.25 per transaction</p>
+          <a href="{{ registerPremiumHref }}" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;width:310px;max-width:100%;height:68px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:24px;line-height:20px;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(58,131,107,.75);color:#FFFFFF">Join Free Today</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="benefits-cta" style="background:#F5EDFF;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:65px clamp(20px,4vw,64px) 90px;display:flex;flex-direction:column;align-items:center;gap:24px">
+      <h2 style="margin:0;max-width:1110px;font-weight:600;font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.4px;color:#29483C;text-align:center;text-wrap:balance">Ready to Share Your Knowledge With The World?</h2>
+      <p style="margin:0;max-width:999px;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.5;color:#121212;text-align:center;text-wrap:pretty">Set up your vendor account and enjoy the benefits!</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),396px));gap:48px;margin-top:48px;width:100%;max-width:1285px;justify-content:center">
+        <article style="background:#FFFFFF;border-radius:8px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:20px;min-height:172px">
+          <h3 style="margin:0;font-weight:600;font-size:24px;line-height:36px;color:#3A836B;text-align:center">3 Months Free</h3>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:30px;color:#121212;text-align:center;text-wrap:pretty">No vendor fees or commissions after launch period</p>
+        </article>
+        <article style="background:#FFFFFF;border-radius:8px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:20px;min-height:172px">
+          <h3 style="margin:0;font-weight:600;font-size:24px;line-height:36px;color:#3A836B;text-align:center">Early Exposure</h3>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:30px;color:#121212;text-align:center;text-wrap:pretty">Get featured as a Founding Vendor on our homepage</p>
+        </article>
+        <article style="background:#FFFFFF;border-radius:8px;padding:28px 20px;display:flex;flex-direction:column;align-items:center;gap:20px;min-height:172px">
+          <h3 style="margin:0;font-weight:600;font-size:24px;line-height:36px;color:#3A836B;text-align:center">Early Upload Access</h3>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:30px;color:#121212;text-align:center;text-wrap:pretty">Add free and paid resources before the public launch</p>
+        </article>
+      </div>
+
+      <a href="{{ registerVendorHref }}" data-testid="cta-claim-access" style="margin-top:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:68px;padding:14px 32px;border-radius:8px;background:#FEDC97;color:#29483C;font-weight:600;font-size:24px;line-height:20px;transition:transform .2s ease,box-shadow .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(185,145,62,.6);color:#29483C">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5L20 7"></path></svg>
+        Claim Free Vendor Access
+      </a>
+    </div>
+  </section>
+
+  <section data-section="testimonials" style="background:#FFFFFF;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:65px clamp(20px,4vw,64px) 60px;display:flex;flex-direction:column;align-items:center;gap:24px">
+      <h2 style="margin:0;font-weight:600;font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.4px;color:#29483C;text-align:center">Testimonials</h2>
+      <p style="margin:0;max-width:999px;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.5;color:#121212;text-align:center">Hear from our current vendors and registered users</p>
+
+      <div data-testid="testimonial-track" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),393px));gap:32px;margin-top:48px;width:100%;max-width:1243px;justify-content:center">
+        <blockquote style="margin:0;background:#F2FAF7;border-radius:5.35px;padding:32px;display:flex;flex-direction:column;gap:16px;min-height:290px">
+          <cite style="font-style:normal;font-weight:600;font-size:24px;line-height:36px;color:#121212;text-align:center">Abdul Rashid K.</cite>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:1.45;color:#121212;text-wrap:pretty">Im very excited to utilize this site once it is launched! This is a platform that has been needed in the Muslim community for a long time.</p>
+        </blockquote>
+        <blockquote style="margin:0;background:#F2FAF7;border-radius:5.35px;padding:32px;display:flex;flex-direction:column;gap:16px;min-height:290px">
+          <cite style="font-style:normal;font-weight:600;font-size:24px;line-height:36px;color:#121212;text-align:center">Amina Begum</cite>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:1.45;color:#121212;text-wrap:pretty">I used to visit several websites to make a lesson. Uloominate will make it much easier to find thoughtful Islamic resources in one central website.</p>
+        </blockquote>
+        <blockquote style="margin:0;background:#F2FAF7;border-radius:5.35px;padding:32px;display:flex;flex-direction:column;gap:16px;min-height:290px">
+          <cite style="font-style:normal;font-weight:600;font-size:24px;line-height:36px;color:#121212;text-align:center">Layla S.</cite>
+          <p style="margin:0;font-weight:400;font-size:20px;line-height:1.45;color:#121212;text-wrap:pretty">The ability to find worksheets based on Islamic topics AND secular subjects is a game changer in the way I teach.</p>
+        </blockquote>
+      </div>
+
+      <div style="display:flex;gap:5.35px;margin-top:16px">
+        <span aria-hidden="true" style="width:10.69px;height:10.69px;border-radius:50%;background:#3A836B"></span>
+        <span aria-hidden="true" style="width:10.69px;height:10.69px;border-radius:50%;background:#9FD0BE"></span>
+        <span aria-hidden="true" style="width:10.69px;height:10.69px;border-radius:50%;background:#9FD0BE"></span>
+      </div>
+    </div>
+  </section>
+
+  <section data-section="mailing-list" style="background:#E3F7FD;width:100%">
+    <div style="max-width:1728px;margin:0 auto;padding:65px clamp(20px,12.5vw,216px);display:flex;flex-wrap:wrap;gap:clamp(40px,8vw,169px);align-items:center;justify-content:space-between">
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <h2 style="margin:0;font-weight:600;font-size:clamp(30px,2.9vw,44px);line-height:1.12;letter-spacing:-.4px;color:#29483C">Join Our Community</h2>
+        <p style="margin:0;font-weight:400;font-size:clamp(19px,1.7vw,28px);line-height:1.5;color:#121212;text-wrap:pretty">Get early access updates, vendor launch news, and founding offer reminders - no commitment is required.</p>
+      </div>
+
+      <form data-testid="subscribe-form" onSubmit="{{ onSubscribe }}" novalidate="novalidate" style="background:#FFFFFF;border-radius:12px;padding:42px;display:flex;flex-direction:column;gap:20px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label for="ulm-sub-name" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;line-height:16px;color:#49454F">Your name</label>
+          <input id="ulm-sub-name" name="name" type="text" autocomplete="name" placeholder="Amina Begum" style="height:56px;border:1px solid #CAC4D0;border-radius:4px 4px 0 0;border-bottom:1px solid #49454F;padding:0 16px;font-family:Poppins,sans-serif;font-size:16px;color:#121212;background:#FFFFFF;outline:none;transition:border-color .18s ease" style-focus="border-color:#3A836B;border-bottom-color:#3A836B" />
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label for="ulm-sub-email" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;line-height:16px;color:{{ emailLabelColor }}">Enter Email</label>
+          <input id="ulm-sub-email" name="email" type="email" autocomplete="email" required="required" aria-invalid="{{ emailInvalid }}" aria-describedby="ulm-sub-help" placeholder="you@example.com" style="height:56px;border:1px solid {{ emailBorder }};border-radius:4px 4px 0 0;border-bottom:1px solid {{ emailBorder }};padding:0 16px;font-family:Poppins,sans-serif;font-size:16px;color:#121212;background:#FFFFFF;outline:none;transition:border-color .18s ease" style-focus="border-color:#3A836B;border-bottom-color:#3A836B" />
+          <p id="ulm-sub-help" role="status" style="margin:4px 0 0;padding:0 16px;font-family:Roboto,Poppins,sans-serif;font-size:12px;line-height:16px;color:{{ helpColor }}">{{ helpText }}</p>
+        </div>
+        <button type="submit" disabled="{{ busy }}" data-testid="subscribe-submit" style="height:68px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:24px;line-height:24px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease" style-hover="transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(58,131,107,.75)">
+          <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+            <span aria-hidden="true" style="width:20px;height:20px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+          </sc-if>
+          {{ submitLabel }}
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="landing" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showTopVendors&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;promoEndLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Free Until January 1st, 2027&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { busy: false, status: 'idle', message: 'We send launch news and founding-offer reminders. Unsubscribe any time.' };
+
+  async componentDidMount() {
+    const [app, platform] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.platform = platform;
+    if (!document.getElementById('ulm-spin-kf')) {
+      const s = document.createElement('style');
+      s.id = 'ulm-spin-kf';
+      s.textContent = '@keyframes ulm-spin{to{transform:rotate(360deg)}}';
+      document.head.appendChild(s);
+    }
+    this.forceUpdate();
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (r => r);
+    const { busy, status, message } = this.state;
+    const bad = status === 'error';
+    return {
+      registerVendorHref: url('registerVendor'),
+      registerFreeHref: url('registerVendor', { plan: 'free' }),
+      registerBasicHref: url('registerVendor', { plan: 'basic' }),
+      registerPremiumHref: url('registerVendor', { plan: 'premium' }),
+      plansHref: url('plans'),
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Signing you up…' : 'Sign Me Up',
+      helpText: message,
+      helpColor: bad ? '#C0392B' : status === 'ok' ? '#3A836B' : '#49454F',
+      emailBorder: bad ? '#C0392B' : '#CAC4D0',
+      emailLabelColor: bad ? '#C0392B' : '#49454F',
+      emailInvalid: bad ? 'true' : 'false',
+      onSubscribe: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const form = e.target;
+        const fd = new FormData(form);
+        const email = String(fd.get('email') || '').trim();
+        const name = String(fd.get('name') || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(email)) {
+          this.setState({ status: 'error', message: 'Enter a valid email address' });
+          const input = form.querySelector('#ulm-sub-email');
+          if (input) input.focus();
+          return;
+        }
+        this.setState({ busy: true, status: 'idle', message: 'Adding you to the list…' });
+        try {
+          await this.platform.subscribe(email, name || null);
+          this.setState({ busy: false, status: 'ok', message: 'You are on the list. Check your inbox for a confirmation.' });
+          this.app.toast('You are on the list. Check your inbox for a confirmation.', 'success');
+          form.reset();
+        } catch (err) {
+          const { message } = this.app.readError(err);
+          this.setState({ busy: false, status: 'error', message });
+          this.app.toast(message, 'error');
+        }
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

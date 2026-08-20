@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Vendor queue — Uloominate admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7F8FA;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="D-02 Admin Vendor Queue">
+  <dc-import name="AdminShell" active="adminVendorQueue" title="Vendor queue" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <div style="display:flex;flex-direction:column;gap:18px">
+
+      <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-left:4px solid #3A836B;border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:10px">
+        <h2 style="margin:0;font-weight:600;font-size:15px;color:#29483C">What you are checking</h2>
+        <sc-for list="{{ standard }}" as="s" hint-placeholder-count="3">
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <span aria-hidden="true" style="flex:0 0 6px;width:6px;height:6px;margin-top:7px;border-radius:50%;background:#3A836B"></span>
+            <span style="font-size:13.5px;line-height:1.7;color:#121212">{{ s.text }}</span>
+          </div>
+        </sc-for>
+      </section>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:12px">
+          <span style="height:180px;border-radius:16px;background:#EEF0F4"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div data-testid="queue-clear" style="background:#FFFFFF;border:1px dashed #DCE7E1;border-radius:16px;padding:72px 40px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+          <span style="width:76px;height:76px;border-radius:50%;background:#EAF7F1;display:grid;place-items:center">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.6 4.5L19 7.5"></path></svg>
+          </span>
+          <h2 style="margin:0;font-weight:600;font-size:21px;color:#29483C">No registrations waiting</h2>
+          <p style="margin:0;max-width:430px;font-size:14px;line-height:1.7;color:#595959">Every vendor registration has been reviewed. New ones appear here as they arrive.</p>
+          <a href="{{ vendorsHref }}" style="margin-top:4px;display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:14px" style-hover="background:#29483C;color:#FFFFFF">Manage all vendors</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasRows }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ rows }}" as="v" hint-placeholder-count="2">
+            <article data-testid="vendor-queue-item" style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;overflow:hidden">
+
+              <div style="padding:20px;display:flex;gap:18px;flex-wrap:wrap">
+                <span style="flex:0 0 56px;width:56px;height:56px;border-radius:50%;overflow:hidden;background:#3A836B;color:#FFFFFF;display:grid;place-items:center;font-size:17px;font-weight:600">
+                  <sc-if value="{{ v.hasLogo }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ v.logo }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+                  </sc-if>
+                  <sc-if value="{{ v.noLogo }}" hint-placeholder-val="{{ true }}">
+                    <span>{{ v.initials }}</span>
+                  </sc-if>
+                </span>
+
+                <div style="flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:8px">
+                  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                    <span style="font-weight:600;font-size:16.5px;color:#29483C">{{ v.storeName }}</span>
+                    <span style="padding:3px 10px;border-radius:9999px;background:#FFF2DE;color:#B9913E;font-size:11px;font-weight:700">AWAITING REVIEW</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                    <span style="font-size:13px;color:#121212">{{ v.owner }}</span>
+                    <span aria-hidden="true" style="color:#C9C9C9">·</span>
+                    <span style="font-size:13px;color:#595959">{{ v.email }}</span>
+                    <span aria-hidden="true" style="color:#C9C9C9">·</span>
+                    <span style="font-size:13px;color:#595959">{{ v.country }}</span>
+                  </div>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:2px">
+                    <span style="padding:4px 11px;border-radius:9999px;background:#F2FAF7;color:#116254;font-size:12px;font-weight:600">{{ v.planName }}</span>
+                    <span style="padding:4px 11px;border-radius:9999px;background:#F4F6F9;color:#595959;font-size:12px">{{ v.planTerms }}</span>
+                    <span style="padding:4px 11px;border-radius:9999px;background:#F4F6F9;color:#595959;font-family:'DM Sans',Poppins,sans-serif;font-size:12px">Registered {{ v.joined }}</span>
+                  </div>
+                  <sc-if value="{{ v.hasBio }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:4px 0 0;font-size:13.5px;line-height:1.75;color:#595959">{{ v.bio }}</p>
+                  </sc-if>
+                  <sc-if value="{{ v.noBio }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:4px 0 0;font-size:13px;line-height:1.7;color:#B9913E">No store biography submitted yet — they will write one during store setup.</p>
+                  </sc-if>
+                </div>
+
+                <div style="flex:0 0 auto;display:flex;flex-direction:column;gap:9px;min-width:150px">
+                  <button type="button" onClick="{{ v.onApprove }}" data-testid="approve-vendor" style="height:42px;padding:0 18px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:13.5px;cursor:pointer" style-hover="background:#29483C">Approve store</button>
+                  <button type="button" onClick="{{ v.onDecline }}" data-testid="decline-vendor" style="height:42px;padding:0 18px;border:1px solid #F3D6D2;border-radius:8px;background:#FFFFFF;color:#C0392B;font-family:Poppins,sans-serif;font-weight:600;font-size:13.5px;cursor:pointer" style-hover="background:#FDF1EF">Decline</button>
+                </div>
+              </div>
+
+              <sc-if value="{{ v.declineOpen }}" hint-placeholder-val="{{ false }}">
+                <form onSubmit="{{ v.onSubmitDecline }}" style="padding:18px 20px;background:#FDF6F5;border-top:1px solid #F3D6D2;display:flex;flex-direction:column;gap:12px">
+                  <div style="display:flex;flex-direction:column;gap:5px">
+                    <label for="{{ v.reasonId }}" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#C0392B">Reason for declining — the vendor sees this</label>
+                    <select id="{{ v.reasonId }}" name="reason" required="required" style="height:48px;border:1px solid #E4B9B3;border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:14px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#C0392B">
+                      <option value="">Choose a reason…</option>
+                      <sc-for list="{{ vendorReasons }}" as="r" hint-placeholder-count="4">
+                        <option value="{{ r.value }}">{{ r.value }}</option>
+                      </sc-for>
+                    </select>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:5px">
+                    <label for="{{ v.noteId }}" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Additional note (optional)</label>
+                    <textarea id="{{ v.noteId }}" name="note" rows="3" placeholder="Anything that would help them reapply successfully." style="border:1px solid #E4B9B3;border-radius:8px;padding:10px 12px;font-family:Poppins,sans-serif;font-size:13.5px;line-height:1.65;resize:vertical;background:#FFFFFF;outline:none" style-focus="border-color:#C0392B"></textarea>
+                  </div>
+                  <div style="display:flex;gap:10px;flex-wrap:wrap">
+                    <button type="submit" style="height:42px;padding:0 20px;border:none;border-radius:8px;background:#C0392B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:13.5px;cursor:pointer" style-hover="background:#A93226">Decline and notify</button>
+                    <button type="button" onClick="{{ v.onCancelDecline }}" style="height:42px;padding:0 16px;border:1px solid #E4B9B3;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:13.5px;color:#595959;cursor:pointer" style-hover="background:#FDF1EF">Cancel</button>
+                  </div>
+                </form>
+              </sc-if>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const VENDOR_REASONS = [
+  'Store does not meet the faith and community standard',
+  'Store name or branding is unsuitable',
+  'Insufficient information about the store or its material',
+  'Duplicate of an existing vendor account',
+  'Unable to verify the applicant',
+];
+
+class Component extends DCLogic {
+  state = { loading: true, rows: [], user: null, declining: null };
+
+  async componentDidMount() {
+    const [app, vendors, rules] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, vendors, rules });
+    const user = app.auth.requireRole('admin');
+    if (!user) return;
+    this.user = user;
+    this.setState({ user });
+    await this.load();
+  }
+
+  async load() {
+    const res = await this.vendors.listVendors({ status: 'pending', pageSize: 40, sort: 'joinedAt', sortDir: 'asc' });
+    this.setState({ loading: false, rows: res.data, declining: null });
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, rows, declining } = this.state;
+
+    return {
+      subtitle: rows.length
+        ? rows.length + (rows.length === 1 ? ' registration awaiting' : ' registrations awaiting') + ' review'
+        : 'Nothing waiting on you',
+      vendorsHref: url('adminVendors'),
+      loading,
+      isEmpty: !loading && rows.length === 0,
+      hasRows: !loading && rows.length > 0,
+      standard: (this.rules ? this.rules.CONTENT_STANDARD : []).map(text => ({ text })),
+      vendorReasons: VENDOR_REASONS.map(value => ({ value })),
+
+      rows: rows.map(v => {
+        const plan = this.rules.planByCode(v.planCode);
+        return {
+          storeName: v.storeName,
+          owner: v.owner,
+          email: v.email,
+          country: v.country || '—',
+          logo: v.logo,
+          hasLogo: !!v.logo,
+          noLogo: !v.logo,
+          initials: (v.storeName || '?').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(),
+          planName: plan.name,
+          planTerms: plan.payoutRate === null
+            ? 'Terms by agreement'
+            : Math.round(plan.payoutRate * 100) + '% payout · ' + plan.priceLabel,
+          joined: new Date(v.joinedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+          bio: v.bio,
+          hasBio: !!v.bio,
+          noBio: !v.bio,
+
+          onApprove: async () => {
+            const ok = await this.app.confirmDialog({
+              title: 'Approve ' + v.storeName + '?',
+              body: 'Their store becomes active, publishing unlocks, and they are notified by email.',
+              confirmLabel: 'Approve store',
+              tone: 'primary',
+            });
+            if (!ok) return;
+            await this.vendors.approveVendor(v.id, (this.user || this.state.user).id);
+            await this.load();
+            this.app.toast('Vendor approved. Their store is now active.', 'success');
+          },
+          declineOpen: declining === v.id,
+          onDecline: () => this.setState({ declining: v.id }),
+          onCancelDecline: () => this.setState({ declining: null }),
+          reasonId: 'vreason-' + v.id,
+          noteId: 'vnote-' + v.id,
+          onSubmitDecline: async e => {
+            e.preventDefault();
+            const fd = new FormData(e.target);
+            const reason = fd.get('reason');
+            if (!reason) return;
+            await this.vendors.declineVendor(v.id, (this.user || this.state.user).id, reason, fd.get('note') || null);
+            await this.load();
+            this.app.toast('Vendor declined. The reason has been recorded and sent.', 'info');
+          },
+        };
+      }),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

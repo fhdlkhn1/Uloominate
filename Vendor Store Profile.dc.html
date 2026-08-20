@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Store profile — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="V-12 Vendor Store Profile">
+  <dc-import name="VendorShell" active="vendorStoreProfile" title="Store profile" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;gap:20px;flex-wrap:wrap">
+        <span style="flex:999 1 460px;height:520px;border-radius:16px;background:#EFF3F1"></span>
+        <span style="flex:1 1 300px;max-width:360px;height:340px;border-radius:16px;background:#F2F6F4"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <form data-testid="store-profile-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+        <div style="flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:18px">
+
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" style="margin:0;padding:14px 16px;border-radius:10px;background:#FDF1EF;border-left:4px solid #C0392B;font-size:13.5px;line-height:1.6;color:#C0392B">{{ formError }}</p>
+          </sc-if>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Branding</h2>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Store banner</span>
+              <span style="position:relative;display:block;width:100%;aspect-ratio:3 / 1;border-radius:14px;background:#F3F4F6;overflow:hidden;border:1px solid #EDF0EE">
+                <sc-if value="{{ hasBanner }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ vBanner }}" alt="Your store banner" style="display:block;width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+                <sc-if value="{{ noBanner }}" hint-placeholder-val="{{ true }}">
+                  <span style="position:absolute;inset:0;display:grid;place-items:center;font-size:13px;color:#9AA5A0">A wide image, at least 1200 × 400</span>
+                </sc-if>
+              </span>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <label style="display:inline-flex;align-items:center;height:42px;padding:0 18px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">
+                  {{ bannerCta }}
+                  <input type="file" accept="image/*" onChange="{{ onBanner }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+                </label>
+                <sc-if value="{{ hasBanner }}" hint-placeholder-val="{{ false }}">
+                  <button type="button" onClick="{{ onClearBanner }}" style="height:42px;padding:0 16px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-size:13.5px;font-weight:600;color:#C0392B;cursor:pointer" style-hover="background:#FDF1EF">Remove</button>
+                </sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <span style="flex:0 0 84px;width:84px;height:84px;border-radius:50%;background:#3A836B;color:#FFFFFF;overflow:hidden;display:grid;place-items:center;font-size:26px;font-weight:600;border:1px solid #EDF0EE">
+                <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ vLogo }}" alt="Your store logo" style="width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+                <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ true }}">
+                  <span>{{ initials }}</span>
+                </sc-if>
+              </span>
+              <div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Store logo</span>
+                <div style="display:flex;gap:10px;flex-wrap:wrap">
+                  <label style="display:inline-flex;align-items:center;height:42px;padding:0 18px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-size:13.5px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">
+                    {{ logoCta }}
+                    <input type="file" accept="image/*" onChange="{{ onLogo }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+                  </label>
+                  <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ false }}">
+                    <button type="button" onClick="{{ onClearLogo }}" style="height:42px;padding:0 16px;border:1px solid #E9EFEC;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-size:13.5px;font-weight:600;color:#C0392B;cursor:pointer" style-hover="background:#FDF1EF">Remove</button>
+                  </sc-if>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Store details</h2>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="vs-storeName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ storeNameLabelColor }}">Store name</label>
+              <input id="vs-storeName" name="storeName" type="text" value="{{ vStoreName }}" onInput="{{ onInput }}" aria-invalid="{{ storeNameInvalid }}" style="height:52px;border:1px solid {{ storeNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ storeNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ storeNameError }}</span></sc-if>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="vs-slug" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ slugLabelColor }}">Store address</label>
+              <div style="display:flex;align-items:center;border:1px solid {{ slugBorder }};border-radius:8px;overflow:hidden">
+                <span style="padding:0 12px;height:52px;display:flex;align-items:center;background:#F2FAF7;font-family:'DM Sans',monospace;font-size:13px;color:#595959;white-space:nowrap">uloominate.com/store/</span>
+                <input id="vs-slug" name="slug" type="text" value="{{ vSlug }}" onInput="{{ onInput }}" aria-invalid="{{ slugInvalid }}" style="flex:1;min-width:0;height:52px;border:none;padding:0 12px;font-family:'DM Sans',monospace;font-size:14px;outline:none" />
+              </div>
+              <sc-if value="{{ slugError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ slugError }}</span></sc-if>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="vs-bio" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ bioLabelColor }}">About your store</label>
+              <textarea id="vs-bio" name="bio" rows="6" value="{{ vBio }}" onInput="{{ onInput }}" aria-invalid="{{ bioInvalid }}" aria-describedby="vs-bio-help" style="border:1px solid {{ bioBorder }};border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:15px;line-height:1.7;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+              <span id="vs-bio-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ bioHelpColor }}">{{ bioHelp }}</span>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="vs-country" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Country</label>
+              <select id="vs-country" name="country" value="{{ vCountry }}" onChange="{{ onInput }}" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                <sc-for list="{{ countries }}" as="c" hint-placeholder-count="6">
+                  <option value="{{ c.value }}">{{ c.value }}</option>
+                </sc-for>
+              </select>
+            </div>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Payout details</h2>
+            <fieldset style="margin:0;padding:0;border:none;display:flex;flex-direction:column;gap:10px">
+              <legend style="padding:0;font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ payoutMethodLabelColor }}">How we pay you</legend>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <sc-for list="{{ payoutOptions }}" as="p" hint-placeholder-count="2">
+                  <label style="flex:1 1 160px;display:flex;align-items:center;gap:10px;padding:14px;border:1.6px solid {{ p.border }};border-radius:12px;background:{{ p.bg }};cursor:pointer">
+                    <input type="radio" name="payoutMethod" value="{{ p.value }}" checked="{{ p.checked }}" onChange="{{ p.onPick }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;border:1.8px solid {{ p.dotBorder }};border-radius:50%;background:{{ p.dotBg }};box-shadow:{{ p.dotInner }};cursor:pointer" />
+                    <span style="font-weight:600;font-size:14px;color:#29483C">{{ p.value }}</span>
+                  </label>
+                </sc-for>
+              </div>
+            </fieldset>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="vs-payoutAccount" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ payoutAccountLabelColor }}">{{ payoutAccountLabel }}</label>
+              <input id="vs-payoutAccount" name="payoutAccount" type="text" value="{{ vPayoutAccount }}" onInput="{{ onInput }}" aria-invalid="{{ payoutAccountInvalid }}" style="height:52px;border:1px solid {{ payoutAccountBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ payoutAccountError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ payoutAccountError }}</span></sc-if>
+            </div>
+          </section>
+        </div>
+
+        <aside style="flex:1 1 300px;max-width:360px;min-width:0;display:flex;flex-direction:column;gap:18px">
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font-weight:600;font-size:15px;color:#29483C">How buyers see you</h2>
+            <div style="border:1px solid #F1F4F2;border-radius:12px;overflow:hidden">
+              <span style="display:block;width:100%;height:72px;background:#F3F4F6">
+                <sc-if value="{{ hasBanner }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ vBanner }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+              </span>
+              <div style="padding:0 14px 14px;margin-top:-22px;display:flex;flex-direction:column;gap:6px">
+                <span style="width:44px;height:44px;border-radius:50%;background:#3A836B;color:#FFFFFF;overflow:hidden;display:grid;place-items:center;font-size:15px;font-weight:600;border:3px solid #FFFFFF">
+                  <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ vLogo }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+                  </sc-if>
+                  <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ true }}">
+                    <span>{{ initials }}</span>
+                  </sc-if>
+                </span>
+                <span style="font-weight:600;font-size:14px;color:#29483C;padding-top:4px">{{ previewName }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;color:#9AA5A0">{{ previewMeta }}</span>
+                <span style="font-size:12px;line-height:1.6;color:#595959;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ previewBio }}</span>
+              </div>
+            </div>
+            <a href="{{ storefrontHref }}" style="font-size:13px;font-weight:600">Open my public store →</a>
+          </section>
+
+          <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px">
+            <button type="submit" disabled="{{ busy }}" data-testid="store-save" style="height:50px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+              <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                <span aria-hidden="true" style="width:17px;height:17px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+              </sc-if>
+              {{ submitLabel }}
+            </button>
+            <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
+              <span role="status" style="text-align:center;font-size:13px;font-weight:600;color:#3A836B">Saved</span>
+            </sc-if>
+            <p style="margin:0;font-size:12px;line-height:1.65;color:#595959">Changes to your store profile appear immediately and do not need approval. Only resources go through review.</p>
+          </section>
+        </aside>
+      </form>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    loading: true, user: null, vendor: null, stats: null, busy: false, saved: false,
+    errors: {}, formError: '',
+    values: { storeName: '', slug: '', bio: '', country: '', logo: null, banner: null, payoutMethod: 'PayPal', payoutAccount: '' },
+  };
+
+  async componentDidMount() {
+    const [app, vendors, rules, validation, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/validation.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, vendors, rules, validation, db });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    const [v, st] = await Promise.all([
+      vendors.getVendor(this.vid),
+      vendors.vendorStats(this.vid).catch(() => ({ data: null })),
+    ]);
+    const d = v.data;
+    this.setState({
+      loading: false, user, vendor: d, stats: st.data,
+      values: {
+        storeName: d.storeName || '', slug: d.slug || '', bio: d.bio || '',
+        country: d.country || 'United States',
+        logo: d.logo || null, banner: d.banner || null,
+        payoutMethod: d.payoutMethod || 'PayPal', payoutAccount: d.payoutAccount || '',
+      },
+    });
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, vendor, stats, busy, saved, errors, formError, values } = this.state;
+    const bioLen = (values.bio || '').length;
+    const initials = (values.storeName || '?').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+
+    return Object.assign({
+      loading,
+      ready: !loading && !!vendor,
+      subtitle: vendor ? 'Public at /store/' + vendor.slug : '',
+      storefrontHref: vendor ? url('vendorStore', { store: values.slug || vendor.slug }) : '#',
+
+      hasError: !!formError,
+      formError,
+      hasLogo: !!values.logo, noLogo: !values.logo,
+      hasBanner: !!values.banner, noBanner: !values.banner,
+      logoCta: values.logo ? 'Replace logo' : 'Choose logo',
+      bannerCta: values.banner ? 'Replace banner' : 'Choose banner',
+      initials,
+
+      bioHelp: errors.bio || bioLen + ' / 600 characters — at least 40.',
+      bioHelpColor: errors.bio ? '#C0392B' : '#49454F',
+
+      countries: ['United States', 'United Kingdom', 'Canada', 'Australia', 'Pakistan', 'Nigeria', 'United Arab Emirates', 'Malaysia', 'South Africa', 'Other'].map(value => ({ value })),
+
+      payoutOptions: (this.rules ? this.rules.PAYOUT_METHODS : []).map(value => {
+        const on = values.payoutMethod === value;
+        return {
+          value, checked: on,
+          bg: on ? '#F2FAF7' : '#FFFFFF',
+          border: on ? '#3A836B' : '#EDF0EE',
+          dotBg: on ? '#3A836B' : '#FFFFFF',
+          dotBorder: on ? '#3A836B' : '#CAC4D0',
+          dotInner: on ? 'inset 0 0 0 3px #FFFFFF' : 'none',
+          onPick: () => this.setState(s => ({ values: Object.assign({}, s.values, { payoutMethod: value }) })),
+        };
+      }),
+      payoutAccountLabel: values.payoutMethod === 'PayPal' ? 'PayPal email' : 'Bank account details',
+
+      previewName: values.storeName || 'Your store',
+      previewMeta: stats
+        ? [stats.productCount + ' resources', vendor.followers + ' followers'].join(' · ')
+        : '',
+      previewBio: values.bio || 'Your biography appears here.',
+
+      busy, saved,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Saving…' : 'Save store profile',
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+          formError: '', saved: false,
+        }));
+      },
+      onLogo: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const logo = await this.db.fileToDataUrl(file);
+        this.setState(s => ({ values: Object.assign({}, s.values, { logo }), saved: false }));
+      },
+      onBanner: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const banner = await this.db.fileToDataUrl(file);
+        this.setState(s => ({ values: Object.assign({}, s.values, { banner }), saved: false }));
+      },
+      onClearLogo: () => this.setState(s => ({ values: Object.assign({}, s.values, { logo: null }), saved: false })),
+      onClearBanner: () => this.setState(s => ({ values: Object.assign({}, s.values, { banner: null }), saved: false })),
+
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const { valid, errors: errs } = this.validation.validate(this.state.values, this.validation.schemas.storeProfile);
+        if (!valid) {
+          this.setState({ errors: errs });
+          const el = document.getElementById('vs-' + Object.keys(errs)[0]);
+          if (el) el.focus();
+          return;
+        }
+        this.setState({ busy: true, formError: '' });
+        try {
+          await this.vendors.updateVendor(this.vid, Object.assign({}, this.state.values, { setupComplete: true }));
+          this.setState({ busy: false, saved: true });
+          this.app.toast('Store profile saved.', 'success');
+        } catch (err) {
+          const { message, fields } = this.app.readError(err);
+          this.setState({ busy: false, formError: message, errors: fields || {} });
+        }
+      },
+    }, this.field('storeName'), this.field('slug'), this.field('bio'),
+       this.field('country'), this.field('payoutMethod'), this.field('payoutAccount'));
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Reports — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="V-09 Vendor Reports">
+  <dc-import name="VendorShell" active="vendorReports" title="Reports" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:18px">
+        <span style="height:120px;border-radius:16px;background:#EFF3F1"></span>
+        <span style="height:320px;border-radius:16px;background:#F2F6F4"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:7px">
+              <span style="font-size:12.5px;color:#595959">{{ s.label }}</span>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:clamp(20px,1.8vw,25px);line-height:1.1;color:#29483C">{{ s.value }}</span>
+              <span style="font-size:11.5px;line-height:1.5;color:#9AA5A0">{{ s.note }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Monthly performance</h2>
+            <div style="display:flex;gap:16px;flex-wrap:wrap">
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#595959">
+                <span aria-hidden="true" style="width:10px;height:10px;border-radius:3px;background:#3A836B"></span>Gross
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#595959">
+                <span aria-hidden="true" style="width:10px;height:10px;border-radius:3px;background:#FEDC97"></span>Your earnings
+              </span>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasChart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:flex-end;gap:clamp(8px,1.6vw,22px);height:230px">
+              <sc-for list="{{ chart }}" as="c" hint-placeholder-count="6">
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%">
+                  <span style="flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:3px">
+                    <span title="{{ c.grossTip }}" style="width:min(46%,20px);height:{{ c.grossPct }}%;min-height:3px;border-radius:6px 6px 0 0;background:#3A836B"></span>
+                    <span title="{{ c.earnTip }}" style="width:min(46%,20px);height:{{ c.earnPct }}%;min-height:3px;border-radius:6px 6px 0 0;background:#FEDC97"></span>
+                  </span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;font-weight:600;color:#29483C;white-space:nowrap">{{ c.gross }}</span>
+                  <span style="font-size:11px;color:#9AA5A0;white-space:nowrap">{{ c.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ noChart }}" hint-placeholder-val="{{ true }}">
+            <div style="border:1px dashed #DCE7E1;border-radius:12px;padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+              <span style="font-weight:600;font-size:16px;color:#29483C">No data for this range</span>
+              <span style="max-width:340px;font-size:13px;line-height:1.65;color:#595959">Once your resources start selling, your monthly gross and earnings appear here side by side.</span>
+            </div>
+          </sc-if>
+        </section>
+
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+          <section style="flex:999 1 440px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Revenue by resource</h2>
+            <sc-if value="{{ hasTop }}" hint-placeholder-val="{{ false }}">
+              <div style="overflow-x:auto">
+                <table style="width:100%;min-width:420px;border-collapse:collapse;font-size:13.5px">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="text-align:left;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Resource</th>
+                      <th scope="col" style="text-align:right;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Sales</th>
+                      <th scope="col" style="text-align:right;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Gross</th>
+                      <th scope="col" style="text-align:right;padding:10px 12px;background:#FCFDFC;color:#595959;font-weight:600;border-bottom:1px solid #EDF0EE">Share</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <sc-for list="{{ topProducts }}" as="t" hint-placeholder-count="5">
+                      <tr>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4">
+                          <a href="{{ t.href }}" style="font-weight:500;color:#121212" style-hover="color:#3A836B">{{ t.title }}</a>
+                        </td>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;color:#595959">{{ t.units }}</td>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4;text-align:right;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;color:#29483C">{{ t.revenue }}</td>
+                        <td style="padding:12px;border-bottom:1px solid #F3F5F4;text-align:right">
+                          <span style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
+                            <span style="flex:0 1 60px;height:6px;border-radius:9999px;background:#EDF0EE;overflow:hidden">
+                              <span style="display:block;height:100%;width:{{ t.pct }}%;background:#3A836B"></span>
+                            </span>
+                            <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#595959;min-width:32px">{{ t.pctLabel }}</span>
+                          </span>
+                        </td>
+                      </tr>
+                    </sc-for>
+                  </tbody>
+                </table>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noTop }}" hint-placeholder-val="{{ true }}">
+              <p style="margin:0;padding:24px 0;font-size:13.5px;line-height:1.7;color:#595959;text-align:center">No sales recorded yet.</p>
+            </sc-if>
+          </section>
+
+          <section style="flex:1 1 300px;max-width:360px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Where the money goes</h2>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ splitRows }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                    <span style="font-size:13px;color:#595959">{{ s.label }}</span>
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:14px;color:{{ s.ink }}">{{ s.value }}</span>
+                  </div>
+                  <span style="height:8px;border-radius:9999px;background:#EDF0EE;overflow:hidden">
+                    <span style="display:block;height:100%;width:{{ s.pct }}%;background:{{ s.fill }}"></span>
+                  </span>
+                </div>
+              </sc-for>
+            </div>
+            <p style="margin:0;font-size:12px;line-height:1.7;color:#595959;padding-top:4px">{{ planNote }}</p>
+          </section>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Catalogue reach</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px">
+            <sc-for list="{{ reach }}" as="r" hint-placeholder-count="4">
+              <div style="padding:16px;border-radius:12px;background:#FCFDFC;border:1px solid #F1F4F2;display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:12px;color:#595959">{{ r.label }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:19px;color:#29483C">{{ r.value }}</span>
+                <span style="font-size:11.5px;line-height:1.5;color:#9AA5A0">{{ r.note }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, user: null, stats: null, plan: null };
+
+  async componentDidMount() {
+    const [app, vendors, rules, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, vendors, rules, db });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    const st = await vendors.vendorStats(this.vid);
+    this.setState({
+      loading: false, user, stats: st.data,
+      plan: rules.planByCode(user.vendor ? user.vendor.planCode : 'basic'),
+    });
+  }
+
+  money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, stats: s, plan } = this.state;
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const max = s && s.byMonth.length ? Math.max.apply(null, s.byMonth.map(m => m.gross)) : 0;
+    const topMax = s && s.topProducts.length ? Math.max.apply(null, s.topProducts.map(p => p.revenue)) : 0;
+    const gross = s ? s.grossSales : 0;
+    const pct = v => gross ? Math.round(v / gross * 100) : 0;
+
+    return {
+      loading,
+      ready: !loading && !!s,
+      subtitle: s ? 'Derived from ' + s.ordersReceived + ' orders across ' + s.byMonth.length + ' months' : '',
+
+      stats: s ? [
+        { label: 'Gross sales', value: this.money(s.grossSales), note: s.unitsSold + ' resources sold' },
+        { label: 'Your earnings', value: this.money(s.earnings), note: pct(s.earnings) + '% of gross' },
+        { label: 'Average order', value: this.money(s.ordersReceived ? s.grossSales / s.ordersReceived : 0), note: 'Across your items' },
+        { label: 'Distinct buyers', value: String(s.customerCount), note: s.followers + ' followers' },
+      ] : [],
+
+      hasChart: !!(s && s.byMonth.length),
+      noChart: !!(s && !s.byMonth.length),
+      chart: s ? s.byMonth.map(m => {
+        const d = new Date(m.month + '-01');
+        return {
+          label: monthNames[d.getMonth()],
+          gross: '$' + Math.round(m.gross),
+          grossPct: max ? Math.round(m.gross / max * 100) : 0,
+          earnPct: max ? Math.round(m.earnings / max * 100) : 0,
+          grossTip: 'Gross ' + this.money(m.gross),
+          earnTip: 'You earned ' + this.money(m.earnings),
+        };
+      }) : [],
+
+      hasTop: !!(s && s.topProducts.length),
+      noTop: !!(s && !s.topProducts.length),
+      topProducts: s ? s.topProducts.map(t => ({
+        title: t.title.length > 46 ? t.title.slice(0, 44).trim() + '…' : t.title,
+        href: url('product', { id: t.productId }),
+        units: String(t.units),
+        revenue: this.money(t.revenue),
+        pct: topMax ? Math.round(t.revenue / topMax * 100) : 0,
+        pctLabel: pct(t.revenue) + '%',
+      })) : [],
+
+      splitRows: s ? [
+        { label: 'Your earnings', value: this.money(s.earnings), pct: pct(s.earnings), fill: '#3A836B', ink: '#3A836B' },
+        { label: 'Platform commission', value: this.money(s.commission), pct: pct(s.commission), fill: '#FEDC97', ink: '#29483C' },
+        { label: 'Transaction fees', value: this.money(s.transactionFees), pct: pct(s.transactionFees), fill: '#C9C9C9', ink: '#595959' },
+      ] : [],
+      planNote: plan
+        ? plan.name + ' keeps ' + Math.round((plan.payoutRate || 0) * 100) + '% of each sale, with the per-transaction fee taken from your share.'
+        : '',
+
+      reach: s ? [
+        { label: 'Published resources', value: String(s.productCount), note: s.pendingCount + ' awaiting review' },
+        { label: 'Drafts', value: String(s.draftCount), note: 'Not visible to buyers' },
+        { label: 'Declined', value: String(s.declinedCount), note: 'Awaiting your changes' },
+        { label: 'Already paid out', value: this.money(s.paidOut), note: this.money(s.withdrawable) + ' available now' },
+      ] : [],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Subscription — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7FAF9;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="V-11 Vendor Subscription">
+  <dc-import name="VendorShell" active="vendorSubscription" title="Subscription" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:18px">
+        <span style="height:150px;border-radius:16px;background:#EFF3F1"></span>
+        <span style="height:340px;border-radius:16px;background:#F2F6F4"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <div style="background:#FEDC97;border-radius:14px;padding:20px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+          <span aria-hidden="true" style="flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:#FFFFFF;color:#B9913E;display:grid;place-items:center;font-size:17px;font-weight:700">★</span>
+          <div style="flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:3px">
+            <span style="font-weight:700;font-size:15px;color:#29483C">{{ promoTitle }}</span>
+            <span style="font-size:13.5px;line-height:1.6;color:#29483C">{{ promoBody }}</span>
+          </div>
+          <span style="flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+            <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:22px;color:#29483C">{{ daysLeft }}</span>
+            <span style="font-size:11.5px;color:#29483C">days of free access</span>
+          </span>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+          <section style="flex:1 1 300px;max-width:360px;min-width:0;background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Current plan</h2>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+              <span style="font-weight:600;font-size:22px;color:#29483C">{{ currentName }}</span>
+              <span style="padding:4px 10px;border-radius:9999px;background:{{ statusBg }};color:{{ statusInk }};font-size:11.5px;font-weight:700">{{ statusLabel }}</span>
+            </div>
+            <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:28px;color:#116254">{{ currentPrice }}</span>
+
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+              <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid #F1F4F2">
+                  <span style="font-size:13px;color:#595959">{{ f.label }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:600;font-size:13.5px;color:#29483C;text-align:right">{{ f.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
+              <button type="button" onClick="{{ onEditCard }}" style="height:46px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;color:#29483C;cursor:pointer" style-hover="background:#F2FAF7">{{ cardCta }}</button>
+              <sc-if value="{{ isActive }}" hint-placeholder-val="{{ true }}">
+                <button type="button" onClick="{{ onCancel }}" style="height:44px;border:none;background:transparent;font-family:Poppins,sans-serif;font-size:13.5px;font-weight:500;color:#C0392B;cursor:pointer" style-hover="text-decoration:underline">Cancel subscription</button>
+              </sc-if>
+              <sc-if value="{{ isCancelled }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ onResume }}" style="height:46px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;cursor:pointer" style-hover="background:#29483C">Resume subscription</button>
+              </sc-if>
+            </div>
+          </section>
+
+          <section style="flex:999 1 460px;min-width:0;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Change your plan</h2>
+              <p style="margin:0;font-size:13.5px;line-height:1.65;color:#595959">A change applies immediately. There is no need to cancel and re-subscribe.</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px">
+              <sc-for list="{{ plans }}" as="p" hint-placeholder-count="4">
+                <article data-testid="plan-option" style="background:#FFFFFF;border:1.8px solid {{ p.border }};border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px;opacity:{{ p.opacity }}">
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+                    <span style="font-weight:600;font-size:15.5px;color:#29483C">{{ p.name }}</span>
+                    <sc-if value="{{ p.isCurrent }}" hint-placeholder-val="{{ false }}">
+                      <span style="padding:3px 9px;border-radius:9999px;background:#EAF7F1;color:#3A836B;font-size:10.5px;font-weight:700">CURRENT</span>
+                    </sc-if>
+                  </div>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:20px;color:#116254">{{ p.price }}</span>
+                  <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px;flex:1">
+                    <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="3">
+                      <li style="display:flex;align-items:flex-start;gap:8px">
+                        <span aria-hidden="true" style="flex:0 0 15px;width:15px;height:15px;margin-top:2px;border-radius:50%;background:#EAF7F1;color:#3A836B;display:grid;place-items:center;font-size:9px;font-weight:700">✓</span>
+                        <span style="font-size:12.5px;line-height:1.55;color:#595959">{{ f.text }}</span>
+                      </li>
+                    </sc-for>
+                  </ul>
+                  <sc-if value="{{ p.selectable }}" hint-placeholder-val="{{ false }}">
+                    <button type="button" onClick="{{ p.onChoose }}" data-testid="choose-plan" style="height:44px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:13.5px;cursor:pointer" style-hover="background:#29483C">{{ p.cta }}</button>
+                  </sc-if>
+                  <sc-if value="{{ p.byAgreement }}" hint-placeholder-val="{{ false }}">
+                    <a href="{{ contactHref }}" style="display:inline-flex;align-items:center;justify-content:center;height:44px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-weight:600;font-size:13.5px;color:#29483C" style-hover="background:#F2FAF7;color:#29483C">Contact us</a>
+                  </sc-if>
+                  <sc-if value="{{ p.isCurrent }}" hint-placeholder-val="{{ false }}">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;height:44px;border-radius:8px;background:#F2FAF7;font-weight:600;font-size:13.5px;color:#3A836B">Your plan</span>
+                  </sc-if>
+                </article>
+              </sc-for>
+            </div>
+          </section>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E9EFEC;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px">
+          <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Billing timeline</h2>
+          <ol style="margin:0;padding:0;list-style:none;display:flex;gap:0;flex-wrap:wrap">
+            <sc-for list="{{ timeline }}" as="t" hint-placeholder-count="3">
+              <li style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:8px;padding:0 16px 0 0">
+                <span style="display:flex;align-items:center;gap:10px">
+                  <span aria-hidden="true" style="flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:{{ t.dotBg }};border:2px solid {{ t.dotBorder }};color:{{ t.dotInk }};display:grid;place-items:center;font-size:11px;font-weight:700">{{ t.mark }}</span>
+                  <span style="flex:1;height:2px;background:{{ t.line }}"></span>
+                </span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;color:#B9913E">{{ t.when }}</span>
+                <span style="font-weight:600;font-size:14px;color:{{ t.titleInk }}">{{ t.title }}</span>
+                <span style="font-size:12.5px;line-height:1.6;color:#595959">{{ t.text }}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </section>
+      </div>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, user: null, sub: null, plans: [], allowance: null };
+
+  async componentDidMount() {
+    const [app, finance, products, rules] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/financeRepo.js'),
+      import('./assets/js/repositories/productsRepo.js'),
+      import('./assets/js/business-rules.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, finance, products, rules });
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    this.vid = user.vendorId || (user.vendor && user.vendor.id) || 'v-1';
+    this.setState({ user, plans: rules.PLANS });
+    await this.load();
+  }
+
+  async load() {
+    try {
+      const sub = await this.finance.getSubscription(this.vid);
+      this.setState({
+        loading: false, sub: sub.data,
+        allowance: this.products.checkAllowance(this.vid),
+      });
+    } catch (err) {
+      this.setState({ loading: false });
+    }
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, sub, plans, allowance } = this.state;
+    const current = sub ? this.rules.planByCode(sub.planCode) : null;
+    const days = sub ? Math.max(0, Math.ceil((new Date(sub.promoFreeUntil).getTime() - Date.now()) / 86400000)) : 0;
+    const fmtDate = d => new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    const statusMap = {
+      active: { bg: '#EAF7F1', ink: '#3A836B', label: 'Active' },
+      pending: { bg: '#FFF2DE', ink: '#B9913E', label: 'Pending approval' },
+      cancelled: { bg: '#FDF1EF', ink: '#C0392B', label: 'Cancelled' },
+    };
+    const st = sub ? (statusMap[sub.status] || statusMap.active) : statusMap.active;
+
+    return {
+      loading,
+      ready: !loading && !!sub,
+      subtitle: current ? current.name + ' · ' + current.priceLabel : '',
+      contactHref: url('contact'),
+
+      promoTitle: 'Founding Vendor Promotion',
+      promoBody: sub ? 'Free until ' + fmtDate(sub.promoFreeUntil) + '. Billing begins ' + fmtDate(sub.promoBillingStarts) + '.' : '',
+      daysLeft: String(days),
+
+      currentName: current ? current.name : '—',
+      currentPrice: current ? current.priceLabel : '—',
+      statusLabel: st.label, statusBg: st.bg, statusInk: st.ink,
+      isActive: !!(sub && sub.status === 'active'),
+      isCancelled: !!(sub && sub.status === 'cancelled'),
+
+      facts: sub && current ? [
+        { label: 'Paid uploads', value: current.paidUploadLimit === null ? 'Unlimited' : allowance ? allowance.used + ' of ' + current.paidUploadLimit : String(current.paidUploadLimit) },
+        { label: 'Your payout share', value: current.payoutRate === null ? '—' : Math.round(current.payoutRate * 100) + '%' },
+        { label: 'Per transaction', value: current.transactionFee === null ? '—' : (current.transactionFeePct ? (current.transactionFeePct * 100).toFixed(1) + '% + ' : '') + '$' + current.transactionFee.toFixed(2) },
+        { label: 'Next billing date', value: fmtDate(sub.nextBillingDate) },
+        { label: 'Next amount', value: sub.nextBillingAmount === null ? 'By agreement' : sub.nextBillingAmount === 0 ? 'Free' : '$' + sub.nextBillingAmount },
+        { label: 'Payment method', value: sub.paymentMethod || 'Not set' },
+      ] : [],
+
+      cardCta: sub && sub.paymentMethod ? 'Update payment method' : 'Add a payment method',
+
+      plans: plans.map(p => {
+        const isCurrent = !!(sub && p.code === sub.planCode);
+        const byAgreement = !p.selfService;
+        return {
+          name: p.name,
+          price: p.priceLabel,
+          features: p.features.slice(0, 4).map(text => ({ text })),
+          isCurrent,
+          byAgreement: byAgreement && !isCurrent,
+          selectable: !isCurrent && !byAgreement,
+          border: isCurrent ? '#3A836B' : '#E9EFEC',
+          opacity: byAgreement && !isCurrent ? 0.82 : 1,
+          cta: current && p.annualFee !== null && current.annualFee !== null && p.annualFee > current.annualFee
+            ? 'Upgrade to ' + p.name.split(' ')[0]
+            : 'Switch to ' + p.name.split(' ')[0],
+          onChoose: async () => {
+            const ok = await this.app.confirmDialog({
+              title: 'Switch to ' + p.name + '?',
+              body: 'Your new entitlements apply immediately. Under the founding promotion nothing is charged until '
+                + (sub ? fmtDate(sub.promoBillingStarts) : 'billing begins') + '.',
+              confirmLabel: 'Switch plan',
+              tone: 'primary',
+            });
+            if (!ok) return;
+            try {
+              await this.finance.changePlan(this.vid, p.code);
+              await this.load();
+              this.app.toast('Plan updated. Your new entitlements apply immediately.', 'success');
+              setTimeout(() => window.location.reload(), 700);
+            } catch (err) {
+              this.app.toast(this.app.readError(err).message, 'error');
+            }
+          },
+        };
+      }),
+
+      timeline: [
+        {
+          when: 'NOW', title: 'Founding promotion', text: 'Every plan is free. Build your catalogue and start earning.',
+          mark: '✓', dotBg: '#3A836B', dotBorder: '#3A836B', dotInk: '#FFFFFF', line: '#3A836B', titleInk: '#29483C',
+        },
+        {
+          when: sub ? fmtDate(sub.promoFreeUntil).toUpperCase() : '', title: 'Promotion ends', text: 'You will receive 30 days notice before any charge is made.',
+          mark: '2', dotBg: '#FFFFFF', dotBorder: '#3A836B', dotInk: '#3A836B', line: '#DCE7E1', titleInk: '#29483C',
+        },
+        {
+          when: sub ? fmtDate(sub.promoBillingStarts).toUpperCase() : '', title: 'Billing begins', text: sub && sub.nextBillingAmount ? 'Your ' + (current ? current.name : 'plan') + ' renews at $' + sub.nextBillingAmount + ' a year.' : 'Free plans are never charged.',
+          mark: '3', dotBg: '#FFFFFF', dotBorder: '#DCE7E1', dotInk: '#9AA5A0', line: 'transparent', titleInk: '#29483C',
+        },
+      ],
+
+      onEditCard: async () => {
+        const ok = await this.app.confirmDialog({
+          title: 'Update payment method',
+          body: 'In the live platform this opens the payment provider’s secure form. For the prototype we will attach a test card ending 4242.',
+          confirmLabel: 'Attach test card',
+          tone: 'primary',
+        });
+        if (!ok) return;
+        await this.finance.updatePaymentMethod(this.vid, { last4: '4242', expiry: '09/29' });
+        await this.load();
+        this.app.toast('Payment method updated.', 'success');
+      },
+      onCancel: async () => {
+        const ok = await this.app.confirmDialog({
+          title: 'Cancel your subscription?',
+          body: 'Paid listings are hidden when the current term ends. Free resources stay published, and you can resume any time.',
+          confirmLabel: 'Cancel subscription',
+        });
+        if (!ok) return;
+        await this.finance.cancelSubscription(this.vid);
+        await this.load();
+        this.app.toast('Subscription cancelled. Paid listings will be hidden at the end of the term.', 'info');
+      },
+      onResume: async () => {
+        await this.finance.resumeSubscription(this.vid);
+        await this.load();
+        this.app.toast('Subscription resumed.', 'success');
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

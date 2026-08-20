@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Set up your store — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F2FAF7;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="A-08 Store Setup Wizard" style="min-height:100vh;display:flex;flex-direction:column">
+  <div style="flex:1;display:flex;justify-content:center;padding:40px 20px 72px">
+    <div style="width:min(880px,100%);display:flex;flex-direction:column;gap:24px">
+
+      <a href="{{ homeHref }}" style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <img src="assets/img/logo-mark.png" alt="" width="44" height="53" style="object-fit:contain" />
+        <span style="font-family:'Montserrat Alternates',Poppins,sans-serif;font-weight:500;font-size:28px;color:#3A836B">Uloominate</span>
+      </a>
+
+      <div style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+          <h1 style="margin:0;font-weight:600;font-size:20px;color:#29483C">Set up your store</h1>
+          <span data-testid="wizard-progress" style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;font-weight:600;color:#3A836B">Step {{ stepNumber }} of 4</span>
+        </div>
+        <div role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="height:8px;border-radius:9999px;background:#EDF0EE;overflow:hidden">
+          <span style="display:block;height:100%;width:{{ percent }}%;border-radius:9999px;background:#3A836B;transition:width .35s cubic-bezier(.2,.7,.3,1)"></span>
+        </div>
+        <ol style="margin:0;padding:0;list-style:none;display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ stepTabs }}" as="s" hint-placeholder-count="4">
+            <li style="flex:1 1 150px;min-width:0;display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:{{ s.bg }}">
+              <span aria-hidden="true" style="flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:{{ s.dotBg }};color:{{ s.dotInk }};display:grid;place-items:center;font-size:11px;font-weight:700">{{ s.mark }}</span>
+              <span style="font-size:12px;font-weight:{{ s.weight }};color:{{ s.ink }};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ s.label }}</span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+
+      <form data-testid="setup-form" onSubmit="{{ onNext }}" novalidate="novalidate" style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">
+
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <h2 style="margin:0;font-weight:600;font-size:22px;color:#29483C">{{ stepTitle }}</h2>
+          <p style="margin:0;font-size:14px;line-height:1.65;color:#595959">{{ stepBlurb }}</p>
+        </div>
+
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <p role="alert" style="margin:0;padding:10px 14px;border-radius:8px;background:#FDF1EF;border-left:3px solid #C0392B;font-size:13px;line-height:1.5;color:#C0392B">{{ formError }}</p>
+        </sc-if>
+
+        <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="sw-storeName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ storeNameLabelColor }}">Store name</label>
+              <input id="sw-storeName" name="storeName" type="text" value="{{ vStoreName }}" onInput="{{ onInput }}" aria-invalid="{{ storeNameInvalid }}" style="height:52px;border:1px solid {{ storeNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ storeNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ storeNameError }}</span></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="sw-slug" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ slugLabelColor }}">Store address</label>
+              <div style="display:flex;align-items:center;gap:0;border:1px solid {{ slugBorder }};border-radius:8px;overflow:hidden">
+                <span style="padding:0 12px;height:52px;display:flex;align-items:center;background:#F2FAF7;font-family:'DM Sans',monospace;font-size:13px;color:#595959;white-space:nowrap">uloominate.com/store/</span>
+                <input id="sw-slug" name="slug" type="text" value="{{ vSlug }}" onInput="{{ onInput }}" aria-invalid="{{ slugInvalid }}" style="flex:1;min-width:0;height:52px;border:none;padding:0 12px;font-family:'DM Sans',monospace;font-size:14px;outline:none" />
+              </div>
+              <sc-if value="{{ slugError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ slugError }}</span></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="sw-bio" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ bioLabelColor }}">About your store</label>
+              <textarea id="sw-bio" name="bio" rows="5" value="{{ vBio }}" onInput="{{ onInput }}" aria-invalid="{{ bioInvalid }}" aria-describedby="sw-bio-help" placeholder="Tell buyers who you are, what you make, and who it is for." style="border:1px solid {{ bioBorder }};border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:15px;line-height:1.65;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+              <span id="sw-bio-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ bioHelpColor }}">{{ bioHelp }}</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Store logo</span>
+              <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+                <span style="flex:0 0 88px;width:88px;height:88px;border-radius:50%;background:#F3F4F6;overflow:hidden;display:grid;place-items:center;border:1px solid #EDF0EE">
+                  <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ vLogo }}" alt="Your store logo" style="width:100%;height:100%;object-fit:cover" />
+                  </sc-if>
+                  <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ true }}">
+                    <span style="font-size:12px;color:#9AA5A0">No logo</span>
+                  </sc-if>
+                </span>
+                <label style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-size:14px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">
+                  Choose logo
+                  <input type="file" accept="image/*" onChange="{{ onLogo }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+                </label>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Store banner</span>
+              <span style="display:block;width:100%;aspect-ratio:3 / 1;border-radius:14px;background:#F3F4F6;overflow:hidden;border:1px solid #EDF0EE;display:grid;place-items:center">
+                <sc-if value="{{ hasBanner }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ vBanner }}" alt="Your store banner" style="width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+                <sc-if value="{{ noBanner }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-size:13px;color:#9AA5A0">A wide image, at least 1200 × 400</span>
+                </sc-if>
+              </span>
+              <label style="align-self:flex-start;display:inline-flex;align-items:center;height:44px;padding:0 18px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-size:14px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">
+                Choose banner
+                <input type="file" accept="image/*" onChange="{{ onBanner }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+              </label>
+            </div>
+            <p style="margin:0;font-size:13px;line-height:1.6;color:#595959">Both are optional, and you can change them later from your store profile.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <fieldset style="margin:0;padding:0;border:none;display:flex;flex-direction:column;gap:10px">
+              <legend style="padding:0;font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ payoutMethodLabelColor }}">How should we pay you?</legend>
+              <sc-for list="{{ payoutOptions }}" as="p" hint-placeholder-count="2">
+                <label style="display:flex;align-items:center;gap:12px;padding:14px;border:1.6px solid {{ p.border }};border-radius:12px;background:{{ p.bg }};cursor:pointer">
+                  <input type="radio" name="payoutMethod" value="{{ p.value }}" checked="{{ p.checked }}" onChange="{{ p.onPick }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;border:1.8px solid {{ p.dotBorder }};border-radius:50%;background:{{ p.dotBg }};box-shadow:{{ p.dotInner }};cursor:pointer" />
+                  <span style="font-weight:600;font-size:15px;color:#29483C">{{ p.value }}</span>
+                </label>
+              </sc-for>
+              <sc-if value="{{ payoutMethodError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ payoutMethodError }}</span></sc-if>
+            </fieldset>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="sw-payoutAccount" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ payoutAccountLabelColor }}">{{ payoutAccountLabel }}</label>
+              <input id="sw-payoutAccount" name="payoutAccount" type="text" value="{{ vPayoutAccount }}" onInput="{{ onInput }}" aria-invalid="{{ payoutAccountInvalid }}" placeholder="{{ payoutAccountPlaceholder }}" style="height:52px;border:1px solid {{ payoutAccountBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ payoutAccountError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ payoutAccountError }}</span></sc-if>
+            </div>
+
+            <div style="background:#F2FAF7;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:10px">
+              <span style="font-weight:600;font-size:14px;color:#29483C">Your plan terms</span>
+              <sc-for list="{{ planTerms }}" as="t" hint-placeholder-count="3">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                  <span style="font-size:13px;color:#595959">{{ t.label }}</span>
+                  <span style="font-weight:600;font-size:14px;color:#29483C">{{ t.value }}</span>
+                </div>
+              </sc-for>
+              <p style="margin:4px 0 0;font-size:12px;line-height:1.6;color:#595959">Payouts are issued monthly on the 5th for the previous month. The minimum withdrawal is $25.00.</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <sc-for list="{{ standard }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex;align-items:flex-start;gap:12px;background:#F2FAF7;border-radius:12px;padding:16px 18px">
+                  <span aria-hidden="true" style="flex:0 0 20px;width:20px;height:20px;margin-top:2px;border-radius:50%;background:#FFFFFF;color:#3A836B;display:grid;place-items:center;font-size:11px;font-weight:700">✓</span>
+                  <span style="font-size:14px;line-height:1.7;color:#121212">{{ s.text }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+              <input type="checkbox" name="confirmStandard" checked="{{ vConfirmStandard }}" onChange="{{ onCheck }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;margin-top:2px;border:1.6px solid {{ confirmStandardBorder }};border-radius:4px;background:{{ confirmStandardBg }};cursor:pointer" />
+              <span style="font-size:14px;line-height:1.65;color:#121212">I understand every resource I submit is reviewed before publication, and that edits to a published resource return it to the review queue.</span>
+            </label>
+            <sc-if value="{{ confirmStandardError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B;margin-top:-10px">{{ confirmStandardError }}</span></sc-if>
+
+            <div style="border:1px solid #EDF0EE;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px">
+              <span style="font-weight:600;font-size:14px;color:#29483C">Review your setup</span>
+              <sc-for list="{{ review }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid #F3F5F4">
+                  <span style="font-size:13px;color:#595959">{{ r.label }}</span>
+                  <span style="font-weight:500;font-size:13px;color:#121212;text-align:right;word-break:break-word">{{ r.value }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:4px">
+          <sc-if value="{{ canGoBack }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ onBack }}" style="height:52px;padding:0 22px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;color:#29483C;cursor:pointer" style-hover="background:#F2FAF7">Back</button>
+          </sc-if>
+          <button type="submit" disabled="{{ busy }}" data-testid="setup-next" style="flex:1;min-width:180px;height:52px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:16px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+            <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+              <span aria-hidden="true" style="width:18px;height:18px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+            </sc-if>
+            {{ nextLabel }}
+          </button>
+          <sc-if value="{{ canSkip }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ onSkip }}" style="height:52px;padding:0 18px;border:none;background:transparent;font-family:Poppins,sans-serif;font-size:14px;font-weight:500;color:#595959;cursor:pointer" style-hover="color:#3A836B">Skip for now</button>
+          </sc-if>
+        </div>
+      </form>
+    </div>
+  </div>
+  <dc-import name="DevToolbar" page="storeSetup" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const STEPS = [
+  { label: 'Store identity', title: 'Tell buyers about your store', blurb: 'This is what appears on your public store page and beside every resource you publish.' },
+  { label: 'Branding', title: 'Add your logo and banner', blurb: 'Optional, but a finished storefront earns more trust. You can change these any time.' },
+  { label: 'Payouts', title: 'Where should your earnings go?', blurb: 'We use this to pay you. It is never shown to buyers.' },
+  { label: 'Content standard', title: 'Confirm the content standard', blurb: 'Every vendor agrees to the same standard before publishing.' },
+];
+
+class Component extends DCLogic {
+  state = {
+    step: 1, busy: false, errors: {}, formError: '', user: null, vendor: null, plan: null,
+    values: { storeName: '', slug: '', bio: '', logo: null, banner: null, payoutMethod: 'PayPal', payoutAccount: '', confirmStandard: false },
+  };
+
+  async componentDidMount() {
+    const [app, vendors, rules, validation, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/validation.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.vendors = vendors; this.validation = validation; this.rules = rules; this.db = db;
+    const user = app.auth.requireRole('vendor', 'admin');
+    if (!user) return;
+    const v = user.vendor;
+    if (v && v.status !== 'approved') { app.router.replace('vendorPending'); return; }
+    this.setState({
+      user, vendor: v || null,
+      plan: v ? rules.planByCode(v.planCode) : null,
+      values: Object.assign({}, this.state.values, v ? {
+        storeName: v.storeName || '', slug: v.slug || '', bio: v.bio || '',
+        logo: v.logo || null, banner: v.banner || null,
+        payoutMethod: v.payoutMethod || 'PayPal', payoutAccount: v.payoutAccount || '',
+      } : {}),
+    });
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  schemaFor(step) {
+    const r = this.validation.rules;
+    if (step === 1) return { storeName: [r.required(), r.minLength(3), r.maxLength(60)], slug: [r.required(), r.slug()], bio: [r.required(), r.minLength(40), r.maxLength(600)] };
+    if (step === 3) return { payoutMethod: [r.required()], payoutAccount: [r.required()] };
+    if (step === 4) return { confirmStandard: [r.accepted()] };
+    return {};
+  }
+
+  async readImage(file) {
+    if (!file) return null;
+    return this.db.fileToDataUrl(file);
+  }
+
+  renderVals() {
+    const { step, busy, errors, formError, values, vendor, plan } = this.state;
+    const url = this.app ? this.app.router.url : (() => '#');
+    const meta = STEPS[step - 1];
+    const bioLen = (values.bio || '').length;
+
+    return Object.assign({
+      homeHref: url('landing'),
+      stepNumber: String(step),
+      percent: Math.round(step / 4 * 100),
+      stepTitle: meta.title,
+      stepBlurb: meta.blurb,
+      isStep1: step === 1, isStep2: step === 2, isStep3: step === 3, isStep4: step === 4,
+      hasError: !!formError,
+      formError,
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      nextLabel: busy ? 'Saving…' : step === 4 ? 'Finish and open my dashboard' : 'Save and continue',
+      canGoBack: step > 1,
+      canSkip: step === 2,
+
+      stepTabs: STEPS.map((s, i) => {
+        const n = i + 1;
+        const done = n < step;
+        const cur = n === step;
+        return {
+          label: s.label,
+          mark: done ? '✓' : String(n),
+          bg: cur ? '#F2FAF7' : 'transparent',
+          dotBg: done ? '#3A836B' : cur ? '#3A836B' : '#EDF0EE',
+          dotInk: done || cur ? '#FFFFFF' : '#9AA5A0',
+          ink: done || cur ? '#29483C' : '#9AA5A0',
+          weight: cur ? 600 : 500,
+        };
+      }),
+
+      bioHelp: errors.bio || bioLen + ' / 600 characters — at least 40.',
+      bioHelpColor: errors.bio ? '#C0392B' : '#49454F',
+
+      hasLogo: !!values.logo, noLogo: !values.logo,
+      hasBanner: !!values.banner, noBanner: !values.banner,
+
+      payoutOptions: (this.rules ? this.rules.PAYOUT_METHODS : ['PayPal', 'Bank deposit']).map(value => {
+        const on = values.payoutMethod === value;
+        return {
+          value, checked: on,
+          bg: on ? '#F2FAF7' : '#FFFFFF',
+          border: on ? '#3A836B' : '#EDF0EE',
+          dotBg: on ? '#3A836B' : '#FFFFFF',
+          dotBorder: on ? '#3A836B' : '#CAC4D0',
+          dotInner: on ? 'inset 0 0 0 3px #FFFFFF' : 'none',
+          onPick: () => this.setState(s => ({ values: Object.assign({}, s.values, { payoutMethod: value }), errors: Object.assign({}, s.errors, { payoutMethod: null }) })),
+        };
+      }),
+      payoutAccountLabel: values.payoutMethod === 'PayPal' ? 'PayPal email' : 'Bank account details',
+      payoutAccountPlaceholder: values.payoutMethod === 'PayPal' ? 'you@yourstore.com' : 'Bank name and account number',
+
+      planTerms: plan ? [
+        { label: 'Plan', value: plan.name },
+        { label: 'Your payout share', value: plan.payoutRate === null ? '—' : Math.round(plan.payoutRate * 100) + '%' },
+        { label: 'Per transaction', value: plan.transactionFee === null ? '—' : (plan.transactionFeePct ? (plan.transactionFeePct * 100).toFixed(1) + '% + ' : '') + '$' + plan.transactionFee.toFixed(2) },
+      ] : [],
+
+      standard: (this.rules ? this.rules.CONTENT_STANDARD : []).map(text => ({ text })),
+
+      review: [
+        { label: 'Store name', value: values.storeName || '—' },
+        { label: 'Store address', value: values.slug ? '/store/' + values.slug : '—' },
+        { label: 'Biography', value: bioLen ? bioLen + ' characters' : 'Not written yet' },
+        { label: 'Logo', value: values.logo ? 'Uploaded' : 'Not set' },
+        { label: 'Banner', value: values.banner ? 'Uploaded' : 'Not set' },
+        { label: 'Payouts', value: values.payoutMethod + (values.payoutAccount ? ' · ' + values.payoutAccount : '') },
+      ],
+
+      confirmStandardBg: values.confirmStandard ? '#3A836B' : '#FFFFFF',
+      confirmStandardBorder: errors.confirmStandard ? '#C0392B' : values.confirmStandard ? '#3A836B' : '#CAC4D0',
+      confirmStandardError: errors.confirmStandard || '',
+      vConfirmStandard: values.confirmStandard,
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => {
+          const next = Object.assign({}, s.values, { [name]: value });
+          // Keep the address in step with the name until the user edits it directly.
+          if (name === 'storeName' && !s.touchedSlug) {
+            next.slug = String(value || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+          }
+          return {
+            values: next,
+            touchedSlug: name === 'slug' ? true : s.touchedSlug,
+            errors: Object.assign({}, s.errors, { [name]: null }),
+            formError: '',
+          };
+        });
+      },
+      onCheck: e => {
+        const { name, checked } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: checked }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+        }));
+      },
+      onLogo: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const logo = await this.readImage(file);
+        this.setState(s => ({ values: Object.assign({}, s.values, { logo }) }));
+      },
+      onBanner: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const banner = await this.readImage(file);
+        this.setState(s => ({ values: Object.assign({}, s.values, { banner }) }));
+      },
+      onBack: () => this.setState(s => ({ step: Math.max(1, s.step - 1), formError: '' })),
+      onSkip: () => this.setState({ step: 3, formError: '' }),
+
+      onNext: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const schema = this.schemaFor(this.state.step);
+        const { valid, errors: errs } = this.validation.validate(this.state.values, schema);
+        if (!valid) {
+          this.setState({ errors: errs });
+          const el = document.getElementById('sw-' + Object.keys(errs)[0]);
+          if (el) el.focus();
+          return;
+        }
+        if (this.state.step < 4) {
+          this.setState(s => ({ step: s.step + 1, errors: {}, formError: '' }));
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+        this.setState({ busy: true, formError: '' });
+        try {
+          const v = this.state.values;
+          await this.vendors.updateVendor(this.state.vendor.id, {
+            storeName: v.storeName, slug: v.slug, bio: v.bio,
+            logo: v.logo, banner: v.banner,
+            payoutMethod: v.payoutMethod, payoutAccount: v.payoutAccount,
+            setupComplete: true,
+          });
+          this.app.toast('Store setup complete. Publish your first resource.', 'success');
+          this.app.router.go('vendorDashboard');
+        } catch (err) {
+          const { message, fields } = this.app.readError(err);
+          this.setState({ busy: false, formError: message, errors: fields || {} });
+        }
+      },
+    }, this.field('storeName'), this.field('slug'), this.field('bio'),
+       this.field('payoutMethod'), this.field('payoutAccount'));
+  }
+}
+
+</script>
+</body>
+</html>

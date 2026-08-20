@@ -1,0 +1,553 @@
+[FRAME] browse_filter page 1729x2456@0,0 fill:#ffffff
+  [FRAME] Frame 43454 1729x131@1066,-91 
+    [FRAME] Group 68 1729x129@1066,-91 
+      [FRAME] Toggle button - outline 198.11x48@2530.85,-77 fill:#eaf7f1 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] Content 198x54@2530.9,-80 fill:#fedc97 | r:100 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] State-layer 154x40@2552.9,-73 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+            [INSTANCE] Icon 20x20@2568.9,-63 
+            [TEXT] Label 122x20@2568.9,-63 fill:#3a836b | "Vendor Login" Poppins SemiBold 18/20 undefined
+      [FRAME] Group 68 1729x129@1066,-91 
+        [ROUNDED_RECTANGLE] Rectangle 111 1729x129@1066,-91 fill:#3a836b
+        [INSTANCE] mdi:shopping-cart-outline 24.01x24.01@2433.79,-60 fill:
+        [INSTANCE] Search bar 434.25x48@1713.37,-70 fill:#ffffff | r:28 | HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+        [FRAME] Frame 67 1214x27@1324,0 HORIZONTAL gap54 pad[0,0,0,0] undefined/CENTER
+          [TEXT] Islamic Studies 145x27@1324,0 fill:#ffffff | "Islamic Studies" Poppins Medium 18/100% undefined
+          [TEXT] Quran 59x27@1523,0 fill:#ffffff | "Quran" Poppins Medium 18/100% undefined
+          [TEXT] Arabic 62x27@1636,0 fill:#ffffff | "Arabic" Poppins Medium 18/100% undefined
+          [TEXT] Social Studies 133x27@1752,0 fill:#ffffff | "Social Studies" Poppins Medium 18/100% undefined
+          [TEXT] Math 48x27@1939,0 fill:#ffffff | "Math" Poppins Medium 18/100% undefined
+          [TEXT] Science 75x27@2041,0 fill:#ffffff | "Science" Poppins Medium 18/100% undefined
+          [TEXT] ELA 31x27@2170,0 fill:#ffffff | "ELA" Poppins Medium 18/100% undefined
+          [TEXT] Art 28x27@2255,0 fill:#ffffff | "Art" Poppins Medium 18/100% undefined
+          [TEXT] Health 62x27@2337,0 fill:#ffffff | "Health" Poppins Medium 18/100% undefined
+          [TEXT] About Us 85x27@2453,0 fill:#ffffff | "About Us" Poppins Medium 18/100% undefined
+        [FRAME] Toggle button - outline 112.06x48@2299.71,-70 HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] Content 111x40@2300.25,-66 fill:#fedc97 | r:8 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] State-layer 82x40@2314.75,-66 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+              [INSTANCE] Icon 20x20@2330.75,-56 
+              [TEXT] Label 50x20@2330.75,-56 fill:#29483c | "Login" Poppins SemiBold 18/20 undefined
+        [INSTANCE] Toggle button - outline 102x48@2186.65,-70 HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+    [FRAME] Group 93 228x46.28@1403,-67 
+      [TEXT] Uloominate 182x37@1449,-62 fill:#fedc97 | "Uloominate" Montserrat Alternates Medium 30/100% CENTER
+      [FRAME] Group 66 38x46.28@1403,-67 
+        [ROUNDED_RECTANGLE] logo 1 38x46.28@1403,-67 fill:IMAGE:img
+  [FRAME] page-content 1729x1866@1066,40 
+    [FRAME] breadcrumbs 203x18@1208,64 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+      [TEXT] Elementary 68x18@1208,64 fill:#595959 | "Elementary" Poppins Regular 12/100% undefined
+      [FRAME] chevron-right 10x10@1284,68 
+        [VECTOR] Vector 2.5x5@1287.75,70.5 
+      [TEXT] Math 31x18@1302,64 fill:#595959 | "Math" Poppins Regular 12/100% undefined
+      [FRAME] chevron-right 10x10@1341,68 
+        [VECTOR] Vector 2.5x5@1344.75,70.5 
+      [TEXT] Addition 52x18@1359,64 fill:#29483c | "Addition" Poppins SemiBold 12/100% undefined
+    [FRAME] header-row 1446x75@1208,104 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/MAX
+      [FRAME] title-group 428x75@1208,104 VERTICAL gap6 pad[0,0,0,0] undefined/undefined
+        [TEXT] page-title 428x48@1208,104 fill:#29483c | "Preschool Math Resources" Poppins SemiBold 32/100% undefined
+        [TEXT] results-count 428x21@1208,158 fill:#121212 | "Showing 1,420 educational worksheets, games, and activities" Poppins Regular 14/100% undefined
+    [FRAME] Frame 43456 693x37@1584,194 
+      [FRAME] applied-tags 1261x41@1584,194 HORIZONTAL gap8 pad[0,0,0,0] undefined/undefined
+        [FRAME] sort-dropdown 124x41@1584,194 fill:#fedc97 | r:8 | HORIZONTAL gap8 pad[10,16,10,16] undefined/CENTER
+          [TEXT] Preschool 70x21@1600,204 fill:#121212 | "Preschool" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 14x14@1678,207.5 
+            [VECTOR] Vector 7x3.5@1681.5,212.75 
+        [FRAME] sort-dropdown 159x41@1716,194 fill:#fedc97 | r:8 | HORIZONTAL gap8 pad[10,16,10,16] undefined/CENTER
+          [TEXT] Math: Addition 105x21@1732,204 fill:#121212 | "Math: Addition" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 14x14@1845,207.5 
+            [VECTOR] Vector 7x3.5@1848.5,212.75 
+        [FRAME] sort-dropdown 159x41@1883,194 fill:#ffffff | r:8 | HORIZONTAL gap8 pad[10,16,10,16] undefined/CENTER
+          [TEXT] Resource Type 105x21@1899,204 fill:#121212 | "Resource Type" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 14x14@2012,207.5 
+            [VECTOR] Vector 7x3.5@2015.5,212.75 
+        [FRAME] sort-dropdown 90x41@2050,194 fill:#ffffff | r:8 | HORIZONTAL gap8 pad[10,16,10,16] undefined/CENTER
+          [TEXT] Price 36x21@2066,204 fill:#121212 | "Price" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 14x14@2110,207.5 
+            [VECTOR] Vector 7x3.5@2113.5,212.75 
+    [FRAME] Frame 43457 171x37@2235,194 
+    [FRAME] applied-tags 180x41@2469,194 HORIZONTAL gap8 pad[0,0,0,0] undefined/undefined
+      [FRAME] sort-dropdown 180x41@2469,194 fill:#ffffff | r:8 | HORIZONTAL gap8 pad[10,16,10,16] undefined/CENTER
+        [TEXT] Sort By: Top Rated 126x21@2485,204 fill:#121212 | "Sort By: Top Rated" DM Sans SemiBold 14/100% undefined
+        [FRAME] chevron-down 14x14@2619,207.5 
+          [VECTOR] Vector 7x3.5@2622.5,212.75 
+    [FRAME] product-grid 1065x804@1584,246 VERTICAL gap24 pad[0,0,0,0] undefined/CENTER
+      [FRAME] grid-row-1 1065x390@1584,246 HORIZONTAL gap24 pad[0,0,0,0] CENTER/undefined
+        [FRAME] product-card 338x390@1584,246 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@1584,246 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@1584,246 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@1584,246 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@1874,258 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@1883,267 
+                  [VECTOR] Vector 15x15@1884.5,268.5 
+            [FRAME] card-body 338x133@1584,466 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@1600,482 fill:#121212 | "Preschool Math Worksheet Pack: Numbers 1-10 Counting & Tracing Bundle" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@1600,538 fill:#121212 | "Sweet Preschool Creations" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@1600,567 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1600,568 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1600,568 
+                    [VECTOR] Vector 11.67x11.13@1601.17,569.17 
+                  [FRAME] star 14x14@1616,568 
+                    [VECTOR] Vector 11.67x11.13@1617.17,569.17 
+                  [FRAME] star 14x14@1632,568 
+                    [VECTOR] Vector 11.67x11.13@1633.17,569.17 
+                  [FRAME] star 14x14@1648,568 
+                    [VECTOR] Vector 11.67x11.13@1649.17,569.17 
+                  [FRAME] star 14x14@1664,568 
+                    [VECTOR] Vector 11.67x11.13@1665.17,569.17 
+                [TEXT] rating-count 28x16@1682,567 fill:#666666 | "(142)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@1584,599 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 46x21@1600,599 fill:#2b2b2b | "$4.50" DM Sans Bold 16/100% undefined
+            [TEXT] original-price 35x17@1654,601 fill:#666666 | "$6.00" DM Sans Regular 13/100% undefined
+        [FRAME] product-card 338x390@1946,246 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@1946,246 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@1946,246 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@1946,246 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2236,258 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2245,267 
+                  [VECTOR] Vector 15x15@2246.5,268.5 
+            [FRAME] card-body 338x133@1946,466 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@1962,482 fill:#121212 | "Apple Tree Counting: Interactive Hands-On Autumn Math Centers" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@1962,538 fill:#121212 | "Playful Learning Co." Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@1962,567 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1962,568 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1962,568 
+                    [VECTOR] Vector 11.67x11.13@1963.17,569.17 
+                  [FRAME] star 14x14@1978,568 
+                    [VECTOR] Vector 11.67x11.13@1979.17,569.17 
+                  [FRAME] star 14x14@1994,568 
+                    [VECTOR] Vector 11.67x11.13@1995.17,569.17 
+                  [FRAME] star 14x14@2010,568 
+                    [VECTOR] Vector 11.67x11.13@2011.17,569.17 
+                  [FRAME] star 14x14@2026,568 
+                    [VECTOR] Vector 11.67x11.13@2027.17,569.17 
+                [TEXT] rating-count 23x16@2044,567 fill:#666666 | "(89)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@1946,599 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 44x21@1962,599 fill:#2b2b2b | "$3.20" DM Sans Bold 16/100% undefined
+        [FRAME] product-card 341x390@2308,246 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 341x353@2308,246 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 341x220@2308,246 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 341x220@2308,246 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2601,258 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2610,267 
+                  [VECTOR] Vector 15x15@2611.5,268.5 
+            [FRAME] card-body 341x133@2308,466 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 309x48@2324,482 fill:#121212 | "Shapes Matching Game & Clip Cards: Circle, Triangle, Square Activities" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 309x21@2324,538 fill:#121212 | "The Kindergarten Hub" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 309x16@2324,567 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@2324,568 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@2324,568 
+                    [VECTOR] Vector 11.67x11.13@2325.17,569.17 
+                  [FRAME] star 14x14@2340,568 
+                    [VECTOR] Vector 11.67x11.13@2341.17,569.17 
+                  [FRAME] star 14x14@2356,568 
+                    [VECTOR] Vector 11.67x11.13@2357.17,569.17 
+                  [FRAME] star 14x14@2372,568 
+                    [VECTOR] Vector 11.67x11.13@2373.17,569.17 
+                  [FRAME] star 14x14@2388,568 
+                    [VECTOR] Vector 11.67x11.13@2389.17,569.17 
+                [TEXT] rating-count 32x16@2406,567 fill:#666666 | "(203)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 341x37@2308,599 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 35x21@2324,599 fill:#2b2b2b | "Free" DM Sans Bold 16/100% undefined
+      [FRAME] grid-row-2 1065x390@1584,660 HORIZONTAL gap24 pad[0,0,0,0] CENTER/undefined
+        [FRAME] product-card 338x390@1584.5,660 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@1584.5,660 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@1584.5,660 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@1584.5,660 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@1874.5,672 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@1883.5,681 
+                  [VECTOR] Vector 15x15@1885,682.5 
+            [FRAME] card-body 338x133@1584.5,880 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@1600.5,896 fill:#121212 | "Ocean Theme Pattern Coloring & Sequencing Activity Sheets" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@1600.5,952 fill:#121212 | "Miss Emily's Classroom" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@1600.5,981 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1600.5,982 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1600.5,982 
+                    [VECTOR] Vector 11.67x11.13@1601.67,983.17 
+                  [FRAME] star 14x14@1616.5,982 
+                    [VECTOR] Vector 11.67x11.13@1617.67,983.17 
+                  [FRAME] star 14x14@1632.5,982 
+                    [VECTOR] Vector 11.67x11.13@1633.67,983.17 
+                  [FRAME] star 14x14@1648.5,982 
+                    [VECTOR] Vector 11.67x11.13@1649.67,983.17 
+                  [FRAME] star 14x14@1664.5,982 
+                    [VECTOR] Vector 11.67x11.13@1665.67,983.17 
+                [TEXT] rating-count 24x16@1682.5,981 fill:#666666 | "(56)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@1584.5,1013 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 45x21@1600.5,1013 fill:#2b2b2b | "$2.80" DM Sans Bold 16/100% undefined
+        [FRAME] product-card 340x390@1946.5,660 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 340x353@1946.5,660 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 340x220@1946.5,660 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 340x220@1946.5,660 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2238.5,672 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2247.5,681 
+                  [VECTOR] Vector 15x15@2249,682.5 
+            [FRAME] card-body 340x133@1946.5,880 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 308x48@1962.5,896 fill:#121212 | "Preschool Math Clip Cards: Ocean Creatures Counting & Number Sense" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 308x21@1962.5,952 fill:#121212 | "Tiny Hands Learning" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 308x16@1962.5,981 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1962.5,982 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1962.5,982 
+                    [VECTOR] Vector 11.67x11.13@1963.67,983.17 
+                  [FRAME] star 14x14@1978.5,982 
+                    [VECTOR] Vector 11.67x11.13@1979.67,983.17 
+                  [FRAME] star 14x14@1994.5,982 
+                    [VECTOR] Vector 11.67x11.13@1995.67,983.17 
+                  [FRAME] star 14x14@2010.5,982 
+                    [VECTOR] Vector 11.67x11.13@2011.67,983.17 
+                  [FRAME] star 14x14@2026.5,982 
+                    [VECTOR] Vector 11.67x11.13@2027.67,983.17 
+                [TEXT] rating-count 23x16@2044.5,981 fill:#666666 | "(74)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 340x37@1946.5,1013 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 45x21@1962.5,1013 fill:#2b2b2b | "$3.50" DM Sans Bold 16/100% undefined
+        [FRAME] product-card 338x390@2310.5,660 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@2310.5,660 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@2310.5,660 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@2310.5,660 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2600.5,672 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2609.5,681 
+                  [VECTOR] Vector 15x15@2611,682.5 
+            [FRAME] card-body 338x133@2310.5,880 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@2326.5,896 fill:#121212 | "Number Sense Matching Puzzles for Toddlers & Early Learners" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@2326.5,952 fill:#121212 | "Curriculum & Crafts" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@2326.5,981 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@2326.5,982 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@2326.5,982 
+                    [VECTOR] Vector 11.67x11.13@2327.67,983.17 
+                  [FRAME] star 14x14@2342.5,982 
+                    [VECTOR] Vector 11.67x11.13@2343.67,983.17 
+                  [FRAME] star 14x14@2358.5,982 
+                    [VECTOR] Vector 11.67x11.13@2359.67,983.17 
+                  [FRAME] star 14x14@2374.5,982 
+                    [VECTOR] Vector 11.67x11.13@2375.67,983.17 
+                  [FRAME] star 14x14@2390.5,982 
+                    [VECTOR] Vector 11.67x11.13@2391.67,983.17 
+                [TEXT] rating-count 24x16@2408.5,981 fill:#666666 | "(112)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@2310.5,1013 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 46x21@2326.5,1013 fill:#2b2b2b | "$5.00" DM Sans Bold 16/100% undefined
+            [TEXT] original-price 34x17@2380.5,1015 fill:#666666 | "$7.50" DM Sans Regular 13/100% undefined
+    [FRAME] product-grid 1065x804@1584,1074 VERTICAL gap24 pad[0,0,0,0] undefined/CENTER
+      [FRAME] grid-row-1 1065x390@1584,1074 HORIZONTAL gap24 pad[0,0,0,0] CENTER/undefined
+        [FRAME] product-card 338x390@1584,1074 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@1584,1074 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@1584,1074 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@1584,1074 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@1874,1086 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@1883,1095 
+                  [VECTOR] Vector 15x15@1884.5,1096.5 
+            [FRAME] card-body 338x133@1584,1294 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@1600,1310 fill:#121212 | "Preschool Math Worksheet Pack: Numbers 1-10 Counting & Tracing Bundle" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@1600,1366 fill:#121212 | "Sweet Preschool Creations" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@1600,1395 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1600,1396 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1600,1396 
+                    [VECTOR] Vector 11.67x11.13@1601.17,1397.17 
+                  [FRAME] star 14x14@1616,1396 
+                    [VECTOR] Vector 11.67x11.13@1617.17,1397.17 
+                  [FRAME] star 14x14@1632,1396 
+                    [VECTOR] Vector 11.67x11.13@1633.17,1397.17 
+                  [FRAME] star 14x14@1648,1396 
+                    [VECTOR] Vector 11.67x11.13@1649.17,1397.17 
+                  [FRAME] star 14x14@1664,1396 
+                    [VECTOR] Vector 11.67x11.13@1665.17,1397.17 
+                [TEXT] rating-count 28x16@1682,1395 fill:#666666 | "(142)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@1584,1427 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 46x21@1600,1427 fill:#2b2b2b | "$4.50" DM Sans Bold 16/100% undefined
+            [TEXT] original-price 35x17@1654,1429 fill:#666666 | "$6.00" DM Sans Regular 13/100% undefined
+        [FRAME] product-card 338x390@1946,1074 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@1946,1074 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@1946,1074 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@1946,1074 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2236,1086 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2245,1095 
+                  [VECTOR] Vector 15x15@2246.5,1096.5 
+            [FRAME] card-body 338x133@1946,1294 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@1962,1310 fill:#121212 | "Apple Tree Counting: Interactive Hands-On Autumn Math Centers" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@1962,1366 fill:#121212 | "Playful Learning Co." Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@1962,1395 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1962,1396 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1962,1396 
+                    [VECTOR] Vector 11.67x11.13@1963.17,1397.17 
+                  [FRAME] star 14x14@1978,1396 
+                    [VECTOR] Vector 11.67x11.13@1979.17,1397.17 
+                  [FRAME] star 14x14@1994,1396 
+                    [VECTOR] Vector 11.67x11.13@1995.17,1397.17 
+                  [FRAME] star 14x14@2010,1396 
+                    [VECTOR] Vector 11.67x11.13@2011.17,1397.17 
+                  [FRAME] star 14x14@2026,1396 
+                    [VECTOR] Vector 11.67x11.13@2027.17,1397.17 
+                [TEXT] rating-count 23x16@2044,1395 fill:#666666 | "(89)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@1946,1427 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 44x21@1962,1427 fill:#2b2b2b | "$3.20" DM Sans Bold 16/100% undefined
+        [FRAME] product-card 341x390@2308,1074 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 341x353@2308,1074 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 341x220@2308,1074 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 341x220@2308,1074 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2601,1086 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2610,1095 
+                  [VECTOR] Vector 15x15@2611.5,1096.5 
+            [FRAME] card-body 341x133@2308,1294 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 309x48@2324,1310 fill:#121212 | "Shapes Matching Game & Clip Cards: Circle, Triangle, Square Activities" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 309x21@2324,1366 fill:#121212 | "The Kindergarten Hub" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 309x16@2324,1395 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@2324,1396 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@2324,1396 
+                    [VECTOR] Vector 11.67x11.13@2325.17,1397.17 
+                  [FRAME] star 14x14@2340,1396 
+                    [VECTOR] Vector 11.67x11.13@2341.17,1397.17 
+                  [FRAME] star 14x14@2356,1396 
+                    [VECTOR] Vector 11.67x11.13@2357.17,1397.17 
+                  [FRAME] star 14x14@2372,1396 
+                    [VECTOR] Vector 11.67x11.13@2373.17,1397.17 
+                  [FRAME] star 14x14@2388,1396 
+                    [VECTOR] Vector 11.67x11.13@2389.17,1397.17 
+                [TEXT] rating-count 32x16@2406,1395 fill:#666666 | "(203)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 341x37@2308,1427 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 35x21@2324,1427 fill:#2b2b2b | "Free" DM Sans Bold 16/100% undefined
+      [FRAME] grid-row-2 1065x390@1584,1488 HORIZONTAL gap24 pad[0,0,0,0] CENTER/undefined
+        [FRAME] product-card 338x390@1584.5,1488 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@1584.5,1488 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@1584.5,1488 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@1584.5,1488 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@1874.5,1500 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@1883.5,1509 
+                  [VECTOR] Vector 15x15@1885,1510.5 
+            [FRAME] card-body 338x133@1584.5,1708 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@1600.5,1724 fill:#121212 | "Ocean Theme Pattern Coloring & Sequencing Activity Sheets" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@1600.5,1780 fill:#121212 | "Miss Emily's Classroom" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@1600.5,1809 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1600.5,1810 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1600.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1601.67,1811.17 
+                  [FRAME] star 14x14@1616.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1617.67,1811.17 
+                  [FRAME] star 14x14@1632.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1633.67,1811.17 
+                  [FRAME] star 14x14@1648.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1649.67,1811.17 
+                  [FRAME] star 14x14@1664.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1665.67,1811.17 
+                [TEXT] rating-count 24x16@1682.5,1809 fill:#666666 | "(56)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@1584.5,1841 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 45x21@1600.5,1841 fill:#2b2b2b | "$2.80" DM Sans Bold 16/100% undefined
+        [FRAME] product-card 340x390@1946.5,1488 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 340x353@1946.5,1488 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 340x220@1946.5,1488 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 340x220@1946.5,1488 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2238.5,1500 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2247.5,1509 
+                  [VECTOR] Vector 15x15@2249,1510.5 
+            [FRAME] card-body 340x133@1946.5,1708 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 308x48@1962.5,1724 fill:#121212 | "Preschool Math Clip Cards: Ocean Creatures Counting & Number Sense" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 308x21@1962.5,1780 fill:#121212 | "Tiny Hands Learning" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 308x16@1962.5,1809 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@1962.5,1810 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@1962.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1963.67,1811.17 
+                  [FRAME] star 14x14@1978.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1979.67,1811.17 
+                  [FRAME] star 14x14@1994.5,1810 
+                    [VECTOR] Vector 11.67x11.13@1995.67,1811.17 
+                  [FRAME] star 14x14@2010.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2011.67,1811.17 
+                  [FRAME] star 14x14@2026.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2027.67,1811.17 
+                [TEXT] rating-count 23x16@2044.5,1809 fill:#666666 | "(74)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 340x37@1946.5,1841 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 45x21@1962.5,1841 fill:#2b2b2b | "$3.50" DM Sans Bold 16/100% undefined
+        [FRAME] product-card 338x390@2310.5,1488 r:12 | VERTICAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+          [FRAME] card-top 338x353@2310.5,1488 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+            [FRAME] image-container 338x220@2310.5,1488 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [ROUNDED_RECTANGLE] thumbnail 338x220@2310.5,1488 fill:IMAGE:img
+              [FRAME] wishlist-btn 36x36@2600.5,1500 fill:#ffffff | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] heart-off 18x18@2609.5,1509 
+                  [VECTOR] Vector 15x15@2611,1510.5 
+            [FRAME] card-body 338x133@2310.5,1708 VERTICAL gap8 pad[16,16,16,16] undefined/undefined
+              [TEXT] product-title 306x48@2326.5,1724 fill:#121212 | "Number Sense Matching Puzzles for Toddlers & Early Learners" Poppins SemiBold 16/100% undefined
+              [TEXT] product-creator 306x21@2326.5,1780 fill:#121212 | "Curriculum & Crafts" Poppins Regular 14/100% undefined
+              [FRAME] rating-row 306x16@2326.5,1809 HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+                [FRAME] stars 78x14@2326.5,1810 HORIZONTAL gap2 pad[0,0,0,0] undefined/undefined
+                  [FRAME] star 14x14@2326.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2327.67,1811.17 
+                  [FRAME] star 14x14@2342.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2343.67,1811.17 
+                  [FRAME] star 14x14@2358.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2359.67,1811.17 
+                  [FRAME] star 14x14@2374.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2375.67,1811.17 
+                  [FRAME] star 14x14@2390.5,1810 
+                    [VECTOR] Vector 11.67x11.13@2391.67,1811.17 
+                [TEXT] rating-count 24x16@2408.5,1809 fill:#666666 | "(112)" DM Sans Regular 12/100% undefined
+          [FRAME] card-footer 338x37@2310.5,1841 HORIZONTAL gap8 pad[0,16,16,16] undefined/CENTER
+            [TEXT] price 46x21@2326.5,1841 fill:#2b2b2b | "$5.00" DM Sans Bold 16/100% undefined
+            [TEXT] original-price 34x17@2380.5,1843 fill:#666666 | "$7.50" DM Sans Regular 13/100% undefined
+    [FRAME] filter-panel 340x911@1208,194 fill:#ffffff | r:16 | VERTICAL gap24 pad[24,24,24,24] undefined/undefined
+      [FRAME] panel-header 292x24@1232,218 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+        [FRAME] Frame 75x24@1232,218 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+          [FRAME] sliders 18x18@1232,221 
+            [VECTOR] Vector 13.5x13.5@1234.25,223.25 
+          [TEXT] Filters 49x24@1258,218 fill:#121212 | "Filters" Poppins SemiBold 16/100% undefined
+        [TEXT] Clear All 56x20@1468,220 fill:#3a836b | "Clear All" Poppins SemiBold 13/100% undefined
+      [LINE] Line 292x0@1232,266 
+      [FRAME] filter-product-categories 292x423@1232,290 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+        [FRAME] filter-header 292x21@1232,290 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+          [TEXT] Product Categories 138x21@1232,290 fill:#121212 | "Product Categories" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 16x16@1508,292.5 
+            [VECTOR] Vector 8x4@1512,298.5 
+        [FRAME] category-list 292x390@1232,323 VERTICAL gap16 pad[0,0,0,0] undefined/undefined
+          [FRAME] cat-islamic-studies 292x21@1232,323 VERTICAL gap8 pad[0,0,0,0] undefined/undefined
+            [FRAME] cat-header 292x21@1232,323 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+              [FRAME] cat-header-left 133x21@1232,323 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1232,325.5 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [TEXT] Islamic Studies 107x21@1258,323 fill:#121212 | "Islamic Studies" Poppins Medium 14/100% undefined
+              [FRAME] chevron-right 16x16@1508,325.5 
+                [VECTOR] Vector 8x4@1512,331.5 
+          [FRAME] cat-language-arts 292x21@1232,360 VERTICAL gap8 pad[0,0,0,0] undefined/undefined
+            [FRAME] cat-header 292x21@1232,360 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+              [FRAME] cat-header-left 129x21@1232,360 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1232,362.5 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [TEXT] Language Arts 103x21@1258,360 fill:#121212 | "Language Arts" Poppins Medium 14/100% undefined
+              [FRAME] chevron-right 16x16@1508,362.5 
+                [VECTOR] Vector 8x4@1512,368.5 
+          [FRAME] cat-math 292x205@1232,397 VERTICAL gap8 pad[0,0,0,0] undefined/undefined
+            [FRAME] cat-header 292x21@1232,397 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+              [FRAME] cat-header-left 63x21@1232,397 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1232,399.5 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [TEXT] Math 37x21@1258,397 fill:#121212 | "Math" Poppins Medium 14/100% undefined
+              [FRAME] chevron-down 16x16@1508,399.5 
+                [VECTOR] Vector 8x4@1512,405.5 
+            [FRAME] sub-math 292x176@1232,426 VERTICAL gap6 pad[0,0,0,12] undefined/undefined
+              [FRAME] sub-item 280x20@1244,426 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,428 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,430 
+                    [VECTOR] Vector 8x5.5@1248,433 
+                [TEXT] Counting 61x20@1270,426 fill:#595959 | "Counting" Poppins Regular 13/100% undefined
+              [FRAME] sub-item 280x20@1244,452 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,454 fill:#3a836b | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,456 
+                    [VECTOR] Vector 8x5.5@1248,459 
+                [TEXT] Addition 55x20@1270,452 fill:#595959 | "Addition" Poppins Regular 13/100% undefined
+              [FRAME] sub-item 280x20@1244,478 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,480 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,482 
+                    [VECTOR] Vector 8x5.5@1248,485 
+                [TEXT] Subtraction 76x20@1270,478 fill:#595959 | "Subtraction" Poppins Regular 13/100% undefined
+              [FRAME] sub-item 280x20@1244,504 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,506 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,508 
+                    [VECTOR] Vector 8x5.5@1248,511 
+                [TEXT] Multiplication 88x20@1270,504 fill:#595959 | "Multiplication" Poppins Regular 13/100% undefined
+              [FRAME] sub-item 280x20@1244,530 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,532 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,534 
+                    [VECTOR] Vector 8x5.5@1248,537 
+                [TEXT] Division 50x20@1270,530 fill:#595959 | "Division" Poppins Regular 13/100% undefined
+              [FRAME] sub-item 280x20@1244,556 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,558 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,560 
+                    [VECTOR] Vector 8x5.5@1248,563 
+                [TEXT] Fractions 60x20@1270,556 fill:#595959 | "Fractions" Poppins Regular 13/100% undefined
+              [FRAME] sub-item 280x20@1244,582 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1244,584 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] check 12x12@1246,586 
+                    [VECTOR] Vector 8x5.5@1248,589 
+                [TEXT] Geometry 65x20@1270,582 fill:#595959 | "Geometry" Poppins Regular 13/100% undefined
+          [FRAME] cat-science 292x21@1232,618 VERTICAL gap8 pad[0,0,0,0] undefined/undefined
+            [FRAME] cat-header 292x21@1232,618 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+              [FRAME] cat-header-left 82x21@1232,618 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1232,620.5 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [TEXT] Science 56x21@1258,618 fill:#121212 | "Science" Poppins Medium 14/100% undefined
+              [FRAME] chevron-right 16x16@1508,620.5 
+                [VECTOR] Vector 8x4@1512,626.5 
+          [FRAME] cat-social-studies 292x21@1232,655 VERTICAL gap8 pad[0,0,0,0] undefined/undefined
+            [FRAME] cat-header 292x21@1232,655 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+              [FRAME] cat-header-left 125x21@1232,655 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1232,657.5 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [TEXT] Social Studies 99x21@1258,655 fill:#121212 | "Social Studies" Poppins Medium 14/100% undefined
+              [FRAME] chevron-right 16x16@1508,657.5 
+                [VECTOR] Vector 8x4@1512,663.5 
+          [FRAME] cat-art 292x21@1232,692 VERTICAL gap8 pad[0,0,0,0] undefined/undefined
+            [FRAME] cat-header 292x21@1232,692 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+              [FRAME] cat-header-left 47x21@1232,692 HORIZONTAL gap10 pad[0,0,0,0] undefined/CENTER
+                [FRAME] checkbox 16x16@1232,694.5 fill:#ffffff | r:4 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [TEXT] Art 21x21@1258,692 fill:#121212 | "Art" Poppins Medium 14/100% undefined
+              [FRAME] chevron-right 16x16@1508,694.5 
+                [VECTOR] Vector 8x4@1512,700.5 
+      [LINE] Line 292x0@1232,737 
+      [FRAME] filter-price 292x21@1232,761 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+        [FRAME] filter-header 292x21@1232,761 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+          [TEXT] Filter by price 96x21@1232,761 fill:#121212 | "Filter by price" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 16x16@1508,763.5 
+            [VECTOR] Vector 8x4@1512,769.5 
+      [LINE] Line 292x0@1232,806 
+      [FRAME] filter-grade-level 292x21@1232,830 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+        [FRAME] filter-header 292x21@1232,830 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+          [TEXT] Grade Level 84x21@1232,830 fill:#121212 | "Grade Level" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 16x16@1508,832.5 
+            [VECTOR] Vector 8x4@1512,838.5 
+      [LINE] Line 292x0@1232,875 
+      [FRAME] filter-resource-type 292x21@1232,899 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+        [FRAME] filter-header 292x21@1232,899 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+          [TEXT] Resource Type 105x21@1232,899 fill:#121212 | "Resource Type" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 16x16@1508,901.5 
+            [VECTOR] Vector 8x4@1512,907.5 
+      [LINE] Line 292x0@1232,944 
+      [FRAME] filter-theme 292x21@1232,968 VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+        [FRAME] filter-header 292x21@1232,968 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+          [TEXT] Theme 50x21@1232,968 fill:#121212 | "Theme" Poppins SemiBold 14/100% undefined
+          [FRAME] chevron-down 16x16@1508,970.5 
+            [VECTOR] Vector 8x4@1512,976.5 
+      [LINE] Line 292x0@1232,1013 
+      [FRAME] apply-btn 292x44@1232,1037 fill:#3a836b | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] Apply Filters 88x21@1334,1048.5 fill:#ffffff | "Apply Filters" Poppins SemiBold 14/100% undefined
+  [FRAME] pagination-strip 1261x64@1486,1906 HORIZONTAL gap0 pad[24,0,0,0] CENTER/undefined
+    [FRAME] Frame 376x40@1928.5,1930 HORIZONTAL gap8 pad[0,0,0,0] undefined/CENTER
+      [FRAME] Frame 40x40@1928.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] arrow-left 16x16@1940.5,1942 
+          [VECTOR] Vector 9.33x9.33@1943.83,1945.33 
+      [FRAME] Frame 40x40@1976.5,1930 fill:#3a836b | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] 1 6x18@1993.5,1941 fill:#ffffff | "1" DM Sans Bold 14/100% undefined
+      [FRAME] Frame 40x40@2024.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] 2 9x18@2040,1941 fill:#2b2b2b | "2" DM Sans Medium 14/100% undefined
+      [FRAME] Frame 40x40@2072.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] 3 9x18@2088,1941 fill:#2b2b2b | "3" DM Sans Medium 14/100% undefined
+      [FRAME] Frame 40x40@2120.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] 4 9x18@2136,1941 fill:#2b2b2b | "4" DM Sans Medium 14/100% undefined
+      [FRAME] Frame 40x40@2168.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] ... 10x18@2183.5,1941 fill:#2b2b2b | "..." DM Sans Medium 14/100% undefined
+      [FRAME] Frame 40x40@2216.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [TEXT] 48 18x18@2227.5,1941 fill:#2b2b2b | "48" DM Sans Medium 14/100% undefined
+      [FRAME] Frame 40x40@2264.5,1930 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] arrow-right 16x16@2276.5,1942 
+          [VECTOR] Vector 9.33x9.33@2279.83,1945.33 
+  [FRAME] Frame 43458 1729x330@1066,2035 
+    [FRAME] footer 1727x329@1067,2036 fill:#feffff | VERTICAL gap40 pad[64,48,40,48] undefined/undefined
+      [FRAME] footer-columns 1631x120@1115,2100 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+        [FRAME] Frame 39649 208.12x102@1115,2100 VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [VECTOR] Subtract (Traced) 40x49@1199.06,2100 fill:#3a836b
+          [FRAME] Group 95 208.12x53@1115,2149 
+            [TEXT] Teach More. Share More. 153.23x16@1140.16,2186 fill:#3a836b | "Teach More. Share More. " Playfair Display Regular 12/100% CENTER
+            [FRAME] Group 93 208.12x37@1115,2149 
+              [TEXT] Uloominate 208.12x37@1115,2149 fill:#3a836b | "Uloominate" Montserrat Alternates Medium 30/100% CENTER
+        [FRAME] Frame 984x120@1452.56,2100 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+          [TEXT] About Us 63x21@1452.56,2100 fill:#29483c | "About Us" Poppins Regular 14/100% undefined
+          [TEXT] Privacy Policy 95x21@1452.56,2133 fill:#29483c | "Privacy Policy" Poppins Regular 14/100% undefined
+          [TEXT] Terms & Conditions 137x21@1452.56,2166 fill:#29483c | "Terms & Conditions" Poppins Regular 14/100% undefined
+          [TEXT] Contact Us 78x21@1452.56,2199 fill:#29483c | "Contact Us" Poppins Regular 14/100% undefined
+        [FRAME] Frame 180x65@2566,2100 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+          [TEXT] Keep in Touch 97x17@2566,2100 fill:#121212 | "Keep in Touch" DM Sans Bold 13/100% undefined
+          [FRAME] Frame 180x36@2566,2129 HORIZONTAL gap12 pad[0,0,0,0] undefined/undefined
+            [FRAME] Frame 36x36@2566,2129 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+              [FRAME] instagram 18x18@2575,2138 
+                [VECTOR] Vector 15x15@2576.5,2139.5 
+            [FRAME] Frame 36x36@2614,2129 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+              [FRAME] facebook 18x18@2623,2138 
+                [VECTOR] Vector 8.25x15@2628.25,2139.5 
+            [FRAME] Frame 36x36@2662,2129 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+              [FRAME] circle-x 18x18@2671,2138 
+                [VECTOR] Vector 15x15@2672.5,2139.5 
+            [FRAME] Frame 36x36@2710,2129 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+              [FRAME] twitter 18x18@2719,2138 
+                [VECTOR] Vector 15x12.76@2720.5,2140.99 
+      [LINE] Line 1631x0@1115,2260 
+      [FRAME] footer-bottom 1631x25@1115,2300 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+        [TEXT] Copyright © 2025 Uloominate 236x25@1115,2300 fill:#29483c | "Copyright © 2025 Uloominate" Poppins Regular 16/1.57 undefined
+        [FRAME] Frame 186x16@2560,2304.5 HORIZONTAL gap16 pad[0,0,0,0] undefined/undefined
+    [LINE] Line 7 1729x0@2795,2035 

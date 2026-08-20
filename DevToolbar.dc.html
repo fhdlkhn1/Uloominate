@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<div data-region="dev-toolbar" style="position:fixed;right:16px;bottom:16px;z-index:8000;font-family:Poppins,system-ui,sans-serif;display:flex;flex-direction:column;align-items:flex-end;gap:10px;pointer-events:none">
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div role="region" aria-label="Prototype developer toolbar" style="pointer-events:auto;width:320px;max-height:min(72vh,620px);overflow-y:auto;background:#122A22;color:#E8F2ED;border-radius:16px;padding:18px;box-shadow:0 24px 60px -18px rgba(0,0,0,.55);display:flex;flex-direction:column;gap:18px">
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8FBFAC">Prototype tools</span>
+        <button type="button" onClick="{{ close }}" aria-label="Close developer toolbar" style="width:26px;height:26px;border:none;border-radius:7px;background:rgba(255,255,255,.08);color:#E8F2ED;cursor:pointer;display:grid;place-items:center" style-hover="background:rgba(255,255,255,.18)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"></path></svg>
+        </button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8FBFAC">Sign in as</span>
+        <sc-for list="{{ personas }}" as="p" hint-placeholder-count="4">
+          <button type="button" onClick="{{ p.onPick }}" style="display:flex;align-items:center;gap:10px;width:100%;padding:9px 11px;border:1px solid {{ p.border }};border-radius:10px;background:{{ p.bg }};color:#E8F2ED;font-family:Poppins,sans-serif;font-size:13px;text-align:left;cursor:pointer;transition:background .15s ease" style-hover="background:rgba(255,255,255,.12)">
+            <span style="width:22px;height:22px;border-radius:50%;background:{{ p.dot }};flex:0 0 auto;display:grid;place-items:center;font-size:10px;font-weight:700;color:#0C1D17">{{ p.initial }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-weight:600;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.name }}</span>
+              <span style="display:block;font-size:11px;color:#9CC3B4;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.label }}</span>
+            </span>
+          </button>
+        </sc-for>
+        <button type="button" onClick="{{ onSignOut }}" style="padding:9px 11px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:transparent;color:#E8F2ED;font-family:Poppins,sans-serif;font-size:13px;cursor:pointer" style-hover="background:rgba(255,255,255,.1)">Sign out (browse as guest)</button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8FBFAC">Jump to</span>
+        <select onChange="{{ onJump }}" value="{{ currentPage }}" aria-label="Jump to a page" style="width:100%;padding:9px 11px;border:1px solid rgba(255,255,255,.14);border-radius:10px;background:#0C1D17;color:#E8F2ED;font-family:Poppins,sans-serif;font-size:13px;cursor:pointer">
+          <sc-for list="{{ jumpGroups }}" as="g" hint-placeholder-count="5">
+            <optgroup label="{{ g.label }}">
+              <sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+                <option value="{{ it.href }}">{{ it.label }}</option>
+              </sc-for>
+            </optgroup>
+          </sc-for>
+        </select>
+        <a href="{{ sitemapHref }}" style="padding:9px 11px;border:1px solid rgba(255,255,255,.14);border-radius:10px;color:#E8F2ED;font-size:13px;text-align:center" style-hover="background:rgba(255,255,255,.1);color:#E8F2ED">Open full sitemap</a>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8FBFAC">Storefront gating</span>
+        <div style="display:flex;gap:6px;padding:4px;border-radius:10px;background:rgba(255,255,255,.07)">
+          <button type="button" onClick="{{ setPreLaunch }}" style="flex:1;padding:8px;border:none;border-radius:7px;background:{{ preBg }};color:{{ preInk }};font-family:Poppins,sans-serif;font-size:12px;font-weight:600;cursor:pointer">Pre-launch</button>
+          <button type="button" onClick="{{ setPostLaunch }}" style="flex:1;padding:8px;border:none;border-radius:7px;background:{{ postBg }};color:{{ postInk }};font-family:Poppins,sans-serif;font-size:12px;font-weight:600;cursor:pointer">Post-launch</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)">
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#9CC3B4"><span>Products</span><span>{{ counts.products }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#9CC3B4"><span>Vendors</span><span>{{ counts.vendors }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#9CC3B4"><span>Orders</span><span>{{ counts.orders }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#9CC3B4"><span>Awaiting review</span><span>{{ counts.pending }}</span></div>
+        <button type="button" onClick="{{ onReset }}" style="margin-top:6px;padding:10px;border:none;border-radius:10px;background:#C0392B;color:#fff;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;cursor:pointer" style-hover="background:#A93226">Reset demo data</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <button type="button" onClick="{{ toggle }}" aria-expanded="{{ open }}" aria-label="Prototype developer toolbar" style="pointer-events:auto;display:inline-flex;align-items:center;gap:9px;height:42px;padding:0 16px;border:none;border-radius:21px;background:#122A22;color:#E8F2ED;font-family:Poppins,sans-serif;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 12px 30px -10px rgba(0,0,0,.55);transition:transform .18s ease" style-hover="transform:translateY(-2px)">
+    <span style="width:9px;height:9px;border-radius:50%;background:{{ dotColor }};flex:0 0 auto"></span>
+    {{ badge }}
+  </button>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;page&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open: false, ready: false, user: null, launchMode: 'pre-launch', counts: { products: 0, vendors: 0, orders: 0, pending: 0 } };
+
+  async componentDidMount() {
+    const [app, platform] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.platform = platform;
+    this.refresh();
+    this.offSession = app.auth.onSessionChange(() => this.refresh());
+    this.offDb = app.db.onChange(() => this.refresh());
+    this.onKey = e => {
+      if (e.key === '.' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); this.setState(s => ({ open: !s.open })); }
+    };
+    document.addEventListener('keydown', this.onKey);
+  }
+
+  componentWillUnmount() {
+    if (this.offSession) this.offSession();
+    if (this.offDb) this.offDb();
+    document.removeEventListener('keydown', this.onKey);
+  }
+
+  refresh() {
+    const db = this.app.db;
+    this.setState({
+      ready: true,
+      user: this.app.auth.currentUser(),
+      launchMode: this.platform.settingSync('launchMode', 'pre-launch'),
+      counts: {
+        products: db.findAll('products').total,
+        vendors: db.findAll('vendors').total,
+        orders: db.findAll('orders').total,
+        pending: db.findAll('products', { filter: { status: 'pending' } }).total
+          + db.findAll('vendors', { filter: { status: 'pending' } }).total,
+      },
+    });
+  }
+
+  personaList() {
+    if (!this.app) return [];
+    const db = this.app.db;
+    const picks = [
+      { id: 'u-admin', label: 'Administrator' },
+      { id: 'u-v-1', label: 'Premium vendor · approved' },
+      { id: 'u-v-4', label: 'Pioneer vendor · free tier' },
+      { id: 'u-v-8', label: 'Publisher · pending approval' },
+      { id: 'u-c1', label: 'Customer · has purchases' },
+    ];
+    const cur = (this.user || this.state.user);
+    return picks.map(p => {
+      const u = db.findById('users', p.id);
+      if (!u) return null;
+      const active = cur && cur.id === p.id;
+      return {
+        name: [u.firstName, u.lastName].filter(Boolean).join(' '),
+        label: p.label,
+        initial: (u.firstName[0] || '?').toUpperCase(),
+        dot: u.role === 'admin' ? '#FEDC97' : u.role === 'vendor' ? '#9FD0BE' : '#A9D8E8',
+        bg: active ? 'rgba(255,255,255,.14)' : 'transparent',
+        border: active ? '#3A836B' : 'rgba(255,255,255,.14)',
+        onPick: () => { this.app.auth.impersonate(p.id); this.app.toast('Now browsing as ' + u.firstName, 'info'); this.refresh(); },
+      };
+    }).filter(Boolean);
+  }
+
+  renderVals() {
+    const { open, user, launchMode, counts } = this.state;
+    const url = this.app ? this.app.router.url : (r => r);
+    const R = this.app ? this.app.router.ROUTES : {};
+    const groups = [
+      ['Public', ['landing', 'home', 'browse', 'product', 'vendorStore', 'cart', 'checkout', 'orderConfirmation', 'plans', 'about', 'privacy', 'terms', 'contact']],
+      ['Auth', ['login', 'registerCustomer', 'registerVendor', 'forgotPassword', 'resetPassword', 'verifyEmail', 'vendorPending', 'storeSetup']],
+      ['Customer', ['accountOrders', 'accountDownloads', 'accountWishlist', 'accountReviews', 'accountFollowing', 'accountProfile']],
+      ['Vendor', ['vendorDashboard', 'vendorProducts', 'vendorProductEdit', 'vendorOrders', 'vendorPayments', 'vendorCoupons', 'vendorCustomers', 'vendorMessages', 'vendorReports', 'vendorMedia', 'vendorSubscription', 'vendorStoreProfile']],
+      ['Admin', ['adminDashboard', 'adminVendorQueue', 'adminProductQueue', 'adminVendors', 'adminCatalogue', 'adminOrders', 'adminPayouts', 'adminPlans', 'adminReports', 'adminContent']],
+      ['System', ['sitemap', 'notFound', 'forbidden', 'serverError']],
+    ];
+
+    return {
+      open,
+      counts,
+      currentPage: '',
+      sitemapHref: url('sitemap'),
+      personas: this.personaList(),
+      badge: user ? user.firstName + ' · ' + user.role : 'Guest',
+      dotColor: user ? (user.role === 'admin' ? '#FEDC97' : user.role === 'vendor' ? '#9FD0BE' : '#A9D8E8') : '#6E8B80',
+      preBg: launchMode === 'pre-launch' ? '#3A836B' : 'transparent',
+      preInk: launchMode === 'pre-launch' ? '#FFFFFF' : '#9CC3B4',
+      postBg: launchMode === 'post-launch' ? '#3A836B' : 'transparent',
+      postInk: launchMode === 'post-launch' ? '#FFFFFF' : '#9CC3B4',
+      jumpGroups: groups.map(([label, keys]) => ({
+        label,
+        items: keys.filter(k => R[k]).map(k => ({ href: R[k], label: R[k].replace('.dc.html', '') })),
+      })),
+      toggle: () => this.setState(s => ({ open: !s.open })),
+      close: () => this.setState({ open: false }),
+      onJump: e => { if (e.target.value) window.location.href = e.target.value; },
+      onSignOut: async () => { await this.app.auth.logout(); this.refresh(); this.app.toast('Signed out', 'info'); },
+      setPreLaunch: async () => { await this.platform.setSetting('launchMode', 'pre-launch'); this.refresh(); this.app.toast('Storefront gated (pre-launch)', 'info'); },
+      setPostLaunch: async () => { await this.platform.setSetting('launchMode', 'post-launch'); this.refresh(); this.app.toast('Storefront open (post-launch)', 'info'); },
+      onReset: async () => {
+        const ok = await this.app.confirmDialog({
+          title: 'Reset demo data?',
+          body: 'Everything you have created in this prototype is discarded and the original seed data is restored.',
+          confirmLabel: 'Reset everything',
+        });
+        if (!ok) return;
+        this.app.resetDemoData();
+        this.refresh();
+        this.app.toast('Demo data reset', 'success');
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

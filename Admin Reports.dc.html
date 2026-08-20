@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Reports — Uloominate admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F7F8FA;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="D-09 Admin Reports">
+  <dc-import name="AdminShell" active="adminReports" title="Reports" subtitle="{{ subtitle }}" hint-size="100%,100vh">
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="display:flex;flex-direction:column;gap:18px">
+        <span style="height:112px;border-radius:16px;background:#EEF0F4"></span>
+        <span style="height:300px;border-radius:16px;background:#F1F3F6"></span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;gap:20px">
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+            <div style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:7px">
+              <span style="font-size:12.5px;color:#595959">{{ s.label }}</span>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:clamp(20px,1.8vw,25px);line-height:1.1;color:{{ s.ink }}">{{ s.value }}</span>
+              <span style="font-size:11.5px;line-height:1.5;color:#9AA5A0">{{ s.note }}</span>
+            </div>
+          </sc-for>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Monthly gross, commission and orders</h2>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#595959">
+                <span aria-hidden="true" style="width:10px;height:10px;border-radius:3px;background:#3A836B"></span>Gross
+              </span>
+              <span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#595959">
+                <span aria-hidden="true" style="width:10px;height:10px;border-radius:3px;background:#FEDC97"></span>Commission
+              </span>
+            </div>
+          </div>
+
+          <sc-if value="{{ hasChart }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;align-items:flex-end;gap:clamp(8px,1.6vw,24px);height:240px">
+              <sc-for list="{{ chart }}" as="c" hint-placeholder-count="8">
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%">
+                  <span style="flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center;gap:3px">
+                    <span title="{{ c.grossTip }}" style="width:min(46%,22px);height:{{ c.grossPct }}%;min-height:3px;border-radius:6px 6px 0 0;background:#3A836B"></span>
+                    <span title="{{ c.commTip }}" style="width:min(46%,22px);height:{{ c.commPct }}%;min-height:3px;border-radius:6px 6px 0 0;background:#FEDC97"></span>
+                  </span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;font-weight:600;color:#29483C;white-space:nowrap">{{ c.gross }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:10.5px;color:#9AA5A0;white-space:nowrap">{{ c.orders }}</span>
+                  <span style="font-size:11px;color:#9AA5A0;white-space:nowrap">{{ c.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ noChart }}" hint-placeholder-val="{{ true }}">
+            <p style="margin:0;padding:44px 0;font-size:13.5px;line-height:1.7;color:#595959;text-align:center">No data for this range.</p>
+          </sc-if>
+        </section>
+
+        <div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+
+          <section style="flex:999 1 440px;min-width:0;background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Vendor performance</h2>
+            <div style="overflow-x:auto">
+              <table style="width:100%;min-width:560px;border-collapse:collapse;font-size:13.5px">
+                <thead>
+                  <tr>
+                    <th scope="col" style="text-align:left;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4">Vendor</th>
+                    <th scope="col" style="text-align:left;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4">Plan</th>
+                    <th scope="col" style="text-align:right;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4">Units</th>
+                    <th scope="col" style="text-align:right;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4">Gross</th>
+                    <th scope="col" style="text-align:right;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4">Commission</th>
+                    <th scope="col" style="text-align:right;padding:10px 12px;background:#FBFCFD;color:#595959;font-weight:600;border-bottom:1px solid #EEF0F4">Share</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <sc-for list="{{ vendors }}" as="v" hint-placeholder-count="8">
+                    <tr>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F7"><a href="{{ v.href }}" style="font-weight:600;color:#29483C" style-hover="color:#3A836B">{{ v.name }}</a></td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F7;color:#595959">{{ v.plan }}</td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F7;text-align:right;font-family:'DM Sans',Poppins,sans-serif;color:#595959">{{ v.units }}</td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F7;text-align:right;font-family:'DM Sans',Poppins,sans-serif;font-weight:700;color:#29483C">{{ v.gross }}</td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F7;text-align:right;font-family:'DM Sans',Poppins,sans-serif;color:#B9913E">{{ v.commission }}</td>
+                      <td style="padding:12px;border-bottom:1px solid #F3F5F7;text-align:right">
+                        <span style="display:flex;align-items:center;gap:8px;justify-content:flex-end">
+                          <span style="flex:0 1 54px;height:6px;border-radius:9999px;background:#EEF0F4;overflow:hidden">
+                            <span style="display:block;height:100%;width:{{ v.pct }}%;background:#3A836B"></span>
+                          </span>
+                          <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#595959;min-width:30px">{{ v.pctLabel }}</span>
+                        </span>
+                      </td>
+                    </tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section style="flex:1 1 300px;max-width:360px;min-width:0;background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+            <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Revenue by category</h2>
+            <div style="display:flex;flex-direction:column;gap:13px">
+              <sc-for list="{{ categories }}" as="c" hint-placeholder-count="6">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px">
+                    <span style="font-size:13px;color:#595959;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ c.name }}</span>
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:13.5px;color:#29483C;white-space:nowrap">{{ c.gross }}</span>
+                  </div>
+                  <span style="height:8px;border-radius:9999px;background:#EEF0F4;overflow:hidden">
+                    <span style="display:block;height:100%;width:{{ c.pct }}%;background:#3A836B"></span>
+                  </span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11px;color:#9AA5A0">{{ c.units }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </section>
+        </div>
+
+        <section style="background:#FFFFFF;border:1px solid #E7E9EE;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <h2 style="margin:0;font-weight:600;font-size:16.5px;color:#29483C">Platform health</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:14px">
+            <sc-for list="{{ health }}" as="h" hint-placeholder-count="6">
+              <div style="padding:16px;border-radius:12px;background:#FBFCFD;border:1px solid #F1F3F6;display:flex;flex-direction:column;gap:5px">
+                <span style="font-size:12px;color:#595959">{{ h.label }}</span>
+                <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:19px;color:{{ h.ink }}">{{ h.value }}</span>
+                <span style="font-size:11.5px;line-height:1.5;color:#9AA5A0">{{ h.note }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+      </div>
+    </sc-if>
+
+  </dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, user: null, stats: null };
+
+  async componentDidMount() {
+    const [app, platform, rules] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+      import('./assets/js/business-rules.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, platform, rules });
+    const user = app.auth.requireRole('admin');
+    if (!user) return;
+    const ps = await platform.platformStats();
+    this.setState({ loading: false, user, stats: ps.data });
+  }
+
+  money(n) { return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, stats: s } = this.state;
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const max = s && s.byMonth.length ? Math.max.apply(null, s.byMonth.map(m => m.gross)) : 0;
+    const vMax = s && s.topVendors.length ? Math.max.apply(null, s.topVendors.map(v => v.gross)) : 0;
+    const cMax = s && s.byCategory.length ? Math.max.apply(null, s.byCategory.map(c => c.gross)) : 0;
+    const gross = s ? s.grossSales : 0;
+
+    return {
+      loading,
+      ready: !loading && !!s,
+      subtitle: s ? 'Across ' + s.orderCount + ' completed orders and ' + s.vendorCount + ' active vendors' : '',
+
+      stats: s ? [
+        { label: 'Gross sales', value: this.money(s.grossSales), note: s.orderCount + ' orders', ink: '#29483C' },
+        { label: 'Commission earned', value: this.money(s.commissionEarned), note: gross ? Math.round(s.commissionEarned / gross * 100) + '% of gross' : '', ink: '#B9913E' },
+        { label: 'Vendor earnings', value: this.money(s.vendorEarnings), note: 'Paid or payable', ink: '#3A836B' },
+        { label: 'Transaction fees', value: this.money(s.transactionFees), note: 'Off vendor payouts', ink: '#595959' },
+        { label: 'Average order', value: this.money(s.averageOrderValue), note: s.refundedCount + ' refunded', ink: '#29483C' },
+      ] : [],
+
+      hasChart: !!(s && s.byMonth.length),
+      noChart: !!(s && !s.byMonth.length),
+      chart: s ? s.byMonth.map(m => {
+        const d = new Date(m.month + '-01');
+        return {
+          label: monthNames[d.getMonth()],
+          gross: '$' + Math.round(m.gross),
+          orders: m.orders + (m.orders === 1 ? ' order' : ' orders'),
+          grossPct: max ? Math.round(m.gross / max * 100) : 0,
+          commPct: max ? Math.round(m.commission / max * 100) : 0,
+          grossTip: 'Gross ' + this.money(m.gross),
+          commTip: 'Commission ' + this.money(m.commission),
+        };
+      }) : [],
+
+      vendors: s ? s.topVendors.map(v => ({
+        name: v.name,
+        href: url('adminVendors', { id: v.vendorId }),
+        plan: v.planCode ? this.rules.planByCode(v.planCode).name : '—',
+        units: String(v.units),
+        gross: this.money(v.gross),
+        commission: this.money(v.commission),
+        pct: vMax ? Math.round(v.gross / vMax * 100) : 0,
+        pctLabel: gross ? Math.round(v.gross / gross * 100) + '%' : '0%',
+      })) : [],
+
+      categories: s ? s.byCategory.map(c => {
+        const cat = this.rules.categoryById(c.categoryId);
+        return {
+          name: cat ? cat.name : 'Uncategorised',
+          gross: this.money(c.gross),
+          units: c.units + (c.units === 1 ? ' sale' : ' sales'),
+          pct: cMax ? Math.round(c.gross / cMax * 100) : 0,
+        };
+      }) : [],
+
+      health: s ? [
+        { label: 'Live resources', value: String(s.productCount), note: s.pendingProducts + ' awaiting review', ink: '#29483C' },
+        { label: 'Active vendors', value: String(s.vendorCount), note: s.pendingVendors + ' awaiting approval', ink: '#29483C' },
+        { label: 'Registered educators', value: String(s.customerCount), note: 'Buyer accounts', ink: '#29483C' },
+        { label: 'Mailing list', value: String(s.subscriberCount), note: 'Pre-launch subscribers', ink: '#29483C' },
+        { label: 'Payouts paid', value: this.money(s.payoutsPaid), note: 'To date', ink: '#3A836B' },
+        { label: 'Payouts pending', value: this.money(s.payoutsPending), note: 'Awaiting processing', ink: '#B9913E' },
+      ] : [],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

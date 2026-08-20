@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Uloominate — Islamic educational resources for every classroom</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+</style>
+</helmet>
+<div data-screen-label="P-02 Post-launch homepage" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" launchMode="post-launch" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;display:flex;flex-direction:column">
+
+    <section style="background:#FFFDF7">
+      <div style="max-width:1728px;margin:0 auto;padding:52px 0 0 clamp(20px,4.34vw,75px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:36px;align-items:center">
+        <div style="display:flex;flex-direction:column;gap:20px;padding-bottom:52px;min-width:0">
+          <h1 style="margin:0;max-width:820px;font-weight:600;font-size:clamp(30px,3.4vw,50px);line-height:1.08;letter-spacing:-.5px;color:#29483C;text-wrap:balance">Where Deen and Learning Come Together</h1>
+          <p style="margin:0;max-width:700px;font-weight:400;font-size:clamp(17px,1.6vw,26px);line-height:1.5;color:#121212;text-wrap:pretty">Worksheets, unit plans and activities for Islamic Studies, Qur'an, Arabic and the whole curriculum — made by Muslim educators, reviewed before publication.</p>
+
+          <form onSubmit="{{ onSearch }}" role="search" style="display:flex;align-items:center;gap:8px;max-width:560px;background:#FFFFFF;border:1px solid #E4DFCF;border-radius:9999px;padding:6px 6px 6px 20px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 14px 30px -22px rgba(41,72,60,.4)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:0 0 20px"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.4-3.4"></path></svg>
+            <input name="q" type="search" placeholder="Search resources, subjects, vendors" aria-label="Search resources" style="flex:1;min-width:0;border:none;outline:none;background:transparent;font-family:Poppins,sans-serif;font-size:16px;color:#121212" />
+            <button type="submit" style="flex:0 0 auto;height:48px;padding:0 24px;border:none;border-radius:9999px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;cursor:pointer" style-hover="background:#29483C">Search</button>
+          </form>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:4px">
+            <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="5">
+              <a href="{{ q.href }}" style="padding:8px 15px;border:1px solid #E4DFCF;border-radius:9999px;background:#FFFFFF;font-size:13.5px;font-weight:500;color:#29483C" style-hover="background:#F2FAF7;color:#29483C">{{ q.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="justify-self:end;width:100%;min-width:0">
+          <img src="assets/img/hero-illustration.png" alt="A Muslim educator sharing digital learning resources" style="display:block;width:100%;height:auto;aspect-ratio:773 / 580;object-fit:cover;border-radius:clamp(80px,14vw,200px) 0 0 0" />
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="ulm-cats" style="background:#FFFFFF">
+      <div style="max-width:1728px;margin:0 auto;padding:60px clamp(20px,12.5vw,216px) 20px;display:flex;flex-direction:column;gap:28px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+            <p style="margin:0;font-weight:600;font-size:16px;letter-spacing:.06em;color:#B9913E">BROWSE BY SUBJECT</p>
+            <h2 id="ulm-cats" style="margin:0;font-weight:600;font-size:clamp(24px,2.6vw,40px);line-height:1.15;letter-spacing:-.3px;color:#29483C">Nine categories, every one reviewed</h2>
+          </div>
+          <a href="{{ browseHref }}" style="font-size:15px;font-weight:600;white-space:nowrap">See everything →</a>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:18px">
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="9">
+            <a href="{{ c.href }}" data-testid="category-tile" style="display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:16px;background:{{ c.tint }};transition:transform .22s cubic-bezier(.2,.7,.3,1);min-height:132px" style-hover="transform:translateY(-4px);color:inherit">
+              <span style="font-weight:600;font-size:17px;line-height:1.3;color:#29483C">{{ c.name }}</span>
+              <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:13px;color:#595959">{{ c.count }}</span>
+              <span style="margin-top:auto;font-size:12.5px;line-height:1.6;color:#595959">{{ c.subjects }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="ulm-featured" style="background:#FFFFFF">
+      <div style="max-width:1728px;margin:0 auto;padding:44px clamp(20px,12.5vw,216px) 20px;display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <h2 id="ulm-featured" style="margin:0;font-weight:600;font-size:clamp(22px,2.3vw,34px);line-height:1.2;color:#29483C">Most downloaded this month</h2>
+          <a href="{{ topRatedHref }}" style="font-size:15px;font-weight:600;white-space:nowrap">All top-rated →</a>
+        </div>
+
+        <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+          <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:24px">
+            <span style="height:340px;border-radius:14px;background:#F4F6F5"></span>
+            <span style="height:340px;border-radius:14px;background:#F7F9F8"></span>
+            <span style="height:340px;border-radius:14px;background:#F9FAFA"></span>
+            <span style="height:340px;border-radius:14px;background:#FBFCFB"></span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ hasFeatured }}" hint-placeholder-val="{{ false }}">
+          <div data-testid="featured-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:24px">
+            <sc-for list="{{ featured }}" as="p" hint-placeholder-count="4">
+              <article data-testid="product-card" style="position:relative;display:flex;flex-direction:column;justify-content:space-between;border:1px solid #EDF0EE;border-radius:12px;background:#FFFFFF;overflow:hidden;min-height:380px;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease,border-color .22s ease" style-hover="transform:translateY(-4px);box-shadow:0 1px 2px rgba(18,18,18,.04),0 18px 36px -20px rgba(41,72,60,.42);border-color:#DCE7E1">
+                <div>
+                  <div style="position:relative;width:100%;aspect-ratio:338 / 220;background:#F3F4F6;overflow:hidden">
+                    <a href="{{ p.href }}" tabindex="-1" aria-hidden="true" style="display:block;width:100%;height:100%">
+                      <img src="{{ p.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+                    </a>
+                    <sc-if value="{{ p.hasBadge }}" hint-placeholder-val="{{ false }}">
+                      <span style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:9999px;background:{{ p.badgeBg }};color:{{ p.badgeInk }};font-size:12px;font-weight:600">{{ p.badgeText }}</span>
+                    </sc-if>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px;padding:16px">
+                    <a href="{{ p.href }}" style="font-weight:600;font-size:15.5px;line-height:1.45;color:#121212;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:45px" style-hover="color:#3A836B">{{ p.title }}</a>
+                    <a href="{{ p.vendorHref }}" style="font-size:13px;color:#595959;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:#3A836B">{{ p.vendorName }}</a>
+                    <div style="display:flex;align-items:center;gap:5px">
+                      <span aria-hidden="true" style="font-size:13px;color:#FFC107;letter-spacing:1px">{{ p.stars }}</span>
+                      <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#666666">{{ p.ratingLabel }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px;padding:0 16px 16px">
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-weight:700;font-size:16px;color:#2B2B2B">{{ p.priceLabel }}</span>
+                  <span style="margin-left:auto;font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#9AA5A0">{{ p.downloads }}</span>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section aria-labelledby="ulm-free" style="background:#F2FAF7;margin-top:44px">
+      <div style="max-width:1728px;margin:0 auto;padding:52px clamp(20px,12.5vw,216px);display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:0">
+            <p style="margin:0;font-weight:600;font-size:16px;letter-spacing:.06em;color:#B9913E">NOTHING TO PAY</p>
+            <h2 id="ulm-free" style="margin:0;font-weight:600;font-size:clamp(22px,2.3vw,34px);line-height:1.2;color:#29483C">Free resources to start with</h2>
+          </div>
+          <a href="{{ freeHref }}" style="font-size:15px;font-weight:600;white-space:nowrap">All free resources →</a>
+        </div>
+
+        <sc-if value="{{ hasFree }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:20px">
+            <sc-for list="{{ freeItems }}" as="p" hint-placeholder-count="4">
+              <a href="{{ p.href }}" style="display:flex;gap:14px;background:#FFFFFF;border-radius:14px;padding:14px;transition:transform .2s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-3px);color:inherit">
+                <span style="flex:0 0 74px;width:74px;height:56px;border-radius:9px;overflow:hidden;background:#F3F4F6">
+                  <img src="{{ p.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+                </span>
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+                  <span style="font-weight:600;font-size:13.5px;line-height:1.4;color:#29483C;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ p.title }}</span>
+                  <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:11.5px;color:#9AA5A0">{{ p.meta }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section aria-labelledby="ulm-vendors" style="background:#FFFDF7">
+      <div style="max-width:1728px;margin:0 auto;padding:52px clamp(20px,12.5vw,216px);display:flex;flex-direction:column;gap:26px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <h2 id="ulm-vendors" style="margin:0;font-weight:600;font-size:clamp(22px,2.3vw,34px);line-height:1.2;color:#29483C">Vendors worth following</h2>
+          <a href="{{ plansHref }}" style="font-size:15px;font-weight:600;white-space:nowrap">Become a vendor →</a>
+        </div>
+
+        <sc-if value="{{ hasVendors }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:20px">
+            <sc-for list="{{ vendors }}" as="v" hint-placeholder-count="4">
+              <a href="{{ v.href }}" data-testid="vendor-tile" style="display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #EDE8DA;border-radius:16px;padding:20px;transition:transform .22s cubic-bezier(.2,.7,.3,1)" style-hover="transform:translateY(-4px);color:inherit">
+                <span style="display:flex;align-items:center;gap:12px">
+                  <span style="flex:0 0 48px;width:48px;height:48px;border-radius:50%;overflow:hidden;background:#3A836B;color:#FFFFFF;display:grid;place-items:center;font-size:15px;font-weight:600">
+                    <sc-if value="{{ v.hasLogo }}" hint-placeholder-val="{{ true }}">
+                      <img src="{{ v.logo }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover" />
+                    </sc-if>
+                    <sc-if value="{{ v.noLogo }}" hint-placeholder-val="{{ false }}">
+                      <span>{{ v.initials }}</span>
+                    </sc-if>
+                  </span>
+                  <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px">
+                    <span style="font-weight:600;font-size:15px;color:#29483C;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ v.storeName }}</span>
+                    <span style="font-family:'DM Sans',Poppins,sans-serif;font-size:12px;color:#9AA5A0">{{ v.meta }}</span>
+                  </span>
+                </span>
+                <span style="font-size:13px;line-height:1.65;color:#595959;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">{{ v.bio }}</span>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <section style="background:#FFFFFF">
+      <div style="max-width:1728px;margin:0 auto;padding:56px clamp(20px,12.5vw,216px)">
+        <div style="background:#F5EDFF;border-radius:20px;padding:44px clamp(24px,4vw,56px);display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+          <div style="flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:12px">
+            <h2 style="margin:0;font-weight:600;font-size:clamp(22px,2.2vw,32px);line-height:1.2;color:#29483C;text-wrap:balance">Teach more. Share more.</h2>
+            <p style="margin:0;max-width:560px;font-size:clamp(15px,1.3vw,18px);line-height:1.7;color:#121212;text-wrap:pretty">Publish your own resources to a community that is looking for exactly what you make. Vendor plans are free under the founding offer.</p>
+          </div>
+          <div style="flex:0 0 auto;display:flex;gap:14px;flex-wrap:wrap">
+            <a href="{{ registerVendorHref }}" style="display:inline-flex;align-items:center;height:58px;padding:0 28px;border-radius:8px;background:#3A836B;color:#FFFFFF;font-weight:600;font-size:16px" style-hover="background:#29483C;color:#FFFFFF">Become a vendor</a>
+            <a href="{{ plansHref }}" style="display:inline-flex;align-items:center;height:58px;padding:0 26px;border-radius:8px;background:#FFFFFF;border:1px solid #DCD2EA;color:#29483C;font-weight:600;font-size:16px" style-hover="background:#FBF8FF;color:#29483C">See the plans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="home" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { loading: true, featured: [], freeItems: [], vendors: [], categories: [] };
+
+  async componentDidMount() {
+    const [app, products, vendors, rules, db] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/productsRepo.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/db.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, rules, db });
+
+    const [top, free, vs] = await Promise.all([
+      products.listProducts({ status: 'approved', sort: 'downloads', pageSize: 8 }),
+      products.listProducts({ status: 'approved', freeOnly: true, pageSize: 4, sort: 'downloads' }),
+      vendors.listVendors({ status: 'approved', pageSize: 4, sort: 'followers', sortDir: 'desc' }),
+    ]);
+
+    this.setState({
+      loading: false,
+      featured: top.data.slice(0, 8),
+      freeItems: free.data,
+      vendors: vs.data,
+      categories: rules.CATEGORIES,
+    });
+  }
+
+  stars(n) {
+    const f = Math.round(Number(n) || 0);
+    return '★'.repeat(f) + '☆'.repeat(Math.max(0, 5 - f));
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { loading, featured, freeItems, vendors, categories } = this.state;
+
+    return {
+      browseHref: url('browse'),
+      freeHref: url('browse', { free: '1' }),
+      topRatedHref: url('browse', { sort: 'rating' }),
+      plansHref: url('plans'),
+      registerVendorHref: url('registerVendor'),
+      loading,
+
+      quickLinks: [
+        { label: 'Ramadan', href: url('browse', { themes: 'Ramadan' }) },
+        { label: 'Free resources', href: url('browse', { free: '1' }) },
+        { label: 'Pre-K & Kindergarten', href: url('browse', { grades: 'Pre-K' }) },
+        { label: 'Worksheets', href: url('browse', { types: 'Worksheets' }) },
+        { label: 'Unit plans', href: url('browse', { types: 'Unit Plans' }) },
+      ],
+
+      categories: categories.map(c => {
+        const n = this.db.findAll('products', { filter: { categoryId: c.id, status: 'approved' } }).total;
+        return {
+          name: c.name,
+          tint: c.tint,
+          href: url('browse', { category: c.slug }),
+          count: n + (n === 1 ? ' resource' : ' resources'),
+          subjects: c.subjects.slice(0, 3).join(' · '),
+        };
+      }),
+
+      hasFeatured: !loading && featured.length > 0,
+      featured: featured.map(p => ({
+        title: p.title,
+        cover: p.cover,
+        href: url('product', { id: p.id }),
+        vendorName: p.vendorName,
+        vendorHref: p.vendorSlug ? url('vendorStore', { store: p.vendorSlug }) : url('browse'),
+        stars: this.stars(p.ratingAvg),
+        ratingLabel: p.ratingCount ? '(' + p.ratingCount.toLocaleString('en-US') + ')' : '(new)',
+        priceLabel: p.price ? '$' + p.price.toFixed(2) : 'Free',
+        downloads: (p.downloads || 0).toLocaleString('en-US') + ' downloads',
+        hasBadge: !!p.discountPct || !p.price,
+        badgeText: p.discountPct ? p.discountPct + '% off' : 'Free',
+        badgeBg: p.discountPct ? '#FEDC97' : '#3A836B',
+        badgeInk: p.discountPct ? '#121212' : '#FFFFFF',
+      })),
+
+      hasFree: !loading && freeItems.length > 0,
+      freeItems: freeItems.map(p => ({
+        title: p.title,
+        cover: p.cover,
+        href: url('product', { id: p.id }),
+        meta: [p.categoryName, p.gradeLabel].filter(Boolean).join(' · '),
+      })),
+
+      hasVendors: !loading && vendors.length > 0,
+      vendors: vendors.map(v => ({
+        storeName: v.storeName,
+        href: url('vendorStore', { store: v.slug }),
+        logo: v.logo,
+        hasLogo: !!v.logo,
+        noLogo: !v.logo,
+        initials: (v.storeName || '?').split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(),
+        meta: [
+          v.productCount + (v.productCount === 1 ? ' resource' : ' resources'),
+          v.followers + ' followers',
+        ].join(' · '),
+        bio: v.bio,
+      })),
+
+      onSearch: e => {
+        e.preventDefault();
+        const q = new FormData(e.target).get('q');
+        this.app.router.go('browse', q ? { q } : {});
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

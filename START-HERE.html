@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Start here — Uloominate prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; color: #121212; background: #F2FAF7; -webkit-font-smoothing: antialiased; }
+  a { color: #3A836B; }
+  code, kbd { font-family: 'DM Sans', ui-monospace, monospace; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 72px; }
+  .card { background: #fff; border: 1px solid #E6EFEA; border-radius: 16px; padding: 28px; box-shadow: 0 1px 2px rgba(18,18,18,.04), 0 24px 48px -32px rgba(41,72,60,.4); }
+  h1 { margin: 0 0 8px; font-weight: 600; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; color: #29483C; }
+  h2 { margin: 0 0 10px; font-weight: 600; font-size: 18px; color: #29483C; }
+  p { margin: 0 0 14px; font-size: 15px; line-height: 1.75; color: #444; }
+  pre { margin: 0; background: #122A22; color: #E8F2ED; border-radius: 10px; padding: 16px 18px; overflow-x: auto; font-size: 14px; line-height: 1.6; }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; height: 50px; padding: 0 22px; border: none; border-radius: 8px; background: #3A836B; color: #fff; font: 600 15px Poppins, sans-serif; cursor: pointer; text-decoration: none; }
+  .btn.ghost { background: #fff; border: 1px solid #DCE7E1; color: #29483C; }
+  .ok { background: #EAF7F1; border-left: 4px solid #3A836B; }
+  .bad { background: #FDF1EF; border-left: 4px solid #C0392B; }
+  .note { border-radius: 10px; padding: 16px 18px; margin: 0 0 20px; font-size: 14.5px; line-height: 1.7; }
+  ol { margin: 0 0 8px; padding-left: 22px; }
+  li { font-size: 15px; line-height: 1.8; color: #444; margin-bottom: 6px; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .brand span { font-family: 'Montserrat Alternates', Poppins, sans-serif; font-weight: 500; font-size: 26px; color: #3A836B; }
+  .hide { display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <img src="assets/img/logo-mark.png" alt="" width="34" height="41" style="object-fit:contain" />
+    <span>Uloominate</span>
+  </div>
+
+  <div class="card">
+    <h1>Start here</h1>
+
+    <div id="bad" class="note bad hide">
+      <strong>This file was opened directly from disk.</strong> The prototype will
+      not work this way — browsers block one file from loading another over
+      <code>file://</code>, so every page would render its layout with no data:
+      empty grids, permanent loading states, dead buttons. Start the small server
+      below and it all works.
+    </div>
+
+    <div id="disk-out" class="note ok hide">
+      <strong>Want it working right now, with no server?</strong> Open
+      <a href="standalone.html">standalone.html</a> in this folder — the whole
+      prototype compiled into one self-contained file, so it runs straight from
+      disk. Only screens that take an id in the address (product detail, vendor
+      storefront) need the served copy.
+    </div>
+
+    <div id="ok" class="note ok hide">
+      <strong>You are running over a server.</strong> Everything will work.
+      Pick a starting point below.
+    </div>
+
+    <div id="served" class="hide">
+      <div class="row">
+        <a class="btn" href="./">Open the start page</a>
+        <a class="btn ghost" href="Sitemap.dc.html">Open the sitemap</a>
+        <a class="btn ghost" href="Landing.dc.html">Open the landing page</a>
+      </div>
+    </div>
+
+    <div id="instructions" class="hide">
+      <h2>macOS or Linux</h2>
+      <p>Open Terminal, then paste these two lines. Or just double-click
+        <code>start-mac-linux.command</code> in this folder.</p>
+      <pre>cd "<span id="pathA">path/to/this/folder</span>"
+python3 -m http.server 8000</pre>
+
+      <h2 style="margin-top:24px">Windows</h2>
+      <p>Double-click <code>start-windows.bat</code> in this folder, or run in
+        Command Prompt:</p>
+      <pre>cd "<span id="pathB">path\to\this\folder</span>"
+python -m http.server 8000</pre>
+
+      <h2 style="margin-top:24px">Then</h2>
+      <ol>
+        <li>Open <a href="http://localhost:8000/">http://localhost:8000/</a></li>
+        <li>Sign in with any account listed there, or use the dev toolbar in the bottom-right to switch role instantly.</li>
+      </ol>
+      <p style="margin-top:14px;font-size:14px;color:#666">No install, no build step. If <code>python3</code> is missing, any static server
+        works — for example <code>npx serve .</code> or <code>php -S localhost:8000</code>.</p>
+      <p style="margin-top:14px;font-size:14px;color:#666">Showing this to someone else? Host it instead and send a link — no server
+        on their machine, and none of this page. See <code>DEPLOY.md</code>.</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h2>What is in this folder</h2>
+    <p><strong>51 pages</strong>, each a standalone <code>.dc.html</code> file, plus five
+      shared shells and the data layer under <code>assets/js/</code>. Documentation is
+      in <code>docs/</code> — start with <code>docs/PAGE-INDEX.md</code> for the page map
+      and <code>docs/API-CONTRACT.md</code> for the backend contract.</p>
+    <p style="margin:0">Data persists in your browser. The dev toolbar can reset it at any time.</p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var isFile = location.protocol === 'file:';
+    document.getElementById(isFile ? 'bad' : 'ok').classList.remove('hide');
+    document.getElementById(isFile ? 'instructions' : 'served').classList.remove('hide');
+    if (isFile) document.getElementById('disk-out').classList.remove('hide');
+    if (isFile) {
+      // Show the real folder path so the cd command can be pasted as-is.
+      var dir = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+      var win = /^\/[A-Za-z]:/.test(dir);
+      var a = document.getElementById('pathA');
+      var b = document.getElementById('pathB');
+      if (a) a.textContent = win ? dir.slice(1).replace(/\//g, '\\') : dir;
+      if (b) b.textContent = win ? dir.slice(1).replace(/\//g, '\\') : dir;
+    }
+  })();
+</script>
+</body>
+</html>

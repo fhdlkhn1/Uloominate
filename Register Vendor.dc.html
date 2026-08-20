@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Become a vendor — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#F2FAF7;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="A-03 Register Vendor" style="min-height:100vh;display:flex;flex-direction:column">
+  <div style="flex:1;display:grid;place-items:center;padding:40px 20px">
+    <div style="width:min(1080px,100%);display:flex;flex-direction:column;gap:24px">
+
+      <a href="{{ homeHref }}" style="display:flex;flex-direction:column;align-items:center;gap:2px">
+        <img src="assets/img/logo-mark.png" alt="" width="44" height="53" style="object-fit:contain" />
+        <span style="font-family:'Montserrat Alternates',Poppins,sans-serif;font-weight:500;font-size:28px;color:#3A836B">Uloominate</span>
+      </a>
+
+      <div style="background:#FEDC97;border-radius:12px;padding:14px 20px;display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap">
+        <span style="font-weight:700;font-size:15px;color:#29483C">Founding Vendor Promotion</span>
+        <span style="font-size:14px;color:#29483C">Every plan is free until 1 January 2027 — billing begins 2 January 2027.</span>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap">
+
+        <form data-testid="register-vendor-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="flex:999 1 440px;min-width:0;background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:18px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <h1 style="margin:0;font-weight:600;font-size:24px;color:#29483C">Open your vendor store</h1>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:#595959">An administrator reviews every new store against our content standard before it goes live.</p>
+          </div>
+
+          <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+            <p role="alert" data-testid="register-vendor-error" style="margin:0;padding:10px 14px;border-radius:8px;background:#FDF1EF;border-left:3px solid #C0392B;font-size:13px;line-height:1.5;color:#C0392B">{{ formError }}</p>
+          </sc-if>
+
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <div style="flex:1 1 170px;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <label for="rv-firstName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ firstNameLabelColor }}">First name</label>
+              <input id="rv-firstName" name="firstName" type="text" autocomplete="given-name" value="{{ vFirstName }}" onInput="{{ onInput }}" aria-invalid="{{ firstNameInvalid }}" style="height:52px;border:1px solid {{ firstNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ firstNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ firstNameError }}</span></sc-if>
+            </div>
+            <div style="flex:1 1 170px;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <label for="rv-lastName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ lastNameLabelColor }}">Last name</label>
+              <input id="rv-lastName" name="lastName" type="text" autocomplete="family-name" value="{{ vLastName }}" onInput="{{ onInput }}" aria-invalid="{{ lastNameInvalid }}" style="height:52px;border:1px solid {{ lastNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ lastNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ lastNameError }}</span></sc-if>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <label for="rv-storeName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ storeNameLabelColor }}">Store name</label>
+            <input id="rv-storeName" name="storeName" type="text" value="{{ vStoreName }}" onInput="{{ onInput }}" aria-invalid="{{ storeNameInvalid }}" aria-describedby="rv-slug-help" placeholder="Sweet Preschool Creations" style="height:52px;border:1px solid {{ storeNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+            <span id="rv-slug-help" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ storeNameHelpColor }}">{{ storeNameHelp }}</span>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <label for="rv-email" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ emailLabelColor }}">Email</label>
+            <input id="rv-email" name="email" type="email" autocomplete="email" value="{{ vEmail }}" onInput="{{ onInput }}" aria-invalid="{{ emailInvalid }}" placeholder="you@yourstore.com" style="height:52px;border:1px solid {{ emailBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+            <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ emailError }}</span></sc-if>
+          </div>
+
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <div style="flex:1 1 170px;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <label for="rv-password" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ passwordLabelColor }}">Password</label>
+              <input id="rv-password" name="password" type="password" autocomplete="new-password" value="{{ vPassword }}" onInput="{{ onInput }}" aria-invalid="{{ passwordInvalid }}" style="height:52px;border:1px solid {{ passwordBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ passwordHelpColor }}">{{ passwordHelp }}</span>
+            </div>
+            <div style="flex:1 1 170px;min-width:0;display:flex;flex-direction:column;gap:4px">
+              <label for="rv-confirmPassword" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ confirmPasswordLabelColor }}">Confirm password</label>
+              <input id="rv-confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" value="{{ vConfirmPassword }}" onInput="{{ onInput }}" aria-invalid="{{ confirmPasswordInvalid }}" style="height:52px;border:1px solid {{ confirmPasswordBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ confirmPasswordError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ confirmPasswordError }}</span></sc-if>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <label for="rv-country" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Country</label>
+            <select id="rv-country" name="country" value="{{ vCountry }}" onChange="{{ onInput }}" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+              <sc-for list="{{ countries }}" as="c" hint-placeholder-count="6">
+                <option value="{{ c.value }}">{{ c.value }}</option>
+              </sc-for>
+            </select>
+          </div>
+
+          <fieldset style="margin:0;padding:0;border:none;display:flex;flex-direction:column;gap:10px">
+            <legend style="padding:0;font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ planCodeLabelColor }}">Choose your plan</legend>
+            <sc-for list="{{ planChoices }}" as="p" hint-placeholder-count="4">
+              <label style="display:flex;align-items:flex-start;gap:12px;padding:14px;border:1.6px solid {{ p.border }};border-radius:12px;background:{{ p.bg }};cursor:{{ p.cursor }};opacity:{{ p.opacity }}">
+                <input type="radio" name="planCode" value="{{ p.code }}" checked="{{ p.checked }}" disabled="{{ p.disabled }}" onChange="{{ p.onPick }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;margin-top:2px;border:1.8px solid {{ p.dotBorder }};border-radius:50%;background:{{ p.dotBg }};box-shadow:{{ p.dotInner }};cursor:{{ p.cursor }}" />
+                <span style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px">
+                  <span style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+                    <span style="font-weight:600;font-size:15px;color:#29483C">{{ p.name }}</span>
+                    <span style="font-weight:600;font-size:14px;color:#116254">{{ p.price }}</span>
+                  </span>
+                  <span style="font-size:13px;line-height:1.6;color:#595959">{{ p.blurb }}</span>
+                  <sc-if value="{{ p.isPublishers }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size:12px;line-height:1.5;color:#B9913E">Arranged directly with Uloominate — <a href="{{ contactHref }}" style="font-weight:600">contact us</a> to discuss terms.</span>
+                  </sc-if>
+                </span>
+              </label>
+            </sc-for>
+            <sc-if value="{{ planCodeError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ planCodeError }}</span></sc-if>
+          </fieldset>
+
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+            <input type="checkbox" name="acceptStandard" checked="{{ vAcceptStandard }}" onChange="{{ onCheck }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;margin-top:2px;border:1.6px solid {{ acceptStandardBorder }};border-radius:4px;background:{{ acceptStandardBg }};cursor:pointer" />
+            <span style="font-size:13px;line-height:1.6;color:#121212">I confirm my resources align with the Qur’an and authentic Sunnah, following the teachings of Ahlus-Sunnah wal-Jama’ah.</span>
+          </label>
+          <sc-if value="{{ acceptStandardError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B;margin-top:-10px">{{ acceptStandardError }}</span></sc-if>
+
+          <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer">
+            <input type="checkbox" name="acceptTerms" checked="{{ vAcceptTerms }}" onChange="{{ onCheck }}" style="appearance:none;-webkit-appearance:none;flex:0 0 18px;width:18px;height:18px;margin-top:2px;border:1.6px solid {{ acceptTermsBorder }};border-radius:4px;background:{{ acceptTermsBg }};cursor:pointer" />
+            <span style="font-size:13px;line-height:1.6;color:#121212">I agree to the <a href="{{ termsHref }}">Terms &amp; Conditions</a>, including the commission and fees for my plan.</span>
+          </label>
+          <sc-if value="{{ acceptTermsError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B;margin-top:-10px">{{ acceptTermsError }}</span></sc-if>
+
+          <button type="submit" disabled="{{ busy }}" data-testid="register-vendor-submit" style="height:56px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:17px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+            <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+              <span aria-hidden="true" style="width:18px;height:18px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+            </sc-if>
+            {{ submitLabel }}
+          </button>
+
+          <p style="margin:0;text-align:center;font-size:13px;color:#595959">Already have a store? <a href="{{ loginHref }}" style="font-weight:500">Sign in</a></p>
+        </form>
+
+        <aside style="flex:1 1 300px;max-width:340px;min-width:0;display:flex;flex-direction:column;gap:16px">
+          <div style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">{{ selectedName }}</h2>
+            <span style="font-weight:600;font-size:26px;color:#116254">{{ selectedPrice }}</span>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px">
+              <sc-for list="{{ selectedFeatures }}" as="f" hint-placeholder-count="4">
+                <li style="display:flex;align-items:flex-start;gap:10px">
+                  <span aria-hidden="true" style="flex:0 0 18px;width:18px;height:18px;margin-top:2px;border-radius:50%;background:#EAF7F1;color:#3A836B;display:grid;place-items:center;font-size:11px;font-weight:700">✓</span>
+                  <span style="font-size:13px;line-height:1.6;color:#121212">{{ f.text }}</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+          <div style="background:#FFFFFF;border:1px solid #E6EFEA;border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:12px">
+            <h2 style="margin:0;font-weight:600;font-size:15px;color:#29483C">What happens next</h2>
+            <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+              <div style="display:flex;align-items:flex-start;gap:12px">
+                <span aria-hidden="true" style="flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:#F2FAF7;color:#3A836B;display:grid;place-items:center;font-size:12px;font-weight:700">{{ s.n }}</span>
+                <span style="font-size:13px;line-height:1.6;color:#595959">{{ s.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </aside>
+      </div>
+
+      <a href="{{ homeHref }}" style="text-align:center;font-size:13px;color:#595959" style-hover="color:#3A836B">← Back to Uloominate</a>
+    </div>
+  </div>
+  <dc-import name="DevToolbar" page="registerVendor" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    busy: false, formError: '', errors: {}, plans: [],
+    values: {
+      firstName: '', lastName: '', storeName: '', email: '', password: '',
+      confirmPassword: '', country: 'United States', planCode: 'basic',
+      acceptStandard: false, acceptTerms: false,
+    },
+  };
+
+  async componentDidMount() {
+    const [app, vendors, rules, validation] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/vendorsRepo.js'),
+      import('./assets/js/business-rules.js'),
+      import('./assets/js/validation.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.vendors = vendors; this.validation = validation;
+    const pre = app.router.param('plan', '');
+    const valid = rules.PLANS.some(p => p.code === pre && p.selfService);
+    this.setState(s => ({
+      plans: rules.PLANS,
+      values: Object.assign({}, s.values, valid ? { planCode: pre } : {}),
+    }));
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  check(name) {
+    const err = this.state.errors[name];
+    const on = this.state.values[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: on,
+      [name + 'Error']: err || '',
+      [name + 'Bg']: on ? '#3A836B' : '#FFFFFF',
+      [name + 'Border']: err ? '#C0392B' : on ? '#3A836B' : '#CAC4D0',
+    };
+  }
+
+  slug(s) {
+    return String(s || '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  renderVals() {
+    const url = this.app ? this.app.router.url : (() => '#');
+    const { busy, formError, errors, plans, values } = this.state;
+    const selected = plans.find(p => p.code === values.planCode) || plans[0] || {};
+    const slug = this.slug(values.storeName);
+
+    return Object.assign({
+      homeHref: url('landing'),
+      loginHref: url('login'),
+      termsHref: url('terms'),
+      contactHref: url('contact'),
+      countries: ['United States', 'United Kingdom', 'Canada', 'Australia', 'Pakistan', 'Nigeria', 'United Arab Emirates', 'Malaysia', 'South Africa', 'Other'].map(value => ({ value })),
+      busy,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Creating your store…' : 'Create my vendor account',
+      hasError: !!formError,
+      formError,
+      storeNameHelp: errors.storeName || (slug ? 'Your store page will be /' + slug : 'This is the name buyers will see.'),
+      storeNameHelpColor: errors.storeName ? '#C0392B' : '#49454F',
+      passwordHelp: errors.password || 'At least 8 characters, with a letter and a number.',
+      passwordHelpColor: errors.password ? '#C0392B' : '#49454F',
+      planCodeError: errors.planCode || '',
+      planCodeLabelColor: errors.planCode ? '#C0392B' : '#49454F',
+
+      planChoices: plans.map(p => {
+        const on = p.code === values.planCode;
+        const off = !p.selfService;
+        return {
+          code: p.code, name: p.name, price: p.priceLabel, blurb: p.blurb,
+          checked: on, disabled: off,
+          isPublishers: off,
+          cursor: off ? 'not-allowed' : 'pointer',
+          opacity: off ? 0.72 : 1,
+          bg: on ? '#F2FAF7' : '#FFFFFF',
+          border: on ? '#3A836B' : '#EDF0EE',
+          dotBg: on ? '#3A836B' : '#FFFFFF',
+          dotBorder: on ? '#3A836B' : '#CAC4D0',
+          dotInner: on ? 'inset 0 0 0 3px #FFFFFF' : 'none',
+          onPick: () => { if (!off) this.setState(s => ({ values: Object.assign({}, s.values, { planCode: p.code }), errors: Object.assign({}, s.errors, { planCode: null }) })); },
+        };
+      }),
+      selectedName: selected.name || '',
+      selectedPrice: selected.priceLabel || '',
+      selectedFeatures: (selected.features || []).map(text => ({ text })),
+      steps: [
+        { n: '1', text: 'We review your store against the content standard, usually within two working days.' },
+        { n: '2', text: 'Once approved, you complete your store setup — branding, biography and payout details.' },
+        { n: '3', text: 'Publish your first resource. Each submission is approved before it goes live.' },
+      ],
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+          formError: '',
+        }));
+      },
+      onCheck: e => {
+        const { name, checked } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: checked }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+        }));
+      },
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const { valid, errors: errs } = this.validation.validate(this.state.values, this.validation.schemas.registerVendor);
+        if (!valid) {
+          this.setState({ errors: errs });
+          const el = document.getElementById('rv-' + Object.keys(errs)[0]);
+          if (el) el.focus();
+          return;
+        }
+        this.setState({ busy: true, errors: {}, formError: '' });
+        try {
+          const v = this.state.values;
+          await this.vendors.registerVendor(v);
+          await this.app.auth.login(v.email, v.password);
+          this.app.toast('Store created. It is now with an administrator for review.', 'success');
+          this.app.router.go('vendorPending');
+        } catch (err) {
+          const { message, fields } = this.app.readError(err);
+          this.setState({ busy: false, formError: message, errors: fields || {} });
+        }
+      },
+    }, this.field('firstName'), this.field('lastName'), this.field('storeName'),
+       this.field('email'), this.field('password'), this.field('confirmPassword'),
+       this.field('country'), this.check('acceptStandard'), this.check('acceptTerms'));
+  }
+}
+
+</script>
+</body>
+</html>

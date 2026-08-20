@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Resource detail — Uloominate</title>
+<meta name="ext-resource-dependency" content="assets/img/cover-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-4.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-5.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-6.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-7.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-8.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-9.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-10.png" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-4.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-5.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-1.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-2.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-3.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-4.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-5.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-6.png" />
+<meta name="ext-resource-dependency" content="assets/img/logo-mark.png" />
+<meta name="ext-resource-dependency" content="assets/img/hero-illustration.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500;600&amp;family=Playfair+Display:wght@400;500&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; color: #121212; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+  a { color: #3A836B; text-decoration: none; }
+  a:hover { color: #29483C; }
+  :focus-visible { outline: 2px solid #3A836B; outline-offset: 3px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .001ms !important; } }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#3A836B"/><circle cx="100" cy="86" r="30" fill="none" stroke="#FEDC97" stroke-width="7"/><path d="M100 86v46" stroke="#FEDC97" stroke-width="7" stroke-linecap="round"/><text x="100" y="166" text-anchor="middle" fill="#FEDC97" font-family="Georgia,serif" font-size="30">U</text></svg></template>
+<div data-screen-label="P-04 Product detail" style="width:100%;overflow-x:hidden;background:#FFFFFF;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="SiteHeader" active="{{ categorySlug }}" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;width:100%">
+
+    <div style="max-width:1328px;margin:0 auto;padding:12px 24px">
+      <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-height:16px">
+        <a href="{{ categoryHref }}" style="font-weight:400;font-size:12px;line-height:16px;color:#595959" style-hover="color:#3A836B">{{ categoryName }}</a>
+        <span aria-hidden="true" style="font-weight:500;font-size:12px;line-height:16px;color:#595959">›</span>
+        <a href="{{ subjectHref }}" style="font-weight:400;font-size:12px;line-height:16px;color:#595959" style-hover="color:#3A836B">{{ subject }}</a>
+        <span aria-hidden="true" style="font-weight:500;font-size:12px;line-height:16px;color:#595959">›</span>
+        <span aria-current="page" style="font-weight:600;font-size:12px;line-height:16px;color:#29483C">{{ shortTitle }}</span>
+      </nav>
+    </div>
+
+    <div style="max-width:1328px;margin:0 auto;padding:0 24px 48px;display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap">
+
+      <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column">
+
+        <div style="position:relative;width:100%;aspect-ratio:832 / 624;background:#F3F4F6;border-radius:16px;overflow:hidden">
+          <img src="{{ activeImage }}" alt="{{ galleryAlt }}" data-testid="gallery-main" style="display:block;width:100%;height:100%;object-fit:cover" />
+          <button type="button" onClick="{{ onPrevImage }}" aria-label="Previous image" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:none;border-radius:50%;background:#FFFFFF;color:#29483C;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(18,18,18,.18);transition:transform .18s ease" style-hover="transform:translateY(-50%) scale(1.08)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 5-7 7 7 7"></path></svg>
+          </button>
+          <button type="button" onClick="{{ onNextImage }}" aria-label="Next image" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:none;border-radius:50%;background:#FFFFFF;color:#29483C;display:grid;place-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(18,18,18,.18);transition:transform .18s ease" style-hover="transform:translateY(-50%) scale(1.08)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"></path></svg>
+          </button>
+          <span data-testid="gallery-counter" style="position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:9999px;background:#FFFFFF;font-weight:600;font-size:12px;line-height:16px;color:#121212">{{ galleryCounter }}</span>
+        </div>
+
+        <div style="display:flex;gap:8px;padding:12px 0 4px;flex-wrap:wrap">
+          <sc-for list="{{ thumbs }}" as="th" hint-placeholder-count="5">
+            <button type="button" onClick="{{ th.onPick }}" aria-label="{{ th.label }}" aria-current="{{ th.current }}" style="width:80px;height:56px;padding:2px;border:2px solid {{ th.border }};border-radius:8px;background:#FFFFFF;cursor:pointer;overflow:hidden;transition:border-color .18s ease">
+              <img src="{{ th.src }}" alt="" style="display:block;width:100%;height:100%;object-fit:cover;border-radius:5px" />
+            </button>
+          </sc-for>
+        </div>
+
+        <div role="tablist" aria-label="Resource information" style="display:flex;gap:0;margin-top:32px;border-bottom:1px solid #EDF0EE">
+          <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{ tab.selected }}" onClick="{{ tab.onPick }}" style="height:42px;padding:0 16px;border:none;border-bottom:2px solid {{ tab.underline }};background:transparent;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:20px;color:{{ tab.color }};cursor:pointer;transition:color .16s ease,border-color .16s ease">{{ tab.label }}</button>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ showDescription }}" hint-placeholder-val="{{ true }}">
+          <div role="tabpanel" data-testid="tab-description" style="padding-top:24px;display:flex;flex-direction:column;gap:16px">
+            <p style="margin:0;font-weight:400;font-size:14px;line-height:22.75px;color:#121212;white-space:pre-line">{{ description }}</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showIncluded }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" data-testid="tab-included" style="padding-top:24px;display:flex;flex-direction:column;gap:16px">
+            <h4 style="margin:0;font-weight:600;font-size:15.2px;line-height:24.7px;color:#29483C">{{ includedHeading }}</h4>
+            <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ includedItems }}" as="it" hint-placeholder-count="5">
+                <li style="display:flex;align-items:flex-start;gap:8px">
+                  <span aria-hidden="true" style="flex:0 0 16px;width:16px;height:16px;margin-top:3px;border-radius:50%;background:#3A836B;color:#FFFFFF;display:grid;place-items:center;font-size:10px;line-height:1">✓</span>
+                  <span style="font-weight:400;font-size:14px;line-height:22.75px;color:#121212">{{ it.text }}</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ showQa }}" hint-placeholder-val="{{ false }}">
+          <div role="tabpanel" data-testid="tab-qa" style="padding-top:24px;display:flex;flex-direction:column;gap:20px">
+            <sc-if value="{{ hasQuestions }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:16px">
+                <sc-for list="{{ questions }}" as="q" hint-placeholder-count="2">
+                  <div style="border:1px solid #EDF0EE;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px">
+                    <span style="font-weight:600;font-size:14px;line-height:21px;color:#29483C">{{ q.subject }}</span>
+                    <p style="margin:0;font-weight:400;font-size:14px;line-height:22.75px;color:#646464">{{ q.body }}</p>
+                    <span style="font-size:12px;line-height:16px;color:#595959">{{ q.meta }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ noQuestions }}" hint-placeholder-val="{{ true }}">
+              <div style="border:1px dashed #DCE7E1;border-radius:12px;padding:32px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path><path d="M9.2 9.2a2.8 2.8 0 0 1 5.4 1c0 1.9-2.8 2.3-2.8 2.3M12 15.4v.2"></path></svg>
+                <p style="margin:0;font-size:14px;color:#595959;max-width:380px">No questions yet. Ask the vendor anything about this resource before you buy.</p>
+              </div>
+            </sc-if>
+            <form onSubmit="{{ onAsk }}" style="display:flex;flex-direction:column;gap:10px;border:1px solid #EDF0EE;border-radius:12px;padding:16px">
+              <label for="ulm-q" style="font-weight:600;font-size:14px;color:#29483C">Ask the vendor a question</label>
+              <textarea id="ulm-q" name="body" rows="3" required="required" placeholder="Is the Google Slides version editable?" style="border:1px solid #DCE7E1;border-radius:8px;padding:10px 12px;font-family:Poppins,sans-serif;font-size:14px;line-height:22px;color:#121212;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+              <button type="submit" style="align-self:flex-start;height:38px;padding:0 18px;border:none;border-radius:8px;background:#3A836B;color:#fff;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;cursor:pointer">Send question</button>
+            </form>
+          </div>
+        </sc-if>
+
+        <section aria-labelledby="ulm-reviews-h" style="padding-top:40px;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <h2 id="ulm-reviews-h" style="margin:0;font-weight:600;font-size:20px;line-height:30px;color:#29483C">Ratings &amp; Reviews</h2>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span aria-hidden="true" style="font-weight:400;font-size:16px;line-height:24px;color:#FFC107;letter-spacing:1px">{{ starsBig }}</span>
+              <span style="font-weight:400;font-size:14px;line-height:20px;color:#595959">{{ ratingSummaryLine }}</span>
+            </div>
+          </div>
+
+          <div style="padding-top:20px;display:flex;gap:32px;flex-wrap:wrap;padding-bottom:28px">
+            <div style="flex:0 0 115px;display:flex;flex-direction:column;align-items:center">
+              <span style="font-weight:700;font-size:48px;line-height:48px;color:#3A836B">{{ ratingAverage }}</span>
+              <span aria-hidden="true" style="font-weight:400;font-size:22px;line-height:33px;color:#FFC107;letter-spacing:1px">{{ starsBig }}</span>
+              <span style="padding-top:4px;font-weight:400;font-size:12px;line-height:16px;color:#595959">out of 5</span>
+            </div>
+            <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ distribution }}" as="d" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="flex:0 0 12px;text-align:right;font-weight:400;font-size:12px;line-height:16px;color:#595959">{{ d.star }}</span>
+                  <span aria-hidden="true" style="flex:0 0 12px;font-size:12px;line-height:16px;color:#FFC107">★</span>
+                  <span style="flex:1;min-width:0;height:8px;border-radius:9999px;background:#C9C9C9;overflow:hidden">
+                    <span style="display:block;height:100%;width:{{ d.pct }}%;border-radius:9999px;background:#3A836B;transition:width .5s cubic-bezier(.2,.7,.3,1)"></span>
+                  </span>
+                  <span style="flex:0 0 32px;text-align:right;font-weight:400;font-size:12px;line-height:16px;color:#595959">{{ d.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:28px">
+            <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+              <article style="display:flex;gap:16px">
+                <span style="flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:#F3F4F6;overflow:hidden;display:grid;place-items:center;font-weight:600;font-size:14px;color:#29483C">
+                  <sc-if value="{{ r.hasAvatar }}" hint-placeholder-val="{{ true }}">
+                    <img src="{{ r.avatar }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+                  </sc-if>
+                  <sc-if value="{{ r.noAvatar }}" hint-placeholder-val="{{ false }}">
+                    <span>{{ r.initials }}</span>
+                  </sc-if>
+                </span>
+                <div style="flex:1;min-width:0;display:flex;flex-direction:column">
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                    <span style="font-weight:600;font-size:14px;line-height:21px;color:#29483C">{{ r.name }}</span>
+                    <span aria-hidden="true" style="font-size:13px;line-height:19.5px;color:#FFC107;letter-spacing:1px">{{ r.stars }}</span>
+                    <span style="font-weight:400;font-size:12px;line-height:16px;color:#595959">{{ r.date }}</span>
+                  </div>
+                  <span style="padding-top:2px;font-weight:400;font-size:12px;line-height:16px;color:#595959">{{ r.roleLabel }}</span>
+                  <p style="margin:8px 0 0;font-weight:400;font-size:14px;line-height:22.75px;color:#646464">{{ r.body }}</p>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ hasMoreReviews }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ onMoreReviews }}" data-testid="see-all-reviews" style="align-self:flex-start;margin-top:28px;height:38px;padding:0 25px;border:1px solid #DCE7E1;border-radius:10px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:20px;color:#3A836B;cursor:pointer;transition:background .16s ease,border-color .16s ease" style-hover="background:#F2FAF7;border-color:#3A836B">{{ moreReviewsLabel }}</button>
+          </sc-if>
+        </section>
+      </div>
+
+      <aside style="flex:1 1 340px;max-width:360px;min-width:0;display:flex;flex-direction:column">
+
+        <a href="{{ vendorHref }}" style="display:flex;align-items:center;gap:12px">
+          <span style="flex:0 0 40px;width:40px;height:40px;border-radius:50%;overflow:hidden;background:#F3F4F6;display:grid;place-items:center">
+            <img src="{{ vendorLogo }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+          </span>
+          <span style="min-width:0;display:flex;flex-direction:column">
+            <span style="font-weight:600;font-size:14px;line-height:21px;color:#3A836B;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ vendorName }}</span>
+            <span style="font-weight:400;font-size:12px;line-height:16px;color:#595959">{{ vendorMeta }}</span>
+          </span>
+        </a>
+
+        <h1 style="margin:16px 0 0;font-weight:600;font-size:21.6px;line-height:28.08px;color:#29483C;text-wrap:pretty">{{ title }}</h1>
+
+        <div style="display:flex;align-items:center;gap:8px;padding-top:16px">
+          <span aria-hidden="true" style="font-size:13px;line-height:19.5px;color:#FFC107;letter-spacing:1px">{{ starsSmall }}</span>
+          <span style="font-weight:600;font-size:14px;line-height:21px;color:#3A836B">{{ ratingAverage }}</span>
+          <span style="font-weight:400;font-size:14px;line-height:21px;color:#595959">{{ ratingCountLabel }}</span>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:6px;padding-top:16px">
+          <sc-for list="{{ tags }}" as="tag" hint-placeholder-count="6">
+            <a href="{{ tag.href }}" style="padding:2px 12px;border:1px solid #DCE7E1;border-radius:9999px;font-weight:500;font-size:12px;line-height:18px;color:#121212;transition:background .16s ease" style-hover="background:#F2FAF7;color:#121212">{{ tag.label }}</a>
+          </sc-for>
+        </div>
+
+        <div style="margin-top:16px;border:1px solid #EDF0EE;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 16px 32px -26px rgba(41,72,60,.36)">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span data-testid="product-price" style="font-weight:700;font-size:30px;line-height:45px;color:#29483C">{{ priceLabel }}</span>
+            <sc-if value="{{ hasDiscount }}" hint-placeholder-val="{{ false }}">
+              <s style="font-weight:400;font-size:14px;line-height:21px;color:#595959">{{ originalLabel }}</s>
+            </sc-if>
+            <sc-if value="{{ hasDiscount }}" hint-placeholder-val="{{ false }}">
+              <span style="margin-left:auto;padding:2px 10px;border-radius:9999px;background:#FEDC97;font-weight:600;font-size:12px;line-height:18px;color:#121212">{{ discountLabel }}</span>
+            </sc-if>
+          </div>
+
+          <sc-if value="{{ owned }}" hint-placeholder-val="{{ false }}">
+            <a href="{{ downloadsHref }}" data-testid="owned-download" style="display:flex;align-items:center;justify-content:center;gap:8px;height:44px;border-radius:8px;background:#116254;color:#FFFFFF;font-weight:600;font-size:14px;line-height:20px" style-hover="background:#29483C;color:#FFFFFF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"></path></svg>
+              You own this — download
+            </a>
+          </sc-if>
+
+          <sc-if value="{{ notOwned }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ onAddToCart }}" disabled="{{ adding }}" data-testid="add-to-cart" style="height:44px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;line-height:20px;cursor:pointer;opacity:{{ addOpacity }};transition:background .18s ease" style-hover="background:#29483C">{{ addLabel }}</button>
+          </sc-if>
+
+          <button type="button" onClick="{{ onWishlist }}" aria-pressed="{{ wishPressed }}" data-testid="add-to-wishlist" style="height:42px;border:1px solid #DCE7E1;border-radius:10px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:500;font-size:14px;line-height:20px;color:#121212;cursor:pointer;transition:background .16s ease,border-color .16s ease" style-hover="background:#F2FAF7;border-color:#3A836B">{{ wishLabel }}</button>
+
+          <div style="display:flex;align-items:flex-start;gap:8px;padding-top:4px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#595959" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 13px;margin-top:2px"><path d="M12 3 4 6v6c0 4.4 3.4 8.3 8 9 4.6-.7 8-4.6 8-9V6Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span style="font-weight:400;font-size:12px;line-height:16px;color:#595959">Backed by our satisfaction guarantee. Contact us within 30 days for a full refund.</span>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;border:1px solid #EDF0EE;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px">
+          <h2 style="margin:0;font-weight:600;font-size:14px;line-height:21px;color:#29483C">File Details</h2>
+          <dl style="margin:0;display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ fileDetails }}" as="row" hint-placeholder-count="6">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                <dt style="font-weight:400;font-size:14px;line-height:20px;color:#595959">{{ row.term }}</dt>
+                <dd style="margin:0;text-align:right;font-weight:500;font-size:14px;line-height:20px;color:#121212">{{ row.value }}</dd>
+              </div>
+            </sc-for>
+          </dl>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:8px;padding-top:16px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3A836B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 14px"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.9"></path><path d="M16 3.1a4 4 0 0 1 0 7.8"></path></svg>
+          <span style="font-weight:700;font-size:12px;line-height:16px;color:#3A836B">{{ downloadsLine }}</span>
+        </div>
+      </aside>
+    </div>
+
+    <section aria-labelledby="ulm-related-h" style="background:#FFFDF7;width:100%">
+      <div style="max-width:1328px;margin:0 auto;padding:48px 24px">
+        <h2 id="ulm-related-h" style="margin:0;font-weight:600;font-size:21.6px;line-height:32.4px;color:#29483C">You Might Also Like</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;padding-top:24px">
+          <sc-for list="{{ related }}" as="rp" hint-placeholder-count="4">
+            <a href="{{ rp.href }}" style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #EDF0EE;border-radius:12px;overflow:hidden;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease" style-hover="transform:translateY(-4px);box-shadow:0 1px 2px rgba(18,18,18,.04),0 18px 36px -20px rgba(41,72,60,.42);color:inherit">
+              <span style="display:block;width:100%;aspect-ratio:291 / 218;background:#F3F4F6;overflow:hidden">
+                <img src="{{ rp.cover }}" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" />
+              </span>
+              <span style="display:flex;flex-direction:column;gap:6px;padding:12px">
+                <span style="font-weight:500;font-size:14px;line-height:19.25px;color:#29483C;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:38.5px">{{ rp.title }}</span>
+                <span style="display:flex;align-items:center;gap:4px">
+                  <span aria-hidden="true" style="font-size:13px;line-height:19.5px;color:#FFC107;letter-spacing:1px">{{ rp.stars }}</span>
+                  <span style="font-weight:400;font-size:12px;line-height:16px;color:#595959">{{ rp.ratingLabel }}</span>
+                </span>
+                <span style="font-weight:700;font-size:14px;line-height:21px;color:#3A836B">{{ rp.priceLabel }}</span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="product" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reviewsPerPage&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:1,&quot;max&quot;:10,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = {
+    ready: false, product: null, rating: null, reviews: [], reviewMeta: null,
+    related: [], questions: [], tab: 'description', image: 0,
+    owned: false, saved: false, adding: false, reviewPage: 1,
+  };
+
+  async componentDidMount() {
+    const [app, productsRepo, reviewsRepo, ordersRepo, usersRepo, cartRepo, platformRepo] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/productsRepo.js'),
+      import('./assets/js/repositories/reviewsRepo.js'),
+      import('./assets/js/repositories/ordersRepo.js'),
+      import('./assets/js/repositories/usersRepo.js'),
+      import('./assets/js/repositories/cartRepo.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+    ]);
+    await app.boot();
+    Object.assign(this, { app, productsRepo, reviewsRepo, ordersRepo, usersRepo, cartRepo, platformRepo });
+
+    const id = app.router.param('id') || 'p-main';
+    try {
+      const [prod, rating, reviews, related] = await Promise.all([
+        productsRepo.getProduct(id),
+        reviewsRepo.ratingSummary(id),
+        reviewsRepo.listReviews(id, { page: 1, pageSize: 3 }),
+        productsRepo.relatedProducts(id, 4),
+      ]);
+      const user = app.auth.currentUser();
+      const msgs = await platformRepo.listMessages({ kind: 'enquiry', pageSize: 50 });
+      this.setState({
+        ready: true,
+        product: prod.data,
+        rating: rating.data,
+        reviews: reviews.data,
+        reviewMeta: reviews.meta,
+        related: related.data,
+        questions: msgs.data.filter(m => m.productId === id),
+        owned: user ? ordersRepo.hasPurchased(user.id, id) : false,
+        saved: user ? usersRepo.isWishlisted(user.id, id) : false,
+      });
+      document.title = prod.data.title + ' — Uloominate';
+    } catch (err) {
+      this.app.router.replace('notFound');
+    }
+  }
+
+  stars(n) {
+    const f = Math.round(Number(n) || 0);
+    return '★'.repeat(f) + '☆'.repeat(Math.max(0, 5 - f));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const p = s.product;
+    const url = this.app ? this.app.router.url : (() => '#');
+    if (!p) {
+      return {
+        ready: false, tabs: [], thumbs: [], distribution: [], reviews: [], related: [],
+        fileDetails: [], tags: [], includedItems: [], questions: [],
+        showDescription: true, showIncluded: false, showQa: false,
+        hasQuestions: false, noQuestions: true, owned: false, notOwned: true,
+        hasDiscount: false, hasMoreReviews: false, adding: false,
+        title: '', description: '', shortTitle: '', categoryName: '', subject: '',
+        priceLabel: '', ratingAverage: '', starsBig: '', starsSmall: '',
+      };
+    }
+
+    const gallery = (p.gallery && p.gallery.length ? p.gallery : [p.cover]);
+    const idx = Math.min(s.image, gallery.length - 1);
+    const dist = s.rating ? s.rating.distribution : [];
+    const totalReviews = s.rating ? s.rating.count : 0;
+    const shown = s.reviews.length;
+
+    return {
+      ready: s.ready,
+      title: p.title,
+      shortTitle: p.title.length > 34 ? p.title.slice(0, 32).trim() + '…' : p.title,
+      categoryName: p.categoryName,
+      categorySlug: p.categorySlug,
+      categoryHref: url('browse', { category: p.categorySlug }),
+      subject: p.subject,
+      subjectHref: url('browse', { category: p.categorySlug, subjects: p.subject }),
+
+      activeImage: gallery[idx],
+      galleryAlt: 'Preview ' + (idx + 1) + ' of ' + p.title,
+      galleryCounter: (idx + 1) + ' / ' + gallery.length,
+      thumbs: gallery.map((src, i) => ({
+        src, label: 'View image ' + (i + 1),
+        border: i === idx ? '#3A836B' : 'transparent',
+        current: i === idx ? 'true' : undefined,
+        onPick: () => this.setState({ image: i }),
+      })),
+      onPrevImage: () => this.setState({ image: (idx - 1 + gallery.length) % gallery.length }),
+      onNextImage: () => this.setState({ image: (idx + 1) % gallery.length }),
+
+      tabs: [
+        { key: 'description', label: 'Description' },
+        { key: 'included', label: "What's Included" },
+        { key: 'qa', label: 'Q&A' },
+      ].map(t => ({
+        label: t.label,
+        selected: s.tab === t.key ? 'true' : 'false',
+        color: s.tab === t.key ? '#3A836B' : '#595959',
+        underline: s.tab === t.key ? '#3A836B' : 'transparent',
+        onPick: () => this.setState({ tab: t.key }),
+      })),
+      showDescription: s.tab === 'description',
+      showIncluded: s.tab === 'included',
+      showQa: s.tab === 'qa',
+      description: p.description,
+      includedHeading: p.includedHeading || 'What is inside this resource:',
+      includedItems: (p.included || []).map(text => ({ text })),
+      questions: s.questions.map(q => ({
+        subject: q.subject, body: q.body,
+        meta: q.fromName + ' · ' + new Date(q.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+      })),
+      hasQuestions: s.questions.length > 0,
+      noQuestions: s.questions.length === 0,
+      onAsk: async e => {
+        e.preventDefault();
+        const body = new FormData(e.target).get('body');
+        const user = this.app.auth.currentUser();
+        await this.platformRepo.createEnquiry({
+          vendorId: p.vendorId, productId: p.id, user,
+          subject: 'Question about ' + p.title.slice(0, 40), body,
+        });
+        const msgs = await this.platformRepo.listMessages({ kind: 'enquiry', pageSize: 50 });
+        this.setState({ questions: msgs.data.filter(m => m.productId === p.id) });
+        e.target.reset();
+        this.app.toast('Question sent to the vendor.', 'success');
+      },
+
+      ratingAverage: s.rating ? String(s.rating.average) : '0',
+      ratingCountLabel: '(' + totalReviews.toLocaleString('en-US') + ')',
+      ratingSummaryLine: (s.rating ? s.rating.average : 0) + ' · ' + totalReviews.toLocaleString('en-US') + ' ratings',
+      starsBig: this.stars(s.rating ? s.rating.average : 0),
+      starsSmall: this.stars(s.rating ? s.rating.average : 0),
+      distribution: dist.map(d => ({ star: String(d.star), pct: d.pct, label: d.pct + '%' })),
+      reviews: s.reviews.map(r => ({
+        name: r.name, roleLabel: r.roleLabel, body: r.body,
+        stars: this.stars(r.rating),
+        avatar: r.avatar, hasAvatar: !!r.avatar, noAvatar: !r.avatar,
+        initials: (r.name || '?').split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase(),
+        date: new Date(r.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+      })),
+      hasMoreReviews: !!(s.reviewMeta && shown < s.reviewMeta.total),
+      moreReviewsLabel: 'See all ' + totalReviews.toLocaleString('en-US') + ' reviews',
+      onMoreReviews: async () => {
+        const next = s.reviewPage + 1;
+        const res = await this.reviewsRepo.listReviews(p.id, { page: 1, pageSize: next * 3 });
+        this.setState({ reviews: res.data, reviewMeta: res.meta, reviewPage: next });
+      },
+
+      vendorName: p.vendorName,
+      vendorLogo: p.vendorLogo || 'assets/img/avatar-2.jpg',
+      vendorMeta: p.vendorFollowers + ' followers · ' + (p.vendorProductCount || 0) + ' products',
+      vendorHref: url('vendorStore', { store: p.vendorSlug }),
+
+      tags: (p.tags || []).map(label => ({ label, href: url('browse', { q: label }) })),
+
+      priceLabel: p.price ? '$' + p.price.toFixed(2) : 'Free',
+      hasDiscount: !!p.originalPrice,
+      originalLabel: p.originalPrice ? '$' + p.originalPrice.toFixed(2) : '',
+      discountLabel: p.discountPct ? p.discountPct + '% off' : '',
+
+      owned: s.owned,
+      notOwned: !s.owned,
+      adding: s.adding,
+      addOpacity: s.adding ? 0.7 : 1,
+      addLabel: s.adding ? 'Adding…' : (p.price ? 'Add to Cart' : 'Get this resource'),
+      downloadsHref: url('accountDownloads'),
+      onAddToCart: async () => {
+        if (this.state.adding) return;
+        this.setState({ adding: true });
+        try {
+          const user = this.app.auth.currentUser();
+          await this.cartRepo.addToCart(this.cartRepo.cartOwner(user), p.id, { isCustomer: !!user });
+          this.app.toast('Added to cart.', 'success');
+        } catch (err) {
+          this.app.toast(this.app.readError(err).message, 'error');
+        } finally {
+          this.setState({ adding: false });
+        }
+      },
+
+      wishPressed: s.saved ? 'true' : 'false',
+      wishLabel: s.saved ? 'Saved to Wishlist' : 'Add to Wishlist',
+      onWishlist: async () => {
+        const user = this.app.auth.currentUser();
+        if (!user) { this.app.toast('Sign in to save resources to your wishlist.', 'info'); return; }
+        const res = await this.usersRepo.toggleWishlist(user.id, p.id);
+        this.setState({ saved: res.data.saved });
+        this.app.toast(res.data.saved ? 'Saved to your wishlist.' : 'Removed from your wishlist.', 'success');
+      },
+
+      fileDetails: [
+        { term: 'File type', value: p.fileType },
+        { term: 'Pages', value: p.pageCount + ' pages' },
+        { term: 'File size', value: p.fileSizeMb + ' MB' },
+        { term: 'Grade', value: p.gradeLabel },
+        { term: 'Subject', value: p.subject + ', ' + p.categoryName },
+        { term: 'Last updated', value: new Date(p.lastUpdated || p.publishedAt || Date.now()).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) },
+      ],
+      downloadsLine: (p.downloads || 0).toLocaleString('en-US') + ' teachers have downloaded this resource',
+
+      related: s.related.map(r => ({
+        href: url('product', { id: r.id }),
+        cover: r.cover, title: r.title,
+        stars: this.stars(r.ratingAvg),
+        ratingLabel: '(' + (r.ratingCount || 0).toLocaleString('en-US') + ')',
+        priceLabel: r.price ? '$' + r.price.toFixed(2) : 'Free',
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

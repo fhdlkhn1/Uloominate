@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Contact Us — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="P-13 Contact Us" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;max-width:1728px;margin:0 auto;width:100%;padding:56px clamp(20px,12.5vw,216px) 72px;display:flex;align-items:flex-start;gap:56px;flex-wrap:wrap">
+
+    <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:20px">
+      <h1 style="margin:0;font-weight:600;font-size:clamp(30px,3vw,44px);line-height:1.15;color:#29483C;text-wrap:balance">{{ title }}</h1>
+      <p style="margin:0;max-width:520px;font-size:clamp(16px,1.3vw,20px);line-height:1.6;color:#121212;text-wrap:pretty">{{ intro }}</p>
+
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:12px">
+        <sc-for list="{{ channels }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;align-items:flex-start;gap:14px;background:#F2FAF7;border-radius:14px;padding:18px 20px">
+            <span aria-hidden="true" style="flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:#FFFFFF;display:grid;place-items:center;color:#3A836B;font-weight:700;font-size:15px">{{ c.mark }}</span>
+            <span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+              <span style="font-weight:600;font-size:15px;color:#29483C">{{ c.label }}</span>
+              <span style="font-size:14px;line-height:1.6;color:#595959;word-break:break-word">{{ c.value }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <form data-testid="contact-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="flex:1 1 420px;max-width:560px;min-width:0;background:#FFFFFF;border:1px solid #EDF0EE;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:18px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 20px 44px -30px rgba(41,72,60,.4)">
+      <h2 style="margin:0;font-weight:600;font-size:20px;color:#29483C">Send us a message</h2>
+
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="ct-name" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ nameLabelColor }}">Your name</label>
+        <input id="ct-name" name="name" type="text" autocomplete="name" value="{{ vName }}" onInput="{{ onInput }}" aria-invalid="{{ nameInvalid }}" style="height:54px;border:1px solid {{ nameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;color:#121212;outline:none" style-focus="border-color:#3A836B" />
+        <sc-if value="{{ nameError }}" hint-placeholder-val="{{ false }}">
+          <span role="alert" style="font-size:12px;color:#C0392B">{{ nameError }}</span>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="ct-email" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ emailLabelColor }}">Email address</label>
+        <input id="ct-email" name="email" type="email" autocomplete="email" value="{{ vEmail }}" onInput="{{ onInput }}" aria-invalid="{{ emailInvalid }}" style="height:54px;border:1px solid {{ emailBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;color:#121212;outline:none" style-focus="border-color:#3A836B" />
+        <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}">
+          <span role="alert" style="font-size:12px;color:#C0392B">{{ emailError }}</span>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="ct-subject" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ subjectLabelColor }}">What is this about?</label>
+        <select id="ct-subject" name="subject" value="{{ vSubject }}" onChange="{{ onInput }}" aria-invalid="{{ subjectInvalid }}" style="height:54px;border:1px solid {{ subjectBorder }};border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;color:#121212;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+          <option value="">Choose a topic…</option>
+          <option value="Vendor plans and billing">Vendor plans and billing</option>
+          <option value="An order or download">An order or download</option>
+          <option value="Publishing and approvals">Publishing and approvals</option>
+          <option value="Institutional or publisher enquiry">Institutional or publisher enquiry</option>
+          <option value="Something else">Something else</option>
+        </select>
+        <sc-if value="{{ subjectError }}" hint-placeholder-val="{{ false }}">
+          <span role="alert" style="font-size:12px;color:#C0392B">{{ subjectError }}</span>
+        </sc-if>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="ct-message" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ messageLabelColor }}">Message</label>
+        <textarea id="ct-message" name="message" rows="5" value="{{ vMessage }}" onInput="{{ onInput }}" aria-invalid="{{ messageInvalid }}" style="border:1px solid {{ messageBorder }};border-radius:8px;padding:12px 14px;font-family:Poppins,sans-serif;font-size:15px;line-height:1.65;color:#121212;resize:vertical;outline:none" style-focus="border-color:#3A836B"></textarea>
+        <sc-if value="{{ messageError }}" hint-placeholder-val="{{ false }}">
+          <span role="alert" style="font-size:12px;color:#C0392B">{{ messageError }}</span>
+        </sc-if>
+      </div>
+
+      <button type="submit" disabled="{{ busy }}" data-testid="contact-submit" style="height:58px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:17px;cursor:pointer;opacity:{{ submitOpacity }};display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#29483C">
+        <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+          <span aria-hidden="true" style="width:18px;height:18px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+        </sc-if>
+        {{ submitLabel }}
+      </button>
+
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div role="status" style="background:#F2FAF7;border-left:4px solid #3A836B;border-radius:8px;padding:14px 16px;font-size:14px;line-height:1.6;color:#29483C">Thank you. Your message is with our team and we reply within two working days.</div>
+      </sc-if>
+    </form>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="contact" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    page: null, busy: false, sent: false, errors: {},
+    values: { name: '', email: '', subject: '', message: '' },
+  };
+
+  async componentDidMount() {
+    const [app, platform, validation] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/platformRepo.js'),
+      import('./assets/js/validation.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.platform = platform; this.validation = validation;
+    const user = app.auth.currentUser();
+    const page = await platform.getPage('contact');
+    this.setState({
+      page: page.data,
+      values: Object.assign({}, this.state.values,
+        user ? { name: user.name, email: user.email } : {}),
+    });
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#DCE7E1',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const { busy, sent } = this.state;
+    return Object.assign({
+      title: p ? p.title : 'Contact Us',
+      intro: p ? p.body : 'Send us a message and we will reply within two working days.',
+      channels: [
+        { mark: '@', label: 'Email', value: 'hello@uloominate.com' },
+        { mark: '⏱', label: 'Response time', value: 'Within two working days, Monday to Friday' },
+        { mark: '⌂', label: 'Vendor support', value: 'Signed-in vendors can also message us from the dashboard' },
+      ],
+      busy,
+      sent,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Sending…' : 'Send message',
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+          sent: false,
+        }));
+      },
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const { valid, errors } = this.validation.validate(this.state.values, this.validation.schemas.contact);
+        if (!valid) {
+          this.setState({ errors });
+          const first = Object.keys(errors)[0];
+          const el = document.getElementById('ct-' + first);
+          if (el) el.focus();
+          return;
+        }
+        this.setState({ busy: true, errors: {} });
+        try {
+          const v = this.state.values;
+          await this.platform.createEnquiry({
+            vendorId: null, productId: null,
+            user: { id: null, name: v.name },
+            subject: v.subject,
+            body: v.message + '\n\nReply to: ' + v.email,
+          });
+          this.setState({
+            busy: false, sent: true,
+            values: { name: '', email: '', subject: '', message: '' },
+          });
+          this.app.toast('Message sent. We reply within two working days.', 'success');
+        } catch (err) {
+          const { message } = this.app.readError(err);
+          this.setState({ busy: false });
+          this.app.toast(message, 'error');
+        }
+      },
+    }, this.field('name'), this.field('email'), this.field('subject'), this.field('message'));
+  }
+}
+
+</script>
+</body>
+</html>

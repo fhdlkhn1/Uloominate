@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>My profile — Uloominate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500&amp;family=Playfair+Display:wght@400&amp;family=DM+Sans:wght@400;500;700&amp;family=Roboto:wght@400&amp;display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Poppins,system-ui,sans-serif;color:#121212;background:#FFFFFF;-webkit-font-smoothing:antialiased}
+  a{color:#3A836B;text-decoration:none}a:hover{color:#29483C}
+  :focus-visible{outline:2px solid #3A836B;outline-offset:3px;border-radius:6px}
+  @keyframes ulm-spin{to{transform:rotate(360deg)}}
+</style>
+</helmet>
+<div data-screen-label="C-06 Account Profile" style="min-height:100vh;display:flex;flex-direction:column;background:#FFFFFF">
+  <dc-import name="SiteHeader" hint-size="100%,140px"></dc-import>
+
+  <main style="flex:1;max-width:1728px;margin:0 auto;width:100%;padding:32px clamp(20px,8vw,144px) 72px;display:flex;align-items:flex-start;gap:36px;flex-wrap:wrap">
+
+    <nav aria-label="Account" style="flex:1 1 240px;max-width:260px;min-width:0;display:flex;flex-direction:column;gap:4px">
+      <span style="padding:0 12px 10px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#B9913E">My account</span>
+      <sc-for list="{{ accountNav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-radius:10px;background:{{ n.bg }};font-weight:{{ n.weight }};font-size:14px;color:{{ n.ink }}" style-hover="background:#F2FAF7;color:#29483C">
+          {{ n.label }}
+          <sc-if value="{{ n.count }}" hint-placeholder-val="{{ false }}">
+            <span style="min-width:22px;height:20px;padding:0 6px;border-radius:10px;background:{{ n.badgeBg }};color:{{ n.badgeInk }};font-family:'DM Sans',Poppins,sans-serif;font-size:11px;font-weight:700;line-height:20px;text-align:center">{{ n.count }}</span>
+          </sc-if>
+        </a>
+      </sc-for>
+      <button type="button" onClick="{{ onSignOut }}" style="margin-top:12px;padding:12px 14px;border:1px solid #EDF0EE;border-radius:10px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:14px;color:#C0392B;cursor:pointer;text-align:left" style-hover="background:#FDF1EF;border-color:#F3D6D2">Sign out</button>
+    </nav>
+
+    <div style="flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:22px">
+
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <h1 style="margin:0;font-weight:600;font-size:clamp(24px,2.4vw,32px);line-height:1.2;color:#29483C">Profile</h1>
+        <p style="margin:0;font-size:14px;color:#595959">Your details, and how your name appears on reviews.</p>
+      </div>
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="display:flex;flex-direction:column;gap:12px">
+          <span style="height:280px;border-radius:16px;background:#F4F6F5"></span>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <form data-testid="profile-form" onSubmit="{{ onSubmit }}" novalidate="novalidate" style="border:1px solid #EDF0EE;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Your details</h2>
+
+            <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+              <p role="alert" style="margin:0;padding:10px 14px;border-radius:8px;background:#FDF1EF;border-left:3px solid #C0392B;font-size:13px;line-height:1.5;color:#C0392B">{{ formError }}</p>
+            </sc-if>
+
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+              <span style="flex:0 0 72px;width:72px;height:72px;border-radius:50%;overflow:hidden;background:#3A836B;color:#FFFFFF;display:grid;place-items:center;font-size:24px;font-weight:600">
+                <sc-if value="{{ hasAvatar }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ avatar }}" alt="" style="width:100%;height:100%;object-fit:cover" />
+                </sc-if>
+                <sc-if value="{{ noAvatar }}" hint-placeholder-val="{{ true }}">
+                  <span>{{ initials }}</span>
+                </sc-if>
+              </span>
+              <label style="display:inline-flex;align-items:center;height:42px;padding:0 18px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-size:14px;font-weight:600;color:#3A836B;cursor:pointer" style-hover="background:#F2FAF7">
+                Change photo
+                <input type="file" accept="image/*" onChange="{{ onAvatar }}" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" />
+              </label>
+            </div>
+
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="ap-firstName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ firstNameLabelColor }}">First name</label>
+                <input id="ap-firstName" name="firstName" type="text" value="{{ vFirstName }}" onInput="{{ onInput }}" aria-invalid="{{ firstNameInvalid }}" style="height:52px;border:1px solid {{ firstNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                <sc-if value="{{ firstNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ firstNameError }}</span></sc-if>
+              </div>
+              <div style="flex:1 1 180px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="ap-lastName" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ lastNameLabelColor }}">Last name</label>
+                <input id="ap-lastName" name="lastName" type="text" value="{{ vLastName }}" onInput="{{ onInput }}" aria-invalid="{{ lastNameInvalid }}" style="height:52px;border:1px solid {{ lastNameBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                <sc-if value="{{ lastNameError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ lastNameError }}</span></sc-if>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="ap-email" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ emailLabelColor }}">Email</label>
+              <input id="ap-email" name="email" type="email" value="{{ vEmail }}" onInput="{{ onInput }}" aria-invalid="{{ emailInvalid }}" style="height:52px;border:1px solid {{ emailBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+              <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ emailError }}</span></sc-if>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <label for="ap-roleLabel" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:#49454F">Shown on your reviews</label>
+              <select id="ap-roleLabel" name="roleLabel" value="{{ vRoleLabel }}" onChange="{{ onInput }}" style="height:52px;border:1px solid #CAC4D0;border-radius:8px;padding:0 12px;font-family:Poppins,sans-serif;font-size:15px;background:#FFFFFF;outline:none;cursor:pointer" style-focus="border-color:#3A836B">
+                <sc-for list="{{ roleOptions }}" as="r" hint-placeholder-count="5">
+                  <option value="{{ r.value }}">{{ r.value }}</option>
+                </sc-for>
+              </select>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <button type="submit" disabled="{{ busy }}" data-testid="profile-save" style="height:50px;padding:0 24px;border:none;border-radius:8px;background:#3A836B;color:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;cursor:pointer;opacity:{{ submitOpacity }};display:inline-flex;align-items:center;gap:10px" style-hover="background:#29483C">
+                <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="width:16px;height:16px;border:2.4px solid rgba(255,255,255,.35);border-top-color:#FFFFFF;border-radius:50%;animation:ulm-spin .8s linear infinite"></span>
+                </sc-if>
+                {{ submitLabel }}
+              </button>
+              <sc-if value="{{ saved }}" hint-placeholder-val="{{ false }}">
+                <span role="status" style="font-size:13px;font-weight:600;color:#3A836B">Saved</span>
+              </sc-if>
+            </div>
+          </form>
+
+          <form data-testid="password-form" onSubmit="{{ onPassword }}" novalidate="novalidate" style="border:1px solid #EDF0EE;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:18px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Change password</h2>
+            <div style="display:flex;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="ap-newPassword" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ newPasswordLabelColor }}">New password</label>
+                <input id="ap-newPassword" name="newPassword" type="password" autocomplete="new-password" value="{{ vNewPassword }}" onInput="{{ onPwInput }}" aria-invalid="{{ newPasswordInvalid }}" style="height:52px;border:1px solid {{ newPasswordBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                <span style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ pwHelpColor }}">{{ pwHelp }}</span>
+              </div>
+              <div style="flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:4px">
+                <label for="ap-confirmNew" style="font-family:Roboto,Poppins,sans-serif;font-size:12px;color:{{ confirmNewLabelColor }}">Confirm new password</label>
+                <input id="ap-confirmNew" name="confirmNew" type="password" autocomplete="new-password" value="{{ vConfirmNew }}" onInput="{{ onPwInput }}" aria-invalid="{{ confirmNewInvalid }}" style="height:52px;border:1px solid {{ confirmNewBorder }};border-radius:8px;padding:0 14px;font-family:Poppins,sans-serif;font-size:15px;outline:none" style-focus="border-color:#3A836B" />
+                <sc-if value="{{ confirmNewError }}" hint-placeholder-val="{{ false }}"><span role="alert" style="font-size:12px;color:#C0392B">{{ confirmNewError }}</span></sc-if>
+              </div>
+            </div>
+            <button type="submit" style="align-self:flex-start;height:50px;padding:0 24px;border:1px solid #DCE7E1;border-radius:8px;background:#FFFFFF;font-family:Poppins,sans-serif;font-weight:600;font-size:15px;color:#29483C;cursor:pointer" style-hover="background:#F2FAF7">Update password</button>
+          </form>
+
+          <div style="border:1px solid #EDF0EE;border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:14px">
+            <h2 style="margin:0;font-weight:600;font-size:17px;color:#29483C">Account</h2>
+            <sc-for list="{{ accountFacts }}" as="f" hint-placeholder-count="3">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-bottom:11px;border-bottom:1px solid #F3F5F4">
+                <span style="font-size:13px;color:#595959">{{ f.label }}</span>
+                <span style="font-weight:500;font-size:13px;color:#29483C;text-align:right">{{ f.value }}</span>
+              </div>
+            </sc-for>
+            <p style="margin:0;font-size:12px;line-height:1.6;color:#9AA5A0">Payment details are held by our payment provider and are never stored on Uloominate.</p>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </main>
+
+  <dc-import name="SiteFooter" hint-size="100%,330px"></dc-import>
+  <dc-import name="DevToolbar" page="accountProfile" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = {
+    loading: true, user: null, counts: {}, busy: false, saved: false,
+    errors: {}, formError: '', pwErrors: {},
+    values: { firstName: '', lastName: '', email: '', roleLabel: '', avatar: null },
+    pw: { newPassword: '', confirmNew: '' },
+  };
+
+  async componentDidMount() {
+    const [app, users, orders, db, validation] = await Promise.all([
+      import('./assets/js/app.js'),
+      import('./assets/js/repositories/usersRepo.js'),
+      import('./assets/js/repositories/ordersRepo.js'),
+      import('./assets/js/db.js'),
+      import('./assets/js/validation.js'),
+    ]);
+    await app.boot();
+    this.app = app; this.users = users; this.orders = orders; this.db = db; this.validation = validation;
+    const user = app.auth.requireRole('customer', 'vendor', 'admin');
+    if (!user) return;
+    const dl = await orders.listDownloads(user.id, { pageSize: 500 });
+    this.setState({
+      loading: false, user,
+      values: {
+        firstName: user.firstName || '', lastName: user.lastName || '',
+        email: user.email || '', roleLabel: user.roleLabel || 'Classroom Teacher',
+        avatar: user.avatar || null,
+      },
+      counts: {
+        orders: db.findAll('orders', { filter: { customerId: user.id } }).total,
+        downloads: dl.meta.total,
+        wishlist: db.findAll('wishlist', { filter: { userId: user.id } }).total,
+        reviews: db.findAll('reviews', { filter: { userId: user.id } }).total,
+        following: db.findAll('follows', { filter: { userId: user.id } }).total,
+      },
+    });
+  }
+
+  nav() {
+    const url = this.app.router.url;
+    const c = this.state.counts;
+    return [
+      { key: 'accountOrders', label: 'Orders', count: c.orders },
+      { key: 'accountDownloads', label: 'Downloads', count: c.downloads },
+      { key: 'accountWishlist', label: 'Wishlist', count: c.wishlist },
+      { key: 'accountReviews', label: 'My reviews', count: c.reviews },
+      { key: 'accountFollowing', label: 'Following', count: c.following },
+      { key: 'accountProfile', label: 'Profile', count: 0 },
+    ].map(n => {
+      const active = n.key === 'accountProfile';
+      return {
+        label: n.label, href: url(n.key),
+        current: active ? 'page' : undefined,
+        bg: active ? '#F2FAF7' : 'transparent',
+        ink: active ? '#29483C' : '#595959',
+        weight: active ? 600 : 500,
+        count: n.count ? String(n.count) : '',
+        badgeBg: active ? '#3A836B' : '#EDF0EE',
+        badgeInk: active ? '#FFFFFF' : '#595959',
+      };
+    });
+  }
+
+  field(name) {
+    const err = this.state.errors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.values[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  pwField(name) {
+    const err = this.state.pwErrors[name];
+    const cap = name.charAt(0).toUpperCase() + name.slice(1);
+    return {
+      ['v' + cap]: this.state.pw[name],
+      [name + 'Error']: err || '',
+      [name + 'Border']: err ? '#C0392B' : '#CAC4D0',
+      [name + 'LabelColor']: err ? '#C0392B' : '#49454F',
+      [name + 'Invalid']: err ? 'true' : 'false',
+    };
+  }
+
+  renderVals() {
+    const { loading, user, busy, saved, formError, values, pwErrors } = this.state;
+    const initials = ((values.firstName[0] || '') + (values.lastName[0] || '')).toUpperCase();
+
+    return Object.assign({
+      accountNav: this.app ? this.nav() : [],
+      loading,
+      ready: !loading && !!user,
+      hasAvatar: !!values.avatar,
+      noAvatar: !values.avatar,
+      avatar: values.avatar,
+      initials: initials || '?',
+      roleOptions: ['Classroom Teacher', 'Homeschool Parent', 'Weekend School Coordinator', 'School Administrator', 'Tutor', 'Other Educator'].map(value => ({ value })),
+      busy, saved,
+      submitOpacity: busy ? 0.72 : 1,
+      submitLabel: busy ? 'Saving…' : 'Save changes',
+      hasError: !!formError,
+      formError,
+      pwHelp: pwErrors.newPassword || 'At least 8 characters, with a letter and a number.',
+      pwHelpColor: pwErrors.newPassword ? '#C0392B' : '#49454F',
+
+      accountFacts: user ? [
+        { label: 'Account type', value: ({ customer: 'Customer', vendor: 'Vendor', admin: 'Administrator' })[user.role] || user.role },
+        { label: 'Member since', value: new Date(user.joinedAt).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) },
+        { label: 'Status', value: user.status === 'active' ? 'Active' : 'Suspended' },
+      ] : [],
+
+      onInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          values: Object.assign({}, s.values, { [name]: value }),
+          errors: Object.assign({}, s.errors, { [name]: null }),
+          formError: '', saved: false,
+        }));
+      },
+      onPwInput: e => {
+        const { name, value } = e.target;
+        this.setState(s => ({
+          pw: Object.assign({}, s.pw, { [name]: value }),
+          pwErrors: Object.assign({}, s.pwErrors, { [name]: null }),
+        }));
+      },
+      onAvatar: async e => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const avatar = await this.db.fileToDataUrl(file);
+        this.setState(s => ({ values: Object.assign({}, s.values, { avatar }), saved: false }));
+      },
+      onSubmit: async e => {
+        e.preventDefault();
+        if (this.state.busy) return;
+        const r = this.validation.rules;
+        const { valid, errors } = this.validation.validate(this.state.values, {
+          firstName: [r.required(), r.maxLength(50)],
+          lastName: [r.required(), r.maxLength(50)],
+          email: [r.required(), r.email()],
+        });
+        if (!valid) {
+          this.setState({ errors });
+          const el = document.getElementById('ap-' + Object.keys(errors)[0]);
+          if (el) el.focus();
+          return;
+        }
+        this.setState({ busy: true, formError: '' });
+        try {
+          await this.users.updateUser((this.user || this.state.user).id, this.state.values);
+          this.setState({ busy: false, saved: true });
+          this.app.toast('Profile updated.', 'success');
+        } catch (err) {
+          const { message, fields } = this.app.readError(err);
+          this.setState({ busy: false, formError: message, errors: fields || {} });
+        }
+      },
+      onPassword: async e => {
+        e.preventDefault();
+        const r = this.validation.rules;
+        const { valid, errors } = this.validation.validate(this.state.pw, {
+          newPassword: [r.required(), r.password()],
+          confirmNew: [r.required(), r.matches('newPassword', 'new password')],
+        });
+        if (!valid) { this.setState({ pwErrors: errors }); return; }
+        await this.users.updateUser((this.user || this.state.user).id, { password: this.state.pw.newPassword });
+        this.setState({ pw: { newPassword: '', confirmNew: '' }, pwErrors: {} });
+        this.app.toast('Password updated.', 'success');
+      },
+      onSignOut: async () => {
+        await this.app.auth.logout();
+        this.app.router.go('landing');
+      },
+    }, this.field('firstName'), this.field('lastName'), this.field('email'),
+       this.field('roleLabel'), this.pwField('newPassword'), this.pwField('confirmNew'));
+  }
+}
+
+</script>
+</body>
+</html>

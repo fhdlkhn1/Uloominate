@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<script>
+(function () {
+  if (location.protocol !== 'file:') return;
+  var here = decodeURIComponent(location.pathname.replace(/\/[^\/]*$/, ''));
+  var win = /^\/[A-Za-z]:/.test(here);
+  var dir = win ? here.slice(1).replace(/\//g, '\\') : here;
+  document.addEventListener('DOMContentLoaded', function () {
+    var o = document.createElement('div');
+    o.setAttribute('data-file-protocol-guard', '');
+    o.style.cssText = 'position:fixed;inset:0;z-index:2147483647;background:#F2FAF7;overflow:auto;font-family:Poppins,system-ui,sans-serif;color:#121212;padding:40px 24px';
+    o.innerHTML =
+      '<div style="max-width:680px;margin:0 auto;background:#fff;border:1px solid #E6EFEA;border-radius:16px;padding:32px;box-shadow:0 1px 2px rgba(18,18,18,.04),0 24px 48px -32px rgba(41,72,60,.4)">' +
+      '<h1 style="margin:0 0 12px;font-weight:600;font-size:26px;line-height:1.2;color:#29483C">One step before this page works</h1>' +
+      '<p style="margin:0 0 18px;font-size:15px;line-height:1.75;color:#444">You opened this file straight from disk. Browsers block a local file from loading its data and shared components, so the page renders its layout and then stops at <em>Loading…</em>. Nothing is broken \u2014 it just has to be served over <code>http://</code>.</p>' +
+      '<div style="background:#EAF7F1;border-left:4px solid #3A836B;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Quickest fix \u2014 no server at all</p>' +
+      '<p style="margin:0 0 13px;font-size:14px;line-height:1.7;color:#444">Open <code>standalone.html</code> in this same folder. It is the whole prototype in one self-contained file, so it runs straight from disk. Screens that take an id in the address \u2014 product detail, vendor storefront \u2014 need the served copy below.</p>' +
+      '<a href="standalone.html" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:14px;text-decoration:none">Open standalone.html</a></div>' +
+      '<div style="background:#F5F8F7;border-left:4px solid #DCE7E1;border-radius:10px;padding:16px 18px;margin:0 0 18px">' +
+      '<p style="margin:0 0 10px;font-weight:600;font-size:14.5px;color:#29483C">Or serve the folder</p>' +
+      '<p style="margin:0;font-size:14px;line-height:1.7;color:#444">In the prototype folder, <strong>right-click</strong> ' +
+      (win ? '<code>start-windows.bat</code> and choose <strong>Run</strong>' : '<code>start-mac-linux.command</code> and choose <strong>Open</strong>, then confirm') +
+      '. macOS blocks these on a plain double-click the first time \u2014 right-click and Open gets past it.</p></div>' +
+      '<p style="margin:0 0 8px;font-weight:600;font-size:14.5px;color:#29483C">Or do it by hand</p>' +
+      '<pre style="margin:0 0 18px;background:#122A22;color:#E8F2ED;border-radius:10px;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6;font-family:ui-monospace,monospace">cd "' + dir + '"\n' + (win ? 'python' : 'python3') + ' -m http.server 8000</pre>' +
+      '<p style="margin:0 0 20px;font-size:14px;line-height:1.7;color:#444">Then open <a href="http://localhost:8000/Sitemap.dc.html" style="color:#3A836B;font-weight:600">http://localhost:8000/Sitemap.dc.html</a></p>' +
+      '<a href="START-HERE.html" style="display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:8px;background:#3A836B;color:#fff;font-weight:600;font-size:15px;text-decoration:none">Full instructions</a>' +
+      '</div>';
+    document.body.appendChild(o);
+  });
+})();
+</script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Sitemap — Uloominate prototype</title>
+<meta name="ext-resource-dependency" content="assets/img/cover-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-4.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/cover-5.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-6.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-7.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-8.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-9.png" />
+<meta name="ext-resource-dependency" content="assets/img/cover-10.png" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/avatar-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-1.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-2.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-3.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-4.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/preview-5.jpg" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-1.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-2.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-3.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-4.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-5.png" />
+<meta name="ext-resource-dependency" content="assets/img/vendor-logo-6.png" />
+<meta name="ext-resource-dependency" content="assets/img/logo-mark.png" />
+<meta name="ext-resource-dependency" content="assets/img/hero-illustration.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Montserrat+Alternates:wght@500;600&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font-family: Poppins, system-ui, sans-serif; color: #121212; background: #FCFDFC; -webkit-font-smoothing: antialiased; }
+  a { color: #3A836B; text-decoration: none; }
+  a:hover { color: #29483C; }
+  :focus-visible { outline: 2px solid #3A836B; outline-offset: 3px; border-radius: 6px; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#3A836B"/><circle cx="100" cy="86" r="30" fill="none" stroke="#FEDC97" stroke-width="7"/><path d="M100 86v46" stroke="#FEDC97" stroke-width="7" stroke-linecap="round"/><text x="100" y="166" text-anchor="middle" fill="#FEDC97" font-family="Georgia,serif" font-size="30">U</text></svg></template>
+<div data-screen-label="S-01 Sitemap" style="min-height:100vh;width:100%">
+
+  <header style="background:#3A836B;padding:28px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <img src="assets/img/logo-mark.png" alt="" width="34" height="41" style="display:block;object-fit:contain" />
+      <span style="font-family:'Montserrat Alternates',Poppins,sans-serif;font-weight:500;font-size:26px;color:#FEDC97">Uloominate</span>
+      <span style="padding:5px 12px;border-radius:9999px;background:rgba(255,255,255,.16);color:#FFFFFF;font-size:12px;font-weight:600;letter-spacing:.05em">PROTOTYPE SITEMAP</span>
+      <a href="{{ landingHref }}" style="margin-left:auto;color:#FFFFFF;font-size:14px;font-weight:500" style-hover="color:#FEDC97">Open the storefront →</a>
+    </div>
+  </header>
+
+  <main style="max-width:1200px;margin:0 auto;padding:40px 32px 80px;display:flex;flex-direction:column;gap:40px">
+
+    <section style="display:flex;flex-direction:column;gap:12px">
+      <h1 style="margin:0;font-weight:600;font-size:34px;line-height:1.2;color:#29483C">Every page, grouped by role</h1>
+      <p style="margin:0;max-width:760px;font-size:16px;line-height:1.7;color:#595959;text-wrap:pretty">Each screen is its own file so it can be handed to a developer on its own. Data is shared: anything you create on one page appears on every other page that shows it, and survives a hard refresh.</p>
+    </section>
+
+    <section aria-labelledby="ulm-creds" style="border:1px solid #E6EFEA;border-radius:16px;background:#FFFFFF;padding:24px;display:flex;flex-direction:column;gap:16px">
+      <h2 id="ulm-creds" style="margin:0;font-weight:600;font-size:18px;color:#29483C">Demo credentials</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+        <sc-for list="{{ credentials }}" as="c" hint-placeholder-count="3">
+          <div style="border:1px solid #EDF0EE;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;background:#FCFDFC">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#B9913E">{{ c.role }}</span>
+            <span style="font-family:'DM Sans',monospace;font-size:14px;color:#29483C;word-break:break-all">{{ c.email }}</span>
+            <span style="font-family:'DM Sans',monospace;font-size:14px;color:#595959">{{ c.password }}</span>
+            <span style="font-size:12px;line-height:1.5;color:#595959">{{ c.note }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:13px;color:#595959">The dev toolbar in the bottom-right of every page switches role without typing a password, resets the demo data, and flips the pre-launch / post-launch gate.</p>
+    </section>
+
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="6">
+      <section aria-labelledby="{{ g.id }}" style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <h2 id="{{ g.id }}" style="margin:0;font-weight:600;font-size:22px;color:#29483C">{{ g.title }}</h2>
+          <span style="font-size:13px;color:#595959">{{ g.blurb }}</span>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;color:#3A836B">{{ g.count }}</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">
+          <sc-for list="{{ g.pages }}" as="p" hint-placeholder-count="6">
+            <a href="{{ p.href }}" style="display:flex;flex-direction:column;gap:6px;border:1px solid #E6EFEA;border-left:3px solid {{ p.accent }};border-radius:12px;background:#FFFFFF;padding:16px;transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s ease" style-hover="transform:translateY(-2px);box-shadow:0 1px 2px rgba(18,18,18,.04),0 14px 30px -18px rgba(41,72,60,.4);color:inherit">
+              <span style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                <span style="font-family:'DM Sans',monospace;font-size:11px;font-weight:700;color:#B9913E">{{ p.id }}</span>
+                <span style="font-weight:600;font-size:15px;color:#29483C">{{ p.title }}</span>
+                <span style="margin-left:auto;padding:2px 8px;border-radius:9999px;background:{{ p.badgeBg }};color:{{ p.badgeInk }};font-size:10px;font-weight:700;letter-spacing:.04em">{{ p.badge }}</span>
+              </span>
+              <span style="font-size:13px;line-height:1.55;color:#595959">{{ p.purpose }}</span>
+              <span style="font-family:'DM Sans',monospace;font-size:11px;color:#9AA5A0;word-break:break-all">{{ p.file }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </sc-for>
+  </main>
+
+  <dc-import name="DevToolbar" page="sitemap" hint-size="0px,0px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+// Every route now has a real page. Kept as an explicit list so a half-built
+// screen can be marked PLANNED again without touching the table below.
+const BUILT = [
+  'landing', 'home', 'browse', 'product', 'vendorStore', 'cart', 'checkout',
+  'orderConfirmation', 'plans', 'about', 'privacy', 'terms', 'contact',
+  'login', 'registerCustomer', 'registerVendor', 'forgotPassword',
+  'resetPassword', 'verifyEmail', 'vendorPending', 'storeSetup',
+  'accountOrders', 'accountDownloads', 'accountWishlist', 'accountReviews',
+  'accountFollowing', 'accountProfile',
+  'vendorDashboard', 'vendorProducts', 'vendorProductEdit', 'vendorOrders',
+  'vendorPayments', 'vendorCoupons', 'vendorCustomers', 'vendorMessages',
+  'vendorReports', 'vendorMedia', 'vendorSubscription', 'vendorStoreProfile',
+  'adminDashboard', 'adminVendorQueue', 'adminProductQueue', 'adminVendors',
+  'adminCatalogue', 'adminOrders', 'adminPayouts', 'adminPlans',
+  'adminReports', 'adminContent',
+  'sitemap', 'notFound', 'forbidden', 'serverError',
+];
+
+const PAGES = [
+  ['storefront', 'Public storefront', 'Everything a signed-out visitor can reach', '#3A836B', [
+    ['P-01', 'landing', 'Pre-launch landing', 'Gated homepage: proposition, founding promotion, plans, testimonials, mailing list. Replicated from Figma.'],
+    ['P-02', 'home', 'Post-launch homepage', 'Category discovery and featured resources once the launch switch is flipped.'],
+    ['P-03', 'browse', 'Browse & filter', 'Search, category/subject/grade/type/theme/price filters, sort and pagination on real data. Replicated from Figma.'],
+    ['P-04', 'product', 'Product detail', 'Gallery, tabs, file details, ratings distribution, reviews, related. Replicated from Figma.'],
+    ['P-05', 'vendorStore', 'Vendor storefront', 'Public page for one vendor with follower and product counts.'],
+    ['P-06', 'cart', 'Cart', 'Multi-vendor cart; resources from several vendors in one transaction.'],
+    ['P-07', 'checkout', 'Checkout', 'Digital-only checkout with no shipping steps.'],
+    ['P-08', 'orderConfirmation', 'Order confirmation', 'Immediate delivery with download links.'],
+    ['P-09', 'plans', 'Vendor plans', 'Tier comparison with entitlements, commission and fees.'],
+    ['P-10', 'about', 'About Us', 'Static content page.'],
+    ['P-11', 'privacy', 'Privacy Policy', 'Static content page.'],
+    ['P-12', 'terms', 'Terms & Conditions', 'Static content page.'],
+    ['P-13', 'contact', 'Contact Us', 'Static page with a working enquiry form.'],
+  ]],
+  ['auth', 'Registration & onboarding', 'Account creation through to an approved, set-up store', '#B9913E', [
+    ['A-01', 'login', 'Login', 'Checks credentials against seeded users and starts a session.'],
+    ['A-02', 'registerCustomer', 'Register — customer', 'Standard buyer account creation.'],
+    ['A-03', 'registerVendor', 'Register — vendor', 'Vendor path with plan selection at registration.'],
+    ['A-04', 'forgotPassword', 'Forgot password', 'Reset request.'],
+    ['A-05', 'resetPassword', 'Reset password', 'Token-based password reset.'],
+    ['A-06', 'verifyEmail', 'Verify email', 'Email confirmation state.'],
+    ['A-07', 'vendorPending', 'Pending approval', 'Held state — no publishing until an administrator approves.'],
+    ['A-08', 'storeSetup', 'Store setup wizard', 'Multi-step guided setup with progress indication.'],
+  ]],
+  ['account', 'Customer account', 'What a buyer sees after signing in', '#2F7FA0', [
+    ['C-01', 'accountOrders', 'Orders', 'Purchase history with detail.'],
+    ['C-02', 'accountDownloads', 'Downloads', 'Unlimited re-download of everything purchased.'],
+    ['C-03', 'accountWishlist', 'Wishlist', 'Saved items with direct purchase.'],
+    ['C-04', 'accountReviews', 'My reviews', 'Reviews written on purchased resources.'],
+    ['C-05', 'accountFollowing', 'Following', 'Followed vendors and their catalogues.'],
+    ['C-06', 'accountProfile', 'Profile', 'Account and payment details.'],
+  ]],
+  ['vendor', 'Vendor dashboard', 'One navigation structure, no duplicated navbar', '#7A5FA8', [
+    ['V-01', 'vendorDashboard', 'Dashboard', 'Gross sales, earnings, orders received, withdrawable balance, sales chart, top products.'],
+    ['V-02', 'vendorProducts', 'Products', 'List, edit, duplicate and delete with approval status per item.'],
+    ['V-03', 'vendorProductEdit', 'Product editor', 'Create and edit, attach the resource file, save draft or submit for review.'],
+    ['V-04', 'vendorOrders', 'Orders', 'Orders with detail and customer information.'],
+    ['V-05', 'vendorPayments', 'Payments', 'Earnings, payout history and withdrawal requests.'],
+    ['V-06', 'vendorCoupons', 'Coupons', 'Vendor-level coupon creation, rebuilt from scratch.'],
+    ['V-07', 'vendorCustomers', 'Customers', 'Customer list for this store.'],
+    ['V-08', 'vendorMessages', 'Messages & enquiries', 'Buyer messaging and product enquiries.'],
+    ['V-09', 'vendorReports', 'Reports', 'Sales and earnings reporting.'],
+    ['V-10', 'vendorMedia', 'Media library', 'Per-vendor media management.'],
+    ['V-11', 'vendorSubscription', 'Subscription', 'Plan change and card update without cancelling.'],
+    ['V-12', 'vendorStoreProfile', 'Store profile', 'Name, logo, banner and biography.'],
+  ]],
+  ['admin', 'Administration', 'Moderation, oversight and platform configuration', '#C0392B', [
+    ['D-01', 'adminDashboard', 'Dashboard', 'Platform overview with both approval queues.'],
+    ['D-02', 'adminVendorQueue', 'Vendor queue', 'Pending registrations; approve or decline with a recorded reason.'],
+    ['D-03', 'adminProductQueue', 'Product queue', 'Pending submissions with full preview, bulk actions and the content standard on screen.'],
+    ['D-04', 'adminVendors', 'Vendors', 'View, edit, suspend and remove vendor accounts.'],
+    ['D-05', 'adminCatalogue', 'Catalogue', 'All products across all vendors; unpublish or remove.'],
+    ['D-06', 'adminOrders', 'Orders', 'All orders with vendor attribution.'],
+    ['D-07', 'adminPayouts', 'Payouts', 'Review and process the monthly vendor payouts.'],
+    ['D-08', 'adminPlans', 'Plans', 'Configure tiers, commission, fees and upload limits without code changes.'],
+    ['D-09', 'adminReports', 'Reports', 'Platform sales, commission and vendor performance.'],
+    ['D-10', 'adminContent', 'Content & settings', 'Static pages, categories and the pre-launch / post-launch switch.'],
+  ]],
+  ['system', 'System', 'Index and error states', '#595959', [
+    ['S-01', 'sitemap', 'Sitemap', 'This page.'],
+    ['S-02', 'notFound', 'Error 404', 'Page not found.'],
+    ['S-03', 'forbidden', 'Error 403', 'Signed in, but the role cannot open that page.'],
+    ['S-04', 'serverError', 'Error 500', 'Unexpected failure state.'],
+  ]],
+];
+
+class Component extends DCLogic {
+  state = { r: null };
+
+  async componentDidMount() {
+    const router = await import('./assets/js/router.js');
+    this.setState({ r: router });
+  }
+
+  renderVals() {
+    const R = this.state.r;
+    const url = R ? R.url : (x => x);
+    const ROUTES = R ? R.ROUTES : {};
+
+    return {
+      landingHref: url('landing'),
+      credentials: [
+        { role: 'Administrator', email: 'admin@uloominate.com', password: 'admin1234', note: 'Both approval queues, payouts, plans and the launch switch.' },
+        { role: 'Vendor — Premium, approved', email: 'reyes@literacylane.com', password: 'vendor1234', note: 'Full dashboard with real sales, earnings and payout history.' },
+        { role: 'Vendor — Pioneer, free tier', email: 'yusra@kindergartenhub.org', password: 'vendor1234', note: 'Blocked from paid listings, to test the cap message.' },
+        { role: 'Vendor — pending approval', email: 'contact@muslimlegacyseries.com', password: 'vendor1234', note: 'Held state; publishing unavailable until approved.' },
+        { role: 'Customer', email: 'aisha.rahman@example.com', password: 'customer1234', note: 'Existing purchases, downloads and a wishlist.' },
+      ],
+      groups: PAGES.map(([id, title, blurb, accent, pages]) => ({
+        id: 'grp-' + id, title, blurb, accent,
+        count: pages.length + ' pages',
+        pages: pages.map(([pid, route, ptitle, purpose]) => {
+          const built = BUILT.includes(route);
+          return {
+            id: pid, title: ptitle, purpose, accent,
+            href: ROUTES[route] || '#',
+            file: ROUTES[route] || '',
+            badge: built ? 'BUILT' : 'PLANNED',
+            badgeBg: built ? '#EAF7F1' : '#F3F4F6',
+            badgeInk: built ? '#3A836B' : '#8A928E',
+          };
+        }),
+      })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

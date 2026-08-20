@@ -1,0 +1,273 @@
+[FRAME] landing page 1728x5780@0,0 fill:#ffffff
+  [FRAME] Group 84 490x460@-271,1741 
+    [ROUNDED_RECTANGLE] Rectangle 118 490x460@-271,1741 fill:#ffffff | r:12
+    [INSTANCE] Text field 420.69x71.56@-235.74,1868.78 r:4,4,0,0 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+    [INSTANCE] Text field 420.69x71.56@-235.74,1976.11 r:4,4,0,0 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+    [FRAME] Text field 420.69x52@-235.74,2089 fill:#3a836b | r:100 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+      [TEXT] Input text 106x24@-78.39,2103 fill:#ffffff | "Sign Me Up" Poppins SemiBold 18/24 CENTER
+      [TEXT] Label text 65x16@-227.74,2077 fill:#49454f | "Enter Email" Roboto Regular 12/16 CENTER
+      [FRAME] Supporting text 421x20@-235.74,2141 fill: | HORIZONTAL gap10 pad[4,16,0,16] undefined/undefined
+        [TEXT] supporting-text 389x16@-219.74,2145 fill:#49454f | "Supporting text" Roboto Regular 12/16 undefined
+    [TEXT] Join Our Community 308.83x46@-179.81,1781.89 fill:#3a836b | "Join Our Community" Poppins SemiBold 24/100% CENTER
+  [FRAME] Wrapper 1727x632@-2686,38 fill:#fffdf7
+    [BOOLEAN_OPERATION] Subtract 773.33x580.01@-1731,90 fill:IMAGE:img
+      [BOOLEAN_OPERATION] Subtract 773.33x580.01@-1731,90 fill:IMAGE:img
+        [ROUNDED_RECTANGLE] ChatGPT Image Jul 28, 2026, 09_40_45 AM 1 773.33x580.01@-1731,90 fill:IMAGE:img | r:200,0,0,0
+    [FRAME] Group 39636 978x537@-2611,86 
+      [FRAME] Group 39635 978x434@-2611,86 
+        [TEXT] Where Deen and Learning Come Together 975x150@-2608,86 fill:#29483c | "Where Deen and Learning Come Together" Poppins SemiBold 50/100% undefined
+        [TEXT] We’re building an Islamic marketplace where educators, homeschool creators, and teachers can share resources, grow their audience, and earn with purpose. 813x150@-2608,258 fill:#121212 | "We’re building an Islamic marketplace where educators, homeschool crea" Poppins Regular 28/50 undefined
+        [FRAME] Group 39644 490x77@-2611,443 
+          [VECTOR] Vector 490x27@-2611,493 fill:#fedc97
+          [TEXT] Free Until January 1st, 2027 385x50@-2608,443 fill:#3a836b | "Free Until January 1st, 2027" Poppins Bold 28/50 undefined
+        [FRAME] Group 2x2@-2571,252 
+          [VECTOR] Vector 2x2@-2571,252 fill:#ffffff
+      [FRAME] Content 340x68@-2611,555 fill:#3a836b | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] State-layer 316x40@-2599,569 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+          [INSTANCE] Icon 20x20@-2583,579 
+          [TEXT] Label 284x20@-2583,579 fill:#ffffff | "Become a Founding Vendor" Poppins SemiBold 20/20 undefined
+      [FRAME] Content 309x68@-2251,555 fill:#ffffff | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] State-layer 210x40@-2201.5,569 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+          [INSTANCE] Icon 20x20@-2185.5,579 
+          [TEXT] Label 178x20@-2185.5,579 fill:#29483c | "See Vendor Plans" Poppins SemiBold 20/20 undefined
+  [FRAME] Wrapper 1728x832@-2686,922 fill:#ffffff
+    [FRAME] Frame 93 1266x363@-2470,1326 
+      [FRAME] Card 289x363@-2470,1326 fill:#f5edff | r:20
+        [FRAME] Group 39567 90x90@-2370.5,1366 
+          [ELLIPSE] Ellipse 2 90x90@-2370.5,1366 fill:#ffffff
+          [INSTANCE] streamline-ultimate:business-contract-give 60x60@-2355.5,1381 fill:
+        [FRAME] Frame 15 241x99@-2446,1496 
+          [TEXT] Card Heading 241.61x38@-2446,1492 fill:#29483c | "Share" Poppins SemiBold 32/38 CENTER
+          [TEXT] Card Heading 242x80@-2446,1546.5 fill:#121212 | "Share your digital Islamic & educational resources worldwide" Poppins Regular 20/100% CENTER
+      [FRAME] Card 290x363@-2145,1326 fill:#f2faf7 | r:20
+        [FRAME] Group 39567 90x90@-2045,1366 
+          [ELLIPSE] Ellipse 2 90x90@-2045,1366 fill:#ffffff
+          [INSTANCE] streamline:business-idea-money 60x60@-2030,1381 fill:
+        [FRAME] Group 39548 241.61x100@-2120.81,1496 
+          [FRAME] Frame 16 241.61x100@-2120.81,1496 
+            [TEXT] Card Heading 241.61x38@-2120.81,1492 fill:#29483c | "Earn" Poppins SemiBold 32/38 CENTER
+            [TEXT] Card Heading 242x80@-2121,1547 fill:#121212 | "Earn income from your lessons, activities, and printables" Poppins Regular 20/100% CENTER
+      [FRAME] Card 290x363@-1819,1326 fill:#fff2de | r:20
+        [FRAME] Group 39568 90x90@-1719,1366 
+          [ELLIPSE] Ellipse 2 90x90@-1719,1366 fill:#ffffff
+          [INSTANCE] streamline:brain-cognitive 60x60@-1704,1381 fill:
+        [FRAME] Group 39549 241.61x100@-1794.81,1496 
+          [FRAME] Frame 17 241.61x100@-1794.81,1496 
+            [TEXT] Card Heading 241.61x38@-1794.81,1492 fill:#29483c | "Connect" Poppins SemiBold 32/38 CENTER
+            [TEXT] Card Heading 242x80@-1795,1547 fill:#121212 | "Connect with like-minded teachers, homeschoolers, and schools" Poppins Regular 20/100% CENTER
+      [FRAME] Card 289x363@-1493,1326 fill:#e3f7fd | r:20
+        [FRAME] Group 39569 90x90@-1393.5,1366 
+          [ELLIPSE] Ellipse 2 90x90@-1393.5,1366 fill:#ffffff
+          [FRAME] streamline:business-idea-money 60x60@-1378.5,1381 fill:
+            [FRAME] Group 38.57x55.71@-1367.79,1383.14 
+              [VECTOR] Vector 38.57x55.71@-1367.79,1383.14 
+        [FRAME] Group 39550 241.61x100@-1469.31,1496 
+          [FRAME] Frame 18 241.61x100@-1469.31,1496 
+            [TEXT] Card Heading 241.61x38@-1469.31,1492 fill:#29483c | "Inspire" Poppins SemiBold 32/38 CENTER
+            [TEXT] Card Heading 241x80@-1469,1547 fill:#121212 | "Inspire learners though authentic, faith-based education" Poppins Regular 20/100% CENTER
+    [FRAME] Frame 43448 1295x291@-2470,987 
+      [TEXT] Built for Islamic Educators Who Want to Share & Earn With a Purpose 1229x132@-2470,1038 fill:#29483c | "Built for Islamic Educators Who Want to Share & Earn With a Purpose" Poppins SemiBold 44/100% undefined
+      [TEXT] WHY CREATORS JOIN 189x27@-2470,987 fill:#b9913e | "WHY CREATORS JOIN" Poppins SemiBold 18/100% undefined
+      [TEXT] Uloominate helps Muslim Educators bring Deen and Dunya together beautifully through high-quality Islamic studies, Arabic, Math, Science, and other homeschool resources. 1231x84@-2470,1194 fill:#121212 | "Uloominate helps Muslim Educators bring Deen and Dunya together beauti" Poppins Regular 28/100% undefined
+    [FRAME] Wrapper 1728x826@-2687,1754 fill:#f2faf7
+      [FRAME] Frame 43448 1295x291@-2471,1819 
+        [TEXT] Become One of Our Founding Vendors - Get Started Free Today 1229x132@-2471,1870 fill:#29483c | "Become One of Our Founding Vendors - Get Started Free Today" Poppins SemiBold 44/100% undefined
+        [TEXT] LIMITED FOUNDING PROMOTION 281x27@-2471,1819 fill:#b9913e | "LIMITED FOUNDING PROMOTION" Poppins SemiBold 18/100% undefined
+        [TEXT] Create your own vendor account now, choose your plan, and use your vendor access free until January 1st, 2027. 1231x84@-2471,2026 fill:#121212 | "Create your own vendor account now, choose your plan, and use your ven" Poppins Regular 28/100% undefined
+      [FRAME] Frame 43449 1313x331@-2480,2184 
+        [LINE] Line 6 1217x0@-2384,2264 
+        [FRAME] Card 335x375@-2480,2184 r:12 | VERTICAL gap16 pad[20,24,20,24] CENTER/undefined
+          [FRAME] Group 39637 72x72@-2456,2228 
+            [ELLIPSE] Ellipse 1 72x72@-2456,2228 fill:#ffffff
+            [TEXT] 1 12x48@-2426,2240 fill:#3a836b | "1" Poppins Medium 32/100% CENTER
+          [TEXT] TODAY 62x27@-2456,2316 fill:#b9913e | "TODAY" Poppins SemiBold 18/100% undefined
+          [FRAME] Frame 15 241x156@-2456,2359 
+            [TEXT] Card Heading 241.61x38@-2456,2359 fill:#29483c | "Join & Choose Plan" Poppins SemiBold 24/38 undefined
+            [TEXT] Card Heading 310x90@-2456,2409 fill:#121212 | "Create your vendor account and pick the plan that fits how you want to" Poppins Regular 20/100% undefined
+        [FRAME] Card 335x375@-1991,2184 r:12 | VERTICAL gap16 pad[20,24,20,24] CENTER/undefined
+          [FRAME] Group 39637 72x72@-1967,2228 
+            [ELLIPSE] Ellipse 1 72x72@-1967,2228 fill:#ffffff
+            [TEXT] 2 19x48@-1940,2240 fill:#3a836b | "2" Poppins Medium 32/100% CENTER
+          [TEXT] THROUGH JAN 1, 2027 191x27@-1967,2316 fill:#b9913e | "THROUGH JAN 1, 2027" Poppins SemiBold 18/100% undefined
+          [FRAME] Group 39548 241.61x156@-1967,2359 
+            [FRAME] Frame 16 241.61x156@-1967,2359 
+              [TEXT] Card Heading 241.61x38@-1967,2359 fill:#29483c | "Upload & Sell" Poppins SemiBold 24/38 undefined
+              [TEXT] Card Heading 321x90@-1967,2409 fill:#121212 | "No vendor plan charge during the founding offer period - build your ca" Poppins Regular 20/100% undefined
+        [FRAME] Card 335x375@-1502,2184 r:12 | VERTICAL gap16 pad[20,24,20,24] CENTER/undefined
+          [FRAME] Group 39637 72x72@-1478,2228 
+            [ELLIPSE] Ellipse 1 72x72@-1478,2228 fill:#ffffff
+            [TEXT] 3 19x48@-1451,2240 fill:#3a836b | "3" Poppins Medium 32/100% CENTER
+          [TEXT] JAN 2, 2027 103x27@-1478,2316 fill:#b9913e | "JAN 2, 2027" Poppins SemiBold 18/100% undefined
+          [FRAME] Frame 17 287x156@-1478,2359 
+            [TEXT] Card Heading 241.61x38@-1478,2359 fill:#29483c | "Billing Begins" Poppins SemiBold 24/38 undefined
+            [TEXT] Card Heading 287x90@-1478,2409 fill:#121212 | "Your selected plan billing starts. Cancel or change plans any time bef" Poppins Regular 20/100% undefined
+  [FRAME] Wrapper 1728x1021@-2686,2580 fill:#ffffff
+    [FRAME] Frame 43448 1295x183@-2470,2645 
+      [TEXT] Vendor Plans For Every Creator 1229x66@-2470,2696 fill:#29483c | "Vendor Plans For Every Creator" Poppins SemiBold 44/100% undefined
+      [TEXT] CHOOSE YOUR VENDOR PATH 260x27@-2470,2645 fill:#c59e33 | "CHOOSE YOUR VENDOR PATH" Poppins SemiBold 18/100% undefined
+      [TEXT] Join any plan under the founding offer and pay nothing until January 2nd, 2027 1231x42@-2470,2786 fill:#121212 | "Join any plan under the founding offer and pay nothing until January 2" Poppins Regular 28/100% undefined
+    [FRAME] Card 405x660@-2470,2876 fill:#ffffff | r:24 | VERTICAL gap36 pad[20,20,20,20] CENTER/CENTER
+      [TEXT] Card Heading 280x38@-2407.5,2930 fill:#29483c | "Pioneer Vendor" Poppins SemiBold 36/38 CENTER
+      [TEXT] Card Heading 256x38@-2395.5,3004 fill:#3a836b | "FREE" Poppins SemiBold 48/38 CENTER
+      [TEXT] Card Heading 365x300@-2450,3078 fill:#121212 | "Best for new creators sharing free resources\nStart building your profi" Poppins Regular 24/50 undefined
+      [FRAME] Content 310x68@-2422.5,3414 fill:#3a836b | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] State-layer 225x40@-2380,3428 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+          [INSTANCE] Icon 20x20@-2364,3438 
+          [TEXT] Label 193x20@-2364,3438 fill:#ffffff | "Join Free Today" Poppins SemiBold 24/20 undefined
+    [FRAME] Card 405x660@-1580,2876 fill:#ffffff | r:24 | VERTICAL gap36 pad[20,20,20,20] CENTER/CENTER
+      [TEXT] Card Heading 311x38@-1533,2930 fill:#29483c | "Premium Vendor" Poppins SemiBold 36/38 CENTER
+      [TEXT] Card Heading 256x38@-1505.5,3004 fill:#116254 | "$49/year" Poppins SemiBold 48/38 CENTER
+      [TEXT] Card Heading 365x300@-1560,3078 fill:#121212 | "Unlimited uploads\nFeatured placement opportunity\nAdvanced dashboard an" Poppins Regular 24/50 undefined
+      [FRAME] Content 310x68@-1532.5,3414 fill:#3a836b | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] State-layer 225x40@-1490,3428 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+          [INSTANCE] Icon 20x20@-1474,3438 
+          [TEXT] Label 193x20@-1474,3438 fill:#ffffff | "Join Free Today" Poppins SemiBold 24/20 undefined
+    [FRAME] Card 403x660@-2024,2876 fill:#ffffff | r:24 | VERTICAL gap36 pad[20,20,20,20] CENTER/CENTER
+      [TEXT] Card Heading 241x38@-1943,2930 fill:#29483c | "Basic Vendor" Poppins SemiBold 36/38 CENTER
+      [TEXT] Card Heading 256x38@-1950.5,3004 fill:#116254 | "$29/year" Poppins SemiBold 48/38 CENTER
+      [TEXT] Card Heading 363x300@-2004,3078 fill:#121212 | "Upload up to 50 paid resources\nUnlimited free resources\nSell free and " Poppins Regular 24/50 undefined
+      [FRAME] Content 310x68@-1977.5,3414 fill:#3a836b | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] State-layer 225x40@-1935,3428 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+          [INSTANCE] Icon 20x20@-1919,3438 
+          [TEXT] Label 193x20@-1919,3438 fill:#ffffff | "Join Free Today" Poppins SemiBold 24/20 undefined
+    [FRAME] Wrapper 1728x598@-2686,3601 fill:#f5edff
+      [FRAME] Group 39643 1285x468@-2465,3666 
+        [TEXT] Ready to Share Your Knowledge With The World? 1110x66@-2378,3666 fill:#29483c | "Ready to Share Your Knowledge With The World?" Poppins SemiBold 44/100% CENTER
+        [TEXT] Set up your vendor account and enjoy the benefits! 999x42@-2322,3756 fill:#121212 | "Set up your vendor account and enjoy the benefits!" Poppins Regular 28/100% CENTER
+        [FRAME] Content 397x68@-2021,4066 fill:#fedc97 | r:8 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] State-layer 353x40@-1999,4080 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+            [INSTANCE] Icon 20x20@-1983,4090 
+            [TEXT] Label 321x20@-1983,4090 fill:#29483c | "Claim Free Vendor Access" Poppins SemiBold 24/20 undefined
+        [FRAME] Group 91 1285x172@-2465,3846 
+          [FRAME] Group 90 1285x172@-2465,3846 
+            [FRAME] Frame 3 396x172@-2465,3846 fill:#ffffff | r:8 | VERTICAL gap20 pad[28,20,28,20] undefined/CENTER
+              [TEXT] 3 Months Free 356x36@-2445,3874 fill:#3a836b | "3 Months Free" Poppins SemiBold 24/100% CENTER
+              [TEXT] No vendor fees or commissions after launch period 356x60@-2445,3930 fill:#121212 | "No vendor fees or commissions after launch period" Poppins Regular 20/30 CENTER
+            [FRAME] Frame 4 397x172@-2021,3846 fill:#ffffff | r:8 | VERTICAL gap20 pad[28,20,28,20] undefined/CENTER
+              [TEXT] Early Exposure 357x36@-2001,3874 fill:#3a836b | "Early Exposure" Poppins SemiBold 24/100% CENTER
+              [TEXT] Get featured as a Founding Vendor on our homepage 357x60@-2001,3930 fill:#121212 | "Get featured as a Founding Vendor on our homepage" Poppins Regular 20/30 CENTER
+            [FRAME] Frame 6 396x172@-1576,3846 fill:#ffffff | r:8 | VERTICAL gap20 pad[28,20,28,20] undefined/CENTER
+              [TEXT] Early Upload Access 356x36@-1556,3874 fill:#3a836b | "Early Upload Access" Poppins SemiBold 24/100% CENTER
+              [TEXT] Add free and paid resources before the public launch 356x60@-1556,3930 fill:#121212 | "Add free and paid resources before the public launch" Poppins Regular 20/30 CENTER
+    [FRAME] Wrapper 1728x647@-2686,4199 fill:#ffffff
+      [FRAME] Group 39643 1110x132@-2378,4264 
+        [TEXT] Testimonials 1110x66@-2378,4264 fill:#29483c | "Testimonials" Poppins SemiBold 44/100% CENTER
+        [TEXT] Hear from our current vendors and registered users 999x42@-2322,4354 fill:#121212 | "Hear from our current vendors and registered users" Poppins Regular 28/100% CENTER
+      [FRAME] Test-cont 1243x337@-2443,4444 VERTICAL gap-115 pad[0,0,0,0] undefined/undefined
+        [FRAME] Frame 217 1243x337@-2443,4444 fill:
+          [FRAME] Frame 168 1243x290@-2443,4444 HORIZONTAL gap32.08 pad[0,0,0,0] undefined/undefined
+            [FRAME] Card01 393x290@-2443,4444 fill:#f2faf7 | r:5.35 | VERTICAL gap16.04 pad[32.08,32.08,32.08,32.08] undefined/undefined
+              [TEXT] Abdul Rashid K. 197x36@-2410.92,4476.08 fill:#121212 | "Abdul Rashid K." Poppins SemiBold 24/100% CENTER
+              [TEXT] Im very excited to utilize this site once it is launched! This is a platform that has been needed in the Muslim community for a long time. 328.83x173.79@-2410.92,4528.13 fill:#121212 | "Im very excited to utilize this site once it is launched! This is a pl" Poppins Regular 20/100% undefined
+            [FRAME] Card01 393x290@-2017.92,4444 fill:#f2faf7 | r:5.35 | VERTICAL gap16.04 pad[32.08,32.08,32.08,32.08] undefined/undefined
+              [TEXT] Amina Begum 180x36@-1985.83,4476.08 fill:#121212 | "Amina Begum" Poppins SemiBold 24/100% CENTER
+              [TEXT] I used to visit several websites to make a lesson. Uloominate will make it much easier to find thoughtful Islamic resources in one central website. 328.83x173.79@-1985.83,4528.13 fill:#121212 | "I used to visit several websites to make a lesson. Uloominate will mak" Poppins Regular 20/100% undefined
+            [FRAME] Card01 393x290@-1592.83,4444 fill:#f2faf7 | r:5.35 | VERTICAL gap16.04 pad[32.08,32.08,32.08,32.08] undefined/undefined
+              [TEXT] Layla S. 95x36@-1560.75,4476.08 fill:#121212 | "Layla S." Poppins SemiBold 24/100% CENTER
+              [TEXT] The ability to find worksheets based on Islamic topics AND secular subjects is a game changer in the way I teach. 328.83x173.79@-1560.75,4528.13 fill:#121212 | "The ability to find worksheets based on Islamic topics AND secular sub" Poppins Regular 20/100% undefined
+        [FRAME] Frame 244 1243x32.08@-2443,4748.92 HORIZONTAL gap5.35 pad[10.69,0,10.69,0] CENTER/CENTER
+          [ELLIPSE] Ellipse 9 10.69x10.69@-1842.89,4759.61 fill:#3a836b
+          [ELLIPSE] Ellipse 10 10.69x10.69@-1826.85,4759.61 fill:#9fd0be
+          [ELLIPSE] Ellipse 11 10.69x10.69@-1810.81,4759.61 fill:#9fd0be
+      [FRAME] Frame 43453 1728x514@-2686,4846 
+        [FRAME] Wrapper 1728x514@-2686,4846 fill:#e3f7fd
+          [FRAME] Frame 43450 1371x384@-2507,4911 
+            [FRAME] Group 39642 576.62x384@-1750.62,4911 
+              [ROUNDED_RECTANGLE] Rectangle 118 576.62x384@-1750.62,4911 fill:#ffffff | r:12
+              [INSTANCE] Text field 494.67x71.56@-1708.7,4971.78 r:4,4,0,0 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [INSTANCE] Text field 494.67x71.56@-1708.7,5079.11 r:4,4,0,0 | VERTICAL gap0 pad[0,0,0,0] undefined/undefined
+              [FRAME] Text field 493.84x68@-1708.29,5192 fill:#3a836b | r:8 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                [FRAME] Text field 493.84x68@-1708.29,5192 r:4 | VERTICAL gap10 pad[0,0,0,0] CENTER/CENTER
+                  [FRAME] State-layer 493.84x68@-1708.29,5192 r:4,4,0,0 | HORIZONTAL gap4 pad[4,0,4,16] CENTER/CENTER
+                    [FRAME] Content 477.84x48@-1692.29,5202 VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+                      [FRAME] Input text container 315x24@-1610.87,5214 HORIZONTAL gap0 pad[0,0,0,0] undefined/CENTER
+                        [TEXT] Input text 315x24@-1610.87,5214 fill:#ffffff | "Sign Me Up" Poppins SemiBold 24/24 CENTER
+                      [FRAME] Label text container 39x16@-1696.29,5190 fill:#ffffff | HORIZONTAL gap0 pad[0,4,0,4] undefined/CENTER
+                        [TEXT] Label text 65x16@-1692.29,5190 fill:#49454f | "Enter Email" Roboto Regular 12/16 undefined
+                [FRAME] Supporting text 494x20@-1708.29,5260 fill: | HORIZONTAL gap10 pad[4,16,0,16] undefined/undefined
+                  [TEXT] supporting-text 462x16@-1692.29,5264 fill:#49454f | "Supporting text" Roboto Regular 12/16 undefined
+            [FRAME] Group 39645 551x258@-2470,4977 
+              [TEXT] Join Our Community 466x66@-2470,4977 fill:#29483c | "Join Our Community" Poppins SemiBold 44/100% undefined
+              [TEXT] Get early access updates, vendor launch news, and founding offer reminders - no commitment is required. 551x168@-2470,5067 fill:#121212 | "Get early access updates, vendor launch news, and founding offer remin" Poppins Regular 28/100% undefined
+  [FRAME] Frame 43452 1729x131@-2687,-93 
+    [FRAME] Group 68 1729x131@-2687,-93 
+      [ROUNDED_RECTANGLE] Rectangle 111 1728x80@-2687,-93 fill:#eaf7f1
+      [FRAME] Toggle button - outline 198x48@-1222,-77 fill:#eaf7f1 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [FRAME] Content 198x54@-1222,-80 fill:#fedc97 | r:100 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] State-layer 154x40@-1200,-73 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+            [INSTANCE] Icon 20x20@-1184,-63 
+            [TEXT] Label 122x20@-1184,-63 fill:#3a836b | "Vendor Login" Poppins SemiBold 18/20 undefined
+      [FRAME] Group 68 1728x129@-2686,-91 
+        [ROUNDED_RECTANGLE] Rectangle 111 1728x129@-2686,-91 fill:#3a836b
+        [INSTANCE] mdi:shopping-cart-outline 24x24@-1319,-60 fill:
+        [INSTANCE] Search bar 434x48@-2039,-70 fill:#ffffff | r:28 | HORIZONTAL gap4 pad[0,0,0,0] undefined/CENTER
+        [FRAME] Frame 67 1214x27@-2428.5,0 HORIZONTAL gap54 pad[0,0,0,0] undefined/CENTER
+          [TEXT] Islamic Studies 145x27@-2428.5,0 fill:#ffffff | "Islamic Studies" Poppins Medium 18/100% undefined
+          [TEXT] Quran 59x27@-2229.5,0 fill:#ffffff | "Quran" Poppins Medium 18/100% undefined
+          [TEXT] Arabic 62x27@-2116.5,0 fill:#ffffff | "Arabic" Poppins Medium 18/100% undefined
+          [TEXT] Social Studies 133x27@-2000.5,0 fill:#ffffff | "Social Studies" Poppins Medium 18/100% undefined
+          [TEXT] Math 48x27@-1813.5,0 fill:#ffffff | "Math" Poppins Medium 18/100% undefined
+          [TEXT] Science 75x27@-1711.5,0 fill:#ffffff | "Science" Poppins Medium 18/100% undefined
+          [TEXT] ELA 31x27@-1582.5,0 fill:#ffffff | "ELA" Poppins Medium 18/100% undefined
+          [TEXT] Art 28x27@-1497.5,0 fill:#ffffff | "Art" Poppins Medium 18/100% undefined
+          [TEXT] Health 62x27@-1415.5,0 fill:#ffffff | "Health" Poppins Medium 18/100% undefined
+          [TEXT] About Us 85x27@-1299.5,0 fill:#ffffff | "About Us" Poppins Medium 18/100% undefined
+        [FRAME] Toggle button - outline 112x48@-1453,-70 HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+          [FRAME] Content 111x40@-1452.5,-66 fill:#fedc97 | r:8 | VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] State-layer 82x40@-1438,-66 HORIZONTAL gap8 pad[10,16,10,16] CENTER/CENTER
+              [INSTANCE] Icon 20x20@-1422,-56 
+              [TEXT] Label 50x20@-1422,-56 fill:#29483c | "Login" Poppins SemiBold 18/20 undefined
+        [INSTANCE] Toggle button - outline 102x48@-1566,-70 HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+    [FRAME] Group 93 228x46.28@-2350,-69 
+      [TEXT] Uloominate 182x37@-2304,-64 fill:#fedc97 | "Uloominate" Montserrat Alternates Medium 30/100% CENTER
+      [FRAME] Group 66 38x46.28@-2350,-69 
+        [ROUNDED_RECTANGLE] logo 1 38x46.28@-2350,-69 fill:IMAGE:img
+  [FRAME] Group 39642 1728x252@-2686,670 
+    [ROUNDED_RECTANGLE] Rectangle 174 1728x252@-2686,670 fill:#fffdf7
+    [TEXT] OUR TOP VENDORS 168x27@-2608,685 fill:#b9913e | "OUR TOP VENDORS" Poppins SemiBold 18/100% undefined
+    [FRAME] Group 39639 1607.74x132.56@-2608,730 
+      [ROUNDED_RECTANGLE] image 18 156.89x65.19@-2608,764.04 fill:IMAGE:img
+      [FRAME] Group 39628 114.72x37.68@-2357.11,777.47 
+        [FRAME] Group 39625 114.72x37.68@-2357.11,777.47 
+          [FRAME] Group 39623 114.72x37.68@-2357.11,777.47 
+            [TEXT] MLS Muslim Legacy Series 114.72x37.68@-2357.11,777.47 fill:#000000 | "MLS\nMuslim Legacy Series" Libre Baskerville SemiBold 14/20 CENTER
+      [FRAME] Group 39624 132.3x132.3@-2148.39,862.56 
+        [FRAME] Group 39640 132.3x132.3@-2148.39,862.56 
+          [ROUNDED_RECTANGLE] image 21 132.3x132.3@-2016.09,862.56 fill:IMAGE:img | r:8
+          [TEXT] The Kids Homeschool 109x15@-2129.97,875.24 fill:#000000 | "The Kids Homeschool" Poppins SemiBold 10/100% CENTER
+      [ROUNDED_RECTANGLE] image 15 132.3x132.3@-1922.09,730 fill:IMAGE:img | r:8
+      [ROUNDED_RECTANGLE] image 19 132.3x132.3@-1695.79,730 fill:IMAGE:img | r:8
+      [ROUNDED_RECTANGLE] image 16 131.88x131.88@-1469.49,730 fill:IMAGE:img | r:8
+      [ROUNDED_RECTANGLE] image 22 243.34x72.37@-1243.61,760.45 fill:IMAGE:img | r:8
+  [FRAME] footer 1729x329@-2687,5361 fill:#feffff | VERTICAL gap40 pad[64,48,40,48] undefined/undefined
+    [FRAME] footer-columns 1633x120@-2639,5425 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/undefined
+      [FRAME] Frame 39649 208.12x102@-2639,5425 VERTICAL gap0 pad[0,0,0,0] CENTER/CENTER
+        [VECTOR] Subtract (Traced) 40x49@-2554.94,5425 fill:#3a836b
+        [FRAME] Group 95 208.12x53@-2639,5474 
+          [TEXT] Teach More. Share More. 153.23x16@-2613.84,5511 fill:#3a836b | "Teach More. Share More. " Playfair Display Regular 12/100% CENTER
+          [FRAME] Group 93 208.12x37@-2639,5474 
+            [TEXT] Uloominate 208.12x37@-2639,5474 fill:#3a836b | "Uloominate" Montserrat Alternates Medium 30/100% CENTER
+      [FRAME] Frame 984x120@-2300.44,5425 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+        [TEXT] About Us 63x21@-2300.44,5425 fill:#29483c | "About Us" Poppins Regular 14/100% undefined
+        [TEXT] Privacy Policy 95x21@-2300.44,5458 fill:#29483c | "Privacy Policy" Poppins Regular 14/100% undefined
+        [TEXT] Terms & Conditions 137x21@-2300.44,5491 fill:#29483c | "Terms & Conditions" Poppins Regular 14/100% undefined
+        [TEXT] Contact Us 78x21@-2300.44,5524 fill:#29483c | "Contact Us" Poppins Regular 14/100% undefined
+      [FRAME] Frame 180x65@-1186,5425 VERTICAL gap12 pad[0,0,0,0] undefined/undefined
+        [TEXT] Keep in Touch 97x17@-1186,5425 fill:#121212 | "Keep in Touch" DM Sans Bold 13/100% undefined
+        [FRAME] Frame 180x36@-1186,5454 HORIZONTAL gap12 pad[0,0,0,0] undefined/undefined
+          [FRAME] Frame 36x36@-1186,5454 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] instagram 18x18@-1177,5463 
+              [VECTOR] Vector 15x15@-1175.5,5464.5 
+          [FRAME] Frame 36x36@-1138,5454 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] facebook 18x18@-1129,5463 
+              [VECTOR] Vector 8.25x15@-1123.75,5464.5 
+          [FRAME] Frame 36x36@-1090,5454 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] circle-x 18x18@-1081,5463 
+              [VECTOR] Vector 15x15@-1079.5,5464.5 
+          [FRAME] Frame 36x36@-1042,5454 fill:#f3f4f6 | r:18 | HORIZONTAL gap0 pad[0,0,0,0] CENTER/CENTER
+            [FRAME] twitter 18x18@-1033,5463 
+              [VECTOR] Vector 15x12.76@-1031.5,5465.99 
+    [LINE] Line 1633x0@-2639,5585 
+    [FRAME] footer-bottom 1633x25@-2639,5625 HORIZONTAL gap0 pad[0,0,0,0] SPACE_BETWEEN/CENTER
+      [TEXT] Copyright © 2025 Uloominate 236x25@-2639,5625 fill:#29483c | "Copyright © 2025 Uloominate" Poppins Regular 16/1.57 undefined
+      [FRAME] Frame 186x16@-1192,5629.5 HORIZONTAL gap16 pad[0,0,0,0] undefined/undefined
